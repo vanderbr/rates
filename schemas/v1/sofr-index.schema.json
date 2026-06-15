@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/vanderbr/rates/main/schemas/v1/sofr-index.schema.json",
+  "title": "sofr-index",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "date",
+      "sofr_index_scaled_100000000"
+    ],
+    "properties": {
+      "date": {
+        "type": "string"
+      },
+      "sofr_index_scaled_100000000": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  }
+}

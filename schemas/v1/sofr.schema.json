@@ -13,11 +13,7 @@
       "percentile_25_basis_points",
       "percentile_75_basis_points",
       "percentile_99_basis_points",
-      "volume_billions",
-      "average_30_day_basis_points_scaled_1000",
-      "average_90_day_basis_points_scaled_1000",
-      "average_180_day_basis_points_scaled_1000",
-      "sofr_index_scaled_100000000"
+      "volume_billions"
     ],
     "properties": {
       "date": {
@@ -44,22 +40,6 @@
         "minimum": 0
       },
       "volume_billions": {
-        "type": "integer",
-        "minimum": 0
-      },
-      "average_30_day_basis_points_scaled_1000": {
-        "type": "integer",
-        "minimum": 0
-      },
-      "average_90_day_basis_points_scaled_1000": {
-        "type": "integer",
-        "minimum": 0
-      },
-      "average_180_day_basis_points_scaled_1000": {
-        "type": "integer",
-        "minimum": 0
-      },
-      "sofr_index_scaled_100000000": {
         "type": "integer",
         "minimum": 0
       }

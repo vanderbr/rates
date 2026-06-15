@@ -1,0 +1,14 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package rates.v1;
+
+message SofrIndexRecord {
+  string date = 1;
+  uint64 sofr_index_scaled_100000000 = 2;
+}
+
+message SofrIndexFile {
+  string schema_id = 1;
+  repeated SofrIndexRecord records = 2;
+}

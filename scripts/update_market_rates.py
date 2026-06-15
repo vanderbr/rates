@@ -229,16 +229,6 @@ class NyFedReferenceRateRecord:
                     "percentile_75_basis_points": self.percentile_75_basis_points,
                     "percentile_99_basis_points": self.percentile_99_basis_points,
                     "volume_billions": self.volume_billions,
-                    "average_30_day_basis_points_scaled_1000": (
-                        self.average_30_day_basis_points_scaled_1000
-                    ),
-                    "average_90_day_basis_points_scaled_1000": (
-                        self.average_90_day_basis_points_scaled_1000
-                    ),
-                    "average_180_day_basis_points_scaled_1000": (
-                        self.average_180_day_basis_points_scaled_1000
-                    ),
-                    "sofr_index_scaled_100000000": self.sofr_index_scaled_100000000,
                 }
             )
         return result
@@ -305,10 +295,6 @@ class NyFedReferenceRateRecord:
                 self.percentile_75_basis_points,
                 self.percentile_99_basis_points,
                 self.volume_billions,
-                self.average_30_day_basis_points_scaled_1000,
-                self.average_90_day_basis_points_scaled_1000,
-                self.average_180_day_basis_points_scaled_1000,
-                self.sofr_index_scaled_100000000,
             )
         )
 
@@ -365,6 +351,11 @@ SOFR_DERIVED_DATASETS = (
         dataset_id="sofr-180d-average",
         path_slug="sofr/sofr-180d-average",
         metric_field="average_180_day_basis_points_scaled_1000",
+    ),
+    SofrDerivedDataset(
+        dataset_id="sofr-index",
+        path_slug="sofr/sofr-index",
+        metric_field="sofr_index_scaled_100000000",
     ),
 )
 
@@ -1087,19 +1078,22 @@ def parse_nyfed_json_record(
 
     expected_keys = {"date", "rate_basis_points"}
     legacy_expected_keys = {*expected_keys, "rate_type"}
-    canonical_sofr_detail_keys = {
+    canonical_sofr_observation_keys = {
         *expected_keys,
         "percentile_1_basis_points",
         "percentile_25_basis_points",
         "percentile_75_basis_points",
         "percentile_99_basis_points",
         "volume_billions",
+    }
+    legacy_sofr_detail_keys = {
+        *canonical_sofr_observation_keys,
         "average_30_day_basis_points_scaled_1000",
         "average_90_day_basis_points_scaled_1000",
         "average_180_day_basis_points_scaled_1000",
         "sofr_index_scaled_100000000",
     }
-    legacy_sofr_detail_keys = {
+    legacy_sofr_percentiles_object_keys = {
         *legacy_expected_keys,
         "percentiles_basis_points",
         "volume_billions",
@@ -1112,21 +1106,27 @@ def parse_nyfed_json_record(
     }
     legacy_keys = {*legacy_expected_keys, "source_url"}
     canonical_keys_with_source = {*expected_keys, "source_url"}
-    canonical_sofr_detail_keys_with_source = {
-        *canonical_sofr_detail_keys,
+    canonical_sofr_observation_keys_with_source = {
+        *canonical_sofr_observation_keys,
         "source_url",
     }
     legacy_sofr_detail_keys_with_source = {*legacy_sofr_detail_keys, "source_url"}
+    legacy_sofr_percentiles_object_keys_with_source = {
+        *legacy_sofr_percentiles_object_keys,
+        "source_url",
+    }
     actual_keys = set(value.keys())
     if (
         actual_keys != expected_keys
         and actual_keys != legacy_expected_keys
         and actual_keys != legacy_keys
         and actual_keys != canonical_keys_with_source
-        and actual_keys != canonical_sofr_detail_keys
-        and actual_keys != canonical_sofr_detail_keys_with_source
+        and actual_keys != canonical_sofr_observation_keys
+        and actual_keys != canonical_sofr_observation_keys_with_source
         and actual_keys != legacy_sofr_detail_keys
         and actual_keys != legacy_sofr_detail_keys_with_source
+        and actual_keys != legacy_sofr_percentiles_object_keys
+        and actual_keys != legacy_sofr_percentiles_object_keys_with_source
     ):
         raise MarketRateUpdateError(MarketRateUpdateErrorCode.INVALID_JSON)
 
@@ -1206,22 +1206,22 @@ def parse_nyfed_json_record(
         percentile_99_basis_points=parse_json_optional_int(percentile_99, -100_000, 100_000),
         volume_billions=parse_json_optional_int(value["volume_billions"], 0, 10_000_000),
         average_30_day_basis_points_scaled_1000=parse_json_optional_int(
-            value["average_30_day_basis_points_scaled_1000"],
+            value.get("average_30_day_basis_points_scaled_1000"),
             0,
             100_000_000,
         ),
         average_90_day_basis_points_scaled_1000=parse_json_optional_int(
-            value["average_90_day_basis_points_scaled_1000"],
+            value.get("average_90_day_basis_points_scaled_1000"),
             0,
             100_000_000,
         ),
         average_180_day_basis_points_scaled_1000=parse_json_optional_int(
-            value["average_180_day_basis_points_scaled_1000"],
+            value.get("average_180_day_basis_points_scaled_1000"),
             0,
             100_000_000,
         ),
         sofr_index_scaled_100000000=parse_json_optional_int(
-            value["sofr_index_scaled_100000000"],
+            value.get("sofr_index_scaled_100000000"),
             0,
             100_000_000_000_000,
         ),
@@ -1365,6 +1365,14 @@ def write_sofr_derived_datasets(
     return changed
 
 
+def canonical_nyfed_records_for_dataset(
+    dataset: NyFedRateDataset, records: list[NyFedReferenceRateRecord]
+) -> list[NyFedReferenceRateRecord]:
+    if dataset.dataset_id != "sofr":
+        return sorted(records)
+    return sorted(record for record in records if record.rate_basis_points is not None)
+
+
 def derive_sofr_metric_records(
     records: list[NyFedReferenceRateRecord],
     metric_field: str,
@@ -1387,24 +1395,31 @@ def derive_sofr_metric_records(
 
 
 def serialize_sofr_derived_metadata(dataset: SofrDerivedDataset) -> str:
+    if dataset.dataset_id == "sofr-index":
+        date_meaning = "Effective date of the New York Fed-published SOFR Index"
+        value_field = {
+            "unit": "index_scaled_100000000",
+            "scale": "stored value / 100000000 = published index",
+        }
+    else:
+        date_meaning = "Effective date of the New York Fed-published SOFR average"
+        value_field = {
+            "unit": "basis_points_scaled_1000",
+            "scale": "stored value / 1000 = basis points",
+            "source_rate_expression": "annualized_percent",
+        }
     metadata = {
         "name": sofr_derived_dataset_name(dataset.dataset_id),
         "source": "Federal Reserve Bank of New York",
         "source_url": "https://markets.newyorkfed.org/api/rates/all/search.csv",
-        "derived_from": "../by-year/YYYY-sofr.json",
+        "source_rate_type": "SOFRAI",
         "record_frequency": "business_day",
         "date_key": {
             "field": "date",
             "format": "YYYY-MM-DD",
-            "meaning": "Effective date of the New York Fed-published SOFR average",
+            "meaning": date_meaning,
         },
-        "value_fields": {
-            dataset.metric_field: {
-                "unit": "basis_points_scaled_1000",
-                "scale": "stored value / 1000 = basis points",
-                "source_rate_expression": "annualized_percent",
-            }
-        },
+        "value_fields": {dataset.metric_field: value_field},
         "storage": {
             "manifest_file": "manifest.json",
             "primary_records": f"by-year/YYYY-{dataset.shard_slug}.json",
@@ -1467,29 +1482,12 @@ def serialize_nyfed_metadata(dataset: NyFedRateDataset) -> str:
             "rate_basis_points": {
                 "unit": "basis_points",
                 "source_rate_type": dataset.rate_type,
-                "null_meaning": "SOFRAI may publish before the daily SOFR observation",
             },
             "percentile_1_basis_points": {"unit": "basis_points"},
             "percentile_25_basis_points": {"unit": "basis_points"},
             "percentile_75_basis_points": {"unit": "basis_points"},
             "percentile_99_basis_points": {"unit": "basis_points"},
             "volume_billions": {"unit": "billions_usd"},
-            "average_30_day_basis_points_scaled_1000": {
-                "unit": "basis_points_scaled_1000",
-                "scale": "stored value / 1000 = basis points",
-            },
-            "average_90_day_basis_points_scaled_1000": {
-                "unit": "basis_points_scaled_1000",
-                "scale": "stored value / 1000 = basis points",
-            },
-            "average_180_day_basis_points_scaled_1000": {
-                "unit": "basis_points_scaled_1000",
-                "scale": "stored value / 1000 = basis points",
-            },
-            "sofr_index_scaled_100000000": {
-                "unit": "index_scaled_100000000",
-                "scale": "stored value / 100000000 = published index",
-            },
         }
     else:
         raise MarketRateUpdateError(MarketRateUpdateErrorCode.UNKNOWN_DATASET)
@@ -1523,6 +1521,8 @@ def sofr_derived_dataset_name(dataset_id: str) -> str:
         return "90-Day Average SOFR"
     if dataset_id == "sofr-180d-average":
         return "180-Day Average SOFR"
+    if dataset_id == "sofr-index":
+        return "SOFR Index"
     raise MarketRateUpdateError(MarketRateUpdateErrorCode.UNKNOWN_DATASET)
 
 
@@ -1649,13 +1649,14 @@ def update_nyfed_from_csv_text(
     )
     source_records = parse_nyfed_csv(csv_text, source_url, dataset)
     merged_records, changed = merge_nyfed_records(existing_records, source_records)
+    canonical_records = canonical_nyfed_records_for_dataset(dataset, merged_records)
     if write:
         changed = write_year_sharded_dataset_files(
             dataset.dataset_id,
             dataset.shard_slug,
             dataset.manifest_path,
             dataset.year_dir,
-            merged_records,
+            canonical_records,
         ) or changed
         changed = (
             write_if_changed(
@@ -1668,7 +1669,7 @@ def update_nyfed_from_csv_text(
             changed = write_sofr_derived_datasets(
                 merged_records, Path(dataset.path_slug)
             ) or changed
-    return (len(source_records), len(existing_records), len(merged_records), changed)
+    return (len(source_records), len(existing_records), len(canonical_records), changed)
 
 
 def update_treasury_from_years(

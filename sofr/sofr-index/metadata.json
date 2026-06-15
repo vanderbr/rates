@@ -1,0 +1,32 @@
+{
+  "name": "SOFR Index",
+  "source": "Federal Reserve Bank of New York",
+  "source_url": "https://markets.newyorkfed.org/api/rates/all/search.csv",
+  "source_rate_type": "SOFRAI",
+  "record_frequency": "business_day",
+  "date_key": {
+    "field": "date",
+    "format": "YYYY-MM-DD",
+    "meaning": "Effective date of the New York Fed-published SOFR Index"
+  },
+  "value_fields": {
+    "sofr_index_scaled_100000000": {
+      "unit": "index_scaled_100000000",
+      "scale": "stored value / 100000000 = published index"
+    }
+  },
+  "storage": {
+    "manifest_file": "manifest.json",
+    "primary_records": "by-year/YYYY-sofr-index.json",
+    "year_shards": "by-year/YYYY-sofr-index.json",
+    "ordering": "ascending_date",
+    "dedupe_key": "date"
+  },
+  "dataset_id": "sofr-index",
+  "schema_id": "rates.sofr_index.v1",
+  "schema_version": 1,
+  "proto": {
+    "file": "proto/rates/v1/sofr_index.proto",
+    "message": "rates.v1.SofrIndexFile"
+  }
+}

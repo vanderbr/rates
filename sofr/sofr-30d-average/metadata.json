@@ -2,7 +2,7 @@
   "name": "30-Day Average SOFR",
   "source": "Federal Reserve Bank of New York",
   "source_url": "https://markets.newyorkfed.org/api/rates/all/search.csv",
-  "derived_from": "../by-year/YYYY-sofr.json",
+  "source_rate_type": "SOFRAI",
   "record_frequency": "business_day",
   "date_key": {
     "field": "date",
