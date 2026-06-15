@@ -5,9 +5,11 @@ name: Update Market Rates
 on:
   workflow_dispatch:
   schedule:
-    # Treasury and New York Fed daily observations can lag market close. This
-    # runs after the prior U.S. business day has normally settled.
-    - cron: "22 12 * * 2-6"
+    # SOFR is normally published at about 8:00 a.m. New York time and EFFR at
+    # about 9:00 a.m. This runs shortly after both publications, with room for
+    # routine publication lag while still opening same-morning update PRs.
+    - cron: "35 9 * * 1-5"
+      timezone: "America/New_York"
 
 permissions:
   contents: write
