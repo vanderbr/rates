@@ -1,0 +1,46 @@
+{
+  "name": "Applicable Federal Rates",
+  "short_name": "AFR",
+  "source": "Internal Revenue Service",
+  "source_url": "https://www.irs.gov/applicable-federal-rates",
+  "record_frequency": "month",
+  "date_key": {
+    "field": "effective_month",
+    "format": "YYYY-MM",
+    "meaning": "Calendar month for which the IRS-published AFR ruling applies"
+  },
+  "value_fields": {
+    "applicable_federal_rates": {
+      "unit": "basis_points",
+      "scale": "1 percent = 100 basis points",
+      "shape": "term -> rate_family -> compounding_period"
+    },
+    "adjusted_applicable_federal_rates": {
+      "unit": "basis_points",
+      "scale": "1 percent = 100 basis points",
+      "shape": "term -> compounding_period"
+    }
+  },
+  "calculator_semantics": {
+    "curve_role": "irs_monthly_statutory_rate_table",
+    "source_rate_expression": "annualized_percent",
+    "compounding": "source_published_compounding_columns",
+    "day_count": "consumer_supplied",
+    "discount_curve_ready": false,
+    "notes": "Use the compounding column required by the governing calculation. These records preserve IRS-published AFR tables and do not infer a present-value convention."
+  },
+  "storage": {
+    "manifest_file": "manifest.json",
+    "primary_records": "by-year/YYYY-afr.json",
+    "year_shards": "by-year/YYYY-afr.json",
+    "ordering": "ascending_effective_month",
+    "dedupe_key": "effective_month"
+  },
+  "dataset_id": "applicable-federal-rates",
+  "schema_id": "rates.applicable_federal_rates.v1",
+  "schema_version": 1,
+  "proto": {
+    "file": "proto/rates/v1/applicable_federal_rates.proto",
+    "message": "rates.v1.ApplicableFederalRatesFile"
+  }
+}

@@ -1,0 +1,15 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package rates.v1;
+
+message TableR2Record {
+  uint32 older_age = 1;
+  uint32 younger_age = 2;
+  uint64 remainder_factor_scaled_1e6 = 3;
+}
+
+message TableR2File {
+  string schema_id = 1;
+  repeated TableR2Record records = 2;
+}

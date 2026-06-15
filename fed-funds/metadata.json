@@ -1,0 +1,32 @@
+{
+  "name": "Effective Federal Funds Rate",
+  "source": "Federal Reserve Bank of New York",
+  "source_url": "https://markets.newyorkfed.org/api/rates/unsecured/effr/search.csv",
+  "record_frequency": "business_day",
+  "date_key": {
+    "field": "date",
+    "format": "YYYY-MM-DD",
+    "meaning": "Effective date of the published reference rate"
+  },
+  "value_fields": {
+    "rate_basis_points": {
+      "unit": "basis_points",
+      "source_rate_type": "EFFR",
+      "null_meaning": "No rate was published for that effective date"
+    }
+  },
+  "storage": {
+    "manifest_file": "manifest.json",
+    "primary_records": "by-year/YYYY-fed-funds.json",
+    "year_shards": "by-year/YYYY-fed-funds.json",
+    "ordering": "ascending_date",
+    "dedupe_key": "date"
+  },
+  "dataset_id": "federal-funds",
+  "schema_id": "rates.federal_funds.v1",
+  "schema_version": 1,
+  "proto": {
+    "file": "proto/rates/v1/federal_funds.proto",
+    "message": "rates.v1.FederalFundsRateFile"
+  }
+}

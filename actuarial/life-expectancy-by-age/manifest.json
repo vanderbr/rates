@@ -1,0 +1,19 @@
+{
+  "dataset_id": "life-expectancy-by-age",
+  "schema_id": "rates.life_expectancy_by_age.v1",
+  "schema_version": 1,
+  "record_storage": "single_file",
+  "record_count": 111,
+  "proto": {
+    "file": "proto/rates/v1/life_expectancy_by_age.proto",
+    "message": "rates.v1.LifeExpectancyFile"
+  },
+  "records": {
+    "path": "rates.json",
+    "bytes": 15457,
+    "sha256": "534de2326a78be4c64ca76f4785a675e663926c582de8bce1f22108a98bd53ba",
+    "protobuf_path": "protobuf/rates.pb",
+    "protobuf_bytes": 1559,
+    "protobuf_sha256": "9940087c9b5b3540f3f45b652cadc34ef9dff83686783a27d04e75872c3edf41"
+  }
+}

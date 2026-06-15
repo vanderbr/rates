@@ -1,0 +1,99 @@
+{
+  "dataset_id": "sofr-90d-average",
+  "schema_id": "rates.sofr_90d_average.v1",
+  "schema_version": 1,
+  "record_storage": "by_year",
+  "record_count": 1571,
+  "proto": {
+    "file": "proto/rates/v1/sofr_average.proto",
+    "message": "rates.v1.SofrAverageFile"
+  },
+  "years": [
+    {
+      "path": "by-year/2020-sofr-90d-average.json",
+      "bytes": 18462,
+      "sha256": "66048a0f95823eb81dc9583f30f5264056a0d813af4c54d5c1a801b5d0404032",
+      "protobuf_path": "protobuf/2020-sofr-90d-average.pb",
+      "protobuf_bytes": 3680,
+      "protobuf_sha256": "492b4ffe87652f5c1839542511328bcb2e71fca7542ed12c6cf822d8ab345fef",
+      "year": "2020",
+      "record_count": 211,
+      "first_date": "2020-03-02",
+      "last_date": "2020-12-31"
+    },
+    {
+      "path": "by-year/2021-sofr-90d-average.json",
+      "bytes": 21753,
+      "sha256": "6a988f3162d76dbb445b0d9ab4947010093bc672ef4a537264cc8d037785b5d8",
+      "protobuf_path": "protobuf/2021-sofr-90d-average.pb",
+      "protobuf_bytes": 4277,
+      "protobuf_sha256": "d72efcbb0ebd792543d256d955e66dd6e5ee9254375d890bee585a51524c9c42",
+      "year": "2021",
+      "record_count": 250,
+      "first_date": "2021-01-04",
+      "last_date": "2021-12-31"
+    },
+    {
+      "path": "by-year/2022-sofr-90d-average.json",
+      "bytes": 21961,
+      "sha256": "6a059dd4a5a553cc4b1963857551ac3539c86f046f86b5408e794dc2de0cf6e2",
+      "protobuf_path": "protobuf/2022-sofr-90d-average.pb",
+      "protobuf_bytes": 4427,
+      "protobuf_sha256": "264873f5dfd1cc49b3953cf4d02f96cfd76492342028c209274a82bd6a804a28",
+      "year": "2022",
+      "record_count": 249,
+      "first_date": "2022-01-03",
+      "last_date": "2022-12-30"
+    },
+    {
+      "path": "by-year/2023-sofr-90d-average.json",
+      "bytes": 22164,
+      "sha256": "ecb8190d6fdafcc66b294055ec8e23ec30a89edd7811d91a087549c87d97152a",
+      "protobuf_path": "protobuf/2023-sofr-90d-average.pb",
+      "protobuf_bytes": 4509,
+      "protobuf_sha256": "f395ce00c1c391c2c6297e1d9c284660710aa2bede744b364e44b89ec58e6c8f",
+      "year": "2023",
+      "record_count": 249,
+      "first_date": "2023-01-03",
+      "last_date": "2023-12-29"
+    },
+    {
+      "path": "by-year/2024-sofr-90d-average.json",
+      "bytes": 22253,
+      "sha256": "680915945a96e31e9a37f2656e2d07e6a27019e4b8efb5a8fd3027c6eaa6c48c",
+      "protobuf_path": "protobuf/2024-sofr-90d-average.pb",
+      "protobuf_bytes": 4527,
+      "protobuf_sha256": "a0b0bd1c4561f6bee1c12e4157e32cff3a43626bb242162419937578fa08e2ee",
+      "year": "2024",
+      "record_count": 250,
+      "first_date": "2024-01-02",
+      "last_date": "2024-12-31"
+    },
+    {
+      "path": "by-year/2025-sofr-90d-average.json",
+      "bytes": 22164,
+      "sha256": "6e103b3f6857a15d3d74beedc306d103cc176021964a5e8f739a36e260d5f2fb",
+      "protobuf_path": "protobuf/2025-sofr-90d-average.pb",
+      "protobuf_bytes": 4509,
+      "protobuf_sha256": "890c1e11526a7ca783c580c44877df00f8df607c112b31559e0ce274944ed78c",
+      "year": "2025",
+      "record_count": 249,
+      "first_date": "2025-01-02",
+      "last_date": "2025-12-31"
+    },
+    {
+      "path": "by-year/2026-sofr-90d-average.json",
+      "bytes": 10060,
+      "sha256": "9911dc162c63f3bb73bd17514d5760015b750b2db5cf12ca63d24eb13237b55d",
+      "protobuf_path": "protobuf/2026-sofr-90d-average.pb",
+      "protobuf_bytes": 2061,
+      "protobuf_sha256": "a62dcf2e586275cca7c8c90f8ce2df99a3ee8d966733360960c9b05a0131a8cc",
+      "year": "2026",
+      "record_count": 113,
+      "first_date": "2026-01-02",
+      "last_date": "2026-06-15"
+    }
+  ],
+  "first_date": "2020-03-02",
+  "last_date": "2026-06-15"
+}

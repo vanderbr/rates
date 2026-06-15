@@ -1,0 +1,29 @@
+{
+  "name": "Table 2000CM Mortality Table",
+  "source": "Internal Revenue Service",
+  "source_page_url": "https://www.irs.gov/retirement-plans/actuarial-tables",
+  "source_url": "https://www.irs.gov/pub/irs-tege/table-2000cm.xls",
+  "mortality_basis": "2000CM",
+  "effective_for_valuations_on_or_after": "2009-05-01",
+  "effective_for_valuations_on_or_before": "2023-05-31",
+  "description": "IRS prior mortality table derived from mortality experience around 2000. The source folder name is retained as table-2001 for repository layout compatibility.",
+  "value_fields": {
+    "survivors_per_100000_scaled_1e6": {
+      "unit": "survivors_scaled_1e6",
+      "radix": 100000,
+      "scale": "stored value / 1000000"
+    }
+  },
+  "storage": {
+    "primary_records": "rates.json",
+    "ordering": "ascending_age",
+    "dedupe_key": "age"
+  },
+  "dataset_id": "mortality-table-2000cm",
+  "schema_id": "rates.mortality_table_2000cm.v1",
+  "schema_version": 1,
+  "proto": {
+    "file": "proto/rates/v1/mortality_table.proto",
+    "message": "rates.v1.MortalityFile"
+  }
+}

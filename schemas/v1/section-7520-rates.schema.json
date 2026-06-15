@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/vanderbr/rates/main/schemas/v1/section-7520-rates.schema.json",
+  "title": "section-7520-rates",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "effective_month",
+      "midterm_afr_120_basis_points",
+      "section_7520_rate_basis_points"
+    ],
+    "properties": {
+      "effective_month": {
+        "type": "string"
+      },
+      "midterm_afr_120_basis_points": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "section_7520_rate_basis_points": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  }
+}

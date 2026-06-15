@@ -1,0 +1,662 @@
+[
+  {
+    "age": 0,
+    "annuity_factor_scaled_1e6": 5172500,
+    "life_estate_factor_scaled_1e6": 993110,
+    "remainder_factor_scaled_1e6": 6890
+  },
+  {
+    "age": 1,
+    "annuity_factor_scaled_1e6": 5200800,
+    "life_estate_factor_scaled_1e6": 998550,
+    "remainder_factor_scaled_1e6": 1450
+  },
+  {
+    "age": 2,
+    "annuity_factor_scaled_1e6": 5201700,
+    "life_estate_factor_scaled_1e6": 998730,
+    "remainder_factor_scaled_1e6": 1270
+  },
+  {
+    "age": 3,
+    "annuity_factor_scaled_1e6": 5202000,
+    "life_estate_factor_scaled_1e6": 998780,
+    "remainder_factor_scaled_1e6": 1220
+  },
+  {
+    "age": 4,
+    "annuity_factor_scaled_1e6": 5202000,
+    "life_estate_factor_scaled_1e6": 998780,
+    "remainder_factor_scaled_1e6": 1220
+  },
+  {
+    "age": 5,
+    "annuity_factor_scaled_1e6": 5201700,
+    "life_estate_factor_scaled_1e6": 998730,
+    "remainder_factor_scaled_1e6": 1270
+  },
+  {
+    "age": 6,
+    "annuity_factor_scaled_1e6": 5201300,
+    "life_estate_factor_scaled_1e6": 998650,
+    "remainder_factor_scaled_1e6": 1350
+  },
+  {
+    "age": 7,
+    "annuity_factor_scaled_1e6": 5200700,
+    "life_estate_factor_scaled_1e6": 998540,
+    "remainder_factor_scaled_1e6": 1460
+  },
+  {
+    "age": 8,
+    "annuity_factor_scaled_1e6": 5199900,
+    "life_estate_factor_scaled_1e6": 998390,
+    "remainder_factor_scaled_1e6": 1610
+  },
+  {
+    "age": 9,
+    "annuity_factor_scaled_1e6": 5198900,
+    "life_estate_factor_scaled_1e6": 998190,
+    "remainder_factor_scaled_1e6": 1810
+  },
+  {
+    "age": 10,
+    "annuity_factor_scaled_1e6": 5197600,
+    "life_estate_factor_scaled_1e6": 997940,
+    "remainder_factor_scaled_1e6": 2060
+  },
+  {
+    "age": 11,
+    "annuity_factor_scaled_1e6": 5196000,
+    "life_estate_factor_scaled_1e6": 997640,
+    "remainder_factor_scaled_1e6": 2360
+  },
+  {
+    "age": 12,
+    "annuity_factor_scaled_1e6": 5194200,
+    "life_estate_factor_scaled_1e6": 997280,
+    "remainder_factor_scaled_1e6": 2720
+  },
+  {
+    "age": 13,
+    "annuity_factor_scaled_1e6": 5192100,
+    "life_estate_factor_scaled_1e6": 996890,
+    "remainder_factor_scaled_1e6": 3110
+  },
+  {
+    "age": 14,
+    "annuity_factor_scaled_1e6": 5190000,
+    "life_estate_factor_scaled_1e6": 996490,
+    "remainder_factor_scaled_1e6": 3510
+  },
+  {
+    "age": 15,
+    "annuity_factor_scaled_1e6": 5188000,
+    "life_estate_factor_scaled_1e6": 996090,
+    "remainder_factor_scaled_1e6": 3910
+  },
+  {
+    "age": 16,
+    "annuity_factor_scaled_1e6": 5186000,
+    "life_estate_factor_scaled_1e6": 995710,
+    "remainder_factor_scaled_1e6": 4290
+  },
+  {
+    "age": 17,
+    "annuity_factor_scaled_1e6": 5184100,
+    "life_estate_factor_scaled_1e6": 995340,
+    "remainder_factor_scaled_1e6": 4660
+  },
+  {
+    "age": 18,
+    "annuity_factor_scaled_1e6": 5182200,
+    "life_estate_factor_scaled_1e6": 994990,
+    "remainder_factor_scaled_1e6": 5010
+  },
+  {
+    "age": 19,
+    "annuity_factor_scaled_1e6": 5180500,
+    "life_estate_factor_scaled_1e6": 994660,
+    "remainder_factor_scaled_1e6": 5340
+  },
+  {
+    "age": 20,
+    "annuity_factor_scaled_1e6": 5178900,
+    "life_estate_factor_scaled_1e6": 994360,
+    "remainder_factor_scaled_1e6": 5640
+  },
+  {
+    "age": 21,
+    "annuity_factor_scaled_1e6": 5177600,
+    "life_estate_factor_scaled_1e6": 994090,
+    "remainder_factor_scaled_1e6": 5910
+  },
+  {
+    "age": 22,
+    "annuity_factor_scaled_1e6": 5176400,
+    "life_estate_factor_scaled_1e6": 993870,
+    "remainder_factor_scaled_1e6": 6130
+  },
+  {
+    "age": 23,
+    "annuity_factor_scaled_1e6": 5175400,
+    "life_estate_factor_scaled_1e6": 993680,
+    "remainder_factor_scaled_1e6": 6320
+  },
+  {
+    "age": 24,
+    "annuity_factor_scaled_1e6": 5174400,
+    "life_estate_factor_scaled_1e6": 993490,
+    "remainder_factor_scaled_1e6": 6510
+  },
+  {
+    "age": 25,
+    "annuity_factor_scaled_1e6": 5173300,
+    "life_estate_factor_scaled_1e6": 993260,
+    "remainder_factor_scaled_1e6": 6740
+  },
+  {
+    "age": 26,
+    "annuity_factor_scaled_1e6": 5171900,
+    "life_estate_factor_scaled_1e6": 993000,
+    "remainder_factor_scaled_1e6": 7000
+  },
+  {
+    "age": 27,
+    "annuity_factor_scaled_1e6": 5170300,
+    "life_estate_factor_scaled_1e6": 992690,
+    "remainder_factor_scaled_1e6": 7310
+  },
+  {
+    "age": 28,
+    "annuity_factor_scaled_1e6": 5168400,
+    "life_estate_factor_scaled_1e6": 992340,
+    "remainder_factor_scaled_1e6": 7660
+  },
+  {
+    "age": 29,
+    "annuity_factor_scaled_1e6": 5166300,
+    "life_estate_factor_scaled_1e6": 991940,
+    "remainder_factor_scaled_1e6": 8060
+  },
+  {
+    "age": 30,
+    "annuity_factor_scaled_1e6": 5164000,
+    "life_estate_factor_scaled_1e6": 991490,
+    "remainder_factor_scaled_1e6": 8510
+  },
+  {
+    "age": 31,
+    "annuity_factor_scaled_1e6": 5161400,
+    "life_estate_factor_scaled_1e6": 990990,
+    "remainder_factor_scaled_1e6": 9010
+  },
+  {
+    "age": 32,
+    "annuity_factor_scaled_1e6": 5158500,
+    "life_estate_factor_scaled_1e6": 990430,
+    "remainder_factor_scaled_1e6": 9570
+  },
+  {
+    "age": 33,
+    "annuity_factor_scaled_1e6": 5155300,
+    "life_estate_factor_scaled_1e6": 989810,
+    "remainder_factor_scaled_1e6": 10190
+  },
+  {
+    "age": 34,
+    "annuity_factor_scaled_1e6": 5151600,
+    "life_estate_factor_scaled_1e6": 989110,
+    "remainder_factor_scaled_1e6": 10890
+  },
+  {
+    "age": 35,
+    "annuity_factor_scaled_1e6": 5147500,
+    "life_estate_factor_scaled_1e6": 988320,
+    "remainder_factor_scaled_1e6": 11680
+  },
+  {
+    "age": 36,
+    "annuity_factor_scaled_1e6": 5142800,
+    "life_estate_factor_scaled_1e6": 987420,
+    "remainder_factor_scaled_1e6": 12580
+  },
+  {
+    "age": 37,
+    "annuity_factor_scaled_1e6": 5137600,
+    "life_estate_factor_scaled_1e6": 986430,
+    "remainder_factor_scaled_1e6": 13570
+  },
+  {
+    "age": 38,
+    "annuity_factor_scaled_1e6": 5131900,
+    "life_estate_factor_scaled_1e6": 985320,
+    "remainder_factor_scaled_1e6": 14680
+  },
+  {
+    "age": 39,
+    "annuity_factor_scaled_1e6": 5125500,
+    "life_estate_factor_scaled_1e6": 984100,
+    "remainder_factor_scaled_1e6": 15900
+  },
+  {
+    "age": 40,
+    "annuity_factor_scaled_1e6": 5118500,
+    "life_estate_factor_scaled_1e6": 982760,
+    "remainder_factor_scaled_1e6": 17240
+  },
+  {
+    "age": 41,
+    "annuity_factor_scaled_1e6": 5110900,
+    "life_estate_factor_scaled_1e6": 981290,
+    "remainder_factor_scaled_1e6": 18710
+  },
+  {
+    "age": 42,
+    "annuity_factor_scaled_1e6": 5102600,
+    "life_estate_factor_scaled_1e6": 979700,
+    "remainder_factor_scaled_1e6": 20300
+  },
+  {
+    "age": 43,
+    "annuity_factor_scaled_1e6": 5093700,
+    "life_estate_factor_scaled_1e6": 977980,
+    "remainder_factor_scaled_1e6": 22020
+  },
+  {
+    "age": 44,
+    "annuity_factor_scaled_1e6": 5084100,
+    "life_estate_factor_scaled_1e6": 976150,
+    "remainder_factor_scaled_1e6": 23850
+  },
+  {
+    "age": 45,
+    "annuity_factor_scaled_1e6": 5074000,
+    "life_estate_factor_scaled_1e6": 974210,
+    "remainder_factor_scaled_1e6": 25790
+  },
+  {
+    "age": 46,
+    "annuity_factor_scaled_1e6": 5063300,
+    "life_estate_factor_scaled_1e6": 972150,
+    "remainder_factor_scaled_1e6": 27850
+  },
+  {
+    "age": 47,
+    "annuity_factor_scaled_1e6": 5051700,
+    "life_estate_factor_scaled_1e6": 969930,
+    "remainder_factor_scaled_1e6": 30070
+  },
+  {
+    "age": 48,
+    "annuity_factor_scaled_1e6": 5039400,
+    "life_estate_factor_scaled_1e6": 967570,
+    "remainder_factor_scaled_1e6": 32430
+  },
+  {
+    "age": 49,
+    "annuity_factor_scaled_1e6": 5026400,
+    "life_estate_factor_scaled_1e6": 965080,
+    "remainder_factor_scaled_1e6": 34920
+  },
+  {
+    "age": 50,
+    "annuity_factor_scaled_1e6": 5012700,
+    "life_estate_factor_scaled_1e6": 962450,
+    "remainder_factor_scaled_1e6": 37550
+  },
+  {
+    "age": 51,
+    "annuity_factor_scaled_1e6": 4998400,
+    "life_estate_factor_scaled_1e6": 959690,
+    "remainder_factor_scaled_1e6": 40310
+  },
+  {
+    "age": 52,
+    "annuity_factor_scaled_1e6": 4983200,
+    "life_estate_factor_scaled_1e6": 956780,
+    "remainder_factor_scaled_1e6": 43220
+  },
+  {
+    "age": 53,
+    "annuity_factor_scaled_1e6": 4967100,
+    "life_estate_factor_scaled_1e6": 953690,
+    "remainder_factor_scaled_1e6": 46310
+  },
+  {
+    "age": 54,
+    "annuity_factor_scaled_1e6": 4949900,
+    "life_estate_factor_scaled_1e6": 950380,
+    "remainder_factor_scaled_1e6": 49620
+  },
+  {
+    "age": 55,
+    "annuity_factor_scaled_1e6": 4931400,
+    "life_estate_factor_scaled_1e6": 946840,
+    "remainder_factor_scaled_1e6": 53160
+  },
+  {
+    "age": 56,
+    "annuity_factor_scaled_1e6": 4911600,
+    "life_estate_factor_scaled_1e6": 943030,
+    "remainder_factor_scaled_1e6": 56970
+  },
+  {
+    "age": 57,
+    "annuity_factor_scaled_1e6": 4890300,
+    "life_estate_factor_scaled_1e6": 938940,
+    "remainder_factor_scaled_1e6": 61060
+  },
+  {
+    "age": 58,
+    "annuity_factor_scaled_1e6": 4867500,
+    "life_estate_factor_scaled_1e6": 934560,
+    "remainder_factor_scaled_1e6": 65440
+  },
+  {
+    "age": 59,
+    "annuity_factor_scaled_1e6": 4843000,
+    "life_estate_factor_scaled_1e6": 929850,
+    "remainder_factor_scaled_1e6": 70150
+  },
+  {
+    "age": 60,
+    "annuity_factor_scaled_1e6": 4816500,
+    "life_estate_factor_scaled_1e6": 924780,
+    "remainder_factor_scaled_1e6": 75220
+  },
+  {
+    "age": 61,
+    "annuity_factor_scaled_1e6": 4788000,
+    "life_estate_factor_scaled_1e6": 919290,
+    "remainder_factor_scaled_1e6": 80710
+  },
+  {
+    "age": 62,
+    "annuity_factor_scaled_1e6": 4757000,
+    "life_estate_factor_scaled_1e6": 913350,
+    "remainder_factor_scaled_1e6": 86650
+  },
+  {
+    "age": 63,
+    "annuity_factor_scaled_1e6": 4723400,
+    "life_estate_factor_scaled_1e6": 906890,
+    "remainder_factor_scaled_1e6": 93110
+  },
+  {
+    "age": 64,
+    "annuity_factor_scaled_1e6": 4687000,
+    "life_estate_factor_scaled_1e6": 899890,
+    "remainder_factor_scaled_1e6": 100110
+  },
+  {
+    "age": 65,
+    "annuity_factor_scaled_1e6": 4647600,
+    "life_estate_factor_scaled_1e6": 892330,
+    "remainder_factor_scaled_1e6": 107670
+  },
+  {
+    "age": 66,
+    "annuity_factor_scaled_1e6": 4605300,
+    "life_estate_factor_scaled_1e6": 884220,
+    "remainder_factor_scaled_1e6": 115780
+  },
+  {
+    "age": 67,
+    "annuity_factor_scaled_1e6": 4560400,
+    "life_estate_factor_scaled_1e6": 875590,
+    "remainder_factor_scaled_1e6": 124410
+  },
+  {
+    "age": 68,
+    "annuity_factor_scaled_1e6": 4512400,
+    "life_estate_factor_scaled_1e6": 866370,
+    "remainder_factor_scaled_1e6": 133630
+  },
+  {
+    "age": 69,
+    "annuity_factor_scaled_1e6": 4461100,
+    "life_estate_factor_scaled_1e6": 856540,
+    "remainder_factor_scaled_1e6": 143460
+  },
+  {
+    "age": 70,
+    "annuity_factor_scaled_1e6": 4406100,
+    "life_estate_factor_scaled_1e6": 845970,
+    "remainder_factor_scaled_1e6": 154030
+  },
+  {
+    "age": 71,
+    "annuity_factor_scaled_1e6": 4347000,
+    "life_estate_factor_scaled_1e6": 834630,
+    "remainder_factor_scaled_1e6": 165370
+  },
+  {
+    "age": 72,
+    "annuity_factor_scaled_1e6": 4283800,
+    "life_estate_factor_scaled_1e6": 822490,
+    "remainder_factor_scaled_1e6": 177510
+  },
+  {
+    "age": 73,
+    "annuity_factor_scaled_1e6": 4216600,
+    "life_estate_factor_scaled_1e6": 809580,
+    "remainder_factor_scaled_1e6": 190420
+  },
+  {
+    "age": 74,
+    "annuity_factor_scaled_1e6": 4145200,
+    "life_estate_factor_scaled_1e6": 795870,
+    "remainder_factor_scaled_1e6": 204130
+  },
+  {
+    "age": 75,
+    "annuity_factor_scaled_1e6": 4069600,
+    "life_estate_factor_scaled_1e6": 781370,
+    "remainder_factor_scaled_1e6": 218630
+  },
+  {
+    "age": 76,
+    "annuity_factor_scaled_1e6": 3989200,
+    "life_estate_factor_scaled_1e6": 765930,
+    "remainder_factor_scaled_1e6": 234070
+  },
+  {
+    "age": 77,
+    "annuity_factor_scaled_1e6": 3904300,
+    "life_estate_factor_scaled_1e6": 749630,
+    "remainder_factor_scaled_1e6": 250370
+  },
+  {
+    "age": 78,
+    "annuity_factor_scaled_1e6": 3814300,
+    "life_estate_factor_scaled_1e6": 732350,
+    "remainder_factor_scaled_1e6": 267650
+  },
+  {
+    "age": 79,
+    "annuity_factor_scaled_1e6": 3720600,
+    "life_estate_factor_scaled_1e6": 714360,
+    "remainder_factor_scaled_1e6": 285640
+  },
+  {
+    "age": 80,
+    "annuity_factor_scaled_1e6": 3622100,
+    "life_estate_factor_scaled_1e6": 695450,
+    "remainder_factor_scaled_1e6": 304550
+  },
+  {
+    "age": 81,
+    "annuity_factor_scaled_1e6": 3519500,
+    "life_estate_factor_scaled_1e6": 675740,
+    "remainder_factor_scaled_1e6": 324260
+  },
+  {
+    "age": 82,
+    "annuity_factor_scaled_1e6": 3412300,
+    "life_estate_factor_scaled_1e6": 655170,
+    "remainder_factor_scaled_1e6": 344830
+  },
+  {
+    "age": 83,
+    "annuity_factor_scaled_1e6": 3301000,
+    "life_estate_factor_scaled_1e6": 633790,
+    "remainder_factor_scaled_1e6": 366210
+  },
+  {
+    "age": 84,
+    "annuity_factor_scaled_1e6": 3184000,
+    "life_estate_factor_scaled_1e6": 611330,
+    "remainder_factor_scaled_1e6": 388670
+  },
+  {
+    "age": 85,
+    "annuity_factor_scaled_1e6": 3066700,
+    "life_estate_factor_scaled_1e6": 588800,
+    "remainder_factor_scaled_1e6": 411200
+  },
+  {
+    "age": 86,
+    "annuity_factor_scaled_1e6": 2947300,
+    "life_estate_factor_scaled_1e6": 565880,
+    "remainder_factor_scaled_1e6": 434120
+  },
+  {
+    "age": 87,
+    "annuity_factor_scaled_1e6": 2827600,
+    "life_estate_factor_scaled_1e6": 542910,
+    "remainder_factor_scaled_1e6": 457090
+  },
+  {
+    "age": 88,
+    "annuity_factor_scaled_1e6": 2708400,
+    "life_estate_factor_scaled_1e6": 520010,
+    "remainder_factor_scaled_1e6": 479990
+  },
+  {
+    "age": 89,
+    "annuity_factor_scaled_1e6": 2590100,
+    "life_estate_factor_scaled_1e6": 497310,
+    "remainder_factor_scaled_1e6": 502690
+  },
+  {
+    "age": 90,
+    "annuity_factor_scaled_1e6": 2473600,
+    "life_estate_factor_scaled_1e6": 474930,
+    "remainder_factor_scaled_1e6": 525070
+  },
+  {
+    "age": 91,
+    "annuity_factor_scaled_1e6": 2359300,
+    "life_estate_factor_scaled_1e6": 452990,
+    "remainder_factor_scaled_1e6": 547010
+  },
+  {
+    "age": 92,
+    "annuity_factor_scaled_1e6": 2247900,
+    "life_estate_factor_scaled_1e6": 431600,
+    "remainder_factor_scaled_1e6": 568400
+  },
+  {
+    "age": 93,
+    "annuity_factor_scaled_1e6": 2139900,
+    "life_estate_factor_scaled_1e6": 410860,
+    "remainder_factor_scaled_1e6": 589140
+  },
+  {
+    "age": 94,
+    "annuity_factor_scaled_1e6": 2035800,
+    "life_estate_factor_scaled_1e6": 390870,
+    "remainder_factor_scaled_1e6": 609130
+  },
+  {
+    "age": 95,
+    "annuity_factor_scaled_1e6": 1935900,
+    "life_estate_factor_scaled_1e6": 371690,
+    "remainder_factor_scaled_1e6": 628310
+  },
+  {
+    "age": 96,
+    "annuity_factor_scaled_1e6": 1840700,
+    "life_estate_factor_scaled_1e6": 353410,
+    "remainder_factor_scaled_1e6": 646590
+  },
+  {
+    "age": 97,
+    "annuity_factor_scaled_1e6": 1750300,
+    "life_estate_factor_scaled_1e6": 336050,
+    "remainder_factor_scaled_1e6": 663950
+  },
+  {
+    "age": 98,
+    "annuity_factor_scaled_1e6": 1664900,
+    "life_estate_factor_scaled_1e6": 319660,
+    "remainder_factor_scaled_1e6": 680340
+  },
+  {
+    "age": 99,
+    "annuity_factor_scaled_1e6": 1584600,
+    "life_estate_factor_scaled_1e6": 304250,
+    "remainder_factor_scaled_1e6": 695750
+  },
+  {
+    "age": 100,
+    "annuity_factor_scaled_1e6": 1509400,
+    "life_estate_factor_scaled_1e6": 289810,
+    "remainder_factor_scaled_1e6": 710190
+  },
+  {
+    "age": 101,
+    "annuity_factor_scaled_1e6": 1439100,
+    "life_estate_factor_scaled_1e6": 276300,
+    "remainder_factor_scaled_1e6": 723700
+  },
+  {
+    "age": 102,
+    "annuity_factor_scaled_1e6": 1373100,
+    "life_estate_factor_scaled_1e6": 263630,
+    "remainder_factor_scaled_1e6": 736370
+  },
+  {
+    "age": 103,
+    "annuity_factor_scaled_1e6": 1310500,
+    "life_estate_factor_scaled_1e6": 251620,
+    "remainder_factor_scaled_1e6": 748380
+  },
+  {
+    "age": 104,
+    "annuity_factor_scaled_1e6": 1249600,
+    "life_estate_factor_scaled_1e6": 239920,
+    "remainder_factor_scaled_1e6": 760080
+  },
+  {
+    "age": 105,
+    "annuity_factor_scaled_1e6": 1186200,
+    "life_estate_factor_scaled_1e6": 227750,
+    "remainder_factor_scaled_1e6": 772250
+  },
+  {
+    "age": 106,
+    "annuity_factor_scaled_1e6": 1111400,
+    "life_estate_factor_scaled_1e6": 213390,
+    "remainder_factor_scaled_1e6": 786610
+  },
+  {
+    "age": 107,
+    "annuity_factor_scaled_1e6": 1004400,
+    "life_estate_factor_scaled_1e6": 192850,
+    "remainder_factor_scaled_1e6": 807150
+  },
+  {
+    "age": 108,
+    "annuity_factor_scaled_1e6": 815200,
+    "life_estate_factor_scaled_1e6": 156510,
+    "remainder_factor_scaled_1e6": 843490
+  },
+  {
+    "age": 109,
+    "annuity_factor_scaled_1e6": 419500,
+    "life_estate_factor_scaled_1e6": 80540,
+    "remainder_factor_scaled_1e6": 919460
+  }
+]

@@ -1,0 +1,123 @@
+{
+  "dataset_id": "sofr",
+  "schema_id": "rates.sofr.v1",
+  "schema_version": 1,
+  "record_storage": "by_year",
+  "record_count": 2049,
+  "proto": {
+    "file": "proto/rates/v1/sofr.proto",
+    "message": "rates.v1.SofrFile"
+  },
+  "years": [
+    {
+      "path": "by-year/2018-sofr.json",
+      "bytes": 84228,
+      "sha256": "24bb4cc53ac8a9e20fd0704eafe069b4981415203c142fcc6bfd3d5338124e6a",
+      "protobuf_path": "protobuf/2018-sofr.pb",
+      "protobuf_bytes": 6030,
+      "protobuf_sha256": "f42fe87a3e2490f8222ffb904164c5822430e8bb0159f8b809e4e12c3c0702ed",
+      "year": "2018",
+      "record_count": 188,
+      "first_date": "2018-04-02",
+      "last_date": "2018-12-31"
+    },
+    {
+      "path": "by-year/2019-sofr.json",
+      "bytes": 112184,
+      "sha256": "3071097b623d591d0923ce5b4991e0ebe6b8682583278c2fc4586889bbf0f432",
+      "protobuf_path": "protobuf/2019-sofr.pb",
+      "protobuf_bytes": 8003,
+      "protobuf_sha256": "ca58fb76420a64b80c62f3b686438a4c2f7e99618b07ea84277955764d226b22",
+      "year": "2019",
+      "record_count": 250,
+      "first_date": "2019-01-02",
+      "last_date": "2019-12-31"
+    },
+    {
+      "path": "by-year/2020-sofr.json",
+      "bytes": 112379,
+      "sha256": "c3c5fdd1c5d91ee35ec51be20008c76170552bcdce4f8bb1a4198edcb0eadeb9",
+      "protobuf_path": "protobuf/2020-sofr.pb",
+      "protobuf_bytes": 10219,
+      "protobuf_sha256": "9ef83b37e603e6912f738f41f767f212c75c37a75ce7b8756f5c4b27cc9fffa1",
+      "year": "2020",
+      "record_count": 251,
+      "first_date": "2020-01-02",
+      "last_date": "2020-12-31"
+    },
+    {
+      "path": "by-year/2021-sofr.json",
+      "bytes": 111148,
+      "sha256": "8d7a3af88a5cbe07d61fc08384fe78461ded8d85071323c256458e2d812944c8",
+      "protobuf_path": "protobuf/2021-sofr.pb",
+      "protobuf_bytes": 11274,
+      "protobuf_sha256": "a2db8fa025490dd4d853184a706685b38d73b74ab64285efc2c26f70646a5499",
+      "year": "2021",
+      "record_count": 250,
+      "first_date": "2021-01-04",
+      "last_date": "2021-12-31"
+    },
+    {
+      "path": "by-year/2022-sofr.json",
+      "bytes": 112981,
+      "sha256": "dbcc6b72f87c679e8b5d95038af6fcdf3856b25cb467667b880c5a23e8850979",
+      "protobuf_path": "protobuf/2022-sofr.pb",
+      "protobuf_bytes": 11646,
+      "protobuf_sha256": "d57a90a8a2521cc2dab4702927fe604dc1f09f0d111b726193c6c0dcf53190fb",
+      "year": "2022",
+      "record_count": 249,
+      "first_date": "2022-01-03",
+      "last_date": "2022-12-30"
+    },
+    {
+      "path": "by-year/2023-sofr.json",
+      "bytes": 114543,
+      "sha256": "a9c3ef2d4fc1bc419bfbe9790c50e011026858f2fc60acf00c1b0b25fa22e220",
+      "protobuf_path": "protobuf/2023-sofr.pb",
+      "protobuf_bytes": 12216,
+      "protobuf_sha256": "ffacf7d3e22a3b128c00cd5dea14dfc809746d84f957fcb03b348c30fff9f777",
+      "year": "2023",
+      "record_count": 249,
+      "first_date": "2023-01-03",
+      "last_date": "2023-12-29"
+    },
+    {
+      "path": "by-year/2024-sofr.json",
+      "bytes": 115003,
+      "sha256": "2c48917d13c975551110db8d431cc33b55b92acc5212f308d7b329887e8d40d1",
+      "protobuf_path": "protobuf/2024-sofr.pb",
+      "protobuf_bytes": 12265,
+      "protobuf_sha256": "bdb83daeb78eea8cfaca4b5d1b4cd1cc444bfd57218b5b5a3170581ef7587cb6",
+      "year": "2024",
+      "record_count": 250,
+      "first_date": "2024-01-02",
+      "last_date": "2024-12-31"
+    },
+    {
+      "path": "by-year/2025-sofr.json",
+      "bytes": 114543,
+      "sha256": "e3f1987e0506eb4a100dc044336b841a9fe66e1e7bb128f9a961d70be8a0ecc4",
+      "protobuf_path": "protobuf/2025-sofr.pb",
+      "protobuf_bytes": 12216,
+      "protobuf_sha256": "c5e4dedc5c03b6a897480fd2b8ecda907ac8c1b16ab051109cac5931d8b6a914",
+      "year": "2025",
+      "record_count": 249,
+      "first_date": "2025-01-02",
+      "last_date": "2025-12-31"
+    },
+    {
+      "path": "by-year/2026-sofr.json",
+      "bytes": 51988,
+      "sha256": "7352fb78840aa25725dd7a7374c9fbf64b9c5dc06f14147d7b40774fdca8086c",
+      "protobuf_path": "protobuf/2026-sofr.pb",
+      "protobuf_bytes": 5534,
+      "protobuf_sha256": "286d19c8dff73f03010d64662b453100fb8baf7a38f0ae39a34293d14c648555",
+      "year": "2026",
+      "record_count": 113,
+      "first_date": "2026-01-02",
+      "last_date": "2026-06-15"
+    }
+  ],
+  "first_date": "2018-04-02",
+  "last_date": "2026-06-15"
+}

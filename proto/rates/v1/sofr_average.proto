@@ -1,0 +1,14 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package rates.v1;
+
+message SofrAverageRecord {
+  string date = 1;
+  uint64 average_basis_points_scaled_1000 = 2;
+}
+
+message SofrAverageFile {
+  string schema_id = 1;
+  repeated SofrAverageRecord records = 2;
+}

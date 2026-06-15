@@ -1,3 +1,29 @@
+# SPDX-License-Identifier: Apache-2.0
+
+# macOS metadata
+.DS_Store
+**/.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+Icon?
+
+# Windows metadata
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux desktop metadata
+.directory
+*~
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -50,6 +76,10 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
+.coverage-*
+junit.xml
+test-results/
+reports/
 
 # Translations
 *.mo
@@ -118,7 +148,7 @@ ipython_config.py
 .pdm-build/
 
 # pixi
-#   Similar to Pipfile.lock, it is generally recommended to include pixi.lock in version control.
+#   Similar to Pipfile.lock, it is generally recommended to include pixi.lock.
 # pixi.lock
 #   Pixi creates a virtual environment in the .pixi directory, just like venv module creates one
 #   in the .venv directory. It is recommended not to include this directory in version control.
@@ -149,13 +179,28 @@ activemq-data/
 
 # Environments
 .env
+.env.*
+!.env.example
 .envrc
 .venv
+.venv/
 env/
 venv/
 ENV/
 env.bak/
 venv.bak/
+
+# Local secrets and credentials
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.csr
+*.jks
+*.keystore
+secrets/
+.secrets/
 
 # Spyder project settings
 .spyderproject
@@ -186,7 +231,8 @@ cython_debug/
 #   be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
 #   and can be added to the global gitignore or merged into this file.  For a more nuclear
 #   option (not recommended) you can uncomment the following to ignore the entire idea folder.
-# .idea/
+.idea/
+*.iml
 
 # Abstra
 #   Abstra is an AI-powered process automation framework.
@@ -195,11 +241,11 @@ cython_debug/
 .abstra/
 
 # Visual Studio Code
-#   Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore 
+#   Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore
 #   that can be found at https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore
-#   and can be added to the global gitignore or merged into this file. However, if you prefer, 
+#   and can be added to the global gitignore or merged into this file. However, if you prefer,
 #   you could uncomment the following to ignore the entire vscode folder
-# .vscode/
+.vscode/
 # Temporary file for partial code execution
 tempCodeRunnerFile.py
 
@@ -216,3 +262,60 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Editor swap / backup files
+*.swp
+*.swo
+*.swn
+*.bak
+*.backup
+*.orig
+*.rej
+
+# Local scratch and generated temporary files
+tmp/
+temp/
+.tmp/
+.temp/
+*.tmp
+*.temp
+*.pid
+*.prof
+*.trace
+
+# Repo-specific local source downloads.
+# Canonical repository data is deterministic JSON plus generated protobuf
+# shards. Official IRS/Treasury/NY Fed source workbooks, PDFs, CSV exports,
+# extracted text, and HTML snapshots should be fetched by the updaters or kept
+# under /tmp, not committed as local artifacts.
+rates-actuarial-source/
+actuarial-source/
+source-workbooks/
+irs-source/
+market-source/
+source-cache/
+.source-cache/
+*.xls
+*.xlsx
+*.pdf
+*.csv
+*.desc
+*.descriptor
+
+# Publishable generated data-contract artifacts. Keep these explicitly
+# trackable even if future ignore rules grow broader.
+!index.json
+!schemas/
+!schemas/**/*.json
+!proto/
+!proto/**/*.proto
+!**/manifest.json
+!**/metadata.json
+!**/rates.json
+!**/protobuf/
+!**/protobuf/*.pb
+
+# Keep intentional test fixtures tracked even though source snapshots are
+# ignored elsewhere.
+!scripts/fixtures/*.txt
+!scripts/fixtures/*.html

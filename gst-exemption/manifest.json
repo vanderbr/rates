@@ -1,0 +1,19 @@
+{
+  "dataset_id": "gst-exemption",
+  "schema_id": "rates.gst_exemption.v1",
+  "schema_version": 1,
+  "record_storage": "single_file",
+  "record_count": 28,
+  "proto": {
+    "file": "proto/rates/v1/gst_exemption.proto",
+    "message": "rates.v1.GstExemptionFile"
+  },
+  "records": {
+    "path": "rates.json",
+    "bytes": 5416,
+    "sha256": "f9116577f2f48a795e6070f7768c43e4de136be9efad26346e70bd1156c30007",
+    "protobuf_path": "protobuf/rates.pb",
+    "protobuf_bytes": 2338,
+    "protobuf_sha256": "baf0d6f8c97bded60e1cdce382ee6b2e609c6144c7e45475ca84049ca81f9f1a"
+  }
+}

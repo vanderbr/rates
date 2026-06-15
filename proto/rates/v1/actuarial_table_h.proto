@@ -1,0 +1,16 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package rates.v1;
+
+message TableCommutationRecord {
+  uint32 age = 1;
+  uint64 dx_scaled_1e6 = 2;
+  uint64 nx_scaled_1e6 = 3;
+  uint64 mx_scaled_1e6 = 4;
+}
+
+message TableHFile {
+  string schema_id = 1;
+  repeated TableCommutationRecord records = 2;
+}

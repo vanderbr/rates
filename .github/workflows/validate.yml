@@ -1,0 +1,69 @@
+# SPDX-License-Identifier: Apache-2.0
+
+name: Validate Data Contract
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+  PYTHONUNBUFFERED: "1"
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Reject local OS metadata
+        run: |
+          if find . -name .DS_Store -print -quit | grep -q .; then
+            find . -name .DS_Store -print
+            exit 1
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+
+      - name: Install proto compiler
+        run: sudo apt-get update && sudo apt-get install --yes protobuf-compiler
+
+      - name: Set up Buf
+        uses: bufbuild/buf-setup-action@v1.50.0
+
+      - name: Validate proto syntax
+        run: protoc --proto_path=proto --descriptor_set_out=/tmp/rates.desc proto/rates/v1/rates.proto
+
+      - name: Validate buf module
+        run: |
+          buf lint
+          buf generate --template buf.gen.yaml
+
+      - name: Regenerate artifacts
+        run: python scripts/artifact_contract.py
+
+      - name: Audit published data contract
+        run: python scripts/audit_contract.py
+
+      - name: Run tests
+        run: make test
+
+      - name: Verify generated artifacts are current
+        run: git diff --exit-code

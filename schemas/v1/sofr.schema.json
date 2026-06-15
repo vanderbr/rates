@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/vanderbr/rates/main/schemas/v1/sofr.schema.json",
+  "title": "sofr",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "date",
+      "rate_basis_points",
+      "percentile_1_basis_points",
+      "percentile_25_basis_points",
+      "percentile_75_basis_points",
+      "percentile_99_basis_points",
+      "volume_billions",
+      "average_30_day_basis_points_scaled_1000",
+      "average_90_day_basis_points_scaled_1000",
+      "average_180_day_basis_points_scaled_1000",
+      "sofr_index_scaled_100000000"
+    ],
+    "properties": {
+      "date": {
+        "type": "string"
+      },
+      "rate_basis_points": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "percentile_1_basis_points": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "percentile_25_basis_points": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "percentile_75_basis_points": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "percentile_99_basis_points": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "volume_billions": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "average_30_day_basis_points_scaled_1000": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "average_90_day_basis_points_scaled_1000": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "average_180_day_basis_points_scaled_1000": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "sofr_index_scaled_100000000": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  }
+}

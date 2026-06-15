@@ -1,0 +1,15 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package rates.v1;
+
+message LifeExpectancyRecord {
+  uint32 age = 1;
+  uint64 curtate_life_expectancy_years_scaled_1e6 = 2;
+  uint64 complete_life_expectancy_years_scaled_1e6 = 3;
+}
+
+message LifeExpectancyFile {
+  string schema_id = 1;
+  repeated LifeExpectancyRecord records = 2;
+}

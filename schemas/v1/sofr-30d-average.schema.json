@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/vanderbr/rates/main/schemas/v1/sofr-30d-average.schema.json",
+  "title": "sofr-30d-average",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "date",
+      "average_30_day_basis_points_scaled_1000"
+    ],
+    "properties": {
+      "date": {
+        "type": "string"
+      },
+      "average_30_day_basis_points_scaled_1000": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  }
+}

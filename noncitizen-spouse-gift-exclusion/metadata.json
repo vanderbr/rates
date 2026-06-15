@@ -1,0 +1,42 @@
+{
+  "name": "Noncitizen Spouse Gift Tax Annual Exclusion",
+  "source": "Internal Revenue Service and 26 USC 2523(i)",
+  "source_urls": [
+    "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section2523&num=0&edition=prelim",
+    "https://www.irs.gov/instructions/i709",
+    "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf"
+  ],
+  "record_frequency": "annual",
+  "backfill_start_date": "1988-07-14",
+  "date_key": {
+    "start_field": "period_start_date",
+    "end_field": "period_end_date",
+    "format": "YYYY-MM-DD",
+    "meaning": "Inclusive period in which gifts to a noncitizen spouse are made"
+  },
+  "value_fields": {
+    "annual_exclusion_amount_usd": {
+      "unit": "usd",
+      "scale": "integer dollars"
+    }
+  },
+  "storage": {
+    "primary_records": "rates.json",
+    "ordering": "ascending_period_start_date",
+    "dedupe_key": [
+      "period_start_date",
+      "period_end_date"
+    ]
+  },
+  "automation": {
+    "publication_window": "November through January",
+    "behavior": "Scheduled updates no-op outside the publication window and after the target calendar-year period has been recorded."
+  },
+  "dataset_id": "noncitizen-spouse-gift-exclusion",
+  "schema_id": "rates.noncitizen_spouse_gift_exclusion.v1",
+  "schema_version": 1,
+  "proto": {
+    "file": "proto/rates/v1/noncitizen_spouse_gift_exclusion.proto",
+    "message": "rates.v1.NoncitizenSpouseGiftExclusionFile"
+  }
+}
