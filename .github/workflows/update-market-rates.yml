@@ -94,10 +94,10 @@ jobs:
             - Cite: https://markets.newyorkfed.org/api/rates/unsecured/effr/search.csv
             - Cite: https://markets.newyorkfed.org/api/rates/all/search.csv
             - Interpretation: This automation records source-published daily
-              percentage rates as integer basis points. Fractional SOFR averages
-              are stored as basis points scaled by 1000, the SOFR Index is
-              stored scaled by 100000000, and unavailable observations are
-              stored as `null`.
+              percentage rates as integer basis points. Unpublished business
+              dates are omitted, not represented by placeholder records.
+              Fractional SOFR averages are stored as basis points scaled by
+              1000, and the SOFR Index is stored scaled by 100000000.
 
             ## Tests
 
