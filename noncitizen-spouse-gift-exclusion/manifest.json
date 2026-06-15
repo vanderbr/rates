@@ -1,0 +1,19 @@
+{
+  "dataset_id": "noncitizen-spouse-gift-exclusion",
+  "schema_id": "rates.noncitizen_spouse_gift_exclusion.v1",
+  "schema_version": 1,
+  "record_storage": "single_file",
+  "record_count": 29,
+  "proto": {
+    "file": "proto/rates/v1/noncitizen_spouse_gift_exclusion.proto",
+    "message": "rates.v1.NoncitizenSpouseGiftExclusionFile"
+  },
+  "records": {
+    "path": "rates.json",
+    "bytes": 6267,
+    "sha256": "ac093ced131219e497c617a867e48521c2a8500e35747e3866503cc2680c180d",
+    "protobuf_path": "protobuf/rates.pb",
+    "protobuf_bytes": 2914,
+    "protobuf_sha256": "34500d14ff95bf31879aacdf0577c07cb2fdbfd33a207bb7eaafcb2e924c0a8d"
+  }
+}

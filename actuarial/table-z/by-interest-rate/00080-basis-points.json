@@ -1,0 +1,662 @@
+[
+  {
+    "age": 0,
+    "udx_scaled_1e6": 100000000000,
+    "unx_scaled_1e6": 5742510000000,
+    "umx_scaled_1e6": 53689430000
+  },
+  {
+    "age": 1,
+    "udx_scaled_1e6": 98587220000,
+    "unx_scaled_1e6": 5643617000000,
+    "umx_scaled_1e6": 53074180000
+  },
+  {
+    "age": 2,
+    "udx_scaled_1e6": 97758060000,
+    "unx_scaled_1e6": 5545839000000,
+    "umx_scaled_1e6": 53033550000
+  },
+  {
+    "age": 3,
+    "udx_scaled_1e6": 96949290000,
+    "unx_scaled_1e6": 5448876000000,
+    "umx_scaled_1e6": 53006740000
+  },
+  {
+    "age": 4,
+    "udx_scaled_1e6": 96153280000,
+    "unx_scaled_1e6": 5352712000000,
+    "umx_scaled_1e6": 52986240000
+  },
+  {
+    "age": 5,
+    "udx_scaled_1e6": 95368420000,
+    "unx_scaled_1e6": 5257336000000,
+    "umx_scaled_1e6": 52970550000
+  },
+  {
+    "age": 6,
+    "udx_scaled_1e6": 94591280000,
+    "unx_scaled_1e6": 5162738000000,
+    "umx_scaled_1e6": 52956290000
+  },
+  {
+    "age": 7,
+    "udx_scaled_1e6": 93822050000,
+    "unx_scaled_1e6": 5068910000000,
+    "umx_scaled_1e6": 52943750000
+  },
+  {
+    "age": 8,
+    "udx_scaled_1e6": 93060380000,
+    "unx_scaled_1e6": 4975844000000,
+    "umx_scaled_1e6": 52932610000
+  },
+  {
+    "age": 9,
+    "udx_scaled_1e6": 92306210000,
+    "unx_scaled_1e6": 4883533000000,
+    "umx_scaled_1e6": 52922880000
+  },
+  {
+    "age": 10,
+    "udx_scaled_1e6": 91559400000,
+    "unx_scaled_1e6": 4791969000000,
+    "umx_scaled_1e6": 52914490000
+  },
+  {
+    "age": 11,
+    "udx_scaled_1e6": 90819390000,
+    "unx_scaled_1e6": 4701146000000,
+    "umx_scaled_1e6": 52906930000
+  },
+  {
+    "age": 12,
+    "udx_scaled_1e6": 90084830000,
+    "unx_scaled_1e6": 4611057000000,
+    "umx_scaled_1e6": 52898880000
+  },
+  {
+    "age": 13,
+    "udx_scaled_1e6": 89353550000,
+    "unx_scaled_1e6": 4521698000000,
+    "umx_scaled_1e6": 52888240000
+  },
+  {
+    "age": 14,
+    "udx_scaled_1e6": 88623020000,
+    "unx_scaled_1e6": 4433067000000,
+    "umx_scaled_1e6": 52872470000
+  },
+  {
+    "age": 15,
+    "udx_scaled_1e6": 87891600000,
+    "unx_scaled_1e6": 4345164000000,
+    "umx_scaled_1e6": 52849950000
+  },
+  {
+    "age": 16,
+    "udx_scaled_1e6": 87159070000,
+    "unx_scaled_1e6": 4257991000000,
+    "umx_scaled_1e6": 52820440000
+  },
+  {
+    "age": 17,
+    "udx_scaled_1e6": 86425840000,
+    "unx_scaled_1e6": 4171547000000,
+    "umx_scaled_1e6": 52784330000
+  },
+  {
+    "age": 18,
+    "udx_scaled_1e6": 85691870000,
+    "unx_scaled_1e6": 4085834000000,
+    "umx_scaled_1e6": 52741590000
+  },
+  {
+    "age": 19,
+    "udx_scaled_1e6": 84957110000,
+    "unx_scaled_1e6": 4000852000000,
+    "umx_scaled_1e6": 52692170000
+  },
+  {
+    "age": 20,
+    "udx_scaled_1e6": 84221630000,
+    "unx_scaled_1e6": 3916602000000,
+    "umx_scaled_1e6": 52636120000
+  },
+  {
+    "age": 21,
+    "udx_scaled_1e6": 83484990000,
+    "unx_scaled_1e6": 3833086000000,
+    "umx_scaled_1e6": 52573010000
+  },
+  {
+    "age": 22,
+    "udx_scaled_1e6": 82747660000,
+    "unx_scaled_1e6": 3750304000000,
+    "umx_scaled_1e6": 52503270000
+  },
+  {
+    "age": 23,
+    "udx_scaled_1e6": 82011560000,
+    "unx_scaled_1e6": 3668255000000,
+    "umx_scaled_1e6": 52428860000
+  },
+  {
+    "age": 24,
+    "udx_scaled_1e6": 81279360000,
+    "unx_scaled_1e6": 3586938000000,
+    "umx_scaled_1e6": 52352440000
+  },
+  {
+    "age": 25,
+    "udx_scaled_1e6": 80552980000,
+    "unx_scaled_1e6": 3506347000000,
+    "umx_scaled_1e6": 52275990000
+  },
+  {
+    "age": 26,
+    "udx_scaled_1e6": 79833010000,
+    "unx_scaled_1e6": 3426476000000,
+    "umx_scaled_1e6": 52200140000
+  },
+  {
+    "age": 27,
+    "udx_scaled_1e6": 79118980000,
+    "unx_scaled_1e6": 3347319000000,
+    "umx_scaled_1e6": 52124470000
+  },
+  {
+    "age": 28,
+    "udx_scaled_1e6": 78410500000,
+    "unx_scaled_1e6": 3268871000000,
+    "umx_scaled_1e6": 52048640000
+  },
+  {
+    "age": 29,
+    "udx_scaled_1e6": 77706800000,
+    "unx_scaled_1e6": 3191126000000,
+    "umx_scaled_1e6": 51971910000
+  },
+  {
+    "age": 30,
+    "udx_scaled_1e6": 77007230000,
+    "unx_scaled_1e6": 3114080000000,
+    "umx_scaled_1e6": 51893680000
+  },
+  {
+    "age": 31,
+    "udx_scaled_1e6": 76311320000,
+    "unx_scaled_1e6": 3037728000000,
+    "umx_scaled_1e6": 51813510000
+  },
+  {
+    "age": 32,
+    "udx_scaled_1e6": 75618940000,
+    "unx_scaled_1e6": 2962069000000,
+    "umx_scaled_1e6": 51731290000
+  },
+  {
+    "age": 33,
+    "udx_scaled_1e6": 74930020000,
+    "unx_scaled_1e6": 2887097000000,
+    "umx_scaled_1e6": 51646980000
+  },
+  {
+    "age": 34,
+    "udx_scaled_1e6": 74244640000,
+    "unx_scaled_1e6": 2812809000000,
+    "umx_scaled_1e6": 51560690000
+  },
+  {
+    "age": 35,
+    "udx_scaled_1e6": 73562600000,
+    "unx_scaled_1e6": 2739202000000,
+    "umx_scaled_1e6": 51472260000
+  },
+  {
+    "age": 36,
+    "udx_scaled_1e6": 72883190000,
+    "unx_scaled_1e6": 2666274000000,
+    "umx_scaled_1e6": 51380990000
+  },
+  {
+    "age": 37,
+    "udx_scaled_1e6": 72205420000,
+    "unx_scaled_1e6": 2594021000000,
+    "umx_scaled_1e6": 51285900000
+  },
+  {
+    "age": 38,
+    "udx_scaled_1e6": 71528420000,
+    "unx_scaled_1e6": 2522443000000,
+    "umx_scaled_1e6": 51186140000
+  },
+  {
+    "age": 39,
+    "udx_scaled_1e6": 70851220000,
+    "unx_scaled_1e6": 2451539000000,
+    "umx_scaled_1e6": 51080740000
+  },
+  {
+    "age": 40,
+    "udx_scaled_1e6": 70172690000,
+    "unx_scaled_1e6": 2381311000000,
+    "umx_scaled_1e6": 50968570000
+  },
+  {
+    "age": 41,
+    "udx_scaled_1e6": 69492110000,
+    "unx_scaled_1e6": 2311759000000,
+    "umx_scaled_1e6": 50848890000
+  },
+  {
+    "age": 42,
+    "udx_scaled_1e6": 68808280000,
+    "unx_scaled_1e6": 2242887000000,
+    "umx_scaled_1e6": 50720480000
+  },
+  {
+    "age": 43,
+    "udx_scaled_1e6": 68119270000,
+    "unx_scaled_1e6": 2174698000000,
+    "umx_scaled_1e6": 50581390000
+  },
+  {
+    "age": 44,
+    "udx_scaled_1e6": 67423190000,
+    "unx_scaled_1e6": 2107199000000,
+    "umx_scaled_1e6": 50429650000
+  },
+  {
+    "age": 45,
+    "udx_scaled_1e6": 66718820000,
+    "unx_scaled_1e6": 2040398000000,
+    "umx_scaled_1e6": 50264000000
+  },
+  {
+    "age": 46,
+    "udx_scaled_1e6": 66006340000,
+    "unx_scaled_1e6": 1974302000000,
+    "umx_scaled_1e6": 50084550000
+  },
+  {
+    "age": 47,
+    "udx_scaled_1e6": 65285700000,
+    "unx_scaled_1e6": 1908920000000,
+    "umx_scaled_1e6": 49891190000
+  },
+  {
+    "age": 48,
+    "udx_scaled_1e6": 64555580000,
+    "unx_scaled_1e6": 1844261000000,
+    "umx_scaled_1e6": 49682510000
+  },
+  {
+    "age": 49,
+    "udx_scaled_1e6": 63814090000,
+    "unx_scaled_1e6": 1780334000000,
+    "umx_scaled_1e6": 49456560000
+  },
+  {
+    "age": 50,
+    "udx_scaled_1e6": 63059720000,
+    "unx_scaled_1e6": 1717153000000,
+    "umx_scaled_1e6": 49211720000
+  },
+  {
+    "age": 51,
+    "udx_scaled_1e6": 62291570000,
+    "unx_scaled_1e6": 1654729000000,
+    "umx_scaled_1e6": 48946980000
+  },
+  {
+    "age": 52,
+    "udx_scaled_1e6": 61509840000,
+    "unx_scaled_1e6": 1593078000000,
+    "umx_scaled_1e6": 48662440000
+  },
+  {
+    "age": 53,
+    "udx_scaled_1e6": 60714960000,
+    "unx_scaled_1e6": 1532211000000,
+    "umx_scaled_1e6": 48358410000
+  },
+  {
+    "age": 54,
+    "udx_scaled_1e6": 59907500000,
+    "unx_scaled_1e6": 1472143000000,
+    "umx_scaled_1e6": 48035380000
+  },
+  {
+    "age": 55,
+    "udx_scaled_1e6": 59087420000,
+    "unx_scaled_1e6": 1412885000000,
+    "umx_scaled_1e6": 47693190000
+  },
+  {
+    "age": 56,
+    "udx_scaled_1e6": 58253800000,
+    "unx_scaled_1e6": 1354451000000,
+    "umx_scaled_1e6": 47330810000
+  },
+  {
+    "age": 57,
+    "udx_scaled_1e6": 57405150000,
+    "unx_scaled_1e6": 1296854000000,
+    "umx_scaled_1e6": 46946650000
+  },
+  {
+    "age": 58,
+    "udx_scaled_1e6": 56540320000,
+    "unx_scaled_1e6": 1240111000000,
+    "umx_scaled_1e6": 46539420000
+  },
+  {
+    "age": 59,
+    "udx_scaled_1e6": 55658480000,
+    "unx_scaled_1e6": 1184238000000,
+    "umx_scaled_1e6": 46108170000
+  },
+  {
+    "age": 60,
+    "udx_scaled_1e6": 54759210000,
+    "unx_scaled_1e6": 1129252000000,
+    "umx_scaled_1e6": 45652340000
+  },
+  {
+    "age": 61,
+    "udx_scaled_1e6": 53841870000,
+    "unx_scaled_1e6": 1075170000000,
+    "umx_scaled_1e6": 45171140000
+  },
+  {
+    "age": 62,
+    "udx_scaled_1e6": 52905620000,
+    "unx_scaled_1e6": 1022012000000,
+    "umx_scaled_1e6": 44663590000
+  },
+  {
+    "age": 63,
+    "udx_scaled_1e6": 51949410000,
+    "unx_scaled_1e6": 969795900000,
+    "umx_scaled_1e6": 44128480000
+  },
+  {
+    "age": 64,
+    "udx_scaled_1e6": 50970990000,
+    "unx_scaled_1e6": 918543500000,
+    "umx_scaled_1e6": 43563380000
+  },
+  {
+    "age": 65,
+    "udx_scaled_1e6": 49966870000,
+    "unx_scaled_1e6": 868278500000,
+    "umx_scaled_1e6": 42964620000
+  },
+  {
+    "age": 66,
+    "udx_scaled_1e6": 48931960000,
+    "unx_scaled_1e6": 819028900000,
+    "umx_scaled_1e6": 42326890000
+  },
+  {
+    "age": 67,
+    "udx_scaled_1e6": 47860900000,
+    "unx_scaled_1e6": 770828200000,
+    "umx_scaled_1e6": 41644540000
+  },
+  {
+    "age": 68,
+    "udx_scaled_1e6": 46754390000,
+    "unx_scaled_1e6": 723712000000,
+    "umx_scaled_1e6": 40918000000
+  },
+  {
+    "age": 69,
+    "udx_scaled_1e6": 45609990000,
+    "unx_scaled_1e6": 677716900000,
+    "umx_scaled_1e6": 40144530000
+  },
+  {
+    "age": 70,
+    "udx_scaled_1e6": 44429880000,
+    "unx_scaled_1e6": 632879400000,
+    "umx_scaled_1e6": 39326010000
+  },
+  {
+    "age": 71,
+    "udx_scaled_1e6": 43210740000,
+    "unx_scaled_1e6": 589236800000,
+    "umx_scaled_1e6": 38458830000
+  },
+  {
+    "age": 72,
+    "udx_scaled_1e6": 41949640000,
+    "unx_scaled_1e6": 546829400000,
+    "umx_scaled_1e6": 37539720000
+  },
+  {
+    "age": 73,
+    "udx_scaled_1e6": 40641370000,
+    "unx_scaled_1e6": 505701700000,
+    "umx_scaled_1e6": 36563130000
+  },
+  {
+    "age": 74,
+    "udx_scaled_1e6": 39283190000,
+    "unx_scaled_1e6": 465902000000,
+    "umx_scaled_1e6": 35525920000
+  },
+  {
+    "age": 75,
+    "udx_scaled_1e6": 37872460000,
+    "unx_scaled_1e6": 427481300000,
+    "umx_scaled_1e6": 34425030000
+  },
+  {
+    "age": 76,
+    "udx_scaled_1e6": 36412530000,
+    "unx_scaled_1e6": 390490300000,
+    "umx_scaled_1e6": 33263410000
+  },
+  {
+    "age": 77,
+    "udx_scaled_1e6": 34897880000,
+    "unx_scaled_1e6": 354980800000,
+    "umx_scaled_1e6": 32035130000
+  },
+  {
+    "age": 78,
+    "udx_scaled_1e6": 33331790000,
+    "unx_scaled_1e6": 321005500000,
+    "umx_scaled_1e6": 30743040000
+  },
+  {
+    "age": 79,
+    "udx_scaled_1e6": 31702290000,
+    "unx_scaled_1e6": 288621800000,
+    "umx_scaled_1e6": 29374690000
+  },
+  {
+    "age": 80,
+    "udx_scaled_1e6": 30020930000,
+    "unx_scaled_1e6": 257887000000,
+    "umx_scaled_1e6": 27941190000
+  },
+  {
+    "age": 81,
+    "udx_scaled_1e6": 28284900000,
+    "unx_scaled_1e6": 228854200000,
+    "umx_scaled_1e6": 26439300000
+  },
+  {
+    "age": 82,
+    "udx_scaled_1e6": 26501580000,
+    "unx_scaled_1e6": 201574100000,
+    "umx_scaled_1e6": 24875980000
+  },
+  {
+    "age": 83,
+    "udx_scaled_1e6": 24674680000,
+    "unx_scaled_1e6": 176092000000,
+    "umx_scaled_1e6": 23254580000
+  },
+  {
+    "age": 84,
+    "udx_scaled_1e6": 22821330000,
+    "unx_scaled_1e6": 152442700000,
+    "umx_scaled_1e6": 21591950000
+  },
+  {
+    "age": 85,
+    "udx_scaled_1e6": 20916560000,
+    "unx_scaled_1e6": 130665000000,
+    "umx_scaled_1e6": 19862810000
+  },
+  {
+    "age": 86,
+    "udx_scaled_1e6": 18992780000,
+    "unx_scaled_1e6": 110794000000,
+    "umx_scaled_1e6": 18099280000
+  },
+  {
+    "age": 87,
+    "udx_scaled_1e6": 17060300000,
+    "unx_scaled_1e6": 92843440000,
+    "umx_scaled_1e6": 16311560000
+  },
+  {
+    "age": 88,
+    "udx_scaled_1e6": 15141790000,
+    "unx_scaled_1e6": 76810640000,
+    "umx_scaled_1e6": 14522350000
+  },
+  {
+    "age": 89,
+    "udx_scaled_1e6": 13262190000,
+    "unx_scaled_1e6": 62669220000,
+    "umx_scaled_1e6": 12756790000
+  },
+  {
+    "age": 90,
+    "udx_scaled_1e6": 11447710000,
+    "unx_scaled_1e6": 50367320000,
+    "umx_scaled_1e6": 11041520000
+  },
+  {
+    "age": 91,
+    "udx_scaled_1e6": 9724582000,
+    "unx_scaled_1e6": 39826960000,
+    "umx_scaled_1e6": 9403397000
+  },
+  {
+    "age": 92,
+    "udx_scaled_1e6": 8117549000,
+    "unx_scaled_1e6": 30944800000,
+    "umx_scaled_1e6": 7867994000
+  },
+  {
+    "age": 93,
+    "udx_scaled_1e6": 6648253000,
+    "unx_scaled_1e6": 23594370000,
+    "umx_scaled_1e6": 6457976000
+  },
+  {
+    "age": 94,
+    "udx_scaled_1e6": 5333660000,
+    "unx_scaled_1e6": 17630000000,
+    "umx_scaled_1e6": 5191482000
+  },
+  {
+    "age": 95,
+    "udx_scaled_1e6": 4184806000,
+    "unx_scaled_1e6": 12892100000,
+    "umx_scaled_1e6": 4080837000
+  },
+  {
+    "age": 96,
+    "udx_scaled_1e6": 3205911000,
+    "unx_scaled_1e6": 9213485000,
+    "umx_scaled_1e6": 3131609000
+  },
+  {
+    "age": 97,
+    "udx_scaled_1e6": 2394187000,
+    "unx_scaled_1e6": 6426260000,
+    "umx_scaled_1e6": 2342362000
+  },
+  {
+    "age": 98,
+    "udx_scaled_1e6": 1740288000,
+    "unx_scaled_1e6": 4368599000,
+    "umx_scaled_1e6": 1705057000
+  },
+  {
+    "age": 99,
+    "udx_scaled_1e6": 1229426000,
+    "unx_scaled_1e6": 2890704000,
+    "umx_scaled_1e6": 1206113000
+  },
+  {
+    "age": 100,
+    "udx_scaled_1e6": 842969300,
+    "unx_scaled_1e6": 1859424000,
+    "umx_scaled_1e6": 827973900
+  },
+  {
+    "age": 101,
+    "udx_scaled_1e6": 560302500,
+    "unx_scaled_1e6": 1161160000,
+    "umx_scaled_1e6": 550938300
+  },
+  {
+    "age": 102,
+    "udx_scaled_1e6": 360648400,
+    "unx_scaled_1e6": 702925600,
+    "umx_scaled_1e6": 354979700
+  },
+  {
+    "age": 103,
+    "udx_scaled_1e6": 224611400,
+    "unx_scaled_1e6": 411738300,
+    "umx_scaled_1e6": 221290900
+  },
+  {
+    "age": 104,
+    "udx_scaled_1e6": 135269300,
+    "unx_scaled_1e6": 232696400,
+    "umx_scaled_1e6": 133392700
+  },
+  {
+    "age": 105,
+    "udx_scaled_1e6": 78745210,
+    "unx_scaled_1e6": 126230200,
+    "umx_scaled_1e6": 77727220
+  },
+  {
+    "age": 106,
+    "udx_scaled_1e6": 44305110,
+    "unx_scaled_1e6": 65020070,
+    "umx_scaled_1e6": 43780760
+  },
+  {
+    "age": 107,
+    "udx_scaled_1e6": 24096040,
+    "unx_scaled_1e6": 30996710,
+    "umx_scaled_1e6": 23846060
+  },
+  {
+    "age": 108,
+    "udx_scaled_1e6": 12672630,
+    "unx_scaled_1e6": 12708770,
+    "umx_scaled_1e6": 12570140
+  },
+  {
+    "age": 109,
+    "udx_scaled_1e6": 6448938,
+    "unx_scaled_1e6": 3198673,
+    "umx_scaled_1e6": 6423143
+  }
+]

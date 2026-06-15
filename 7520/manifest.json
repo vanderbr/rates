@@ -1,0 +1,19 @@
+{
+  "dataset_id": "section-7520-rates",
+  "schema_id": "rates.section_7520_rates.v1",
+  "schema_version": 1,
+  "record_storage": "single_file",
+  "record_count": 354,
+  "proto": {
+    "file": "proto/rates/v1/section_7520_rates.proto",
+    "message": "rates.v1.Section7520RateFile"
+  },
+  "records": {
+    "path": "rates.json",
+    "bytes": 44585,
+    "sha256": "2014a89a34c8bdc06f484b94499ca2d0657c7a3f272a19b942841e027c75c4dc",
+    "protobuf_path": "protobuf/rates.pb",
+    "protobuf_bytes": 5990,
+    "protobuf_sha256": "f928795a5f2a23c3f486eaf216a7d2a12bbf64ee1079299297f51ae4a876c532"
+  }
+}

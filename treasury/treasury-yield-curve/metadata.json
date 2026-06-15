@@ -1,0 +1,48 @@
+{
+  "name": "Daily Treasury Yield Curve Rates",
+  "source": "United States Department of the Treasury",
+  "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates",
+  "record_frequency": "business_day",
+  "date_key": {
+    "field": "date",
+    "format": "YYYY-MM-DD",
+    "meaning": "Treasury-published rate date"
+  },
+  "value_fields": {
+    "par_yields_basis_points": {
+      "unit": "basis_points",
+      "shape": "fixed array ordered by metadata.tenors",
+      "tenors": [
+        "1_month",
+        "6_week",
+        "2_month",
+        "3_month",
+        "4_month",
+        "6_month",
+        "1_year",
+        "2_year",
+        "3_year",
+        "5_year",
+        "7_year",
+        "10_year",
+        "20_year",
+        "30_year"
+      ],
+      "null_meaning": "Tenor was not published for that date"
+    }
+  },
+  "storage": {
+    "manifest_file": "manifest.json",
+    "primary_records": "by-year/YYYY-treasury-yield-curve.json",
+    "year_shards": "by-year/YYYY-treasury-yield-curve.json",
+    "ordering": "ascending_date",
+    "dedupe_key": "date"
+  },
+  "dataset_id": "treasury-yield-curve",
+  "schema_id": "rates.treasury_yield_curve.v1",
+  "schema_version": 1,
+  "proto": {
+    "file": "proto/rates/v1/treasury_yield_curve.proto",
+    "message": "rates.v1.TreasuryYieldCurveFile"
+  }
+}

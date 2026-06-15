@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/vanderbr/rates/main/schemas/v1/actuarial-table-r2.schema.json",
+  "title": "actuarial-table-r2",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "older_age",
+      "younger_age",
+      "remainder_factor_scaled_1e6"
+    ],
+    "properties": {
+      "older_age": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "younger_age": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "remainder_factor_scaled_1e6": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  }
+}

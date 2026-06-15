@@ -1,0 +1,262 @@
+{
+  "schema_id": "rates.index.v1",
+  "schema_version": 1,
+  "proto": {
+    "file": "proto/rates/v1/rates.proto"
+  },
+  "datasets": [
+    {
+      "dataset_path": "7520",
+      "dataset_id": "section-7520-rates",
+      "schema_id": "rates.section_7520_rates.v1",
+      "schema_version": 1,
+      "record_storage": "single_file",
+      "record_count": 354,
+      "manifest_path": "7520/manifest.json",
+      "manifest_bytes": 595,
+      "manifest_sha256": "7b0103dbe8de707c606fa97a66d5d859ea8c0867c4e5f1c8bc36220103751a93"
+    },
+    {
+      "dataset_path": "afr",
+      "dataset_id": "applicable-federal-rates",
+      "schema_id": "rates.applicable_federal_rates.v1",
+      "schema_version": 1,
+      "record_storage": "by_year",
+      "record_count": 318,
+      "manifest_path": "afr/manifest.json",
+      "manifest_bytes": 12765,
+      "manifest_sha256": "2c4a404facac5eae8e26fe2eca0e1988e0842eeda8862f0bc51d0b19473b430d"
+    },
+    {
+      "dataset_path": "annual-gift-exclusion",
+      "dataset_id": "annual-gift-exclusion",
+      "schema_id": "rates.annual_gift_exclusion.v1",
+      "schema_version": 1,
+      "record_storage": "single_file",
+      "record_count": 72,
+      "manifest_path": "annual-gift-exclusion/manifest.json",
+      "manifest_bytes": 607,
+      "manifest_sha256": "45274d2fbb283429195cd31f5c1f3152d52813f92ffe82e60813234ae0c1a8bb"
+    },
+    {
+      "dataset_path": "estate-gift-tax-exemption",
+      "dataset_id": "estate-gift-tax-exemption",
+      "schema_id": "rates.estate_gift_tax_exemption.v1",
+      "schema_version": 1,
+      "record_storage": "single_file",
+      "record_count": 51,
+      "manifest_path": "estate-gift-tax-exemption/manifest.json",
+      "manifest_bytes": 621,
+      "manifest_sha256": "4cea5dd6cf1cbc359442d9416fe3ce9ff018191d80a72b871031787aaffe5f72"
+    },
+    {
+      "dataset_path": "gst-exemption",
+      "dataset_id": "gst-exemption",
+      "schema_id": "rates.gst_exemption.v1",
+      "schema_version": 1,
+      "record_storage": "single_file",
+      "record_count": 28,
+      "manifest_path": "gst-exemption/manifest.json",
+      "manifest_bytes": 575,
+      "manifest_sha256": "c849be2d90daa42d8b12ea7871882b47842bdd734501669876ef3f0ce4ee1066"
+    },
+    {
+      "dataset_path": "noncitizen-spouse-gift-exclusion",
+      "dataset_id": "noncitizen-spouse-gift-exclusion",
+      "schema_id": "rates.noncitizen_spouse_gift_exclusion.v1",
+      "schema_version": 1,
+      "record_storage": "single_file",
+      "record_count": 29,
+      "manifest_path": "noncitizen-spouse-gift-exclusion/manifest.json",
+      "manifest_bytes": 649,
+      "manifest_sha256": "bafeec76bb459c95b5778d1bbe7359baf9096eb97a2c797bea43b8a4c4b8d695"
+    },
+    {
+      "dataset_path": "treasury/treasury-yield-curve",
+      "dataset_id": "treasury-yield-curve",
+      "schema_id": "rates.treasury_yield_curve.v1",
+      "schema_version": 1,
+      "record_storage": "by_year",
+      "record_count": 9120,
+      "manifest_path": "treasury/treasury-yield-curve/manifest.json",
+      "manifest_bytes": 18055,
+      "manifest_sha256": "247ec61c9879740042897f54d8bc82179ed05a5d2e7bb2f64294fa576daf340f"
+    },
+    {
+      "dataset_path": "fed-funds",
+      "dataset_id": "federal-funds",
+      "schema_id": "rates.federal_funds.v1",
+      "schema_version": 1,
+      "record_storage": "by_year",
+      "record_count": 6520,
+      "manifest_path": "fed-funds/manifest.json",
+      "manifest_bytes": 12629,
+      "manifest_sha256": "f8d06cee9edba7435ca34d34dfb471c4a8d0a67316d14539044d3602f00ebafa"
+    },
+    {
+      "dataset_path": "sofr",
+      "dataset_id": "sofr",
+      "schema_id": "rates.sofr.v1",
+      "schema_version": 1,
+      "record_storage": "by_year",
+      "record_count": 2049,
+      "manifest_path": "sofr/manifest.json",
+      "manifest_bytes": 4325,
+      "manifest_sha256": "20f9c82b43045fbc08f1a61e4f19de765928cc85d8b84389a3d2024da568ca1c"
+    },
+    {
+      "dataset_path": "sofr/sofr-30d-average",
+      "dataset_id": "sofr-30d-average",
+      "schema_id": "rates.sofr_30d_average.v1",
+      "schema_version": 1,
+      "record_storage": "by_year",
+      "record_count": 1571,
+      "manifest_path": "sofr/sofr-30d-average/manifest.json",
+      "manifest_bytes": 3629,
+      "manifest_sha256": "2ba3ee07691e1000b09d44b63e74d621c49a8c43e763f03fc6494e874be8cca2"
+    },
+    {
+      "dataset_path": "sofr/sofr-90d-average",
+      "dataset_id": "sofr-90d-average",
+      "schema_id": "rates.sofr_90d_average.v1",
+      "schema_version": 1,
+      "record_storage": "by_year",
+      "record_count": 1571,
+      "manifest_path": "sofr/sofr-90d-average/manifest.json",
+      "manifest_bytes": 3629,
+      "manifest_sha256": "b1dea7fc3dad8317f84996a9b9b8f29df6c8fe2639ceeba52ccafb4f83ffa991"
+    },
+    {
+      "dataset_path": "sofr/sofr-180d-average",
+      "dataset_id": "sofr-180d-average",
+      "schema_id": "rates.sofr_180d_average.v1",
+      "schema_version": 1,
+      "record_storage": "by_year",
+      "record_count": 1571,
+      "manifest_path": "sofr/sofr-180d-average/manifest.json",
+      "manifest_bytes": 3645,
+      "manifest_sha256": "cc31a1ff810c2df317ce8b4914a2ee7b9d7d014ebf056ffc6e58d61bc18feadd"
+    },
+    {
+      "dataset_path": "table-2001",
+      "dataset_id": "mortality-table-2000cm",
+      "schema_id": "rates.mortality_table_2000cm.v1",
+      "schema_version": 1,
+      "record_storage": "single_file",
+      "record_count": 111,
+      "manifest_path": "table-2001/manifest.json",
+      "manifest_bytes": 593,
+      "manifest_sha256": "a88838e4fea331ccc8446e511c57d96a8db1f44f0d93b1ba19d6c7693246ed4a"
+    },
+    {
+      "dataset_path": "actuarial/mortality-table-2010cm",
+      "dataset_id": "mortality-table-2010cm",
+      "schema_id": "rates.mortality_table_2010cm.v1",
+      "schema_version": 1,
+      "record_storage": "single_file",
+      "record_count": 111,
+      "manifest_path": "actuarial/mortality-table-2010cm/manifest.json",
+      "manifest_bytes": 593,
+      "manifest_sha256": "4723c6416d24cb5d2babf3d38f2dd9f2e184eae6bbe9807911ef1ceae7e3b428"
+    },
+    {
+      "dataset_path": "actuarial/life-expectancy-by-age",
+      "dataset_id": "life-expectancy-by-age",
+      "schema_id": "rates.life_expectancy_by_age.v1",
+      "schema_version": 1,
+      "record_storage": "single_file",
+      "record_count": 111,
+      "manifest_path": "actuarial/life-expectancy-by-age/manifest.json",
+      "manifest_bytes": 606,
+      "manifest_sha256": "f9bd5db16b1c03823ee41903932053fd27af64cfcad8eae8429d62b36f27d1f7"
+    },
+    {
+      "dataset_path": "actuarial/table-b",
+      "dataset_id": "actuarial-table-b",
+      "schema_id": "rates.actuarial_table_b.v1",
+      "schema_version": 1,
+      "record_storage": "by_interest_rate",
+      "record_count": 6000,
+      "manifest_path": "actuarial/table-b/manifest.json",
+      "manifest_bytes": 42588,
+      "manifest_sha256": "84ab24f398d130106c301d611740c6fd6b581314d2cf10c90ef5b4ac162f94ad"
+    },
+    {
+      "dataset_path": "actuarial/table-d",
+      "dataset_id": "actuarial-table-d",
+      "schema_id": "rates.actuarial_table_d.v1",
+      "schema_version": 1,
+      "record_storage": "by_interest_rate",
+      "record_count": 2000,
+      "manifest_path": "actuarial/table-d/manifest.json",
+      "manifest_bytes": 43199,
+      "manifest_sha256": "8ea080989ba114b96738c5576321b4fbf012db3b314f4b453193b9dc2a097ab6"
+    },
+    {
+      "dataset_path": "actuarial/table-h",
+      "dataset_id": "actuarial-table-h",
+      "schema_id": "rates.actuarial_table_h.v1",
+      "schema_version": 1,
+      "record_storage": "by_interest_rate",
+      "record_count": 11000,
+      "manifest_path": "actuarial/table-h/manifest.json",
+      "manifest_bytes": 42793,
+      "manifest_sha256": "e32f770049e117bfbd7cbd04ec4da0e9f8d3f77a6334e0aeaec3c378a9670595"
+    },
+    {
+      "dataset_path": "actuarial/table-r2",
+      "dataset_id": "actuarial-table-r2",
+      "schema_id": "rates.actuarial_table_r2.v1",
+      "schema_version": 1,
+      "record_storage": "by_interest_rate",
+      "record_count": 610500,
+      "manifest_path": "actuarial/table-r2/manifest.json",
+      "manifest_bytes": 43098,
+      "manifest_sha256": "62450369c9b93b90471e945ed6f0777035172f61d2822eb6f10f840f35a865e7"
+    },
+    {
+      "dataset_path": "actuarial/table-s",
+      "dataset_id": "actuarial-table-s",
+      "schema_id": "rates.actuarial_table_s.v1",
+      "schema_version": 1,
+      "record_storage": "by_interest_rate",
+      "record_count": 11000,
+      "manifest_path": "actuarial/table-s/manifest.json",
+      "manifest_bytes": 42793,
+      "manifest_sha256": "1a6438a913bf53006cbe723f0fdedfc54e6fe25704c6d2ec065ccec1a3871d5f"
+    },
+    {
+      "dataset_path": "actuarial/table-u1",
+      "dataset_id": "actuarial-table-u1",
+      "schema_id": "rates.actuarial_table_u1.v1",
+      "schema_version": 1,
+      "record_storage": "by_interest_rate",
+      "record_count": 11000,
+      "manifest_path": "actuarial/table-u1/manifest.json",
+      "manifest_bytes": 43304,
+      "manifest_sha256": "e430f83ef266edcf632d31905b007e17341c3e62e801808dc2c49087def53439"
+    },
+    {
+      "dataset_path": "actuarial/table-u2",
+      "dataset_id": "actuarial-table-u2",
+      "schema_id": "rates.actuarial_table_u2.v1",
+      "schema_version": 1,
+      "record_storage": "by_interest_rate",
+      "record_count": 610500,
+      "manifest_path": "actuarial/table-u2/manifest.json",
+      "manifest_bytes": 43805,
+      "manifest_sha256": "7544b8e5bd6504ccc3e680ee1750c59cbdbfef9ea99c695909a2a1b4c2b88d56"
+    },
+    {
+      "dataset_path": "actuarial/table-z",
+      "dataset_id": "actuarial-table-z",
+      "schema_id": "rates.actuarial_table_z.v1",
+      "schema_version": 1,
+      "record_storage": "by_interest_rate",
+      "record_count": 11000,
+      "manifest_path": "actuarial/table-z/manifest.json",
+      "manifest_bytes": 43500,
+      "manifest_sha256": "c4ae7033b1841873f69a11203de59e846c5be94127d9befcbe524391c3f01375"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+# SPDX-License-Identifier: Apache-2.0
+
+name: Update Market Rates
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Treasury and New York Fed daily observations can lag market close. This
+    # runs after the prior U.S. business day has normally settled.
+    - cron: "22 12 * * 2-6"
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+  PYTHONUNBUFFERED: "1"
+
+defaults:
+  run:
+    shell: bash
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  market-rates:
+    name: Market Rates
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+
+      - name: Test market rate updater
+        run: |
+          python -m unittest scripts.tests.test_update_market_rates
+          python -m unittest scripts.tests.test_repository_layout
+
+      - name: Update market rate JSON
+        run: python scripts/update_market_rates.py --write
+
+      - name: Generate manifests, schemas, and protobuf artifacts
+        run: python scripts/artifact_contract.py
+
+      - name: Test generated market rate data
+        run: |
+          python -m unittest scripts.tests.test_update_market_rates
+          python -m unittest scripts.tests.test_repository_layout
+
+      - name: Open pull request for market rate updates
+        uses: peter-evans/create-pull-request@v8
+        with:
+          branch: automation/market-rate-updates
+          delete-branch: true
+          title: "Update market rates"
+          commit-message: "Update market rates"
+          labels: "data, automation"
+          body: |
+            ## Summary
+
+            Updates daily market rate source data:
+
+            - `treasury/treasury-yield-curve/manifest.json`
+            - `treasury/treasury-yield-curve/by-year/YYYY-treasury-yield-curve.json`
+            - `fed-funds/manifest.json`
+            - `fed-funds/by-year/YYYY-fed-funds.json`
+            - `sofr/manifest.json`
+            - `sofr/by-year/YYYY-sofr.json`
+            - `sofr/sofr-30d-average/manifest.json`
+            - `sofr/sofr-30d-average/by-year/YYYY-sofr-30d-average.json`
+            - `sofr/sofr-90d-average/manifest.json`
+            - `sofr/sofr-90d-average/by-year/YYYY-sofr-90d-average.json`
+            - `sofr/sofr-180d-average/manifest.json`
+            - `sofr/sofr-180d-average/by-year/YYYY-sofr-180d-average.json`
+            - dataset `protobuf/*.pb` files
+            - `index.json`
+            - `schemas/v1/*.schema.json`
+
+            ## Sources
+
+            - Cite: https://home.treasury.gov/resource-center/data-chart-center/interest-rates
+            - Cite: https://www.newyorkfed.org/markets/reference-rates/sofr
+            - Cite: https://markets.newyorkfed.org/api/rates/all/search.csv
+            - Interpretation: This automation records source-published daily
+              percentage rates as integer basis points. Fractional SOFR averages
+              are stored as basis points scaled by 1000, the SOFR Index is
+              stored scaled by 100000000, and unavailable observations are
+              stored as `null`.
+
+            ## Tests
+
+            - [x] `python -m unittest scripts.tests.test_update_market_rates` before and after updating
+            - [x] `python -m unittest scripts.tests.test_repository_layout` before and after updating
+            - [x] `python scripts/artifact_contract.py`

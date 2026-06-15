@@ -1,0 +1,14 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package rates.v1;
+
+message MortalityRecord {
+  uint32 age = 1;
+  uint64 survivors_per_100000_scaled_1e6 = 2;
+}
+
+message MortalityFile {
+  string schema_id = 1;
+  repeated MortalityRecord records = 2;
+}

@@ -1,0 +1,41 @@
+{
+  "name": "Annual Gift Tax Exclusion",
+  "source": "Internal Revenue Service and 26 USC 2503(b)",
+  "source_urls": [
+    "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section2503&num=0&edition=prelim",
+    "https://www.irs.gov/instructions/i709",
+    "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf"
+  ],
+  "record_frequency": "annual",
+  "backfill_start_year": 1955,
+  "date_key": {
+    "fields": [
+      "period_start_date",
+      "period_end_date"
+    ],
+    "format": "YYYY-MM-DD",
+    "meaning": "Inclusive calendar-year period in which gifts of present interests are made"
+  },
+  "value_fields": {
+    "annual_exclusion_amount_usd": {
+      "unit": "usd",
+      "scale": "integer dollars"
+    }
+  },
+  "storage": {
+    "primary_records": "rates.json",
+    "ordering": "ascending_period_start_date",
+    "dedupe_key": "period_start_date"
+  },
+  "automation": {
+    "publication_window": "November through January",
+    "behavior": "Scheduled updates no-op outside the publication window and after the target year has been recorded."
+  },
+  "dataset_id": "annual-gift-exclusion",
+  "schema_id": "rates.annual_gift_exclusion.v1",
+  "schema_version": 1,
+  "proto": {
+    "file": "proto/rates/v1/annual_gift_exclusion.proto",
+    "message": "rates.v1.AnnualGiftExclusionFile"
+  }
+}

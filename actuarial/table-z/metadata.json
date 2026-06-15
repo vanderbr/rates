@@ -1,0 +1,40 @@
+{
+  "name": "Table Z",
+  "source": "Internal Revenue Service",
+  "source_page_url": "https://www.irs.gov/retirement-plans/actuarial-tables",
+  "source_url": "https://www.irs.gov/pub/irs-tege/table-z-2010cm-final.xlsx",
+  "mortality_basis": "2010CM",
+  "effective_for_valuations_on_or_after": "2023-06-01",
+  "description": "Unitrust commutation factors based on IRS Table 2010CM.",
+  "value_fields": {
+    "udx_scaled_1e6": {
+      "unit": "commutation_factor_scaled_1e6",
+      "scale": "stored value / 1000000"
+    },
+    "unx_scaled_1e6": {
+      "unit": "commutation_factor_scaled_1e6",
+      "scale": "stored value / 1000000"
+    },
+    "umx_scaled_1e6": {
+      "unit": "commutation_factor_scaled_1e6",
+      "scale": "stored value / 1000000"
+    }
+  },
+  "storage": {
+    "manifest_file": "manifest.json",
+    "primary_records": "by-interest-rate/NNNNN-basis-points.json",
+    "shards": "by-interest-rate/NNNNN-basis-points.json",
+    "shard_rate_field": "adjusted_payout_rate_basis_points",
+    "ordering": "ascending_time_or_age_key",
+    "dedupe_key": [
+      "age"
+    ]
+  },
+  "dataset_id": "actuarial-table-z",
+  "schema_id": "rates.actuarial_table_z.v1",
+  "schema_version": 1,
+  "proto": {
+    "file": "proto/rates/v1/actuarial_table_z.proto",
+    "message": "rates.v1.TableZFile"
+  }
+}

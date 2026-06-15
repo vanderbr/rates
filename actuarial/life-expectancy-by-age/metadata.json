@@ -1,0 +1,32 @@
+{
+  "name": "Life Expectancy by Age from Table 2010CM",
+  "source": "Internal Revenue Service",
+  "source_page_url": "https://www.irs.gov/retirement-plans/actuarial-tables",
+  "source_url": "https://www.irs.gov/pub/irs-tege/table-2010cm-final.xlsx",
+  "mortality_basis": "2010CM",
+  "effective_for_valuations_on_or_after": "2023-06-01",
+  "description": "Complete future lifetime approximation computed from IRS Table 2010CM survivors by age.",
+  "value_fields": {
+    "curtate_life_expectancy_years_scaled_1e6": {
+      "unit": "years_scaled_1e6",
+      "scale": "stored value / 1000000"
+    },
+    "complete_life_expectancy_years_scaled_1e6": {
+      "unit": "years_scaled_1e6",
+      "calculation_note": "curtate expectation plus 0.5 year uniform-distribution approximation",
+      "scale": "stored value / 1000000"
+    }
+  },
+  "storage": {
+    "primary_records": "rates.json",
+    "ordering": "ascending_age",
+    "dedupe_key": "age"
+  },
+  "dataset_id": "life-expectancy-by-age",
+  "schema_id": "rates.life_expectancy_by_age.v1",
+  "schema_version": 1,
+  "proto": {
+    "file": "proto/rates/v1/life_expectancy_by_age.proto",
+    "message": "rates.v1.LifeExpectancyFile"
+  }
+}

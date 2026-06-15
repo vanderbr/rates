@@ -1,0 +1,37 @@
+{
+  "name": "Generation-Skipping Transfer Tax Exemption",
+  "short_name": "GST Exemption",
+  "source": "Internal Revenue Service",
+  "source_urls": [
+    "https://www.irs.gov/instructions/i709",
+    "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf"
+  ],
+  "record_frequency": "annual",
+  "date_key": {
+    "start_field": "period_start_date",
+    "end_field": "period_end_date",
+    "format": "YYYY-MM-DD",
+    "meaning": "Inclusive calendar-year period in which the GST exemption applies"
+  },
+  "value_fields": {
+    "exemption_amount_usd": {
+      "unit": "usd",
+      "scale": "integer dollars"
+    }
+  },
+  "storage": {
+    "primary_records": "rates.json",
+    "ordering": "ascending_period_start_date",
+    "dedupe_key": [
+      "period_start_date",
+      "period_end_date"
+    ]
+  },
+  "dataset_id": "gst-exemption",
+  "schema_id": "rates.gst_exemption.v1",
+  "schema_version": 1,
+  "proto": {
+    "file": "proto/rates/v1/gst_exemption.proto",
+    "message": "rates.v1.GstExemptionFile"
+  }
+}

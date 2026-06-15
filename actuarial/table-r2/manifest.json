@@ -1,0 +1,1014 @@
+{
+  "dataset_id": "actuarial-table-r2",
+  "schema_id": "rates.actuarial_table_r2.v1",
+  "schema_version": 1,
+  "record_storage": "by_interest_rate",
+  "record_count": 610500,
+  "rate_field": "interest_rate_basis_points",
+  "proto": {
+    "file": "proto/rates/v1/actuarial_table_r2.proto",
+    "message": "rates.v1.TableR2File"
+  },
+  "shards": [
+    {
+      "path": "by-interest-rate/00020-basis-points.json",
+      "bytes": 579978,
+      "sha256": "a32c084fc3aaa273ee01d716f967853e6748647a00f830b936dc41d3ff81b3aa",
+      "protobuf_path": "protobuf/00020-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "d8f193609bcc35558b31387774969280be8532e0a793fba47a0dc562baad001a",
+      "interest_rate_basis_points": 20,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00040-basis-points.json",
+      "bytes": 579978,
+      "sha256": "c474a4078f40b1ef2982e41d694e549ba77ae4c2325110446b9a211f6dce3a47",
+      "protobuf_path": "protobuf/00040-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "9200d030d53d3f42b0bab0d34791cbd312a14b2c556f82dbb2bcbfdd08d23d6d",
+      "interest_rate_basis_points": 40,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00060-basis-points.json",
+      "bytes": 579978,
+      "sha256": "581744fbfa62e09da5a387e87b700af2b1b48b1958dcc51701a73a8972c26878",
+      "protobuf_path": "protobuf/00060-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "c0e567c86d592ab0bc6a9ca7d30cee9d443331711651f3abb5478afac74273d2",
+      "interest_rate_basis_points": 60,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00080-basis-points.json",
+      "bytes": 579978,
+      "sha256": "216f20b9a7abeaae74010a448cc501341cea0bb7b11b019e2e2171e6395299c3",
+      "protobuf_path": "protobuf/00080-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "7a55331680e1dbc9883489b8aa72914f5ada201dd74b9f6adb537a7dd1d8466e",
+      "interest_rate_basis_points": 80,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00100-basis-points.json",
+      "bytes": 579978,
+      "sha256": "e031bde9aeade532a7abe5b6711047fefadb56c8e61d990491aee06c07f34425",
+      "protobuf_path": "protobuf/00100-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "28c5d6bc4f0abde0f0482f44d3d06d06c60ad830d8ff1ec1fc3228abaf10f162",
+      "interest_rate_basis_points": 100,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00120-basis-points.json",
+      "bytes": 579978,
+      "sha256": "934f8d3d5b00d55dfa1ff575c5d7e4197b04115918967700650b22300fc07f63",
+      "protobuf_path": "protobuf/00120-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "feac71d3066dcbb8895fc05a54ce2630bc8b3af68892ad05e85320210c91dc3d",
+      "interest_rate_basis_points": 120,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00140-basis-points.json",
+      "bytes": 579978,
+      "sha256": "d9644b53db59eaec2c4603df2323ad946bbbd8587f34f453e27552dc4b5c069d",
+      "protobuf_path": "protobuf/00140-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "8495b0d7f5fc563d3d7388fc5d7f4cf25f18f9e6fe4fdbcd6cf345fccac396ac",
+      "interest_rate_basis_points": 140,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00160-basis-points.json",
+      "bytes": 579978,
+      "sha256": "da0c8efacb4daa020823b64bb3eaa4eaa01cf6367594052671718dba63ea9a7a",
+      "protobuf_path": "protobuf/00160-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "c8879c0e0a4bb375ace6a037ea5eff4dedf64ab7fa2696efb6ae0098185baf9e",
+      "interest_rate_basis_points": 160,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00180-basis-points.json",
+      "bytes": 579978,
+      "sha256": "cd1f693cf5251cff0832b2226f8bd4224f2124c83280100932a32911a0138755",
+      "protobuf_path": "protobuf/00180-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "30c3af31b50049349b0e0d2b8e2f7350ec6c5c38fd6dcba812d2f0e98cacfdce",
+      "interest_rate_basis_points": 180,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00200-basis-points.json",
+      "bytes": 579978,
+      "sha256": "09eb424f7d4ac447eb1182481b382e58e208a57818fc15f763feca55e414ccef",
+      "protobuf_path": "protobuf/00200-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "de8987aee32df6291d7922daf62e40a6990ece5ba31faf81c1fb125d423ed229",
+      "interest_rate_basis_points": 200,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00220-basis-points.json",
+      "bytes": 579978,
+      "sha256": "cb12f194094fcb4778ab42479fbeb2f7f9edb605e56de4b90ec17370f0a4ea62",
+      "protobuf_path": "protobuf/00220-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "929bf01447a19e46cb203aafef392a91080031d6fa93228922652956c7d766ca",
+      "interest_rate_basis_points": 220,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00240-basis-points.json",
+      "bytes": 579978,
+      "sha256": "b079737d4453c352f88828b51760071df51c2b3db073456173d4ece2d6917ae1",
+      "protobuf_path": "protobuf/00240-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "bc896e47d14ffd1a8d02cab1df3333297447d1040867ddd0cb119ae52db25120",
+      "interest_rate_basis_points": 240,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00260-basis-points.json",
+      "bytes": 579978,
+      "sha256": "4591a2ce1f7ecbe0c35b0cf5a1734477430c65955696f28009e0cac1ef19a8b2",
+      "protobuf_path": "protobuf/00260-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "b1740769fca37396ac26850ffbd0a47cdc41983bde286e22fd419ce2d8d660cc",
+      "interest_rate_basis_points": 260,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00280-basis-points.json",
+      "bytes": 579966,
+      "sha256": "d634a95b762ff0bfbf07d1c4abfb06f510ba354814fda0678368b3e9ba5d8003",
+      "protobuf_path": "protobuf/00280-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "d93f81209afc28975aa3d714a1b6fc77d881a2dbfd17ae144e240b4821f500ed",
+      "interest_rate_basis_points": 280,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00300-basis-points.json",
+      "bytes": 579878,
+      "sha256": "e34544ad389b1b03c8c2939ca5ba27e2d32560f8f6abc45412d648ecf879a30c",
+      "protobuf_path": "protobuf/00300-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "05f5a42bd093aa5f98fb8311b5383e507a6672e73fee587a8fed319d1b859343",
+      "interest_rate_basis_points": 300,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00320-basis-points.json",
+      "bytes": 579563,
+      "sha256": "80415174d689f341aab911c7583207a8028ceb818a4699df869267e2b7c2152c",
+      "protobuf_path": "protobuf/00320-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "9a1833628d79c6b13afc341c1a542b9c9735f61be8aec5cc61202d3ab794b8fc",
+      "interest_rate_basis_points": 320,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00340-basis-points.json",
+      "bytes": 579105,
+      "sha256": "1a7166d490b98da7f8f2b04b9a62f498e8c5755da79d2495caea1830e69695b2",
+      "protobuf_path": "protobuf/00340-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "49578132515a70e9c245f805266d9153456fc27e3e11851df5426d6b03a530f2",
+      "interest_rate_basis_points": 340,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00360-basis-points.json",
+      "bytes": 578718,
+      "sha256": "9402ef7e586f3c06b4b46befa9de763ebb6a92feb1658230cddcc576f4520bf4",
+      "protobuf_path": "protobuf/00360-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "6f59771de709cc75e29bdfaf4d833d95c169b87f46c4f8d2622d5ae5132657c9",
+      "interest_rate_basis_points": 360,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00380-basis-points.json",
+      "bytes": 578407,
+      "sha256": "d9282b485817f6981e415ff48a5b90ab77e5bcc87bffc8ba00d4d4d69da6cb14",
+      "protobuf_path": "protobuf/00380-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "89c58ef8451bff669262b06820a402d7eee3eb24add636ecb83ccc39a363b6c9",
+      "interest_rate_basis_points": 380,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00400-basis-points.json",
+      "bytes": 578141,
+      "sha256": "48ecb7a6ec49b6c19d251eca07bf2ca88e3ca85041ae7157484d1b483e5ea371",
+      "protobuf_path": "protobuf/00400-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "43e20cb7804c9c9aabfcf7c758c7d99be9a162d847702703a2e4055636d08da4",
+      "interest_rate_basis_points": 400,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00420-basis-points.json",
+      "bytes": 577894,
+      "sha256": "57bfb626f6dd4d8df6e8e87e7a565a8e678749493863251aac697e6cff54caa7",
+      "protobuf_path": "protobuf/00420-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "7359edaba2fa2009ad4f4fb02d3d3a7ec78127172c98f74ddee29b7ff1ef7ffe",
+      "interest_rate_basis_points": 420,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00440-basis-points.json",
+      "bytes": 577657,
+      "sha256": "7fea79e5a3f5e36eb9598c477dc8f0a54e07d4b520e256ee01d1eadb118d8773",
+      "protobuf_path": "protobuf/00440-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "c33815b3c2552bf624b8401208f7d1bb85462dc70181d61f123a44995992ca4c",
+      "interest_rate_basis_points": 440,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00460-basis-points.json",
+      "bytes": 577465,
+      "sha256": "fe2f06c7bafc352799363c52be1d98c425c59f88d37a051264d5ac83594b8c61",
+      "protobuf_path": "protobuf/00460-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "2b3599915e9b87f626d6f640ef57b4c7b780dcd2d68215711c7dd404ba7b4e90",
+      "interest_rate_basis_points": 460,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00480-basis-points.json",
+      "bytes": 577288,
+      "sha256": "587a3cb932d2df6ac0b2d78f890d48694f0dc7f7d725f9cd268b322b844e3667",
+      "protobuf_path": "protobuf/00480-basis-points.pb",
+      "protobuf_bytes": 61079,
+      "protobuf_sha256": "981ad32690478f267daadc9be17999df63a96b02ec00e8dc943a8a982b2e8b6b",
+      "interest_rate_basis_points": 480,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00500-basis-points.json",
+      "bytes": 577127,
+      "sha256": "c96e578eabcba04bc0382ee1f40930a2b719a549e812319544e203d3a9bdb211",
+      "protobuf_path": "protobuf/00500-basis-points.pb",
+      "protobuf_bytes": 61078,
+      "protobuf_sha256": "3fb7031280fa68aa4708fcf89798f04af5e4642255dddae03dc7698bc2aab88a",
+      "interest_rate_basis_points": 500,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00520-basis-points.json",
+      "bytes": 576978,
+      "sha256": "0e84cf6cb293f1263d40a2cbc458057dd30f77d19dd67210a8d8e595f71e424a",
+      "protobuf_path": "protobuf/00520-basis-points.pb",
+      "protobuf_bytes": 61059,
+      "protobuf_sha256": "d3f96efe929fb6212434a7d3f0dec7a6929914805e3e642028fb2106afc3b7f6",
+      "interest_rate_basis_points": 520,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00540-basis-points.json",
+      "bytes": 576837,
+      "sha256": "d299b5668ff005c9d5c0e81927e3be985decdfff718b5d2a7a230b97dfd5d877",
+      "protobuf_path": "protobuf/00540-basis-points.pb",
+      "protobuf_bytes": 61020,
+      "protobuf_sha256": "479b9692be47cebaaec34026b7a8dba12c3b80dd69d5bd5a1ecd8203b580f5f6",
+      "interest_rate_basis_points": 540,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00560-basis-points.json",
+      "bytes": 576732,
+      "sha256": "269845d416f1a27695f64a87020c8bf253d48d4db42b2fa57f7b08c85b6279ea",
+      "protobuf_path": "protobuf/00560-basis-points.pb",
+      "protobuf_bytes": 60961,
+      "protobuf_sha256": "43adc404b75d5a470ee75ef5fde7ecabe3bd35c7e6499b8ddc0e9894c0cbb08b",
+      "interest_rate_basis_points": 560,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00580-basis-points.json",
+      "bytes": 576599,
+      "sha256": "dc74ed75e36bab34ca37737b7479f8241847b58f917fe67e482f33349bc851a3",
+      "protobuf_path": "protobuf/00580-basis-points.pb",
+      "protobuf_bytes": 60879,
+      "protobuf_sha256": "51310083ca22cb3166be848504791cd7c60fd791b6be6e9d729541a432c56b6a",
+      "interest_rate_basis_points": 580,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00600-basis-points.json",
+      "bytes": 576482,
+      "sha256": "5aefb8ea481de8013abf8991e4866250c000eb56f192ad09f9ef60c42bfe186f",
+      "protobuf_path": "protobuf/00600-basis-points.pb",
+      "protobuf_bytes": 60774,
+      "protobuf_sha256": "492e91341ec1513b8cfc75c1ff30ec4a7e8e20c3b3271644e0a8f41e193c65d2",
+      "interest_rate_basis_points": 600,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00620-basis-points.json",
+      "bytes": 576351,
+      "sha256": "839c7c05c063fd92099803159d8cc6de9507aee33b1bd9df7d9a07884cf67113",
+      "protobuf_path": "protobuf/00620-basis-points.pb",
+      "protobuf_bytes": 60647,
+      "protobuf_sha256": "280200e3dab2ebaa5f36658a520f7e8d1045f5bf012e3c1fe91219d9c3750c88",
+      "interest_rate_basis_points": 620,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00640-basis-points.json",
+      "bytes": 576215,
+      "sha256": "89edaaf443d38ab018804e90c5deb1d15d1280b1a8ca4da99dc53dfc4b55ccaf",
+      "protobuf_path": "protobuf/00640-basis-points.pb",
+      "protobuf_bytes": 60460,
+      "protobuf_sha256": "d993ca24c2ce48a0793f1847358620b476c4778ebb26c517241e22e82a9051f1",
+      "interest_rate_basis_points": 640,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00660-basis-points.json",
+      "bytes": 576067,
+      "sha256": "4700ff1a738db9cab622a9283ecca1472f825a46041124d39e575abf21e3c12f",
+      "protobuf_path": "protobuf/00660-basis-points.pb",
+      "protobuf_bytes": 60258,
+      "protobuf_sha256": "16e8a606ec1d7a22d522c6e04b632068f25e316da769361f30180678ca0577a5",
+      "interest_rate_basis_points": 660,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00680-basis-points.json",
+      "bytes": 575912,
+      "sha256": "31c028a23e7aba7f120f4b85a88df92d6d4f0226ac9b18132297b7bde072b4d0",
+      "protobuf_path": "protobuf/00680-basis-points.pb",
+      "protobuf_bytes": 60089,
+      "protobuf_sha256": "eebe23bcda1ace833f4cc2cf926c7da396fbcb75c21cf995faaeb93fb0ca7443",
+      "interest_rate_basis_points": 680,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00700-basis-points.json",
+      "bytes": 575748,
+      "sha256": "9a2cd9f77744913e34fee2a05de594a3e84b4ede2915c76b0a9ec41404308a5b",
+      "protobuf_path": "protobuf/00700-basis-points.pb",
+      "protobuf_bytes": 59914,
+      "protobuf_sha256": "e60cc71f11a55f016d95874650e1a552b32fff6cb5fdbb67f810200c96aa5948",
+      "interest_rate_basis_points": 700,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00720-basis-points.json",
+      "bytes": 575578,
+      "sha256": "28d850d828bf167bead4064622519bfe182fddc6e33175bd1a797bfe140edcba",
+      "protobuf_path": "protobuf/00720-basis-points.pb",
+      "protobuf_bytes": 59760,
+      "protobuf_sha256": "859f4c3da720463fe57438822606e189399fed49a708a9f2e85b2af90389d979",
+      "interest_rate_basis_points": 720,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00740-basis-points.json",
+      "bytes": 575401,
+      "sha256": "a11b30d254808d22db2f03ada9bb613a74354b70421c65e1cad1a1b2f1b5d6b1",
+      "protobuf_path": "protobuf/00740-basis-points.pb",
+      "protobuf_bytes": 59630,
+      "protobuf_sha256": "1f10758dcde5afc3a3202b945d053b7cb32f26ad9ed043105b604c14e8f554bc",
+      "interest_rate_basis_points": 740,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00760-basis-points.json",
+      "bytes": 575183,
+      "sha256": "36a5ec6e3f95a272c9c898426a29329d713234fe45469d5e6f4e5fcaaffa5aca",
+      "protobuf_path": "protobuf/00760-basis-points.pb",
+      "protobuf_bytes": 59506,
+      "protobuf_sha256": "7f98493c3acb1af8780eccb5ca0c15888fcda0386bd2607f6530d30443f2a8dc",
+      "interest_rate_basis_points": 760,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00780-basis-points.json",
+      "bytes": 574966,
+      "sha256": "7bd3aaa7984f5168ad0c4daaece088a90da043b36759c813f2482c88e813ef74",
+      "protobuf_path": "protobuf/00780-basis-points.pb",
+      "protobuf_bytes": 59391,
+      "protobuf_sha256": "4e214ac9546b87f7042bb14533961221e8f155b2138861d79685d5d5789882f6",
+      "interest_rate_basis_points": 780,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00800-basis-points.json",
+      "bytes": 574788,
+      "sha256": "67ed4de8ce32836ab8806921a5679186d0d246e5f57600c0b26562df319fbf36",
+      "protobuf_path": "protobuf/00800-basis-points.pb",
+      "protobuf_bytes": 59283,
+      "protobuf_sha256": "4bbc07164ce3525419f89f8e58c2447480d3213b93010cec8aca752e9ce9bb39",
+      "interest_rate_basis_points": 800,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00820-basis-points.json",
+      "bytes": 574622,
+      "sha256": "ad6b7c7030e2641df91a8fa0327b29558dd76f9eb224319aa517687ca4bcf1ea",
+      "protobuf_path": "protobuf/00820-basis-points.pb",
+      "protobuf_bytes": 59181,
+      "protobuf_sha256": "d8f8cb6699595a58a73da193d2f8bb667bf8c33c47044516744056f3772faeb4",
+      "interest_rate_basis_points": 820,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00840-basis-points.json",
+      "bytes": 574452,
+      "sha256": "ad521542bd56ec969ce7b67d532403dded5073c5005a9eff89a4ca4efb57a159",
+      "protobuf_path": "protobuf/00840-basis-points.pb",
+      "protobuf_bytes": 59080,
+      "protobuf_sha256": "79d70e745934992e6f000f36e8c0de2cc672159e05069fcebc34194bad6180e6",
+      "interest_rate_basis_points": 840,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00860-basis-points.json",
+      "bytes": 574296,
+      "sha256": "2e761bacdb2b60d3136060e09ffcf5c00d482110fceab47c23f4a24bc8b225f5",
+      "protobuf_path": "protobuf/00860-basis-points.pb",
+      "protobuf_bytes": 58987,
+      "protobuf_sha256": "f2af722644b4d1c57d7901445093cd04eff9096cc7dae1e92163911d5c265ae3",
+      "interest_rate_basis_points": 860,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00880-basis-points.json",
+      "bytes": 574159,
+      "sha256": "9de5eed5beed10444fbf5d6fd8f57409c34fbccf66259d56301dcb20393f8629",
+      "protobuf_path": "protobuf/00880-basis-points.pb",
+      "protobuf_bytes": 58894,
+      "protobuf_sha256": "ae52ed7bc28f5c0cb1feab2882015b1ce677f2a81503acfe1db89350688a6da4",
+      "interest_rate_basis_points": 880,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00900-basis-points.json",
+      "bytes": 574008,
+      "sha256": "cb9b1f0e17fec3fa0c5e95eee412f9aec14352ff56d759242924a602954e3dfc",
+      "protobuf_path": "protobuf/00900-basis-points.pb",
+      "protobuf_bytes": 58812,
+      "protobuf_sha256": "4ed1413e9dbf5997f37c54293d4716adffa4560b0cf4847d82d84a245c658c73",
+      "interest_rate_basis_points": 900,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00920-basis-points.json",
+      "bytes": 573866,
+      "sha256": "9e40370dd2666523b678856914aa6e0a4ae9958d073421d44cab094f963e3ba9",
+      "protobuf_path": "protobuf/00920-basis-points.pb",
+      "protobuf_bytes": 58732,
+      "protobuf_sha256": "552850f77b11d6315365bb892683ee1776dc33eb6bfae0a76687fe1a4de845f3",
+      "interest_rate_basis_points": 920,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00940-basis-points.json",
+      "bytes": 573746,
+      "sha256": "028dfb51871a405fc2024b664bf870cc8160290420cf730409e60d37b96e5e11",
+      "protobuf_path": "protobuf/00940-basis-points.pb",
+      "protobuf_bytes": 58654,
+      "protobuf_sha256": "a0f3d04f4500da6aa600580a7d39765fffc2905131b934945bd22cfd2115005b",
+      "interest_rate_basis_points": 940,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00960-basis-points.json",
+      "bytes": 573596,
+      "sha256": "c34162cda5da9141372cecb9b927d07072c5254757b1884ea461eb0231134bbc",
+      "protobuf_path": "protobuf/00960-basis-points.pb",
+      "protobuf_bytes": 58576,
+      "protobuf_sha256": "eb73473bed49107ff9f8c6545783f93a36df7cd578f6516599444ca4c343973c",
+      "interest_rate_basis_points": 960,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/00980-basis-points.json",
+      "bytes": 573471,
+      "sha256": "0483b31265eb1b902760e655c70a58b1673cc6c20236e8cbac5d0fb84adb8f6b",
+      "protobuf_path": "protobuf/00980-basis-points.pb",
+      "protobuf_bytes": 58501,
+      "protobuf_sha256": "6adc1c7ae13b2e77242a6d7e77391cf30bd43ba9575e41b463525dcf8daf7b73",
+      "interest_rate_basis_points": 980,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01000-basis-points.json",
+      "bytes": 573336,
+      "sha256": "02a386d5911fb59663c8522c5f4d0a9f911c17519a921d34b7b721428da4a97d",
+      "protobuf_path": "protobuf/01000-basis-points.pb",
+      "protobuf_bytes": 58433,
+      "protobuf_sha256": "1d931965c0c6cdc8144ec4cb9415611e2cd16efe901590cc1df4ee3853ae256f",
+      "interest_rate_basis_points": 1000,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01020-basis-points.json",
+      "bytes": 573205,
+      "sha256": "b732aa17e0fd7db09c3af24ac73aa20023d2d5b860d6bf86a6fd132dcbf2d8e2",
+      "protobuf_path": "protobuf/01020-basis-points.pb",
+      "protobuf_bytes": 58368,
+      "protobuf_sha256": "9d26437ae5bc8fa1b39ca983fda8af34ce7ffbe6086b6727862a512f185d5aa4",
+      "interest_rate_basis_points": 1020,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01040-basis-points.json",
+      "bytes": 573083,
+      "sha256": "592c2e4dc3867e226fb94f7c5d810679fdc2ae22009b16c242ba8d97ec7558cd",
+      "protobuf_path": "protobuf/01040-basis-points.pb",
+      "protobuf_bytes": 58302,
+      "protobuf_sha256": "40d0bdc958392cb6cfb167ad881891a5fa5f4ef0f281bec2dca5e6423c619561",
+      "interest_rate_basis_points": 1040,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01060-basis-points.json",
+      "bytes": 572961,
+      "sha256": "c1171a2fdfcea0ee30cd2d875b0c9773c2915d59424d5c993dd353741f6d7e43",
+      "protobuf_path": "protobuf/01060-basis-points.pb",
+      "protobuf_bytes": 58237,
+      "protobuf_sha256": "9957c666f194198436be6c65361fe7f2ee771a73d6db56f76e346cbc9ebec863",
+      "interest_rate_basis_points": 1060,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01080-basis-points.json",
+      "bytes": 572836,
+      "sha256": "745693762554a762aed811d9ff093619cd830836fad71a3aaec4bf5db9f11142",
+      "protobuf_path": "protobuf/01080-basis-points.pb",
+      "protobuf_bytes": 58175,
+      "protobuf_sha256": "02606cc6fa6e2821337f2b2f8f46987f7f321e6cdf2033472b754212f1bbbfb4",
+      "interest_rate_basis_points": 1080,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01100-basis-points.json",
+      "bytes": 572714,
+      "sha256": "200faf6ef6e41d8e47090229a97adbd1ffe0991adb2f4b50bae629b85a7c19d3",
+      "protobuf_path": "protobuf/01100-basis-points.pb",
+      "protobuf_bytes": 58120,
+      "protobuf_sha256": "62f14fd5dd35291081a7f1f97d0dc4ccb07b6296ba92b75143ef73fc9fe94120",
+      "interest_rate_basis_points": 1100,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01120-basis-points.json",
+      "bytes": 572600,
+      "sha256": "68cc0af02baf63aabfc5d050d05b81737531b14d94c00e6c56996173c12cf0dd",
+      "protobuf_path": "protobuf/01120-basis-points.pb",
+      "protobuf_bytes": 58068,
+      "protobuf_sha256": "04392f4e3e16190d1ebbde8efb8ba3822f2a502c82955f87b8148becf39f7e21",
+      "interest_rate_basis_points": 1120,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01140-basis-points.json",
+      "bytes": 572479,
+      "sha256": "23c4ea102b0ec9eb515b7a43b412021c1762d5bfc5b337b03a61cd0f0dc6a95b",
+      "protobuf_path": "protobuf/01140-basis-points.pb",
+      "protobuf_bytes": 58014,
+      "protobuf_sha256": "d8a0fc2ac5216e677de5af902badd6b7208b44354462ce57c445ea36255662a2",
+      "interest_rate_basis_points": 1140,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01160-basis-points.json",
+      "bytes": 572368,
+      "sha256": "cc3f0e1fed34261e487c5fccf40747a5157cff0493ece556232965c1cd4dee44",
+      "protobuf_path": "protobuf/01160-basis-points.pb",
+      "protobuf_bytes": 57965,
+      "protobuf_sha256": "ae4692c85e499f9172e844a1720e7663def4483f7bc45b759ecf3726dd71857d",
+      "interest_rate_basis_points": 1160,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01180-basis-points.json",
+      "bytes": 572253,
+      "sha256": "a9d10b69d9703b49d271a2887a8c9842bd39e0373fcf9e4188d56e95eeaa3a5d",
+      "protobuf_path": "protobuf/01180-basis-points.pb",
+      "protobuf_bytes": 57921,
+      "protobuf_sha256": "5415eb4c43b6b81cfa82bcb173fcdcb7175da0a0be0efe1bfc3c33d0f88f1cdf",
+      "interest_rate_basis_points": 1180,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01200-basis-points.json",
+      "bytes": 572148,
+      "sha256": "28f9ae92ab6ce1c6405345890e5bb7585be90bdd4aac46c9350ffe2ba2daf3f3",
+      "protobuf_path": "protobuf/01200-basis-points.pb",
+      "protobuf_bytes": 57874,
+      "protobuf_sha256": "946a13f41e82001d12955624a9946af7ac18beb0c79172bbce31870f0e632259",
+      "interest_rate_basis_points": 1200,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01220-basis-points.json",
+      "bytes": 572027,
+      "sha256": "342cea263b0eeda95d3d9dd2a9999aaf6e894499cc4a3e197c7a5ce1bae18a8e",
+      "protobuf_path": "protobuf/01220-basis-points.pb",
+      "protobuf_bytes": 57832,
+      "protobuf_sha256": "2910ba50e729d83094a07ccd6d9904f9736f15c2a94b3cd2ffd7beb6a5e4a6a8",
+      "interest_rate_basis_points": 1220,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01240-basis-points.json",
+      "bytes": 571936,
+      "sha256": "7d96ad9044538a4777461ae9c8520a33eea8ae9d6bcb5a8a79eeb2f9f2996f7f",
+      "protobuf_path": "protobuf/01240-basis-points.pb",
+      "protobuf_bytes": 57788,
+      "protobuf_sha256": "05fccfeeeae6ad613a10946fa372f517dba738447ed737715d3a494a82e29a15",
+      "interest_rate_basis_points": 1240,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01260-basis-points.json",
+      "bytes": 571824,
+      "sha256": "eda018de481a5d78fdfcb9b6f97bf7a31eed2014e8f51059b4d74dbcdefad9a4",
+      "protobuf_path": "protobuf/01260-basis-points.pb",
+      "protobuf_bytes": 57743,
+      "protobuf_sha256": "c4be5575e08514c006ac2d0b586cdc54efb4d9383685e681e3edf064b75a4416",
+      "interest_rate_basis_points": 1260,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01280-basis-points.json",
+      "bytes": 571721,
+      "sha256": "a35a68dc49f7f23fb8ba8bb7a97632012c709c5b8b3b030913b72bb603a50ead",
+      "protobuf_path": "protobuf/01280-basis-points.pb",
+      "protobuf_bytes": 57700,
+      "protobuf_sha256": "510e49bab6367d91a5039280ffd01333652cace8886e7c2a81f95dc62b29fa72",
+      "interest_rate_basis_points": 1280,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01300-basis-points.json",
+      "bytes": 571625,
+      "sha256": "1d1d89f2e5bf274e8fed9c84ee01eb93d46ca0e8d976e3af74639fc18e4f415b",
+      "protobuf_path": "protobuf/01300-basis-points.pb",
+      "protobuf_bytes": 57654,
+      "protobuf_sha256": "6639d41190e5c762548c2e0342925c98e9d958e8d5e601bee9c2f35ae3c9fcea",
+      "interest_rate_basis_points": 1300,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01320-basis-points.json",
+      "bytes": 571518,
+      "sha256": "a1612bdbbe46dde4263f1ef6bcdd9f294770c02e877a197c8e9c9411b90f8859",
+      "protobuf_path": "protobuf/01320-basis-points.pb",
+      "protobuf_bytes": 57612,
+      "protobuf_sha256": "6d85bc4636d3ce9482a5475e253e491953690dad756b1095ecf7cfd1d074b1d6",
+      "interest_rate_basis_points": 1320,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01340-basis-points.json",
+      "bytes": 571412,
+      "sha256": "7c28b63fc148bbfccd04e3639e4ce757ab77c9f5c3b7c55f96adce741ba40245",
+      "protobuf_path": "protobuf/01340-basis-points.pb",
+      "protobuf_bytes": 57564,
+      "protobuf_sha256": "72aceb006942a0777f57a3c5b533395ba3ae6dd1dc727775ec43109e27f9557f",
+      "interest_rate_basis_points": 1340,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01360-basis-points.json",
+      "bytes": 571316,
+      "sha256": "63a4d7278e91710db0b6ad210bf5a007b9a61ea670cf939edbbd24e7fff15303",
+      "protobuf_path": "protobuf/01360-basis-points.pb",
+      "protobuf_bytes": 57524,
+      "protobuf_sha256": "9ff34ba29fcaad533ee05c772b8e28acab994ce3aea22a082c71052b47b55bf9",
+      "interest_rate_basis_points": 1360,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01380-basis-points.json",
+      "bytes": 571215,
+      "sha256": "5c4b8db9703d8b4f99a0fbdfe4919183c1ec412367b8cb5c2ddaea5db53da490",
+      "protobuf_path": "protobuf/01380-basis-points.pb",
+      "protobuf_bytes": 57477,
+      "protobuf_sha256": "155a985a8b3865c13d5494ad3c59879c0182e837127f7e6df9cff3281e196f5e",
+      "interest_rate_basis_points": 1380,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01400-basis-points.json",
+      "bytes": 571110,
+      "sha256": "ca9e9e3fa365c22602a1eb1088150b3201746d955c8e7473a24982832c1cc1e5",
+      "protobuf_path": "protobuf/01400-basis-points.pb",
+      "protobuf_bytes": 57435,
+      "protobuf_sha256": "6bc87ed12d37b17308c4709120604eb4dbb473f99ce5dfff873b8eebe00c0d8b",
+      "interest_rate_basis_points": 1400,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01420-basis-points.json",
+      "bytes": 571018,
+      "sha256": "e57959724af5b03486765cc766ffdb72bb5feb75b997a8497252c1e4bfd1c2cc",
+      "protobuf_path": "protobuf/01420-basis-points.pb",
+      "protobuf_bytes": 57395,
+      "protobuf_sha256": "27807ddd91ca47d9e2391cef028c6b666b80dea67a93e9e8d0aa7dd6ca9be9eb",
+      "interest_rate_basis_points": 1420,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01440-basis-points.json",
+      "bytes": 570925,
+      "sha256": "e11dfb9c5d3fb32b9dcfbb417a02351893662f506d27349728d48a07ff14be17",
+      "protobuf_path": "protobuf/01440-basis-points.pb",
+      "protobuf_bytes": 57350,
+      "protobuf_sha256": "6300f51fa2ec9ba130019ed8987d50e8f3ffb7d174b2029554acc876fb334d4d",
+      "interest_rate_basis_points": 1440,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01460-basis-points.json",
+      "bytes": 570822,
+      "sha256": "d611f7df696766b9cba4777b3d61c3e90b73a56e11d8ff5a293c359b3adbe16d",
+      "protobuf_path": "protobuf/01460-basis-points.pb",
+      "protobuf_bytes": 57310,
+      "protobuf_sha256": "01a9a703ebf1327fe1e831314a6c6447bd6ac869daa723da8cf757b31dab4b01",
+      "interest_rate_basis_points": 1460,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01480-basis-points.json",
+      "bytes": 570738,
+      "sha256": "d7bb0233752e7e5e6836467ffee1a20e3bc7fe7aad98287e93fb631eb038b8df",
+      "protobuf_path": "protobuf/01480-basis-points.pb",
+      "protobuf_bytes": 57274,
+      "protobuf_sha256": "bfb322d1b7b8fa96a8a652dd6d0a4973befc768f4e1a3225d44b6931f278dd81",
+      "interest_rate_basis_points": 1480,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01500-basis-points.json",
+      "bytes": 570642,
+      "sha256": "f7211fe37d3591cb56a21e1beab89495d9d2c3683510baf66fa7e5bc92b91a6d",
+      "protobuf_path": "protobuf/01500-basis-points.pb",
+      "protobuf_bytes": 57225,
+      "protobuf_sha256": "fc30b24bd7e85cc571e27511078e06d91b1abbf34edfd540961be19b5f2cc8aa",
+      "interest_rate_basis_points": 1500,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01520-basis-points.json",
+      "bytes": 570557,
+      "sha256": "a85bb2106de716ba02bb76f6f741de5b82aa79e67fc5797d2aa9424648119deb",
+      "protobuf_path": "protobuf/01520-basis-points.pb",
+      "protobuf_bytes": 57188,
+      "protobuf_sha256": "e54d9bb1c223cd53c70bed698132b6319d3ae7486b7c9b0ab59cb62ed4686b65",
+      "interest_rate_basis_points": 1520,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01540-basis-points.json",
+      "bytes": 570472,
+      "sha256": "61e651a2fa63659b7fe3a76ef50a68e6dc30f163f1da2984a5be3d3e58cbcaaf",
+      "protobuf_path": "protobuf/01540-basis-points.pb",
+      "protobuf_bytes": 57148,
+      "protobuf_sha256": "f4ceee94a7c1dbaee771c48850022ecb951e0e07e4608f6138676a7d1fab8f5e",
+      "interest_rate_basis_points": 1540,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01560-basis-points.json",
+      "bytes": 570383,
+      "sha256": "8eb1bba493445cd998aee5464ad8597428bc08a4238c69db8ac1fb6f71af92ef",
+      "protobuf_path": "protobuf/01560-basis-points.pb",
+      "protobuf_bytes": 57106,
+      "protobuf_sha256": "11f899ada0b064049b722cecec82ffe79f5436962e53db20d0ba1d0db070d7fa",
+      "interest_rate_basis_points": 1560,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01580-basis-points.json",
+      "bytes": 570297,
+      "sha256": "a5572c5c4b5575ed34f164fad5017429b0a20549e6ea0af4be06444ecedbb31c",
+      "protobuf_path": "protobuf/01580-basis-points.pb",
+      "protobuf_bytes": 57067,
+      "protobuf_sha256": "eea8cf72c75ae83bfab8feb3156801039919534d260ebbf8d36efc65dad4243d",
+      "interest_rate_basis_points": 1580,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01600-basis-points.json",
+      "bytes": 570216,
+      "sha256": "32f0a65624d6f61b0a3c38579e7b368b87b6df7fefcf9b6a033d113078d4fd48",
+      "protobuf_path": "protobuf/01600-basis-points.pb",
+      "protobuf_bytes": 57032,
+      "protobuf_sha256": "0303d01fdc9ed48b42a4eda9b0ab7af9f377e5ad1e48a9e14ac26334c2187b97",
+      "interest_rate_basis_points": 1600,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01620-basis-points.json",
+      "bytes": 570130,
+      "sha256": "1bd25e785684eee352008343517d101520410e71cd8e9137131ea15e3cf5e18b",
+      "protobuf_path": "protobuf/01620-basis-points.pb",
+      "protobuf_bytes": 56993,
+      "protobuf_sha256": "f8912dbf83c3f00200819eff9d5b5f0d53b3b69f7f74db7b9ec0e5123727992b",
+      "interest_rate_basis_points": 1620,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01640-basis-points.json",
+      "bytes": 570048,
+      "sha256": "954286138230a7a4063e7008521ee7e68d3a1ef10d0cdbea446db7201ae6c4f0",
+      "protobuf_path": "protobuf/01640-basis-points.pb",
+      "protobuf_bytes": 56957,
+      "protobuf_sha256": "20ec7c9e1697c425acc326ec3129c02977ed84f90672e68130eb9ca956a172aa",
+      "interest_rate_basis_points": 1640,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01660-basis-points.json",
+      "bytes": 569977,
+      "sha256": "017547ea414d10a0edc327c5ad012a12c40bc8d71d086b9046a030770e8f42ff",
+      "protobuf_path": "protobuf/01660-basis-points.pb",
+      "protobuf_bytes": 56920,
+      "protobuf_sha256": "9bf81d54eaa042076bb5d15dc773e5eb15045185d35c53b3570f754c669c15fa",
+      "interest_rate_basis_points": 1660,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01680-basis-points.json",
+      "bytes": 569897,
+      "sha256": "bbbb6817d36fcb09ed93b734e73aeee5e4006fd44e7670441b33811419977495",
+      "protobuf_path": "protobuf/01680-basis-points.pb",
+      "protobuf_bytes": 56883,
+      "protobuf_sha256": "68c972ba2bf04fecbf962de55ccaf6324606c559b9d001b4ced8965177590969",
+      "interest_rate_basis_points": 1680,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01700-basis-points.json",
+      "bytes": 569818,
+      "sha256": "3802646baba5e74cabff8fda1403b2e1c7cc5c4a4c73d8624db46fc42b0b1992",
+      "protobuf_path": "protobuf/01700-basis-points.pb",
+      "protobuf_bytes": 56847,
+      "protobuf_sha256": "b7f8a0c5f4b069ef4789b7d89b13f3cb580258a37490572309606b2fd13bbd88",
+      "interest_rate_basis_points": 1700,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01720-basis-points.json",
+      "bytes": 569743,
+      "sha256": "575c2bac982ee5922554f256ebf8b000937febde899bd5910f76278e4bd1140d",
+      "protobuf_path": "protobuf/01720-basis-points.pb",
+      "protobuf_bytes": 56812,
+      "protobuf_sha256": "b88f7ab94fab758ce1d9be8104b21ed8e786497f13b71f68452cde787713d55e",
+      "interest_rate_basis_points": 1720,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01740-basis-points.json",
+      "bytes": 569664,
+      "sha256": "cf64dc0bcea4939e17345ad08ba15e22850cc543b9ee351615dfa33b1211c991",
+      "protobuf_path": "protobuf/01740-basis-points.pb",
+      "protobuf_bytes": 56780,
+      "protobuf_sha256": "02bb8986fccb927311ff7d9baa62f6b06cab287a9c1fb1cb1011ea09d7925b83",
+      "interest_rate_basis_points": 1740,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01760-basis-points.json",
+      "bytes": 569596,
+      "sha256": "17462eeffe7dbb278c3d609eabc141a3937dd4f17f603e16a76847e52a24799b",
+      "protobuf_path": "protobuf/01760-basis-points.pb",
+      "protobuf_bytes": 56744,
+      "protobuf_sha256": "1a98df57eba358d4fa12369a1621101c429acc69e7921aba1a705d0bdbd443f3",
+      "interest_rate_basis_points": 1760,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01780-basis-points.json",
+      "bytes": 569523,
+      "sha256": "cc21463f767038296b836650028da7f9554e9bcb8b37803be7177babcfaf99a6",
+      "protobuf_path": "protobuf/01780-basis-points.pb",
+      "protobuf_bytes": 56708,
+      "protobuf_sha256": "889400cfc0018bd6afef3cfe963c59848918d627fee64792e3b60df35dcaeb5e",
+      "interest_rate_basis_points": 1780,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01800-basis-points.json",
+      "bytes": 569449,
+      "sha256": "81a610a530dc89a5cad85ccb234bc9da3c9c849a40e2aa517ad8ec0edd6bdce1",
+      "protobuf_path": "protobuf/01800-basis-points.pb",
+      "protobuf_bytes": 56677,
+      "protobuf_sha256": "414555d45be8883e5f63558f36facb91103753e9db61332d5eac59c4b1913f49",
+      "interest_rate_basis_points": 1800,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01820-basis-points.json",
+      "bytes": 569384,
+      "sha256": "a5437f3aaa88a1e6bac0003c8c0c1e19e278e47ce9e993e2cc848286491efab3",
+      "protobuf_path": "protobuf/01820-basis-points.pb",
+      "protobuf_bytes": 56643,
+      "protobuf_sha256": "173f3fb38df63e72483c0b6f57ec3963f0ecace70e4e659a344cb3628f52dde8",
+      "interest_rate_basis_points": 1820,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01840-basis-points.json",
+      "bytes": 569317,
+      "sha256": "356fcaddef3e295f037bffb634aa2bac02a9f7ec9785c1f4fb5584a56e14b00d",
+      "protobuf_path": "protobuf/01840-basis-points.pb",
+      "protobuf_bytes": 56611,
+      "protobuf_sha256": "ef5d45fa30a805bdddb54188c608c3db630e9fe62053adb3b0c49c41e96dc861",
+      "interest_rate_basis_points": 1840,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01860-basis-points.json",
+      "bytes": 569244,
+      "sha256": "b48499df36a907bb7867d3c967177c98056d2b350e3f0c0dd78b5ce82bc8f256",
+      "protobuf_path": "protobuf/01860-basis-points.pb",
+      "protobuf_bytes": 56579,
+      "protobuf_sha256": "0339dd28f7d42f28059d806598f6c4c617554a44b73a65cd8af508f3ec579529",
+      "interest_rate_basis_points": 1860,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01880-basis-points.json",
+      "bytes": 569179,
+      "sha256": "863bb7ca2414ee9d6e750c2e229a8ec15c74c51e713310c974481367c9bf3398",
+      "protobuf_path": "protobuf/01880-basis-points.pb",
+      "protobuf_bytes": 56548,
+      "protobuf_sha256": "8eac4f7693f117bbc21337261263508d95790f0260a7fe615353b1dc81d6262e",
+      "interest_rate_basis_points": 1880,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01900-basis-points.json",
+      "bytes": 569116,
+      "sha256": "547f64a5d6ac63bb277185bcb84253c46a3db7a7dd7bc1b37970fe572329933f",
+      "protobuf_path": "protobuf/01900-basis-points.pb",
+      "protobuf_bytes": 56517,
+      "protobuf_sha256": "8491e3ea7cee0d495e0e2c438735bdd06c9911aec3acb44425850b05b42870dc",
+      "interest_rate_basis_points": 1900,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01920-basis-points.json",
+      "bytes": 569045,
+      "sha256": "4984c0a669ea8f611a61e75fcee4ba289424131e432298d290cbea98601938d9",
+      "protobuf_path": "protobuf/01920-basis-points.pb",
+      "protobuf_bytes": 56491,
+      "protobuf_sha256": "2f4d6eca708ec15f44e81a32e249ef89f72d658ecbdf02c72de56e97777abecb",
+      "interest_rate_basis_points": 1920,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01940-basis-points.json",
+      "bytes": 568983,
+      "sha256": "e36038d5a2fe56ca0e7e3319516cf62b504200ee75dd7cb9cb2b37777565610f",
+      "protobuf_path": "protobuf/01940-basis-points.pb",
+      "protobuf_bytes": 56458,
+      "protobuf_sha256": "dba29142ffca20208477fb4182ec01a292f21a38a1003e490f99ab07b67e10ab",
+      "interest_rate_basis_points": 1940,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01960-basis-points.json",
+      "bytes": 568921,
+      "sha256": "8fa461ed6e18fa9aa387723ee297eee914eecb5bdffc4c71ee11eba94980e99a",
+      "protobuf_path": "protobuf/01960-basis-points.pb",
+      "protobuf_bytes": 56428,
+      "protobuf_sha256": "1d96b3984880a26d91eb743e13c1e6ecb7a0c95b67378568089bbb27e7a628f5",
+      "interest_rate_basis_points": 1960,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/01980-basis-points.json",
+      "bytes": 568858,
+      "sha256": "6947d154fd084b66e06383757c0314f41774e2316d9c43aa220cd5d51338cb60",
+      "protobuf_path": "protobuf/01980-basis-points.pb",
+      "protobuf_bytes": 56401,
+      "protobuf_sha256": "8f8ad36c6668d46a6a3bf211d377065776feb7ccbda5844bc56cf22034449513",
+      "interest_rate_basis_points": 1980,
+      "record_count": 6105
+    },
+    {
+      "path": "by-interest-rate/02000-basis-points.json",
+      "bytes": 568794,
+      "sha256": "58a80ff85da4e2df450613af2c1d559db43321d27b4c82360517eba09b3e26c7",
+      "protobuf_path": "protobuf/02000-basis-points.pb",
+      "protobuf_bytes": 56370,
+      "protobuf_sha256": "548546e4d7d3552e9579739ecf49a9486acc00be531354bc8be6f82409461096",
+      "interest_rate_basis_points": 2000,
+      "record_count": 6105
+    }
+  ]
+}

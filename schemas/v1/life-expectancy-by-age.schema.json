@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/vanderbr/rates/main/schemas/v1/life-expectancy-by-age.schema.json",
+  "title": "life-expectancy-by-age",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "age",
+      "curtate_life_expectancy_years_scaled_1e6",
+      "complete_life_expectancy_years_scaled_1e6"
+    ],
+    "properties": {
+      "age": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "curtate_life_expectancy_years_scaled_1e6": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "complete_life_expectancy_years_scaled_1e6": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  }
+}

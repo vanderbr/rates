@@ -1,0 +1,63 @@
+{
+  "name": "Secured Overnight Financing Rate",
+  "source": "Federal Reserve Bank of New York",
+  "source_url": "https://markets.newyorkfed.org/api/rates/all/search.csv",
+  "record_frequency": "business_day",
+  "date_key": {
+    "field": "date",
+    "format": "YYYY-MM-DD",
+    "meaning": "Effective date of the published reference rate"
+  },
+  "value_fields": {
+    "rate_basis_points": {
+      "unit": "basis_points",
+      "source_rate_type": "SOFR",
+      "null_meaning": "SOFRAI may publish before the daily SOFR observation"
+    },
+    "percentile_1_basis_points": {
+      "unit": "basis_points"
+    },
+    "percentile_25_basis_points": {
+      "unit": "basis_points"
+    },
+    "percentile_75_basis_points": {
+      "unit": "basis_points"
+    },
+    "percentile_99_basis_points": {
+      "unit": "basis_points"
+    },
+    "volume_billions": {
+      "unit": "billions_usd"
+    },
+    "average_30_day_basis_points_scaled_1000": {
+      "unit": "basis_points_scaled_1000",
+      "scale": "stored value / 1000 = basis points"
+    },
+    "average_90_day_basis_points_scaled_1000": {
+      "unit": "basis_points_scaled_1000",
+      "scale": "stored value / 1000 = basis points"
+    },
+    "average_180_day_basis_points_scaled_1000": {
+      "unit": "basis_points_scaled_1000",
+      "scale": "stored value / 1000 = basis points"
+    },
+    "sofr_index_scaled_100000000": {
+      "unit": "index_scaled_100000000",
+      "scale": "stored value / 100000000 = published index"
+    }
+  },
+  "storage": {
+    "manifest_file": "manifest.json",
+    "primary_records": "by-year/YYYY-sofr.json",
+    "year_shards": "by-year/YYYY-sofr.json",
+    "ordering": "ascending_date",
+    "dedupe_key": "date"
+  },
+  "dataset_id": "sofr",
+  "schema_id": "rates.sofr.v1",
+  "schema_version": 1,
+  "proto": {
+    "file": "proto/rates/v1/sofr.proto",
+    "message": "rates.v1.SofrFile"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/vanderbr/rates/main/schemas/v1/actuarial-table-z.schema.json",
+  "title": "actuarial-table-z",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "age",
+      "udx_scaled_1e6",
+      "unx_scaled_1e6",
+      "umx_scaled_1e6"
+    ],
+    "properties": {
+      "age": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "udx_scaled_1e6": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "unx_scaled_1e6": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "umx_scaled_1e6": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "dataset_id": "mortality-table-2010cm",
+  "schema_id": "rates.mortality_table_2010cm.v1",
+  "schema_version": 1,
+  "record_storage": "single_file",
+  "record_count": 111,
+  "proto": {
+    "file": "proto/rates/v1/mortality_table.proto",
+    "message": "rates.v1.MortalityFile"
+  },
+  "records": {
+    "path": "rates.json",
+    "bytes": 8294,
+    "sha256": "957622002a841077c247722e0a08c41b60ee632b799ae77ae12e8a12a49a4a10",
+    "protobuf_path": "protobuf/rates.pb",
+    "protobuf_bytes": 1221,
+    "protobuf_sha256": "02ec625656e678800c49fe1f4a73117f2bdbf419d7b9822fa1eb207c573d6d41"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "Unified Estate and Gift Tax Exemption",
+  "source": "Internal Revenue Service",
+  "source_urls": [
+    "https://www.irs.gov/instructions/i709",
+    "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf"
+  ],
+  "irs_term": "Basic Exclusion Amount",
+  "code_section": "26 USC 2010",
+  "record_frequency": "annual",
+  "backfill_start_date": "1977-01-01",
+  "date_key": {
+    "start_field": "period_start_date",
+    "end_field": "period_end_date",
+    "format": "YYYY-MM-DD",
+    "meaning": "Inclusive period in which the decedent dies for the basic exclusion amount"
+  },
+  "value_fields": {
+    "basic_exclusion_amount_usd": {
+      "unit": "usd",
+      "scale": "integer dollars"
+    }
+  },
+  "storage": {
+    "primary_records": "rates.json",
+    "ordering": "ascending_period_start_date",
+    "dedupe_key": [
+      "period_start_date",
+      "period_end_date"
+    ]
+  },
+  "automation": {
+    "publication_window": "November through January",
+    "behavior": "Scheduled updates no-op outside the publication window and after the target calendar-year period has been recorded."
+  },
+  "dataset_id": "estate-gift-tax-exemption",
+  "schema_id": "rates.estate_gift_tax_exemption.v1",
+  "schema_version": 1,
+  "proto": {
+    "file": "proto/rates/v1/estate_gift_tax_exemption.proto",
+    "message": "rates.v1.EstateGiftTaxExemptionFile"
+  }
+}

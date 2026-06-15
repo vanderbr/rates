@@ -1,0 +1,35 @@
+{
+  "name": "Section 7520 Rates",
+  "short_name": "Section 7520",
+  "source": "Internal Revenue Service",
+  "source_url": "https://www.irs.gov/businesses/small-businesses-self-employed/section-7520-interest-rates",
+  "record_frequency": "monthly",
+  "date_key": {
+    "field": "effective_month",
+    "format": "YYYY-MM",
+    "meaning": "Month for which the IRS-published section 7520 rate applies"
+  },
+  "value_fields": {
+    "midterm_afr_120_basis_points": {
+      "unit": "basis_points",
+      "scale": "1 percent = 100 basis points",
+      "meaning": "120% of the applicable federal midterm rate published for the month"
+    },
+    "section_7520_rate_basis_points": {
+      "unit": "basis_points",
+      "scale": "1 percent = 100 basis points"
+    }
+  },
+  "storage": {
+    "primary_records": "rates.json",
+    "ordering": "ascending_effective_month",
+    "dedupe_key": "effective_month"
+  },
+  "dataset_id": "section-7520-rates",
+  "schema_id": "rates.section_7520_rates.v1",
+  "schema_version": 1,
+  "proto": {
+    "file": "proto/rates/v1/section_7520_rates.proto",
+    "message": "rates.v1.Section7520RateFile"
+  }
+}

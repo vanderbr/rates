@@ -1,0 +1,40 @@
+{
+  "name": "Table S",
+  "source": "Internal Revenue Service",
+  "source_page_url": "https://www.irs.gov/retirement-plans/actuarial-tables",
+  "source_url": "https://www.irs.gov/pub/irs-tege/table-s-2010cm-final.xlsx",
+  "mortality_basis": "2010CM",
+  "effective_for_valuations_on_or_after": "2023-06-01",
+  "description": "One-life annuity, life-estate, and remainder factors.",
+  "value_fields": {
+    "annuity_factor_scaled_1e6": {
+      "unit": "factor_scaled_1e6",
+      "scale": "stored value / 1000000"
+    },
+    "life_estate_factor_scaled_1e6": {
+      "unit": "factor_scaled_1e6",
+      "scale": "stored value / 1000000"
+    },
+    "remainder_factor_scaled_1e6": {
+      "unit": "factor_scaled_1e6",
+      "scale": "stored value / 1000000"
+    }
+  },
+  "storage": {
+    "manifest_file": "manifest.json",
+    "primary_records": "by-interest-rate/NNNNN-basis-points.json",
+    "shards": "by-interest-rate/NNNNN-basis-points.json",
+    "shard_rate_field": "interest_rate_basis_points",
+    "ordering": "ascending_time_or_age_key",
+    "dedupe_key": [
+      "age"
+    ]
+  },
+  "dataset_id": "actuarial-table-s",
+  "schema_id": "rates.actuarial_table_s.v1",
+  "schema_version": 1,
+  "proto": {
+    "file": "proto/rates/v1/actuarial_table_s.proto",
+    "message": "rates.v1.TableSFile"
+  }
+}

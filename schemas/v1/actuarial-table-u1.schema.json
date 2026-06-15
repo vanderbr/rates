@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/vanderbr/rates/main/schemas/v1/actuarial-table-u1.schema.json",
+  "title": "actuarial-table-u1",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "age",
+      "unitrust_remainder_factor_scaled_1e6"
+    ],
+    "properties": {
+      "age": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "unitrust_remainder_factor_scaled_1e6": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  }
+}

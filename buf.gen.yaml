@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: Apache-2.0
+version: v2
+
+managed:
+  enabled: true
+
+# This repository publishes stable proto definitions and dataset protobuf
+# shards, but intentionally does not check in generated language bindings.
+# Add remote or local plugins here when a generated SDK becomes a committed
+# artifact.
+plugins: []

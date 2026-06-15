@@ -1,0 +1,34 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package rates.v1;
+
+import "rates/v1/common.proto";
+
+message AfrTermRates {
+  CompoundingRates afr = 1;
+  CompoundingRates afr_110 = 2;
+  CompoundingRates afr_120 = 3;
+  CompoundingRates afr_130 = 4;
+  CompoundingRates afr_150 = 5;
+  CompoundingRates afr_175 = 6;
+}
+
+message AdjustedAfrRates {
+  CompoundingRates short_term = 1;
+  CompoundingRates mid_term = 2;
+  CompoundingRates long_term = 3;
+}
+
+message ApplicableFederalRatesRecord {
+  string effective_month = 1;
+  AfrTermRates short_term = 2;
+  AfrTermRates mid_term = 3;
+  AfrTermRates long_term = 4;
+  AdjustedAfrRates adjusted_applicable_federal_rates = 5;
+}
+
+message ApplicableFederalRatesFile {
+  string schema_id = 1;
+  repeated ApplicableFederalRatesRecord records = 2;
+}

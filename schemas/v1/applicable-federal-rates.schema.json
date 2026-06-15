@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/vanderbr/rates/main/schemas/v1/applicable-federal-rates.schema.json",
+  "title": "applicable-federal-rates",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "effective_month",
+      "applicable_federal_rates",
+      "adjusted_applicable_federal_rates"
+    ],
+    "properties": {
+      "effective_month": {
+        "type": "string"
+      },
+      "applicable_federal_rates": {
+        "type": "object"
+      },
+      "adjusted_applicable_federal_rates": {
+        "type": "object"
+      }
+    }
+  }
+}

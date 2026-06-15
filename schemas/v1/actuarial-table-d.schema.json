@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/vanderbr/rates/main/schemas/v1/actuarial-table-d.schema.json",
+  "title": "actuarial-table-d",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "term_years",
+      "unitrust_remainder_factor_scaled_1e6"
+    ],
+    "properties": {
+      "term_years": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "unitrust_remainder_factor_scaled_1e6": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  }
+}

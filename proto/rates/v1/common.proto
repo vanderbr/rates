@@ -1,0 +1,16 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package rates.v1;
+
+message NullableInt32 {
+  bool present = 1;
+  int32 value = 2;
+}
+
+message CompoundingRates {
+  uint32 annual_basis_points = 1;
+  uint32 semiannual_basis_points = 2;
+  uint32 quarterly_basis_points = 3;
+  uint32 monthly_basis_points = 4;
+}

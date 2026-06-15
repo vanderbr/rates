@@ -1,0 +1,16 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package rates.v1;
+
+import "rates/v1/common.proto";
+
+message TreasuryYieldCurveRecord {
+  string date = 1;
+  repeated NullableInt32 par_yields_basis_points = 2;
+}
+
+message TreasuryYieldCurveFile {
+  string schema_id = 1;
+  repeated TreasuryYieldCurveRecord records = 2;
+}

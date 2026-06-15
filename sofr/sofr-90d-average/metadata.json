@@ -1,0 +1,33 @@
+{
+  "name": "90-Day Average SOFR",
+  "source": "Federal Reserve Bank of New York",
+  "source_url": "https://markets.newyorkfed.org/api/rates/all/search.csv",
+  "derived_from": "../by-year/YYYY-sofr.json",
+  "record_frequency": "business_day",
+  "date_key": {
+    "field": "date",
+    "format": "YYYY-MM-DD",
+    "meaning": "Effective date of the New York Fed-published SOFR average"
+  },
+  "value_fields": {
+    "average_90_day_basis_points_scaled_1000": {
+      "unit": "basis_points_scaled_1000",
+      "scale": "stored value / 1000 = basis points",
+      "source_rate_expression": "annualized_percent"
+    }
+  },
+  "storage": {
+    "manifest_file": "manifest.json",
+    "primary_records": "by-year/YYYY-sofr-90d-average.json",
+    "year_shards": "by-year/YYYY-sofr-90d-average.json",
+    "ordering": "ascending_date",
+    "dedupe_key": "date"
+  },
+  "dataset_id": "sofr-90d-average",
+  "schema_id": "rates.sofr_90d_average.v1",
+  "schema_version": 1,
+  "proto": {
+    "file": "proto/rates/v1/sofr_average.proto",
+    "message": "rates.v1.SofrAverageFile"
+  }
+}

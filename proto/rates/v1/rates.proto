@@ -1,0 +1,51 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package rates.v1;
+
+import "rates/v1/actuarial_table_b.proto";
+import "rates/v1/actuarial_table_d.proto";
+import "rates/v1/actuarial_table_h.proto";
+import "rates/v1/actuarial_table_r2.proto";
+import "rates/v1/actuarial_table_s.proto";
+import "rates/v1/actuarial_table_u1.proto";
+import "rates/v1/actuarial_table_u2.proto";
+import "rates/v1/actuarial_table_z.proto";
+import "rates/v1/annual_gift_exclusion.proto";
+import "rates/v1/applicable_federal_rates.proto";
+import "rates/v1/estate_gift_tax_exemption.proto";
+import "rates/v1/federal_funds.proto";
+import "rates/v1/gst_exemption.proto";
+import "rates/v1/life_expectancy_by_age.proto";
+import "rates/v1/mortality_table.proto";
+import "rates/v1/noncitizen_spouse_gift_exclusion.proto";
+import "rates/v1/section_7520_rates.proto";
+import "rates/v1/sofr.proto";
+import "rates/v1/sofr_average.proto";
+import "rates/v1/treasury_yield_curve.proto";
+
+message RatesBundle {
+  Section7520RateFile section_7520_rates = 1;
+  ApplicableFederalRatesFile applicable_federal_rates = 2;
+  AnnualGiftExclusionFile annual_gift_exclusion = 3;
+  EstateGiftTaxExemptionFile estate_gift_tax_exemption = 4;
+  GstExemptionFile gst_exemption = 5;
+  NoncitizenSpouseGiftExclusionFile noncitizen_spouse_gift_exclusion = 6;
+  TreasuryYieldCurveFile treasury_yield_curve = 7;
+  FederalFundsRateFile federal_funds = 8;
+  SofrFile sofr = 9;
+  SofrAverageFile sofr_30d_average = 10;
+  SofrAverageFile sofr_90d_average = 11;
+  SofrAverageFile sofr_180d_average = 12;
+  MortalityFile mortality_table_2000cm = 13;
+  MortalityFile mortality_table_2010cm = 14;
+  LifeExpectancyFile life_expectancy_by_age = 15;
+  TableBFile actuarial_table_b = 16;
+  TableDFile actuarial_table_d = 17;
+  TableHFile actuarial_table_h = 18;
+  TableR2File actuarial_table_r2 = 19;
+  TableSFile actuarial_table_s = 20;
+  TableU1File actuarial_table_u1 = 21;
+  TableU2File actuarial_table_u2 = 22;
+  TableZFile actuarial_table_z = 23;
+}

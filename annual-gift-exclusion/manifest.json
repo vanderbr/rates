@@ -1,0 +1,19 @@
+{
+  "dataset_id": "annual-gift-exclusion",
+  "schema_id": "rates.annual_gift_exclusion.v1",
+  "schema_version": 1,
+  "record_storage": "single_file",
+  "record_count": 72,
+  "proto": {
+    "file": "proto/rates/v1/annual_gift_exclusion.proto",
+    "message": "rates.v1.AnnualGiftExclusionFile"
+  },
+  "records": {
+    "path": "rates.json",
+    "bytes": 14376,
+    "sha256": "20c0e4cc1609e0fec419457775a51dafd8fcdd979af0b77bb35c6d373ad3b020",
+    "protobuf_path": "protobuf/rates.pb",
+    "protobuf_bytes": 6012,
+    "protobuf_sha256": "9004ce2665ec65f1e882daf7eccc11eaaa433582c1091fcbf1571483b58b500a"
+  }
+}
