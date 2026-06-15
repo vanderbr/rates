@@ -30,7 +30,7 @@ PRIOR_YEARS_SOURCE_URL = (
     "https://www.irs.gov/businesses/small-businesses-self-employed/"
     "section-7520-interest-rates-for-prior-years"
 )
-DEFAULT_DATA_PATH = Path("7520/rates.json")
+DEFAULT_DATA_PATH = Path("7520/by-year")
 MAX_RESPONSE_BYTES = 2_000_000
 REQUEST_TIMEOUT_SECONDS = 30
 MONTHS = {
@@ -281,7 +281,30 @@ def parse_revenue_ruling(value: str) -> str:
     return value
 
 
+def uses_year_shards(data_path: Path) -> bool:
+    return data_path.suffix == ""
+
+
+def record_year(record: Section7520RateRecord) -> str:
+    return record.effective_month[:4]
+
+
+def year_shard_path(data_path: Path, year: str) -> Path:
+    return data_path / f"{year}-section-7520-rates.json"
+
+
 def load_existing_records(data_path: Path) -> list[Section7520RateRecord]:
+    if uses_year_shards(data_path):
+        if not data_path.exists():
+            return []
+        records: list[Section7520RateRecord] = []
+        try:
+            for json_path in sorted(data_path.glob("*.json")):
+                records.extend(load_existing_records(json_path))
+        except OSError:
+            raise UpdateSection7520RatesError(UpdateErrorCode.INVALID_JSON) from None
+        return sorted(records)
+
     if not data_path.exists():
         return []
 
@@ -401,7 +424,9 @@ def serialize_records(records: list[Section7520RateRecord]) -> str:
     return json.dumps(json_ready, indent=2) + "\n"
 
 
-def write_records(data_path: Path, records: list[Section7520RateRecord]) -> None:
+def write_single_records_file(
+    data_path: Path, records: list[Section7520RateRecord]
+) -> None:
     data_path.parent.mkdir(parents=True, exist_ok=True)
     serialized = serialize_records(records)
     try:
@@ -418,7 +443,31 @@ def write_records(data_path: Path, records: list[Section7520RateRecord]) -> None
         raise UpdateSection7520RatesError(UpdateErrorCode.WRITE_FAILED) from None
 
 
-def canonical_json_changed(
+def write_records(data_path: Path, records: list[Section7520RateRecord]) -> None:
+    if not uses_year_shards(data_path):
+        write_single_records_file(data_path, records)
+        return
+
+    data_path.mkdir(parents=True, exist_ok=True)
+    records_by_year: dict[str, list[Section7520RateRecord]] = {}
+    for record in sorted(records):
+        records_by_year.setdefault(record_year(record), []).append(record)
+
+    expected_names = {
+        f"{year}-section-7520-rates.json" for year in records_by_year
+    }
+    try:
+        for existing_path in data_path.glob("*.json"):
+            if existing_path.name not in expected_names:
+                existing_path.unlink()
+    except OSError:
+        raise UpdateSection7520RatesError(UpdateErrorCode.WRITE_FAILED) from None
+
+    for year, year_records in records_by_year.items():
+        write_single_records_file(year_shard_path(data_path, year), year_records)
+
+
+def canonical_single_json_changed(
     data_path: Path, records: list[Section7520RateRecord]
 ) -> bool:
     if not data_path.exists():
@@ -427,6 +476,35 @@ def canonical_json_changed(
         return data_path.read_text(encoding="utf-8") != serialize_records(records)
     except OSError:
         raise UpdateSection7520RatesError(UpdateErrorCode.WRITE_FAILED) from None
+
+
+def canonical_json_changed(
+    data_path: Path, records: list[Section7520RateRecord]
+) -> bool:
+    if not uses_year_shards(data_path):
+        return canonical_single_json_changed(data_path, records)
+
+    records_by_year: dict[str, list[Section7520RateRecord]] = {}
+    for record in sorted(records):
+        records_by_year.setdefault(record_year(record), []).append(record)
+
+    expected_names = {
+        f"{year}-section-7520-rates.json" for year in records_by_year
+    }
+    if data_path.exists():
+        try:
+            actual_names = {path.name for path in data_path.glob("*.json")}
+        except OSError:
+            raise UpdateSection7520RatesError(UpdateErrorCode.WRITE_FAILED) from None
+        if actual_names != expected_names:
+            return True
+    elif expected_names:
+        return True
+
+    return any(
+        canonical_single_json_changed(year_shard_path(data_path, year), year_records)
+        for year, year_records in records_by_year.items()
+    )
 
 
 def update_from_html(

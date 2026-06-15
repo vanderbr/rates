@@ -53,7 +53,7 @@ class NoncitizenSpouseGiftExclusionUpdaterTests(unittest.TestCase):
 
     def test_update_writes_chronological_json_and_is_idempotent(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            data_path = Path(directory) / "rates.json"
+            data_path = Path(directory) / "noncitizen-spouse-gift-exclusion.json"
 
             first_result = self.updater.update_from_source_texts(
                 [(SOURCE_URL, self.fixture_text)],
@@ -74,10 +74,11 @@ class NoncitizenSpouseGiftExclusionUpdaterTests(unittest.TestCase):
             self.assertIn('"annual_exclusion_amount_usd": 194000', serialized)
             self.assertNotIn("revenue_procedure", serialized)
             self.assertNotIn("source_url", serialized)
+            self.assertNotIn("applies_to", serialized)
 
     def test_backfill_writes_static_history_without_per_record_sources(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            data_path = Path(directory) / "rates.json"
+            data_path = Path(directory) / "noncitizen-spouse-gift-exclusion.json"
 
             result = self.updater.update_from_urls(
                 (),
@@ -99,10 +100,11 @@ class NoncitizenSpouseGiftExclusionUpdaterTests(unittest.TestCase):
             serialized = data_path.read_text(encoding="utf-8")
             self.assertNotIn("revenue_procedure", serialized)
             self.assertNotIn("source_url", serialized)
+            self.assertNotIn("applies_to", serialized)
 
     def test_conflicting_existing_record_fails_closed(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            data_path = Path(directory) / "rates.json"
+            data_path = Path(directory) / "noncitizen-spouse-gift-exclusion.json"
             data_path.write_text(
                 "["
                 '{"year":2026,'
@@ -169,13 +171,57 @@ class NoncitizenSpouseGiftExclusionUpdaterTests(unittest.TestCase):
                     annual_exclusion_amount_usd=198_000,
                     applies_to=self.updater.APPLIES_TO,
                     revenue_procedure=None,
-                    source_url=self.updater.STATUTORY_SOURCE_URL,
+                    source_url="",
                 )
             ],
         )
 
         self.assertEqual((), outside_window_urls)
         self.assertEqual((), existing_target_urls)
+
+    def test_publication_poll_treats_missing_news_pages_as_noop(self) -> None:
+        def fetch_failure(_: str) -> str | None:
+            raise self.updater.irs_sources.UpdateAnnualGiftExclusionError(
+                self.updater.irs_sources.UpdateErrorCode.FETCH_FAILED
+            )
+
+        original_fetch = self.updater.irs_sources.fetch_news_html_if_available
+        self.updater.irs_sources.fetch_news_html_if_available = fetch_failure
+        try:
+            urls = self.updater.source_urls_for_run(
+                False,
+                self.updater.dt.date(2026, 11, 1),
+                existing_records=[],
+            )
+        finally:
+            self.updater.irs_sources.fetch_news_html_if_available = original_fetch
+
+        self.assertEqual((), urls)
+
+    def test_publication_poll_discovers_revenue_procedure_links_from_newsroom(
+        self,
+    ) -> None:
+        observed_urls: list[str] = []
+
+        def fetch_newsroom_html(source_url: str) -> str | None:
+            observed_urls.append(source_url)
+            return '<a href="/pub/irs-drop/rp-25-32.pdf">Revenue Procedure</a>'
+
+        original_fetch = self.updater.irs_sources.fetch_news_html_if_available
+        self.updater.irs_sources.fetch_news_html_if_available = fetch_newsroom_html
+        try:
+            urls = self.updater.source_urls_for_run(
+                False,
+                self.updater.dt.date(2026, 11, 1),
+                existing_records=[],
+            )
+        finally:
+            self.updater.irs_sources.fetch_news_html_if_available = original_fetch
+
+        self.assertEqual(("https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",), urls)
+        self.assertTrue(
+            all("/newsroom/" in source_url for source_url in observed_urls)
+        )
 
     def test_rejects_non_irs_source_url(self) -> None:
         with self.assertRaises(
@@ -201,7 +247,7 @@ class NoncitizenSpouseGiftExclusionUpdaterTests(unittest.TestCase):
 
     def test_input_text_backfill_is_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            data_path = Path(directory) / "rates.json"
+            data_path = Path(directory) / "noncitizen-spouse-gift-exclusion.json"
 
             with redirect_stderr(io.StringIO()):
                 exit_code = self.updater.main(

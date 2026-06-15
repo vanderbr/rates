@@ -1,12 +1,18 @@
 {
   "name": "Annual Gift Tax Exclusion",
-  "source": "Internal Revenue Service and 26 USC 2503(b)",
+  "source": "Internal Revenue Service revenue procedures",
   "source_urls": [
-    "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section2503&num=0&edition=prelim",
-    "https://www.irs.gov/instructions/i709",
+    "https://www.irs.gov/pub/irs-drop/rp-18-57.pdf",
+    "https://www.irs.gov/pub/irs-drop/rp-19-44.pdf",
+    "https://www.irs.gov/pub/irs-drop/rp-20-45.pdf",
+    "https://www.irs.gov/pub/irs-drop/rp-21-45.pdf",
+    "https://www.irs.gov/pub/irs-drop/rp-22-38.pdf",
+    "https://www.irs.gov/pub/irs-drop/rp-23-34.pdf",
+    "https://www.irs.gov/pub/irs-drop/rp-24-40.pdf",
     "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf"
   ],
   "record_frequency": "annual",
+  "applies_to": "gifts_of_present_interests_made_during_calendar_year",
   "backfill_start_year": 1955,
   "date_key": {
     "fields": [
@@ -23,7 +29,7 @@
     }
   },
   "storage": {
-    "primary_records": "rates.json",
+    "primary_records": "annual-gift-exclusion.json",
     "ordering": "ascending_period_start_date",
     "dedupe_key": "period_start_date"
   },

@@ -9,8 +9,7 @@
     "required": [
       "period_start_date",
       "period_end_date",
-      "exemption_amount_usd",
-      "applies_to"
+      "exemption_amount_usd"
     ],
     "properties": {
       "period_start_date": {
@@ -22,9 +21,6 @@
       "exemption_amount_usd": {
         "type": "integer",
         "minimum": 0
-      },
-      "applies_to": {
-        "type": "string"
       }
     }
   }

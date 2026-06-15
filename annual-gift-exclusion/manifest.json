@@ -9,11 +9,11 @@
     "message": "rates.v1.AnnualGiftExclusionFile"
   },
   "records": {
-    "path": "rates.json",
-    "bytes": 14376,
-    "sha256": "20c0e4cc1609e0fec419457775a51dafd8fcdd979af0b77bb35c6d373ad3b020",
-    "protobuf_path": "protobuf/rates.pb",
-    "protobuf_bytes": 6012,
-    "protobuf_sha256": "9004ce2665ec65f1e882daf7eccc11eaaa433582c1091fcbf1571483b58b500a"
+    "path": "annual-gift-exclusion.json",
+    "bytes": 9048,
+    "sha256": "caaf68c466ae859cdc2e8ecb27d471ee26a7fca36309fbe7090e6f89a3cb3136",
+    "protobuf_path": "protobuf/annual-gift-exclusion.pb",
+    "protobuf_bytes": 2124,
+    "protobuf_sha256": "424f6503ec38fa3a58baf89342775c38e424b88d5098a3530219f1a8ccd9fdb0"
   }
 }

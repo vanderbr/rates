@@ -22,7 +22,7 @@ from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
 
-DEFAULT_DATA_PATH = Path("annual-gift-exclusion/rates.json")
+DEFAULT_DATA_PATH = Path("annual-gift-exclusion/annual-gift-exclusion.json")
 MAX_PDF_BYTES = 2_000_000
 MAX_HTML_BYTES = 2_000_000
 REQUEST_TIMEOUT_SECONDS = 30
@@ -46,8 +46,6 @@ IRS_DROP_LINK_PATTERN = re.compile(
 )
 YEAR_PATTERN = re.compile(r"^[0-9]{4}$")
 APPLIES_TO = "gifts_of_present_interests_made_during_calendar_year"
-HISTORICAL_AUTHORITY = "26 USC 2503(b)"
-HISTORICAL_SOURCE_URL = "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section2503&num=0&edition=prelim"
 STATIC_ANNUAL_EXCLUSION_RANGES = (
     (1955, 1981, 3_000),
     (1982, 2001, 10_000),
@@ -102,7 +100,6 @@ class AnnualGiftExclusionRecord:
             "period_start_date": f"{self.year:04d}-01-01",
             "period_end_date": f"{self.year:04d}-12-31",
             "annual_exclusion_amount_usd": self.annual_exclusion_amount_usd,
-            "applies_to": self.applies_to,
         }
 
     def has_same_published_values(self, other: "AnnualGiftExclusionRecord") -> bool:
@@ -331,21 +328,33 @@ def parse_json_record(value: object) -> AnnualGiftExclusionRecord:
         "period_start_date",
         "period_end_date",
         "annual_exclusion_amount_usd",
-        "applies_to",
     }
+    canonical_keys_with_applies_to = {*canonical_keys, "applies_to"}
     legacy_keys = {
         "year",
         "annual_exclusion_amount_usd",
+    }
+    legacy_keys_with_applies_to = {
+        *legacy_keys,
         "applies_to",
     }
-    legacy_keys_with_revenue_procedure = {*legacy_keys, "revenue_procedure"}
-    legacy_keys_with_source_url = {*legacy_keys, "source_url"}
-    legacy_keys_with_both = {*legacy_keys, "revenue_procedure", "source_url"}
+    legacy_keys_with_revenue_procedure = {
+        *legacy_keys_with_applies_to,
+        "revenue_procedure",
+    }
+    legacy_keys_with_source_url = {*legacy_keys_with_applies_to, "source_url"}
+    legacy_keys_with_both = {
+        *legacy_keys_with_applies_to,
+        "revenue_procedure",
+        "source_url",
+    }
     actual_keys = set(value.keys())
     if actual_keys not in (
         canonical_keys,
+        canonical_keys_with_applies_to,
         legacy_keys_with_revenue_procedure,
         legacy_keys,
+        legacy_keys_with_applies_to,
         legacy_keys_with_source_url,
         legacy_keys_with_both,
     ):
@@ -353,7 +362,7 @@ def parse_json_record(value: object) -> AnnualGiftExclusionRecord:
 
     year = parse_json_record_year(value)
     amount = value["annual_exclusion_amount_usd"]
-    applies_to = value["applies_to"]
+    applies_to = value.get("applies_to", APPLIES_TO)
     revenue_procedure = value.get("revenue_procedure")
     source_url = value.get("source_url", "")
 
@@ -379,7 +388,7 @@ def parse_json_record(value: object) -> AnnualGiftExclusionRecord:
     return AnnualGiftExclusionRecord(
         year=year,
         annual_exclusion_amount_usd=amount,
-        applies_to=applies_to,
+        applies_to=APPLIES_TO,
         revenue_procedure=revenue_procedure,
         source_url=source_url,
     )
@@ -415,7 +424,7 @@ def static_historical_records() -> list[AnnualGiftExclusionRecord]:
                     annual_exclusion_amount_usd=amount,
                     applies_to=APPLIES_TO,
                     revenue_procedure=None,
-                    source_url=HISTORICAL_SOURCE_URL,
+                    source_url="",
                 )
             )
     return records
@@ -498,7 +507,15 @@ def source_urls_for_run(
 
     discovered_urls: list[str] = []
     for news_url in prospective_news_urls(today):
-        html = fetch_news_html_if_available(news_url)
+        try:
+            html = fetch_news_html_if_available(news_url)
+        except UpdateAnnualGiftExclusionError as error:
+            if error.code in (
+                UpdateErrorCode.FETCH_FAILED,
+                UpdateErrorCode.FETCH_TOO_LARGE,
+            ):
+                continue
+            raise
         if html is None:
             continue
         discovered_urls.extend(discover_pdf_urls_from_news_html(html))
@@ -633,7 +650,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument(
         "--backfill",
         action="store_true",
-        help="merge deterministic statutory and inflation-adjustment history",
+        help="merge deterministic legacy history and configured IRS Revenue Procedures",
     )
     parser.add_argument(
         "--input-text",
@@ -671,7 +688,7 @@ def main(argv: list[str] | None = None) -> int:
             existing_records = load_existing_records(args.data_path)
             target_year = None if args.backfill else annual_update_target_year(today)
             source_urls = (
-                ()
+                source_urls_for_run(True, today)
                 if args.backfill
                 else source_urls_for_run(
                     False,

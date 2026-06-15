@@ -23,7 +23,7 @@ except ModuleNotFoundError:
     from scripts import update_annual_gift_exclusion as irs_sources
 
 
-DEFAULT_DATA_PATH = Path("noncitizen-spouse-gift-exclusion/rates.json")
+DEFAULT_DATA_PATH = Path("noncitizen-spouse-gift-exclusion/noncitizen-spouse-gift-exclusion.json")
 REVENUE_PROCEDURE_PATTERN = irs_sources.REVENUE_PROCEDURE_PATTERN
 IRS_REVENUE_PROCEDURE_URLS = irs_sources.IRS_REVENUE_PROCEDURE_URLS
 IRS_DROP_LINK_PATTERN = irs_sources.IRS_DROP_LINK_PATTERN
@@ -31,8 +31,6 @@ YEAR_PATTERN = re.compile(r"^[0-9]{4}$")
 DATE_PATTERN = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$")
 APPLIES_TO = "gifts_to_spouse_who_is_not_united_states_citizen_made_during_period"
 LEGACY_APPLIES_TO = "gifts_to_spouse_who_is_not_united_states_citizen_made_during_calendar_year"
-STATUTORY_SOURCE_URL = "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section2523&num=0&edition=prelim"
-FORM_709_INSTRUCTIONS_URL = "https://www.irs.gov/instructions/i709"
 STATIC_NONCITIZEN_SPOUSE_EXCLUSION_RANGES = (
     ("1988-07-14", "1998-12-31", 100_000),
     ("1999-01-01", "1999-12-31", 101_000),
@@ -106,7 +104,6 @@ class NoncitizenSpouseGiftExclusionRecord:
             "period_start_date": self.period_start_date,
             "period_end_date": self.period_end_date,
             "annual_exclusion_amount_usd": self.annual_exclusion_amount_usd,
-            "applies_to": self.applies_to,
         }
 
     def has_same_published_values(
@@ -261,25 +258,40 @@ def parse_json_record(value: object) -> NoncitizenSpouseGiftExclusionRecord:
         "period_start_date",
         "period_end_date",
         "annual_exclusion_amount_usd",
-        "applies_to",
     }
-    legacy_keys_with_revenue_procedure = {*expected_keys, "revenue_procedure"}
-    legacy_keys_with_source_url = {*expected_keys, "source_url"}
-    legacy_keys_with_both = {*expected_keys, "revenue_procedure", "source_url"}
+    expected_keys_with_applies_to = {*expected_keys, "applies_to"}
+    legacy_keys_with_revenue_procedure = {
+        *expected_keys_with_applies_to,
+        "revenue_procedure",
+    }
+    legacy_keys_with_source_url = {*expected_keys_with_applies_to, "source_url"}
+    legacy_keys_with_both = {
+        *expected_keys_with_applies_to,
+        "revenue_procedure",
+        "source_url",
+    }
     legacy_year_keys = {
         "year",
         "annual_exclusion_amount_usd",
+    }
+    legacy_year_keys_with_applies_to = {
+        *legacy_year_keys,
         "applies_to",
         "revenue_procedure",
     }
-    legacy_year_keys_with_source_url = {*legacy_year_keys, "source_url"}
+    legacy_year_keys_with_source_url = {
+        *legacy_year_keys_with_applies_to,
+        "source_url",
+    }
     actual_keys = set(value.keys())
     if actual_keys not in (
         expected_keys,
+        expected_keys_with_applies_to,
         legacy_keys_with_revenue_procedure,
         legacy_keys_with_source_url,
         legacy_keys_with_both,
         legacy_year_keys,
+        legacy_year_keys_with_applies_to,
         legacy_year_keys_with_source_url,
     ):
         raise UpdateNoncitizenSpouseGiftExclusionError(UpdateErrorCode.INVALID_JSON)
@@ -294,7 +306,7 @@ def parse_json_record(value: object) -> NoncitizenSpouseGiftExclusionRecord:
         period_end_date = value["period_end_date"]
 
     amount = value["annual_exclusion_amount_usd"]
-    applies_to = value["applies_to"]
+    applies_to = value.get("applies_to", APPLIES_TO)
     revenue_procedure = value.get("revenue_procedure")
     source_url = value.get("source_url", "")
 
@@ -342,7 +354,7 @@ def static_historical_records() -> list[NoncitizenSpouseGiftExclusionRecord]:
             annual_exclusion_amount_usd=amount,
             applies_to=APPLIES_TO,
             revenue_procedure=None,
-            source_url=STATUTORY_SOURCE_URL,
+            source_url="",
         )
         for period_start_date, period_end_date, amount in STATIC_NONCITIZEN_SPOUSE_EXCLUSION_RANGES
     ]
@@ -384,9 +396,7 @@ def write_records(
     data_path: Path, records: list[NoncitizenSpouseGiftExclusionRecord]
 ) -> None:
     data_path.parent.mkdir(parents=True, exist_ok=True)
-    serialized = json.dumps(
-        [record.to_json_object() for record in sorted(records)], indent=2
-    )
+    serialized = serialize_records(records)
     try:
         with tempfile.NamedTemporaryFile(
             "w",
@@ -395,12 +405,30 @@ def write_records(
             delete=False,
         ) as temp_file:
             temp_file.write(serialized)
-            temp_file.write("\n")
             temp_name = temp_file.name
         os.replace(temp_name, data_path)
     except OSError:
         raise UpdateNoncitizenSpouseGiftExclusionError(
             UpdateErrorCode.WRITE_FAILED
+        ) from None
+
+
+def serialize_records(records: list[NoncitizenSpouseGiftExclusionRecord]) -> str:
+    return json.dumps(
+        [record.to_json_object() for record in sorted(records)], indent=2
+    ) + "\n"
+
+
+def records_file_needs_write(
+    data_path: Path, records: list[NoncitizenSpouseGiftExclusionRecord]
+) -> bool:
+    if not data_path.exists():
+        return True
+    try:
+        return data_path.read_text(encoding="utf-8") != serialize_records(records)
+    except OSError:
+        raise UpdateNoncitizenSpouseGiftExclusionError(
+            UpdateErrorCode.INVALID_JSON
         ) from None
 
 
@@ -436,14 +464,19 @@ def source_urls_for_run(
         return ()
 
     discovered_urls: list[str] = []
-    try:
-        for news_url in irs_sources.prospective_news_urls(today):
+    for news_url in irs_sources.prospective_news_urls(today):
+        try:
             html = irs_sources.fetch_news_html_if_available(news_url)
-            if html is None:
+        except irs_sources.UpdateAnnualGiftExclusionError as error:
+            if error.code in (
+                irs_sources.UpdateErrorCode.FETCH_FAILED,
+                irs_sources.UpdateErrorCode.FETCH_TOO_LARGE,
+            ):
                 continue
-            discovered_urls.extend(discover_pdf_urls_from_news_html(html))
-    except irs_sources.UpdateAnnualGiftExclusionError as error:
-        raise map_source_error(error) from None
+            raise map_source_error(error) from None
+        if html is None:
+            continue
+        discovered_urls.extend(discover_pdf_urls_from_news_html(html))
 
     return tuple(irs_sources.unique_preserving_order(discovered_urls))
 
@@ -492,13 +525,14 @@ def update_from_source_texts(
     merged_records, changed = merge_records(
         existing_records, sorted(records_by_period.values())
     )
-    if write and changed:
+    needs_write = records_file_needs_write(data_path, merged_records)
+    if write and (changed or needs_write):
         write_records(data_path, merged_records)
     return (
         len(records_by_period),
         len(existing_records),
         len(merged_records),
-        changed,
+        changed or needs_write,
     )
 
 
@@ -534,7 +568,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument(
         "--backfill",
         action="store_true",
-        help="merge deterministic statutory and inflation-adjustment history",
+        help="merge deterministic legacy history and configured IRS Revenue Procedures",
     )
     parser.add_argument(
         "--input-text",
@@ -574,7 +608,7 @@ def main(argv: list[str] | None = None) -> int:
             existing_records = load_existing_records(args.data_path)
             target_year = None if args.backfill else annual_update_target_year(today)
             source_urls = (
-                ()
+                source_urls_for_run(True, today)
                 if args.backfill
                 else source_urls_for_run(
                     False,

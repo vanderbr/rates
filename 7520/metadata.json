@@ -21,7 +21,8 @@
     }
   },
   "storage": {
-    "primary_records": "rates.json",
+    "primary_records": "by-year/YYYY-section-7520-rates.json",
+    "year_shards": "by-year/YYYY-section-7520-rates.json",
     "ordering": "ascending_effective_month",
     "dedupe_key": "effective_month"
   },

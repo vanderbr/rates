@@ -32,6 +32,7 @@ RADIX = 100_000
 DATASET_SPECS = {
     "mortality-table-2010cm": {
         "path": Path("actuarial/mortality-table-2010cm"),
+        "record_file": "mortality-table-2010cm.json",
         "source_file": "table-2010cm-final.xlsx",
         "source_url": "https://www.irs.gov/pub/irs-tege/table-2010cm-final.xlsx",
         "name": "Table 2010CM Mortality Table",
@@ -39,6 +40,7 @@ DATASET_SPECS = {
     },
     "life-expectancy-by-age": {
         "path": Path("actuarial/life-expectancy-by-age"),
+        "record_file": "life-expectancy-by-age.json",
         "source_file": "table-2010cm-final.xlsx",
         "source_url": "https://www.irs.gov/pub/irs-tege/table-2010cm-final.xlsx",
         "name": "Life Expectancy by Age from Table 2010CM",
@@ -47,16 +49,13 @@ DATASET_SPECS = {
             "2010CM survivors by age."
         ),
     },
-    "table-2001": {
-        "path": Path("table-2001"),
+    "mortality-table-2000cm": {
+        "path": Path("actuarial/mortality-table-2000cm"),
+        "record_file": "mortality-table-2000cm.json",
         "source_file": "table-2000cm.xls",
         "source_url": "https://www.irs.gov/pub/irs-tege/table-2000cm.xls",
         "name": "Table 2000CM Mortality Table",
-        "description": (
-            "IRS prior mortality table derived from mortality experience around "
-            "2000. The source folder name is retained as table-2001 for repository "
-            "layout compatibility."
-        ),
+        "description": "IRS prior mortality table derived from mortality experience around 2000.",
     },
     "table-b": {
         "path": Path("actuarial/table-b"),
@@ -593,8 +592,10 @@ def write_if_changed(path: Path, data: str) -> bool:
     return True
 
 
-def write_records_file(dataset_dir: Path, records: list[dict[str, object]]) -> bool:
-    return write_if_changed(dataset_dir / "rates.json", json_dumps(records))
+def write_records_file(
+    dataset_dir: Path, record_file: str, records: list[dict[str, object]]
+) -> bool:
+    return write_if_changed(dataset_dir / record_file, json_dumps(records))
 
 
 def shard_filename(rate_basis_points: int) -> str:
@@ -676,7 +677,7 @@ def metadata(
 def mortality_basis(dataset_id: str) -> str | None:
     if dataset_id == "table-d":
         return None
-    if dataset_id == "table-2001":
+    if dataset_id == "mortality-table-2000cm":
         return "2000CM"
     return "2010CM"
 
@@ -684,13 +685,13 @@ def mortality_basis(dataset_id: str) -> str | None:
 def effective_start_date(dataset_id: str) -> str | None:
     if dataset_id == "table-d":
         return None
-    if dataset_id == "table-2001":
+    if dataset_id == "mortality-table-2000cm":
         return "2009-05-01"
     return "2023-06-01"
 
 
 def effective_end_date(dataset_id: str) -> str | None:
-    if dataset_id == "table-2001":
+    if dataset_id == "mortality-table-2000cm":
         return "2023-05-31"
     return None
 
@@ -987,16 +988,20 @@ def update(source_dir: Path, write: bool) -> tuple[int, bool]:
     mortality_records = parse_mortality_records(load_rows(source_dir, "mortality-table-2010cm"))
     life_expectancy_records = parse_life_expectancy_records(mortality_records)
     table_2001_records = parse_mortality_records(
-        load_biff_sheet_rows(source_dir / str(DATASET_SPECS["table-2001"]["source_file"]))
+        load_biff_sheet_rows(source_dir / str(DATASET_SPECS["mortality-table-2000cm"]["source_file"]))
     )
 
     changed = False
     file_count = 0
     if write:
-        changed = write_records_file(Path(DATASET_SPECS["table-2001"]["path"]), table_2001_records) or changed
+        changed = write_records_file(
+            Path(DATASET_SPECS["mortality-table-2000cm"]["path"]),
+            str(DATASET_SPECS["mortality-table-2000cm"]["record_file"]),
+            table_2001_records,
+        ) or changed
         changed = write_metadata(
-            "table-2001",
-            {"primary_records": "rates.json", "ordering": "ascending_age", "dedupe_key": "age"},
+            "mortality-table-2000cm",
+            {"primary_records": "mortality-table-2000cm.json", "ordering": "ascending_age", "dedupe_key": "age"},
             {
                 "survivors_per_100000_scaled_1e6": {
                     "unit": "survivors_scaled_1e6",
@@ -1005,10 +1010,14 @@ def update(source_dir: Path, write: bool) -> tuple[int, bool]:
                 }
             },
         ) or changed
-        changed = write_records_file(Path(DATASET_SPECS["mortality-table-2010cm"]["path"]), mortality_records) or changed
+        changed = write_records_file(
+            Path(DATASET_SPECS["mortality-table-2010cm"]["path"]),
+            str(DATASET_SPECS["mortality-table-2010cm"]["record_file"]),
+            mortality_records,
+        ) or changed
         changed = write_metadata(
             "mortality-table-2010cm",
-            {"primary_records": "rates.json", "ordering": "ascending_age", "dedupe_key": "age"},
+            {"primary_records": "mortality-table-2010cm.json", "ordering": "ascending_age", "dedupe_key": "age"},
             {
                 "survivors_per_100000_scaled_1e6": {
                     "unit": "survivors_scaled_1e6",
@@ -1017,10 +1026,14 @@ def update(source_dir: Path, write: bool) -> tuple[int, bool]:
                 }
             },
         ) or changed
-        changed = write_records_file(Path(DATASET_SPECS["life-expectancy-by-age"]["path"]), life_expectancy_records) or changed
+        changed = write_records_file(
+            Path(DATASET_SPECS["life-expectancy-by-age"]["path"]),
+            str(DATASET_SPECS["life-expectancy-by-age"]["record_file"]),
+            life_expectancy_records,
+        ) or changed
         changed = write_metadata(
             "life-expectancy-by-age",
-            {"primary_records": "rates.json", "ordering": "ascending_age", "dedupe_key": "age"},
+            {"primary_records": "life-expectancy-by-age.json", "ordering": "ascending_age", "dedupe_key": "age"},
             {
                 "curtate_life_expectancy_years_scaled_1e6": {
                     "unit": "years_scaled_1e6",

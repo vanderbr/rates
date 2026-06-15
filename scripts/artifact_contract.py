@@ -91,6 +91,7 @@ class DatasetSpec:
     record_field_names: tuple[str, ...]
     protobuf_record_field_alias: str | None = None
     rate_field: str | None = None
+    record_filename: str | None = None
 
 
 def encode_varint(value: int) -> bytes:
@@ -306,19 +307,16 @@ ANNUAL_GIFT_FIELDS = (
     ("period_start_date", 1, "string"),
     ("period_end_date", 2, "string"),
     ("annual_exclusion_amount_usd", 3, "uint"),
-    ("applies_to", 4, "string"),
 )
 ESTATE_GIFT_FIELDS = (
     ("period_start_date", 1, "string"),
     ("period_end_date", 2, "string"),
     ("basic_exclusion_amount_usd", 3, "uint"),
-    ("applies_to", 4, "string"),
 )
 GST_FIELDS = (
     ("period_start_date", 1, "string"),
     ("period_end_date", 2, "string"),
     ("exemption_amount_usd", 3, "uint"),
-    ("applies_to", 4, "string"),
 )
 FED_FUNDS_FIELDS = (("date", 1, "string"), ("rate_basis_points", 2, "optional_uint"))
 MORTALITY_FIELDS = (("age", 1, "uint"), ("survivors_per_100000_scaled_1e6", 2, "uint"))
@@ -370,21 +368,21 @@ def scalar_encoder(fields: tuple[tuple[str, int, str], ...]) -> Callable[[dict[s
 
 
 DATASETS: tuple[DatasetSpec, ...] = (
-    DatasetSpec("7520", "section-7520-rates", "rates.section_7520_rates.v1", "Section7520RateFile", "single", scalar_encoder(SECTION_7520_FIELDS), tuple(field[0] for field in SECTION_7520_FIELDS)),
+    DatasetSpec("7520", "section-7520-rates", "rates.section_7520_rates.v1", "Section7520RateFile", "by_year", scalar_encoder(SECTION_7520_FIELDS), tuple(field[0] for field in SECTION_7520_FIELDS)),
     DatasetSpec("afr", "applicable-federal-rates", "rates.applicable_federal_rates.v1", "ApplicableFederalRatesFile", "by_year", encode_afr_record, ("effective_month", "applicable_federal_rates", "adjusted_applicable_federal_rates")),
-    DatasetSpec("annual-gift-exclusion", "annual-gift-exclusion", "rates.annual_gift_exclusion.v1", "AnnualGiftExclusionFile", "single", scalar_encoder(ANNUAL_GIFT_FIELDS), tuple(field[0] for field in ANNUAL_GIFT_FIELDS)),
-    DatasetSpec("estate-gift-tax-exemption", "estate-gift-tax-exemption", "rates.estate_gift_tax_exemption.v1", "EstateGiftTaxExemptionFile", "single", scalar_encoder(ESTATE_GIFT_FIELDS), tuple(field[0] for field in ESTATE_GIFT_FIELDS)),
-    DatasetSpec("gst-exemption", "gst-exemption", "rates.gst_exemption.v1", "GstExemptionFile", "single", scalar_encoder(GST_FIELDS), tuple(field[0] for field in GST_FIELDS)),
-    DatasetSpec("noncitizen-spouse-gift-exclusion", "noncitizen-spouse-gift-exclusion", "rates.noncitizen_spouse_gift_exclusion.v1", "NoncitizenSpouseGiftExclusionFile", "single", scalar_encoder(ANNUAL_GIFT_FIELDS), tuple(field[0] for field in ANNUAL_GIFT_FIELDS)),
+    DatasetSpec("annual-gift-exclusion", "annual-gift-exclusion", "rates.annual_gift_exclusion.v1", "AnnualGiftExclusionFile", "single", scalar_encoder(ANNUAL_GIFT_FIELDS), tuple(field[0] for field in ANNUAL_GIFT_FIELDS), record_filename="annual-gift-exclusion.json"),
+    DatasetSpec("estate-gift-tax-exemption", "estate-gift-tax-exemption", "rates.estate_gift_tax_exemption.v1", "EstateGiftTaxExemptionFile", "single", scalar_encoder(ESTATE_GIFT_FIELDS), tuple(field[0] for field in ESTATE_GIFT_FIELDS), record_filename="estate-gift-tax-exemption.json"),
+    DatasetSpec("gst-exemption", "gst-exemption", "rates.gst_exemption.v1", "GstExemptionFile", "single", scalar_encoder(GST_FIELDS), tuple(field[0] for field in GST_FIELDS), record_filename="gst-exemption.json"),
+    DatasetSpec("noncitizen-spouse-gift-exclusion", "noncitizen-spouse-gift-exclusion", "rates.noncitizen_spouse_gift_exclusion.v1", "NoncitizenSpouseGiftExclusionFile", "single", scalar_encoder(ANNUAL_GIFT_FIELDS), tuple(field[0] for field in ANNUAL_GIFT_FIELDS), record_filename="noncitizen-spouse-gift-exclusion.json"),
     DatasetSpec("treasury/treasury-yield-curve", "treasury-yield-curve", "rates.treasury_yield_curve.v1", "TreasuryYieldCurveFile", "by_year", encode_treasury_record, ("date", "par_yields_basis_points")),
     DatasetSpec("fed-funds", "federal-funds", "rates.federal_funds.v1", "FederalFundsRateFile", "by_year", scalar_encoder(FED_FUNDS_FIELDS), tuple(field[0] for field in FED_FUNDS_FIELDS)),
     DatasetSpec("sofr", "sofr", "rates.sofr.v1", "SofrFile", "by_year", encode_sofr_record, ("date", "rate_basis_points", "percentile_1_basis_points", "percentile_25_basis_points", "percentile_75_basis_points", "percentile_99_basis_points", "volume_billions", "average_30_day_basis_points_scaled_1000", "average_90_day_basis_points_scaled_1000", "average_180_day_basis_points_scaled_1000", "sofr_index_scaled_100000000")),
     DatasetSpec("sofr/sofr-30d-average", "sofr-30d-average", "rates.sofr_30d_average.v1", "SofrAverageFile", "by_year", encode_sofr_average_record("average_30_day_basis_points_scaled_1000"), ("date", "average_30_day_basis_points_scaled_1000"), "average_basis_points_scaled_1000"),
     DatasetSpec("sofr/sofr-90d-average", "sofr-90d-average", "rates.sofr_90d_average.v1", "SofrAverageFile", "by_year", encode_sofr_average_record("average_90_day_basis_points_scaled_1000"), ("date", "average_90_day_basis_points_scaled_1000"), "average_basis_points_scaled_1000"),
     DatasetSpec("sofr/sofr-180d-average", "sofr-180d-average", "rates.sofr_180d_average.v1", "SofrAverageFile", "by_year", encode_sofr_average_record("average_180_day_basis_points_scaled_1000"), ("date", "average_180_day_basis_points_scaled_1000"), "average_basis_points_scaled_1000"),
-    DatasetSpec("table-2001", "mortality-table-2000cm", "rates.mortality_table_2000cm.v1", "MortalityFile", "single", scalar_encoder(MORTALITY_FIELDS), tuple(field[0] for field in MORTALITY_FIELDS)),
-    DatasetSpec("actuarial/mortality-table-2010cm", "mortality-table-2010cm", "rates.mortality_table_2010cm.v1", "MortalityFile", "single", scalar_encoder(MORTALITY_FIELDS), tuple(field[0] for field in MORTALITY_FIELDS)),
-    DatasetSpec("actuarial/life-expectancy-by-age", "life-expectancy-by-age", "rates.life_expectancy_by_age.v1", "LifeExpectancyFile", "single", scalar_encoder(LIFE_EXPECTANCY_FIELDS), tuple(field[0] for field in LIFE_EXPECTANCY_FIELDS)),
+    DatasetSpec("actuarial/mortality-table-2000cm", "mortality-table-2000cm", "rates.mortality_table_2000cm.v1", "MortalityFile", "single", scalar_encoder(MORTALITY_FIELDS), tuple(field[0] for field in MORTALITY_FIELDS), record_filename="mortality-table-2000cm.json"),
+    DatasetSpec("actuarial/mortality-table-2010cm", "mortality-table-2010cm", "rates.mortality_table_2010cm.v1", "MortalityFile", "single", scalar_encoder(MORTALITY_FIELDS), tuple(field[0] for field in MORTALITY_FIELDS), record_filename="mortality-table-2010cm.json"),
+    DatasetSpec("actuarial/life-expectancy-by-age", "life-expectancy-by-age", "rates.life_expectancy_by_age.v1", "LifeExpectancyFile", "single", scalar_encoder(LIFE_EXPECTANCY_FIELDS), tuple(field[0] for field in LIFE_EXPECTANCY_FIELDS), record_filename="life-expectancy-by-age.json"),
     DatasetSpec("actuarial/table-b", "actuarial-table-b", "rates.actuarial_table_b.v1", "TableBFile", "by_interest_rate", scalar_encoder(TABLE_B_FIELDS), tuple(field[0] for field in TABLE_B_FIELDS), rate_field="interest_rate_basis_points"),
     DatasetSpec("actuarial/table-d", "actuarial-table-d", "rates.actuarial_table_d.v1", "TableDFile", "by_interest_rate", scalar_encoder(TABLE_D_FIELDS), tuple(field[0] for field in TABLE_D_FIELDS), rate_field="adjusted_payout_rate_basis_points"),
     DatasetSpec("actuarial/table-h", "actuarial-table-h", "rates.actuarial_table_h.v1", "TableHFile", "by_interest_rate", scalar_encoder(TABLE_H_FIELDS), tuple(field[0] for field in TABLE_H_FIELDS), rate_field="interest_rate_basis_points"),
@@ -464,7 +462,7 @@ def normalize_record_numbers(record: dict[str, object]) -> dict[str, object]:
 
 def normalize_records(spec: DatasetSpec, records: list[object]) -> list[dict[str, object]]:
     normalized: list[dict[str, object]] = []
-    is_actuarial = spec.dataset_path == "table-2001" or spec.dataset_path.startswith("actuarial/")
+    is_actuarial = spec.dataset_path.startswith("actuarial/")
     for record in records:
         if not isinstance(record, dict):
             raise ArtifactError(ArtifactErrorCode.INVALID_JSON)
@@ -536,7 +534,7 @@ def artifact_entry(dataset_dir: Path, json_path: Path, pb_path: Path) -> dict[st
 
 
 def process_single_dataset(spec: DatasetSpec, dataset_dir: Path) -> dict[str, object]:
-    data_path = dataset_dir / "rates.json"
+    data_path = dataset_dir / (spec.record_filename or "records.json")
     raw = read_json(data_path)
     if not isinstance(raw, list):
         raise ArtifactError(ArtifactErrorCode.INVALID_JSON)

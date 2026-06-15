@@ -9,10 +9,10 @@
     "message": "rates.v1.LifeExpectancyFile"
   },
   "records": {
-    "path": "rates.json",
+    "path": "life-expectancy-by-age.json",
     "bytes": 15457,
     "sha256": "534de2326a78be4c64ca76f4785a675e663926c582de8bce1f22108a98bd53ba",
-    "protobuf_path": "protobuf/rates.pb",
+    "protobuf_path": "protobuf/life-expectancy-by-age.pb",
     "protobuf_bytes": 1559,
     "protobuf_sha256": "9940087c9b5b3540f3f45b652cadc34ef9dff83686783a27d04e75872c3edf41"
   }

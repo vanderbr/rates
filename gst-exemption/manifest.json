@@ -9,11 +9,11 @@
     "message": "rates.v1.GstExemptionFile"
   },
   "records": {
-    "path": "rates.json",
-    "bytes": 5416,
-    "sha256": "f9116577f2f48a795e6070f7768c43e4de136be9efad26346e70bd1156c30007",
-    "protobuf_path": "protobuf/rates.pb",
-    "protobuf_bytes": 2338,
-    "protobuf_sha256": "baf0d6f8c97bded60e1cdce382ee6b2e609c6144c7e45475ca84049ca81f9f1a"
+    "path": "gst-exemption.json",
+    "bytes": 3400,
+    "sha256": "be3831b8c5a012bb2e771d9e6fc15885fd079eef906f855c772aa20e10312834",
+    "protobuf_path": "protobuf/gst-exemption.pb",
+    "protobuf_bytes": 882,
+    "protobuf_sha256": "24ae8cf6f1d0253a83b01c2c1670b55d875226a207f77ba81d4506528ffb4b17"
   }
 }

@@ -3,7 +3,7 @@
   "schema_id": "rates.applicable_federal_rates.v1",
   "schema_version": 1,
   "record_storage": "by_year",
-  "record_count": 318,
+  "record_count": 319,
   "proto": {
     "file": "proto/rates/v1/applicable_federal_rates.proto",
     "message": "rates.v1.ApplicableFederalRatesFile"
@@ -23,13 +23,13 @@
     },
     {
       "path": "by-year/2001-afr.json",
-      "bytes": 27932,
-      "sha256": "78f27bdd0aa5424d923478b5ed5ffc4e767ac32ccee9b2d9c1979670adb5b02d",
+      "bytes": 30471,
+      "sha256": "88517248a45112f0ed45fcdd12ad3b6e0e4670661d62914a3ec7c75fdffb86d1",
       "protobuf_path": "protobuf/2001-afr.pb",
-      "protobuf_bytes": 2873,
-      "protobuf_sha256": "09eeb2830848ba6af6ba4693fc9db2e5982a8b2fda910629a25a5914d9a2fd00",
+      "protobuf_bytes": 3131,
+      "protobuf_sha256": "e61591bd875d9b11d5e402bcdff376a2d5810e5ccd1be9c43c7d8fc08db1c60d",
       "year": "2001",
-      "record_count": 11,
+      "record_count": 12,
       "first_effective_month": "2001-01",
       "last_effective_month": "2001-12"
     },

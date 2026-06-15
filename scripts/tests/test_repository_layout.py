@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import hashlib
+import re
 import unittest
 from pathlib import Path
 
@@ -12,14 +13,37 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 GENERATED_FILE_NAMES = {".DS_Store"}
 GENERATED_DIR_NAMES = {"__pycache__"}
 SINGLE_FILE_DATASETS = {
-    "7520": {"manifest.json", "metadata.json", "rates.json"},
-    "actuarial/life-expectancy-by-age": {"manifest.json", "metadata.json", "rates.json"},
-    "actuarial/mortality-table-2010cm": {"manifest.json", "metadata.json", "rates.json"},
-    "annual-gift-exclusion": {"manifest.json", "metadata.json", "rates.json"},
-    "estate-gift-tax-exemption": {"manifest.json", "rates.json", "metadata.json"},
-    "gst-exemption": {"manifest.json", "metadata.json", "rates.json"},
-    "noncitizen-spouse-gift-exclusion": {"manifest.json", "metadata.json", "rates.json"},
-    "table-2001": {"manifest.json", "metadata.json", "rates.json"},
+    "actuarial/life-expectancy-by-age": {
+        "life-expectancy-by-age.json",
+        "manifest.json",
+        "metadata.json",
+    },
+    "actuarial/mortality-table-2000cm": {
+        "manifest.json",
+        "metadata.json",
+        "mortality-table-2000cm.json",
+    },
+    "actuarial/mortality-table-2010cm": {
+        "manifest.json",
+        "metadata.json",
+        "mortality-table-2010cm.json",
+    },
+    "annual-gift-exclusion": {
+        "annual-gift-exclusion.json",
+        "manifest.json",
+        "metadata.json",
+    },
+    "estate-gift-tax-exemption": {
+        "estate-gift-tax-exemption.json",
+        "manifest.json",
+        "metadata.json",
+    },
+    "gst-exemption": {"gst-exemption.json", "manifest.json", "metadata.json"},
+    "noncitizen-spouse-gift-exclusion": {
+        "manifest.json",
+        "metadata.json",
+        "noncitizen-spouse-gift-exclusion.json",
+    },
 }
 INTEREST_RATE_SHARDED_DATASETS = {
     "actuarial/table-b",
@@ -32,6 +56,7 @@ INTEREST_RATE_SHARDED_DATASETS = {
     "actuarial/table-z",
 }
 YEAR_SHARDED_DATASETS = {
+    "7520",
     "afr",
     "fed-funds",
     "treasury/treasury-yield-curve",
@@ -41,6 +66,7 @@ YEAR_SHARDED_DATASETS = {
     "sofr/sofr-180d-average",
 }
 DATASET_METADATA_FILES = {
+    "7520": "metadata.json",
     "afr": "metadata.json",
     "fed-funds": "metadata.json",
     "treasury/treasury-yield-curve": "metadata.json",
@@ -50,7 +76,34 @@ DATASET_METADATA_FILES = {
     "sofr/sofr-180d-average": "metadata.json",
 }
 YEAR_SHARDED_MANIFEST = "manifest.json"
-DISALLOWED_LEGACY_PATHS = {"federal-funds", "irs", "market", "section-7520"}
+DISALLOWED_LEGACY_PATHS = {
+    "federal-funds",
+    "irs",
+    "market",
+    "section-7520",
+    "table-2001",
+}
+ANNUAL_IRS_DATASETS = {
+    "annual-gift-exclusion",
+    "estate-gift-tax-exemption",
+    "gst-exemption",
+    "noncitizen-spouse-gift-exclusion",
+}
+TREASURY_SOURCE_URL_TEMPLATE = (
+    "https://home.treasury.gov/resource-center/data-chart-center/"
+    "interest-rates/daily-treasury-rates.csv/{year}/all?"
+    "field_tdr_date_value={year}&type=daily_treasury_yield_curve&page=&"
+    "_format=csv"
+)
+DISALLOWED_SOURCE_PATTERNS = (
+    re.compile(
+        r"https://home\.treasury\.gov/resource-center/data-chart-center/"
+        r"interest-rates(?!/)"
+    ),
+    re.compile(r"https://uscode\.house\.gov/"),
+    re.compile(r"https://www\.irs\.gov/instructions/i709"),
+    re.compile(r"https://www\.newyorkfed\.org/markets/reference-rates/sofr"),
+)
 
 
 class RepositoryLayoutTests(unittest.TestCase):
@@ -121,24 +174,125 @@ class RepositoryLayoutTests(unittest.TestCase):
         for dataset_path in DISALLOWED_LEGACY_PATHS:
             self.assertFalse((REPO_ROOT / dataset_path).exists(), dataset_path)
 
+    def test_annual_irs_metadata_uses_revenue_procedure_sources(self) -> None:
+        for dataset_path in ANNUAL_IRS_DATASETS:
+            metadata = self.load_json_object(REPO_ROOT / dataset_path / "metadata.json")
+            applies_to = metadata.get("applies_to")
+            if not isinstance(applies_to, str) or applies_to == "":
+                raise AssertionError(dataset_path)
+            source_urls = metadata.get("source_urls")
+            if not isinstance(source_urls, list) or len(source_urls) == 0:
+                raise AssertionError(dataset_path)
+            for source_url in source_urls:
+                if not isinstance(source_url, str):
+                    raise AssertionError(dataset_path)
+                self.assertTrue(
+                    source_url.startswith("https://www.irs.gov/pub/irs-drop/rp-"),
+                    dataset_path,
+                )
+                self.assertTrue(source_url.endswith(".pdf"), dataset_path)
+
+    def test_published_shape_contract_is_versioned_per_dataset(self) -> None:
+        index = self.load_json_object(REPO_ROOT / "index.json")
+        datasets = index.get("datasets")
+        if not isinstance(datasets, list):
+            raise AssertionError("index.json")
+
+        for dataset in datasets:
+            if not isinstance(dataset, dict):
+                raise AssertionError("index.json")
+            dataset_path = dataset.get("dataset_path")
+            dataset_id = dataset.get("dataset_id")
+            manifest_path = dataset.get("manifest_path")
+            if (
+                not isinstance(dataset_path, str)
+                or not isinstance(dataset_id, str)
+                or not isinstance(manifest_path, str)
+            ):
+                raise AssertionError("index.json")
+
+            manifest = self.load_json_object(REPO_ROOT / manifest_path)
+            metadata = self.load_json_object(REPO_ROOT / dataset_path / "metadata.json")
+            schema_path = REPO_ROOT / "schemas" / "v1" / f"{dataset_id}.schema.json"
+
+            self.assertEqual(dataset_id, manifest.get("dataset_id"), dataset_path)
+            self.assertEqual(dataset_id, metadata.get("dataset_id"), dataset_path)
+            self.assertEqual(1, manifest.get("schema_version"), dataset_path)
+            self.assertEqual(1, metadata.get("schema_version"), dataset_path)
+            schema_id = manifest.get("schema_id")
+            self.assertEqual(schema_id, metadata.get("schema_id"), dataset_path)
+            if not isinstance(schema_id, str):
+                raise AssertionError(dataset_path)
+            self.assertTrue(schema_id.startswith("rates."), dataset_path)
+            self.assertTrue(schema_id.endswith(".v1"), dataset_path)
+            self.assertTrue(schema_path.is_file(), dataset_path)
+            proto = manifest.get("proto")
+            if not isinstance(proto, dict):
+                raise AssertionError(dataset_path)
+            proto_file = proto.get("file")
+            if not isinstance(proto_file, str):
+                raise AssertionError(dataset_path)
+            self.assertTrue(proto_file.startswith("proto/rates/v1/"), dataset_path)
+
+    def test_treasury_metadata_uses_csv_source_template(self) -> None:
+        metadata = self.load_json_object(
+            REPO_ROOT / "treasury" / "treasury-yield-curve" / "metadata.json"
+        )
+
+        self.assertNotIn("source_url", metadata)
+        self.assertEqual(
+            TREASURY_SOURCE_URL_TEMPLATE,
+            metadata.get("source_url_template"),
+        )
+
+    def test_public_source_citations_do_not_use_context_pages(self) -> None:
+        paths = [REPO_ROOT / "README.md"]
+        paths.extend((REPO_ROOT / ".github" / "workflows").glob("*.yml"))
+        paths.extend(REPO_ROOT.glob("*/metadata.json"))
+        paths.extend(REPO_ROOT.glob("*/*/metadata.json"))
+
+        for path in paths:
+            text = path.read_text(encoding="utf-8")
+            for pattern in DISALLOWED_SOURCE_PATTERNS:
+                self.assertIsNone(pattern.search(text), str(path))
+
     def test_single_file_datasets_only_contain_expected_json_files(self) -> None:
         for dataset_path, expected_files in SINGLE_FILE_DATASETS.items():
             actual_files = {
                 path.name for path in (REPO_ROOT / dataset_path).iterdir() if path.is_file()
             }
             self.assertEqual(expected_files, actual_files, dataset_path)
-            rates_path = REPO_ROOT / dataset_path / "rates.json"
-            if rates_path.exists():
-                self.assert_records_do_not_have_source_url(
-                    self.load_json_list(rates_path), dataset_path
-                )
             manifest = self.load_json_object(REPO_ROOT / dataset_path / "manifest.json")
             self.assertEqual("single_file", manifest.get("record_storage"), dataset_path)
             self.assert_proto_reference(manifest, dataset_path)
             records_entry = manifest.get("records")
             if not isinstance(records_entry, dict):
                 raise AssertionError(dataset_path)
+            records_path = records_entry.get("path")
+            if not isinstance(records_path, str):
+                raise AssertionError(dataset_path)
+            self.assertNotEqual("rates.json", records_path, dataset_path)
+            self.assert_records_do_not_have_source_url(
+                self.load_json_list(REPO_ROOT / dataset_path / records_path),
+                dataset_path,
+            )
+            if dataset_path in ANNUAL_IRS_DATASETS:
+                self.assert_records_do_not_have_applies_to(
+                    self.load_json_list(REPO_ROOT / dataset_path / records_path),
+                    dataset_path,
+                )
             self.assert_artifact_entry(REPO_ROOT / dataset_path, records_entry, dataset_path)
+            protobuf_path = records_entry.get("protobuf_path")
+            if not isinstance(protobuf_path, str):
+                raise AssertionError(dataset_path)
+            self.assertEqual(
+                {Path(protobuf_path).name},
+                {
+                    path.name
+                    for path in (REPO_ROOT / dataset_path / "protobuf").glob("*.pb")
+                },
+                dataset_path,
+            )
 
     def test_year_shards_match_canonical_json_records(self) -> None:
         for dataset_path in YEAR_SHARDED_DATASETS:
@@ -191,6 +345,15 @@ class RepositoryLayoutTests(unittest.TestCase):
                 self.assert_sorted_unique_dates(actual_records, f"{dataset_path}/{year}")
                 self.assertEqual(expected_records, actual_records, f"{dataset_path}/{year}")
 
+            expected_protobuf_files = sorted(
+                Path(str(year_entry.get("protobuf_path"))).name
+                for year_entry in manifest_years
+                if isinstance(year_entry, dict)
+            )
+            actual_protobuf_files = sorted(
+                path.name for path in (dataset_dir / "protobuf").glob("*.pb")
+            )
+            self.assertEqual(expected_protobuf_files, actual_protobuf_files, dataset_path)
             self.assertEqual(len(canonical_records), manifest.get("record_count"), dataset_path)
             if canonical_records:
                 first_record = canonical_records[0]
@@ -248,6 +411,15 @@ class RepositoryLayoutTests(unittest.TestCase):
                 path.name for path in (dataset_dir / "by-interest-rate").glob("*.json")
             )
             self.assertEqual(sorted(expected_files), actual_files, dataset_path)
+            expected_protobuf_files = sorted(
+                Path(str(shard.get("protobuf_path"))).name
+                for shard in shards
+                if isinstance(shard, dict)
+            )
+            actual_protobuf_files = sorted(
+                path.name for path in (dataset_dir / "protobuf").glob("*.pb")
+            )
+            self.assertEqual(expected_protobuf_files, actual_protobuf_files, dataset_path)
 
     def load_json_list(self, path: Path) -> list[object]:
         value = json.loads(path.read_text(encoding="utf-8"))
@@ -290,6 +462,14 @@ class RepositoryLayoutTests(unittest.TestCase):
                 raise AssertionError(label)
             self.assertNotIn("source_url", record, label)
 
+    def assert_records_do_not_have_applies_to(
+        self, records: list[object], label: str
+    ) -> None:
+        for record in records:
+            if not isinstance(record, dict):
+                raise AssertionError(label)
+            self.assertNotIn("applies_to", record, label)
+
     def assert_artifact_entry(
         self, dataset_dir: Path, entry: dict[object, object], label: str
     ) -> None:
@@ -321,6 +501,8 @@ class RepositoryLayoutTests(unittest.TestCase):
         self.assertTrue(proto_message.startswith("rates.v1."), label)
 
     def year_shard_filename(self, dataset_path: str, year: str) -> str:
+        if dataset_path == "7520":
+            return f"{year}-section-7520-rates.json"
         return f"{year}-{Path(dataset_path).name}.json"
 
     def assert_manifest_boundary(

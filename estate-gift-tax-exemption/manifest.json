@@ -9,11 +9,11 @@
     "message": "rates.v1.EstateGiftTaxExemptionFile"
   },
   "records": {
-    "path": "rates.json",
-    "bytes": 9624,
-    "sha256": "4f401bba5a28e034a5dcef09502c3d48060a7de69f5ada89605eff4e750d09d3",
-    "protobuf_path": "protobuf/rates.pb",
-    "protobuf_bytes": 3724,
-    "protobuf_sha256": "e5a35e5f93ecab6433119416fb49f18764211bb2aefc295fa5de06be73feec1c"
+    "path": "estate-gift-tax-exemption.json",
+    "bytes": 6462,
+    "sha256": "add54feecf63b87b30fa925bf32c736d184945732914b1a2d5a2d9bda995ac52",
+    "protobuf_path": "protobuf/estate-gift-tax-exemption.pb",
+    "protobuf_bytes": 1582,
+    "protobuf_sha256": "8753cd9b56842101da7693bbf36f586b5d645200eeebdc78765f066f0536fb7c"
   }
 }

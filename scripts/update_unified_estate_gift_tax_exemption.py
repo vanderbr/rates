@@ -22,7 +22,7 @@ from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
 
-DEFAULT_DATA_PATH = Path("estate-gift-tax-exemption/rates.json")
+DEFAULT_DATA_PATH = Path("estate-gift-tax-exemption/estate-gift-tax-exemption.json")
 MAX_PDF_BYTES = 2_000_000
 MAX_HTML_BYTES = 2_000_000
 REQUEST_TIMEOUT_SECONDS = 30
@@ -48,7 +48,6 @@ YEAR_PATTERN = re.compile(r"^[0-9]{4}$")
 DATE_PATTERN = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$")
 APPLIES_TO = "estates_of_decedents_dying_during_period"
 LEGACY_APPLIES_TO = "estates_of_decedents_dying_during_calendar_year"
-FORM_709_INSTRUCTIONS_URL = "https://www.irs.gov/instructions/i709"
 STATIC_BASIC_EXCLUSION_RANGES = (
     ("1977-01-01", "1977-06-30", 30_000),
     ("1977-07-01", "1977-12-31", 120_667),
@@ -144,7 +143,6 @@ class UnifiedEstateGiftTaxExemptionRecord:
             "period_start_date": self.period_start_date,
             "period_end_date": self.period_end_date,
             "basic_exclusion_amount_usd": self.basic_exclusion_amount_usd,
-            "applies_to": self.applies_to,
         }
 
     def has_same_published_values(
@@ -414,25 +412,41 @@ def parse_json_record(value: object) -> UnifiedEstateGiftTaxExemptionRecord:
         "period_start_date",
         "period_end_date",
         "basic_exclusion_amount_usd",
-        "applies_to",
     }
-    legacy_keys_with_revenue_procedure = {*expected_keys, "revenue_procedure"}
-    legacy_keys_with_source_url = {*expected_keys, "source_url"}
-    legacy_keys_with_both = {*expected_keys, "revenue_procedure", "source_url"}
+    expected_keys_with_applies_to = {*expected_keys, "applies_to"}
+    legacy_keys_with_revenue_procedure = {
+        *expected_keys_with_applies_to,
+        "revenue_procedure",
+    }
+    legacy_keys_with_source_url = {*expected_keys_with_applies_to, "source_url"}
+    legacy_keys_with_both = {
+        *expected_keys_with_applies_to,
+        "revenue_procedure",
+        "source_url",
+    }
     legacy_year_keys = {
         "year",
         "basic_exclusion_amount_usd",
+    }
+    legacy_year_keys_with_applies_to = {
+        *legacy_year_keys,
         "applies_to",
+    }
+    legacy_year_keys_with_revenue_procedure = {
+        *legacy_year_keys_with_applies_to,
         "revenue_procedure",
     }
-    legacy_year_keys_with_source_url = {*legacy_year_keys, "source_url"}
+    legacy_year_keys_with_source_url = {*legacy_year_keys_with_applies_to, "source_url"}
     actual_keys = set(value.keys())
     if actual_keys not in (
         expected_keys,
+        expected_keys_with_applies_to,
         legacy_keys_with_revenue_procedure,
         legacy_keys_with_source_url,
         legacy_keys_with_both,
         legacy_year_keys,
+        legacy_year_keys_with_applies_to,
+        legacy_year_keys_with_revenue_procedure,
         legacy_year_keys_with_source_url,
     ):
         raise UpdateUnifiedEstateGiftTaxExemptionError(UpdateErrorCode.INVALID_JSON)
@@ -447,7 +461,7 @@ def parse_json_record(value: object) -> UnifiedEstateGiftTaxExemptionRecord:
         period_end_date = value["period_end_date"]
 
     amount = value["basic_exclusion_amount_usd"]
-    applies_to = value["applies_to"]
+    applies_to = value.get("applies_to", APPLIES_TO)
     revenue_procedure = value.get("revenue_procedure")
     source_url = value.get("source_url", "")
 
@@ -495,7 +509,7 @@ def static_form_709_records() -> list[UnifiedEstateGiftTaxExemptionRecord]:
             basic_exclusion_amount_usd=amount,
             applies_to=APPLIES_TO,
             revenue_procedure=None,
-            source_url=FORM_709_INSTRUCTIONS_URL,
+            source_url="",
         )
         for period_start_date, period_end_date, amount in STATIC_BASIC_EXCLUSION_RANGES
     ]
@@ -577,9 +591,7 @@ def write_records(
     data_path: Path, records: list[UnifiedEstateGiftTaxExemptionRecord]
 ) -> None:
     data_path.parent.mkdir(parents=True, exist_ok=True)
-    serialized = json.dumps(
-        [record.to_json_object() for record in sorted(records)], indent=2
-    )
+    serialized = serialize_records(records)
     try:
         with tempfile.NamedTemporaryFile(
             "w",
@@ -588,12 +600,30 @@ def write_records(
             delete=False,
         ) as temp_file:
             temp_file.write(serialized)
-            temp_file.write("\n")
             temp_name = temp_file.name
         os.replace(temp_name, data_path)
     except OSError:
         raise UpdateUnifiedEstateGiftTaxExemptionError(
             UpdateErrorCode.WRITE_FAILED
+        ) from None
+
+
+def serialize_records(records: list[UnifiedEstateGiftTaxExemptionRecord]) -> str:
+    return json.dumps(
+        [record.to_json_object() for record in sorted(records)], indent=2
+    ) + "\n"
+
+
+def records_file_needs_write(
+    data_path: Path, records: list[UnifiedEstateGiftTaxExemptionRecord]
+) -> bool:
+    if not data_path.exists():
+        return True
+    try:
+        return data_path.read_text(encoding="utf-8") != serialize_records(records)
+    except OSError:
+        raise UpdateUnifiedEstateGiftTaxExemptionError(
+            UpdateErrorCode.INVALID_JSON
         ) from None
 
 
@@ -634,7 +664,15 @@ def source_urls_for_run(
 
     discovered_urls: list[str] = []
     for news_url in prospective_news_urls(today):
-        html = fetch_news_html_if_available(news_url)
+        try:
+            html = fetch_news_html_if_available(news_url)
+        except UpdateUnifiedEstateGiftTaxExemptionError as error:
+            if error.code in (
+                UpdateErrorCode.FETCH_FAILED,
+                UpdateErrorCode.FETCH_TOO_LARGE,
+            ):
+                continue
+            raise
         if html is None:
             continue
         discovered_urls.extend(discover_pdf_urls_from_news_html(html))
@@ -734,13 +772,14 @@ def update_from_source_texts(
 
     merged_records, changed = merge_records(existing_records, source_records)
     changed = changed or removed_grouped_records
-    if write and changed:
+    needs_write = records_file_needs_write(data_path, merged_records)
+    if write and (changed or needs_write):
         write_records(data_path, merged_records)
     return (
         len(records_by_period),
         original_existing_count,
         len(merged_records),
-        changed,
+        changed or needs_write,
     )
 
 
@@ -773,7 +812,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument(
         "--backfill",
         action="store_true",
-        help="merge deterministic Form 709 history and configured IRS sources",
+        help="merge deterministic legacy history and configured IRS Revenue Procedures",
     )
     parser.add_argument(
         "--input-text",
@@ -813,7 +852,7 @@ def main(argv: list[str] | None = None) -> int:
             existing_records = load_existing_records(args.data_path)
             target_year = None if args.backfill else annual_update_target_year(today)
             source_urls = (
-                ()
+                source_urls_for_run(True, today)
                 if args.backfill
                 else source_urls_for_run(
                     False,

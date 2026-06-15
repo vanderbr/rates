@@ -15,6 +15,7 @@ KNOWN_CURRENT_INDEX_OMISSION_URLS = [
     "https://www.irs.gov/pub/irs-drop/rr-26-09.pdf",
 ]
 KNOWN_BACKFILL_INDEX_OMISSION_URLS = [
+    "https://www.irs.gov/pub/irs-drop/rr-01-22.pdf",
     "https://www.irs.gov/pub/irs-drop/rr-13-09.pdf",
     "https://www.irs.gov/pub/irs-drop/rr-13-11.pdf",
 ]
