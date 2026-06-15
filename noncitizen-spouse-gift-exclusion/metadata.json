@@ -1,12 +1,18 @@
 {
   "name": "Noncitizen Spouse Gift Tax Annual Exclusion",
-  "source": "Internal Revenue Service and 26 USC 2523(i)",
+  "source": "Internal Revenue Service revenue procedures",
   "source_urls": [
-    "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section2523&num=0&edition=prelim",
-    "https://www.irs.gov/instructions/i709",
+    "https://www.irs.gov/pub/irs-drop/rp-18-57.pdf",
+    "https://www.irs.gov/pub/irs-drop/rp-19-44.pdf",
+    "https://www.irs.gov/pub/irs-drop/rp-20-45.pdf",
+    "https://www.irs.gov/pub/irs-drop/rp-21-45.pdf",
+    "https://www.irs.gov/pub/irs-drop/rp-22-38.pdf",
+    "https://www.irs.gov/pub/irs-drop/rp-23-34.pdf",
+    "https://www.irs.gov/pub/irs-drop/rp-24-40.pdf",
     "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf"
   ],
   "record_frequency": "annual",
+  "applies_to": "gifts_to_spouse_who_is_not_united_states_citizen_made_during_period",
   "backfill_start_date": "1988-07-14",
   "date_key": {
     "start_field": "period_start_date",
@@ -21,7 +27,7 @@
     }
   },
   "storage": {
-    "primary_records": "rates.json",
+    "primary_records": "noncitizen-spouse-gift-exclusion.json",
     "ordering": "ascending_period_start_date",
     "dedupe_key": [
       "period_start_date",

@@ -7,7 +7,6 @@ message NoncitizenSpouseGiftExclusionRecord {
   string period_start_date = 1;
   string period_end_date = 2;
   uint64 annual_exclusion_amount_usd = 3;
-  string applies_to = 4;
 }
 
 message NoncitizenSpouseGiftExclusionFile {

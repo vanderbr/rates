@@ -25,11 +25,15 @@ BOXED_TABLE_FIXTURE_PATH = (
 MULTIPLIER_TYPO_FIXTURE_PATH = (
     REPO_ROOT / "scripts" / "fixtures" / "afr_2001_08_multiplier_typo.txt"
 )
+NO_TABLE_1_MARKER_FIXTURE_PATH = (
+    REPO_ROOT / "scripts" / "fixtures" / "afr_2001_05_no_table_1_marker.txt"
+)
 SOURCE_URL = "https://www.irs.gov/pub/irs-drop/rr-26-11.pdf"
 LEGACY_SOURCE_URL = "https://www.irs.gov/pub/irs-drop/rr-22-18.pdf"
 LEGACY_TITLE_SOURCE_URL = "https://www.irs.gov/pub/irs-drop/rr-04-84.pdf"
 BOXED_TABLE_SOURCE_URL = "https://www.irs.gov/pub/irs-drop/rr-01-58.pdf"
 MULTIPLIER_TYPO_SOURCE_URL = "https://www.irs.gov/pub/irs-drop/rr-01-36.pdf"
+NO_TABLE_1_MARKER_SOURCE_URL = "https://www.irs.gov/pub/irs-drop/rr-01-22.pdf"
 
 
 def load_updater_module() -> ModuleType:
@@ -54,6 +58,9 @@ class AfrRateUpdaterTests(unittest.TestCase):
         )
         self.boxed_table_text = BOXED_TABLE_FIXTURE_PATH.read_text(encoding="utf-8")
         self.multiplier_typo_text = MULTIPLIER_TYPO_FIXTURE_PATH.read_text(
+            encoding="utf-8"
+        )
+        self.no_table_1_marker_text = NO_TABLE_1_MARKER_FIXTURE_PATH.read_text(
             encoding="utf-8"
         )
 
@@ -137,6 +144,25 @@ class AfrRateUpdaterTests(unittest.TestCase):
         self.assertEqual(
             746,
             record.applicable_federal_rates["long_term"]["afr_130"]["annual"],
+        )
+
+    def test_parses_legacy_table_without_literal_table_1_marker(self) -> None:
+        record = self.updater.parse_afr_record(
+            self.no_table_1_marker_text, NO_TABLE_1_MARKER_SOURCE_URL
+        )
+
+        self.assertEqual("2001-05", record.effective_month)
+        self.assertEqual(
+            425,
+            record.applicable_federal_rates["short_term"]["afr"]["annual"],
+        )
+        self.assertEqual(
+            687,
+            record.applicable_federal_rates["long_term"]["afr_130"]["monthly"],
+        )
+        self.assertEqual(
+            489,
+            record.adjusted_applicable_federal_rates["long_term"]["annual"],
         )
 
     def test_effective_month_comes_from_table_1_not_prior_references(self) -> None:

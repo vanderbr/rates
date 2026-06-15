@@ -18,7 +18,7 @@
     }
   },
   "storage": {
-    "primary_records": "rates.json",
+    "primary_records": "life-expectancy-by-age.json",
     "ordering": "ascending_age",
     "dedupe_key": "age"
   },

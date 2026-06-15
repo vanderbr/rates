@@ -73,7 +73,7 @@ jobs:
 
             Updates IRS rate source data from current published IRS pages:
 
-            - `7520/rates.json`
+            - `7520/by-year/YYYY-section-7520-rates.json`
             - `afr/manifest.json`
             - `afr/by-year/YYYY-afr.json`
             - dataset `protobuf/*.pb` files

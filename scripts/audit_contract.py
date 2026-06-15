@@ -146,6 +146,58 @@ def check_manifest_references(paths: list[Path], failures: list[str]) -> None:
         failures.append(f"unreferenced protobuf shard: {protobuf_file.relative_to(REPO_ROOT)}")
 
 
+def check_shape_versions(failures: list[str]) -> None:
+    index = read_json(REPO_ROOT / "index.json")
+    if not isinstance(index, dict):
+        failures.append("index.json is not an object")
+        return
+
+    datasets = index.get("datasets")
+    if not isinstance(datasets, list):
+        failures.append("index.json missing datasets")
+        return
+
+    for dataset in datasets:
+        if not isinstance(dataset, dict):
+            failures.append("index dataset entry is not an object")
+            continue
+        dataset_path = dataset.get("dataset_path")
+        dataset_id = dataset.get("dataset_id")
+        manifest_path = dataset.get("manifest_path")
+        if (
+            not isinstance(dataset_path, str)
+            or not isinstance(dataset_id, str)
+            or not isinstance(manifest_path, str)
+        ):
+            failures.append("index dataset entry missing shape identifiers")
+            continue
+
+        manifest = read_json(REPO_ROOT / manifest_path)
+        metadata = read_json(REPO_ROOT / dataset_path / "metadata.json")
+        schema_path = REPO_ROOT / "schemas" / "v1" / f"{dataset_id}.schema.json"
+        if not isinstance(manifest, dict) or not isinstance(metadata, dict):
+            failures.append(f"invalid manifest or metadata object: {dataset_path}")
+            continue
+
+        schema_id = manifest.get("schema_id")
+        if schema_id != metadata.get("schema_id"):
+            failures.append(f"metadata schema_id mismatch: {dataset_path}")
+        if not isinstance(schema_id, str) or not schema_id.startswith("rates.") or not schema_id.endswith(".v1"):
+            failures.append(f"schema_id is not rates.*.v1: {dataset_path}")
+        if manifest.get("schema_version") != 1 or metadata.get("schema_version") != 1:
+            failures.append(f"schema_version is not 1: {dataset_path}")
+        if not schema_path.is_file():
+            failures.append(f"missing JSON schema: {schema_path.relative_to(REPO_ROOT)}")
+
+        proto = manifest.get("proto")
+        if not isinstance(proto, dict):
+            failures.append(f"manifest missing proto object: {dataset_path}")
+            continue
+        proto_file = proto.get("file")
+        if not isinstance(proto_file, str) or not proto_file.startswith("proto/rates/v1/"):
+            failures.append(f"manifest proto file is not under proto/rates/v1: {dataset_path}")
+
+
 def run() -> None:
     failures: list[str] = []
     paths = iter_repo_paths()
@@ -154,6 +206,7 @@ def run() -> None:
     check_forbidden_text(paths, failures)
     check_canonical_json(paths, failures)
     check_manifest_references(paths, failures)
+    check_shape_versions(failures)
     if failures:
         raise AuditFailure(failures)
 

@@ -1420,7 +1420,12 @@ def serialize_treasury_metadata() -> str:
     metadata = {
         "name": "Daily Treasury Yield Curve Rates",
         "source": "United States Department of the Treasury",
-        "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates",
+        "source_url_template": (
+            "https://home.treasury.gov/resource-center/data-chart-center/"
+            "interest-rates/daily-treasury-rates.csv/{year}/all?"
+            "field_tdr_date_value={year}&type=daily_treasury_yield_curve&"
+            "page=&_format=csv"
+        ),
         "record_frequency": "business_day",
         "date_key": {
             "field": "date",

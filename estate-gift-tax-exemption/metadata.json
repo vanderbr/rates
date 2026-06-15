@@ -1,13 +1,20 @@
 {
   "name": "Unified Estate and Gift Tax Exemption",
-  "source": "Internal Revenue Service",
+  "source": "Internal Revenue Service revenue procedures",
   "source_urls": [
-    "https://www.irs.gov/instructions/i709",
+    "https://www.irs.gov/pub/irs-drop/rp-18-57.pdf",
+    "https://www.irs.gov/pub/irs-drop/rp-19-44.pdf",
+    "https://www.irs.gov/pub/irs-drop/rp-20-45.pdf",
+    "https://www.irs.gov/pub/irs-drop/rp-21-45.pdf",
+    "https://www.irs.gov/pub/irs-drop/rp-22-38.pdf",
+    "https://www.irs.gov/pub/irs-drop/rp-23-34.pdf",
+    "https://www.irs.gov/pub/irs-drop/rp-24-40.pdf",
     "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf"
   ],
   "irs_term": "Basic Exclusion Amount",
   "code_section": "26 USC 2010",
   "record_frequency": "annual",
+  "applies_to": "estates_of_decedents_dying_during_period",
   "backfill_start_date": "1977-01-01",
   "date_key": {
     "start_field": "period_start_date",
@@ -22,7 +29,7 @@
     }
   },
   "storage": {
-    "primary_records": "rates.json",
+    "primary_records": "estate-gift-tax-exemption.json",
     "ordering": "ascending_period_start_date",
     "dedupe_key": [
       "period_start_date",

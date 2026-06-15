@@ -23,19 +23,16 @@ except ModuleNotFoundError:
     from scripts import update_annual_gift_exclusion as irs_sources
 
 
-DEFAULT_DATA_PATH = Path("gst-exemption/rates.json")
-FORM_709_2025_URL = "https://www.irs.gov/pub/irs-prior/i709--2025.pdf"
+DEFAULT_DATA_PATH = Path("gst-exemption/gst-exemption.json")
 REVENUE_PROCEDURE_PATTERN = irs_sources.REVENUE_PROCEDURE_PATTERN
 IRS_REVENUE_PROCEDURE_URLS = irs_sources.IRS_REVENUE_PROCEDURE_URLS
 YEAR_PATTERN = re.compile(r"^[0-9]{4}$")
 DATE_PATTERN = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$")
 APPLIES_TO = "generation_skipping_transfers_during_calendar_year"
 
-# The 2025 Instructions for Form 709 publish the official historical GST
-# exemption table for transfers made through 2025. Keeping this table in code
-# makes the historical backfill deterministic while future annual values still
-# come from IRS Revenue Procedure parsing.
-FORM_709_2025_GST_TABLE = (
+# Deterministic legacy history is kept in code so backfill remains stable while
+# newer annual values are extracted from IRS Revenue Procedure PDFs.
+STATIC_GST_EXEMPTION_TABLE = (
     (1999, 1_010_000),
     (2000, 1_030_000),
     (2001, 1_060_000),
@@ -106,7 +103,6 @@ class GstExemptionRecord:
             "period_start_date": self.period_start_date,
             "period_end_date": self.period_end_date,
             "exemption_amount_usd": self.exemption_amount_usd,
-            "applies_to": self.applies_to,
         }
 
     def has_same_published_values(self, other: "GstExemptionRecord") -> bool:
@@ -136,9 +132,9 @@ def static_form_709_records() -> list[GstExemptionRecord]:
             exemption_amount_usd=amount,
             applies_to=APPLIES_TO,
             revenue_procedure=None,
-            source_url=FORM_709_2025_URL,
+            source_url="",
         )
-        for year, amount in FORM_709_2025_GST_TABLE
+        for year, amount in STATIC_GST_EXEMPTION_TABLE
     ]
 
 
@@ -255,25 +251,40 @@ def parse_json_record(value: object) -> GstExemptionRecord:
         "period_start_date",
         "period_end_date",
         "exemption_amount_usd",
-        "applies_to",
     }
-    legacy_keys = {*expected_keys, "source_url"}
-    legacy_keys_with_revenue_procedure = {*expected_keys, "revenue_procedure"}
-    legacy_keys_with_both = {*expected_keys, "revenue_procedure", "source_url"}
+    expected_keys_with_applies_to = {*expected_keys, "applies_to"}
+    legacy_keys = {*expected_keys_with_applies_to, "source_url"}
+    legacy_keys_with_revenue_procedure = {
+        *expected_keys_with_applies_to,
+        "revenue_procedure",
+    }
+    legacy_keys_with_both = {
+        *expected_keys_with_applies_to,
+        "revenue_procedure",
+        "source_url",
+    }
     legacy_year_keys = {
         "year",
         "exemption_amount_usd",
+    }
+    legacy_year_keys_with_applies_to = {
+        *legacy_year_keys,
         "applies_to",
         "revenue_procedure",
     }
-    legacy_year_keys_with_source_url = {*legacy_year_keys, "source_url"}
+    legacy_year_keys_with_source_url = {
+        *legacy_year_keys_with_applies_to,
+        "source_url",
+    }
     actual_keys = set(value.keys())
     if actual_keys not in (
         expected_keys,
+        expected_keys_with_applies_to,
         legacy_keys,
         legacy_keys_with_revenue_procedure,
         legacy_keys_with_both,
         legacy_year_keys,
+        legacy_year_keys_with_applies_to,
         legacy_year_keys_with_source_url,
     ):
         raise UpdateGstExemptionError(UpdateErrorCode.INVALID_JSON)
@@ -289,9 +300,9 @@ def parse_json_record(value: object) -> GstExemptionRecord:
         period_end_date = value["period_end_date"]
 
     amount = value["exemption_amount_usd"]
-    applies_to = value["applies_to"]
+    applies_to = value.get("applies_to", APPLIES_TO)
     revenue_procedure = value.get("revenue_procedure")
-    source_url = value.get("source_url", FORM_709_2025_URL)
+    source_url = value.get("source_url", "")
 
     if (
         not isinstance(period_start_date, str)
@@ -319,7 +330,7 @@ def parse_json_record(value: object) -> GstExemptionRecord:
         period_start_date=period_start_date,
         period_end_date=period_end_date,
         exemption_amount_usd=amount,
-        applies_to=applies_to,
+        applies_to=APPLIES_TO,
         revenue_procedure=revenue_procedure,
         source_url=source_url,
     )
@@ -498,7 +509,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument(
         "--backfill",
         action="store_true",
-        help="include the static Form 709 historical table and all configured Revenue Procedures",
+        help="include deterministic legacy history and all configured Revenue Procedures",
     )
     parser.add_argument(
         "--input-text",

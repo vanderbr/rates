@@ -88,8 +88,8 @@ jobs:
 
             ## Sources
 
-            - Cite: https://home.treasury.gov/resource-center/data-chart-center/interest-rates
-            - Cite: https://www.newyorkfed.org/markets/reference-rates/sofr
+            - Cite: https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/{year}/all?field_tdr_date_value={year}&type=daily_treasury_yield_curve&page=&_format=csv
+            - Cite: https://markets.newyorkfed.org/api/rates/unsecured/effr/search.csv
             - Cite: https://markets.newyorkfed.org/api/rates/all/search.csv
             - Interpretation: This automation records source-published daily
               percentage rates as integer basis points. Fractional SOFR averages

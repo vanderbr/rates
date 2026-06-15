@@ -84,6 +84,32 @@ class Section7520RateUpdaterTests(unittest.TestCase):
                 serialized.find('"effective_month": "2026-03"'),
             )
 
+    def test_update_writes_year_shards_for_canonical_data_path(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            data_path = Path(directory) / "by-year"
+
+            first_result = self.updater.update_from_html(
+                html=self.fixture_html,
+                source_url=SOURCE_URL,
+                data_path=data_path,
+                write=True,
+            )
+            second_result = self.updater.update_from_html(
+                html=self.fixture_html,
+                source_url=SOURCE_URL,
+                data_path=data_path,
+                write=True,
+            )
+
+            shard_path = data_path / "2026-section-7520-rates.json"
+            self.assertEqual((3, 0, 3, True), first_result)
+            self.assertEqual((3, 3, 3, False), second_result)
+            self.assertTrue(shard_path.is_file())
+            self.assertFalse((Path(directory) / "section-7520-rates.json").exists())
+            serialized = shard_path.read_text(encoding="utf-8")
+            self.assertIn('"effective_month": "2026-01"', serialized)
+            self.assertIn('"effective_month": "2026-03"', serialized)
+
     def test_parses_prior_years_table_with_leading_decimal_rates(self) -> None:
         records = self.updater.parse_section_7520_records(
             self.prior_years_fixture_html,

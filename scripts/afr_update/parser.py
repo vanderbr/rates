@@ -68,7 +68,7 @@ def format_effective_month(month_name: str, year: str) -> str:
 
 
 def find_effective_month(lines: list[str], revenue_ruling_year: str) -> str:
-    table_1_month = find_month_after_marker(lines, "TABLE 1")
+    table_1_month = find_table_1_month(lines)
     table_2_month = find_month_after_marker(lines, "TABLE 2")
     if (
         table_1_month is not None
@@ -80,6 +80,20 @@ def find_effective_month(lines: list[str], revenue_ruling_year: str) -> str:
     if table_1_month is None:
         raise AfrUpdateError(AfrUpdateErrorCode.MISSING_FIELD)
     return table_1_month
+
+
+def find_table_1_month(lines: list[str]) -> str | None:
+    table_1_month = find_month_after_marker(lines, "TABLE 1")
+    if table_1_month is not None:
+        return table_1_month
+
+    for line in lines:
+        if "TABLE 2" in line:
+            break
+        match = MONTH_PATTERN.search(line)
+        if match is not None:
+            return format_effective_month(match.group(1), match.group(2))
+    return None
 
 
 def find_month_after_marker(lines: list[str], marker: str) -> str | None:
@@ -98,7 +112,7 @@ def find_month_after_marker(lines: list[str], marker: str) -> str | None:
 
 
 def parse_table_1(lines: list[str]) -> dict[str, dict[str, dict[str, int]]]:
-    table_lines = slice_between(lines, "TABLE 1", "TABLE 2")
+    table_lines = slice_table_1(lines)
     result: dict[str, dict[str, dict[str, int]]] = {}
     current_term: str | None = None
 
@@ -132,6 +146,13 @@ def parse_table_1(lines: list[str]) -> dict[str, dict[str, dict[str, int]]]:
     }
     validate_nested_keys(result, expected)
     return result
+
+
+def slice_table_1(lines: list[str]) -> list[str]:
+    try:
+        return slice_between(lines, "TABLE 1", "TABLE 2")
+    except AfrUpdateError:
+        return slice_between(lines, "Applicable Federal Rates (AFR)", "TABLE 2")
 
 
 def parse_table_2(lines: list[str]) -> dict[str, dict[str, int]]:

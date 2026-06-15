@@ -9,11 +9,11 @@
     "message": "rates.v1.NoncitizenSpouseGiftExclusionFile"
   },
   "records": {
-    "path": "rates.json",
-    "bytes": 6267,
-    "sha256": "ac093ced131219e497c617a867e48521c2a8500e35747e3866503cc2680c180d",
-    "protobuf_path": "protobuf/rates.pb",
-    "protobuf_bytes": 2914,
-    "protobuf_sha256": "34500d14ff95bf31879aacdf0577c07cb2fdbfd33a207bb7eaafcb2e924c0a8d"
+    "path": "noncitizen-spouse-gift-exclusion.json",
+    "bytes": 3686,
+    "sha256": "6d4fd22156bf23b83de5b1926083d32b43189de6542a2ce7509d8a0f30f1cb25",
+    "protobuf_path": "protobuf/noncitizen-spouse-gift-exclusion.pb",
+    "protobuf_bytes": 913,
+    "protobuf_sha256": "5c5250c5db5e585eb72c9bdd6937be89561db17e7f8369f436321385bcc80b33"
   }
 }

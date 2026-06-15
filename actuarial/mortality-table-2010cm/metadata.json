@@ -14,7 +14,7 @@
     }
   },
   "storage": {
-    "primary_records": "rates.json",
+    "primary_records": "mortality-table-2010cm.json",
     "ordering": "ascending_age",
     "dedupe_key": "age"
   },

@@ -5,9 +5,8 @@ name: Update Annual IRS Rates
 on:
   workflow_dispatch:
   schedule:
-    # Annual inflation adjustments are usually published late in the year.
-    # Running weekly from November through January polls the publication window;
-    # schedule-aware updaters no-op after the target year is already present.
+    # Poll from November through January; missing/unreleased source pages no-op.
+    # Schedule-aware updaters no-op after the target year is already present.
     - cron: "19 12 * 11,12,1 2"
 
 permissions:
@@ -87,24 +86,27 @@ jobs:
           body: |
             ## Summary
 
-            Updates annual IRS inflation-adjusted source data from current
-            published IRS revenue procedures, Form 709 instructions, and
-            statutory authority:
+            Updates annual IRS inflation-adjusted source data from published
+            IRS revenue procedures:
 
-            - `annual-gift-exclusion/rates.json`
-            - `gst-exemption/rates.json`
-            - `noncitizen-spouse-gift-exclusion/rates.json`
-            - `estate-gift-tax-exemption/rates.json`
+            - `annual-gift-exclusion/annual-gift-exclusion.json`
+            - `gst-exemption/gst-exemption.json`
+            - `noncitizen-spouse-gift-exclusion/noncitizen-spouse-gift-exclusion.json`
+            - `estate-gift-tax-exemption/estate-gift-tax-exemption.json`
             - dataset `protobuf/*.pb` files
             - `index.json`
             - `schemas/v1/*.schema.json`
 
-            ## Statutory / Tax Authority
+            ## Sources
 
-            - Cite: https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section2503&num=0&edition=prelim
-            - Cite: https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section2523&num=0&edition=prelim
-            - Cite: https://www.irs.gov/instructions/i709
-            - Cite: https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill
+            - Cite: https://www.irs.gov/pub/irs-drop/rp-18-57.pdf
+            - Cite: https://www.irs.gov/pub/irs-drop/rp-19-44.pdf
+            - Cite: https://www.irs.gov/pub/irs-drop/rp-20-45.pdf
+            - Cite: https://www.irs.gov/pub/irs-drop/rp-21-45.pdf
+            - Cite: https://www.irs.gov/pub/irs-drop/rp-22-38.pdf
+            - Cite: https://www.irs.gov/pub/irs-drop/rp-23-34.pdf
+            - Cite: https://www.irs.gov/pub/irs-drop/rp-24-40.pdf
+            - Cite: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
             - Interpretation: This automation records IRS-published annual
               exclusion amounts as integer U.S. dollars, preserving
               chronological order. Schedule-aware updaters defer outside the

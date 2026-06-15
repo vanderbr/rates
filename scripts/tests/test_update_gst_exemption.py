@@ -58,7 +58,7 @@ class GstExemptionUpdaterTests(unittest.TestCase):
 
     def test_update_writes_chronological_json_and_is_idempotent(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            data_path = Path(directory) / "rates.json"
+            data_path = Path(directory) / "gst-exemption.json"
 
             first_result = self.updater.update_from_source_texts(
                 [(SOURCE_URL, self.fixture_text)],
@@ -81,10 +81,11 @@ class GstExemptionUpdaterTests(unittest.TestCase):
             self.assertIn('"exemption_amount_usd": 15000000', serialized)
             self.assertNotIn('"revenue_procedure"', serialized)
             self.assertNotIn('"source_url"', serialized)
+            self.assertNotIn('"applies_to"', serialized)
 
     def test_legacy_year_json_migrates_to_period_records(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            data_path = Path(directory) / "rates.json"
+            data_path = Path(directory) / "gst-exemption.json"
             data_path.write_text(
                 (
                     "["
@@ -109,10 +110,11 @@ class GstExemptionUpdaterTests(unittest.TestCase):
             self.assertIn('"period_start_date": "1999-01-01"', serialized)
             self.assertNotIn('"year"', serialized)
             self.assertNotIn('"revenue_procedure"', serialized)
+            self.assertNotIn('"applies_to"', serialized)
 
     def test_empty_publication_poll_noops(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            data_path = Path(directory) / "rates.json"
+            data_path = Path(directory) / "gst-exemption.json"
 
             result = self.updater.update_from_source_texts(
                 [],
@@ -142,7 +144,7 @@ class GstExemptionUpdaterTests(unittest.TestCase):
                     exemption_amount_usd=15_000_000,
                     applies_to=self.updater.APPLIES_TO,
                     revenue_procedure=None,
-                    source_url=self.updater.FORM_709_2025_URL,
+                    source_url="",
                 )
             ],
         )
@@ -150,9 +152,34 @@ class GstExemptionUpdaterTests(unittest.TestCase):
         self.assertEqual((), outside_window_urls)
         self.assertEqual((), existing_target_urls)
 
+    def test_publication_poll_uses_irs_newsroom_revenue_procedure_discovery(
+        self,
+    ) -> None:
+        observed_urls: list[str] = []
+
+        def fetch_newsroom_html(source_url: str) -> str | None:
+            observed_urls.append(source_url)
+            return '<a href="/pub/irs-drop/rp-25-32.pdf">Revenue Procedure</a>'
+
+        original_fetch = self.updater.irs_sources.fetch_news_html_if_available
+        self.updater.irs_sources.fetch_news_html_if_available = fetch_newsroom_html
+        try:
+            urls = self.updater.source_urls_for_run(
+                False,
+                self.updater.dt.date(2026, 11, 1),
+                existing_records=[],
+            )
+        finally:
+            self.updater.irs_sources.fetch_news_html_if_available = original_fetch
+
+        self.assertEqual(("https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",), urls)
+        self.assertTrue(
+            all("/newsroom/" in source_url for source_url in observed_urls)
+        )
+
     def test_conflicting_existing_record_fails_closed(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            data_path = Path(directory) / "rates.json"
+            data_path = Path(directory) / "gst-exemption.json"
             data_path.write_text(
                 "["
                 '{"year":2026,'
@@ -187,7 +214,7 @@ class GstExemptionUpdaterTests(unittest.TestCase):
 
     def test_input_text_backfill_is_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            data_path = Path(directory) / "rates.json"
+            data_path = Path(directory) / "gst-exemption.json"
 
             with redirect_stderr(io.StringIO()):
                 exit_code = self.updater.main(

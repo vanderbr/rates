@@ -10,11 +10,11 @@
       "dataset_id": "section-7520-rates",
       "schema_id": "rates.section_7520_rates.v1",
       "schema_version": 1,
-      "record_storage": "single_file",
+      "record_storage": "by_year",
       "record_count": 354,
       "manifest_path": "7520/manifest.json",
-      "manifest_bytes": 595,
-      "manifest_sha256": "7b0103dbe8de707c606fa97a66d5d859ea8c0867c4e5f1c8bc36220103751a93"
+      "manifest_bytes": 14953,
+      "manifest_sha256": "68204d5787f19a8dca3c8e7ae7fc7f9e631f9011f8ebcb2e78ca2613f32b2fe7"
     },
     {
       "dataset_path": "afr",
@@ -22,10 +22,10 @@
       "schema_id": "rates.applicable_federal_rates.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 318,
+      "record_count": 319,
       "manifest_path": "afr/manifest.json",
       "manifest_bytes": 12765,
-      "manifest_sha256": "2c4a404facac5eae8e26fe2eca0e1988e0842eeda8862f0bc51d0b19473b430d"
+      "manifest_sha256": "3c457238bb1188abc8dbd67839a4095bdee6d085222d1785ae201a83c3aa1328"
     },
     {
       "dataset_path": "annual-gift-exclusion",
@@ -35,8 +35,8 @@
       "record_storage": "single_file",
       "record_count": 72,
       "manifest_path": "annual-gift-exclusion/manifest.json",
-      "manifest_bytes": 607,
-      "manifest_sha256": "45274d2fbb283429195cd31f5c1f3152d52813f92ffe82e60813234ae0c1a8bb"
+      "manifest_bytes": 638,
+      "manifest_sha256": "93e5a518a9b8d5997ad8c262e68bd3280665c32161de82f312ae7b849d4cb468"
     },
     {
       "dataset_path": "estate-gift-tax-exemption",
@@ -46,8 +46,8 @@
       "record_storage": "single_file",
       "record_count": 51,
       "manifest_path": "estate-gift-tax-exemption/manifest.json",
-      "manifest_bytes": 621,
-      "manifest_sha256": "4cea5dd6cf1cbc359442d9416fe3ce9ff018191d80a72b871031787aaffe5f72"
+      "manifest_bytes": 661,
+      "manifest_sha256": "cbe33ee713d2c7228a4f158bd43f6ac69a7a4ec4f9b7e42bd5743a08044e16e8"
     },
     {
       "dataset_path": "gst-exemption",
@@ -57,8 +57,8 @@
       "record_storage": "single_file",
       "record_count": 28,
       "manifest_path": "gst-exemption/manifest.json",
-      "manifest_bytes": 575,
-      "manifest_sha256": "c849be2d90daa42d8b12ea7871882b47842bdd734501669876ef3f0ce4ee1066"
+      "manifest_bytes": 590,
+      "manifest_sha256": "3c46c3037925d54cd563dcef9d4543ad8045fa353475f6e495b3d2fb1a850097"
     },
     {
       "dataset_path": "noncitizen-spouse-gift-exclusion",
@@ -68,8 +68,8 @@
       "record_storage": "single_file",
       "record_count": 29,
       "manifest_path": "noncitizen-spouse-gift-exclusion/manifest.json",
-      "manifest_bytes": 649,
-      "manifest_sha256": "bafeec76bb459c95b5778d1bbe7359baf9096eb97a2c797bea43b8a4c4b8d695"
+      "manifest_bytes": 702,
+      "manifest_sha256": "31abb40b9bd17b411eee6e439f59d09516509ca150adba1bbe6fdb4593773dc2"
     },
     {
       "dataset_path": "treasury/treasury-yield-curve",
@@ -138,15 +138,15 @@
       "manifest_sha256": "cc31a1ff810c2df317ce8b4914a2ee7b9d7d014ebf056ffc6e58d61bc18feadd"
     },
     {
-      "dataset_path": "table-2001",
+      "dataset_path": "actuarial/mortality-table-2000cm",
       "dataset_id": "mortality-table-2000cm",
       "schema_id": "rates.mortality_table_2000cm.v1",
       "schema_version": 1,
       "record_storage": "single_file",
       "record_count": 111,
-      "manifest_path": "table-2001/manifest.json",
-      "manifest_bytes": 593,
-      "manifest_sha256": "a88838e4fea331ccc8446e511c57d96a8db1f44f0d93b1ba19d6c7693246ed4a"
+      "manifest_path": "actuarial/mortality-table-2000cm/manifest.json",
+      "manifest_bytes": 627,
+      "manifest_sha256": "d82f03d2e671b44062188907230666d7d52b40f52d4d1daf78d49a7c5b9a3d22"
     },
     {
       "dataset_path": "actuarial/mortality-table-2010cm",
@@ -156,8 +156,8 @@
       "record_storage": "single_file",
       "record_count": 111,
       "manifest_path": "actuarial/mortality-table-2010cm/manifest.json",
-      "manifest_bytes": 593,
-      "manifest_sha256": "4723c6416d24cb5d2babf3d38f2dd9f2e184eae6bbe9807911ef1ceae7e3b428"
+      "manifest_bytes": 627,
+      "manifest_sha256": "6e606835e9f10f9032599ce03ef533529f6fda68f0525400104a2bfe18c567f0"
     },
     {
       "dataset_path": "actuarial/life-expectancy-by-age",
@@ -167,8 +167,8 @@
       "record_storage": "single_file",
       "record_count": 111,
       "manifest_path": "actuarial/life-expectancy-by-age/manifest.json",
-      "manifest_bytes": 606,
-      "manifest_sha256": "f9bd5db16b1c03823ee41903932053fd27af64cfcad8eae8429d62b36f27d1f7"
+      "manifest_bytes": 640,
+      "manifest_sha256": "2260f087ba427e685d6263798805e5ff74661202b8b28dcca8a14b69f53f541d"
     },
     {
       "dataset_path": "actuarial/table-b",
