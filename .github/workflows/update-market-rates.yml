@@ -82,6 +82,8 @@ jobs:
             - `sofr/sofr-90d-average/by-year/YYYY-sofr-90d-average.json`
             - `sofr/sofr-180d-average/manifest.json`
             - `sofr/sofr-180d-average/by-year/YYYY-sofr-180d-average.json`
+            - `sofr/sofr-index/manifest.json`
+            - `sofr/sofr-index/by-year/YYYY-sofr-index.json`
             - dataset `protobuf/*.pb` files
             - `index.json`
             - `schemas/v1/*.schema.json`

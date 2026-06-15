@@ -66,6 +66,11 @@ SOFR_CSV = (
     "04/02/2018,SOFRAI,,,,,,,,,,,,1.80000,1.80000,1.80000,1.00000000,,\n"
     "04/02/2018,SOFR,1.80,1.25,1.77,1.89,2.25,849,,,,,,,,,,,\n"
 )
+SOFR_AVERAGE_INDEX_ONLY_CSV = (
+    NYFED_HEADER
+    +
+    "06/15/2026,SOFRAI,,,,,,,,,,,,3.60136,3.63561,3.67923,1.24721652,,\n"
+)
 
 
 def load_updater_module() -> ModuleType:
@@ -205,7 +210,8 @@ class MarketRateUpdaterTests(unittest.TestCase):
             self.assertIn('"percentile_1_basis_points": 125', canonical_json)
             self.assertNotIn("percentiles_basis_points", canonical_json)
             self.assertNotIn("rate_type", canonical_json)
-            self.assertIn('"sofr_index_scaled_100000000": 100000000', canonical_json)
+            self.assertNotIn("average_30_day_basis_points_scaled_1000", canonical_json)
+            self.assertNotIn("sofr_index_scaled_100000000", canonical_json)
             derived_path = (
                 Path(directory)
                 / "sofr"
@@ -217,6 +223,106 @@ class MarketRateUpdaterTests(unittest.TestCase):
                 '"average_30_day_basis_points_scaled_1000": 180000',
                 derived_path.read_text(encoding="utf-8"),
             )
+            index_path = (
+                Path(directory)
+                / "sofr"
+                / "sofr-index"
+                / "by-year"
+                / "2018-sofr-index.json"
+            )
+            self.assertIn(
+                '"sofr_index_scaled_100000000": 100000000',
+                index_path.read_text(encoding="utf-8"),
+            )
+
+    def test_sofr_average_index_only_row_does_not_create_sofr_observation(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            dataset = self.updater.NyFedRateDataset(
+                dataset_id="sofr",
+                path_slug=f"{directory}/sofr",
+                rate_type="SOFR",
+                api_group="secured",
+                api_name="sofr",
+                start_date=self.updater.date(2018, 4, 2),
+                year_sharded=True,
+                api_path="/api/rates/all/search.csv",
+            )
+
+            result = self.updater.update_nyfed_from_csv_text(
+                SOFR_AVERAGE_INDEX_ONLY_CSV,
+                SOFR_SOURCE_URL,
+                dataset,
+                True,
+            )
+
+            self.assertEqual((1, 0, 0, True), result)
+            self.assertFalse((dataset.year_dir / "2026-sofr.json").exists())
+            average_path = (
+                Path(directory)
+                / "sofr"
+                / "sofr-30d-average"
+                / "by-year"
+                / "2026-sofr-30d-average.json"
+            )
+            index_path = (
+                Path(directory)
+                / "sofr"
+                / "sofr-index"
+                / "by-year"
+                / "2026-sofr-index.json"
+            )
+            self.assertIn(
+                '"average_30_day_basis_points_scaled_1000": 360136',
+                average_path.read_text(encoding="utf-8"),
+            )
+            self.assertIn(
+                '"sofr_index_scaled_100000000": 124721652',
+                index_path.read_text(encoding="utf-8"),
+            )
+
+    def test_sofr_update_reads_current_observation_only_json_shape(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            dataset = self.updater.NyFedRateDataset(
+                dataset_id="sofr",
+                path_slug=f"{directory}/sofr",
+                rate_type="SOFR",
+                api_group="secured",
+                api_name="sofr",
+                start_date=self.updater.date(2018, 4, 2),
+                year_sharded=True,
+                api_path="/api/rates/all/search.csv",
+            )
+            dataset.year_dir.mkdir(parents=True)
+            (dataset.year_dir / "2018-sofr.json").write_text(
+                (
+                    "[\n"
+                    "  {\n"
+                    '    "date": "2018-04-02",\n'
+                    '    "rate_basis_points": 180,\n'
+                    '    "percentile_1_basis_points": 125,\n'
+                    '    "percentile_25_basis_points": 177,\n'
+                    '    "percentile_75_basis_points": 189,\n'
+                    '    "percentile_99_basis_points": 225,\n'
+                    '    "volume_billions": 849\n'
+                    "  }\n"
+                    "]\n"
+                ),
+                encoding="utf-8",
+            )
+
+            result = self.updater.update_nyfed_from_csv_text(
+                SOFR_CSV,
+                SOFR_SOURCE_URL,
+                dataset,
+                True,
+            )
+
+            self.assertEqual((2, 1, 2, True), result)
+            canonical_json = (dataset.year_dir / "2018-sofr.json").read_text(
+                encoding="utf-8"
+            )
+            self.assertNotIn("average_30_day_basis_points_scaled_1000", canonical_json)
+            self.assertNotIn("sofr_index_scaled_100000000", canonical_json)
 
     def test_sofr_merge_enriches_publication_lag_record(self) -> None:
         partial = self.updater.NyFedReferenceRateRecord(

@@ -1,0 +1,99 @@
+{
+  "dataset_id": "sofr-index",
+  "schema_id": "rates.sofr_index.v1",
+  "schema_version": 1,
+  "record_storage": "by_year",
+  "record_count": 1571,
+  "proto": {
+    "file": "proto/rates/v1/sofr_index.proto",
+    "message": "rates.v1.SofrIndexFile"
+  },
+  "years": [
+    {
+      "path": "by-year/2020-sofr-index.json",
+      "bytes": 16883,
+      "sha256": "fa5a34d034d950c03ff18dccf7978dbf97fbdcab7ea82efccb470812b98b76d0",
+      "protobuf_path": "protobuf/2020-sofr-index.pb",
+      "protobuf_bytes": 4030,
+      "protobuf_sha256": "8a8dd7aa6245ac047c7999e9c2807f155a3c95b5f7324073cf128e61d3aebad0",
+      "year": "2020",
+      "record_count": 211,
+      "first_date": "2020-03-02",
+      "last_date": "2020-12-31"
+    },
+    {
+      "path": "by-year/2021-sofr-index.json",
+      "bytes": 20003,
+      "sha256": "6a8b8544b99229feae535fe9cd4f5939e8603b2d176ff5e5e87e43b7adaaa6db",
+      "protobuf_path": "protobuf/2021-sofr-index.pb",
+      "protobuf_bytes": 4771,
+      "protobuf_sha256": "aa8634f84b77054608660ce12c6d6429058edbebba38d4034dc373abf908f89b",
+      "year": "2021",
+      "record_count": 250,
+      "first_date": "2021-01-04",
+      "last_date": "2021-12-31"
+    },
+    {
+      "path": "by-year/2022-sofr-index.json",
+      "bytes": 19923,
+      "sha256": "5fc2fbb4c7dcb96dff2a94324edf6f4bc37a65d4b6095d69e53b90084f366720",
+      "protobuf_path": "protobuf/2022-sofr-index.pb",
+      "protobuf_bytes": 4752,
+      "protobuf_sha256": "54bff48ac89e497b21bd229721ec857ef5c4c3c84a9f5f5f93a87724e727b17f",
+      "year": "2022",
+      "record_count": 249,
+      "first_date": "2022-01-03",
+      "last_date": "2022-12-30"
+    },
+    {
+      "path": "by-year/2023-sofr-index.json",
+      "bytes": 19923,
+      "sha256": "4ff6e99e923d4c504cc3c0fc512f5c44ab5b489fdb8a96293df69b50fc149a46",
+      "protobuf_path": "protobuf/2023-sofr-index.pb",
+      "protobuf_bytes": 4752,
+      "protobuf_sha256": "b1f0dbe1ad467f65c9be5e9b68ed870fa6c7e667305273cfc45ab257f022970b",
+      "year": "2023",
+      "record_count": 249,
+      "first_date": "2023-01-03",
+      "last_date": "2023-12-29"
+    },
+    {
+      "path": "by-year/2024-sofr-index.json",
+      "bytes": 20003,
+      "sha256": "c388e83ac8c48414dd613f6cc47087ec823c097facf3ac7cbd92e452bfc89524",
+      "protobuf_path": "protobuf/2024-sofr-index.pb",
+      "protobuf_bytes": 4771,
+      "protobuf_sha256": "0e7b0735703b269d1d80cf4b9b6369c42704643faf60bf002f5235bf8e85b68f",
+      "year": "2024",
+      "record_count": 250,
+      "first_date": "2024-01-02",
+      "last_date": "2024-12-31"
+    },
+    {
+      "path": "by-year/2025-sofr-index.json",
+      "bytes": 19923,
+      "sha256": "49af11fbeea76e23a2bdb41c480a3c26227bc33879c055ad64f01d165b000095",
+      "protobuf_path": "protobuf/2025-sofr-index.pb",
+      "protobuf_bytes": 4752,
+      "protobuf_sha256": "c3424d5cb851bc510b19cc32682eb918d870a6744fe72634056fe733bb654f01",
+      "year": "2025",
+      "record_count": 249,
+      "first_date": "2025-01-02",
+      "last_date": "2025-12-31"
+    },
+    {
+      "path": "by-year/2026-sofr-index.json",
+      "bytes": 9043,
+      "sha256": "c6f51d8baef9285e0e3213cf6b59b8c08cf40ca4585bf91d8f20a59bbf697715",
+      "protobuf_path": "protobuf/2026-sofr-index.pb",
+      "protobuf_bytes": 2168,
+      "protobuf_sha256": "8a1def0c18212f4456d823e3afc9d06c1a0e8f3cfb152c99d962554cd5bcb19b",
+      "year": "2026",
+      "record_count": 113,
+      "first_date": "2026-01-02",
+      "last_date": "2026-06-15"
+    }
+  ],
+  "first_date": "2020-03-02",
+  "last_date": "2026-06-15"
+}

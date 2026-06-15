@@ -11,8 +11,7 @@
   "value_fields": {
     "rate_basis_points": {
       "unit": "basis_points",
-      "source_rate_type": "SOFR",
-      "null_meaning": "SOFRAI may publish before the daily SOFR observation"
+      "source_rate_type": "SOFR"
     },
     "percentile_1_basis_points": {
       "unit": "basis_points"
@@ -28,22 +27,6 @@
     },
     "volume_billions": {
       "unit": "billions_usd"
-    },
-    "average_30_day_basis_points_scaled_1000": {
-      "unit": "basis_points_scaled_1000",
-      "scale": "stored value / 1000 = basis points"
-    },
-    "average_90_day_basis_points_scaled_1000": {
-      "unit": "basis_points_scaled_1000",
-      "scale": "stored value / 1000 = basis points"
-    },
-    "average_180_day_basis_points_scaled_1000": {
-      "unit": "basis_points_scaled_1000",
-      "scale": "stored value / 1000 = basis points"
-    },
-    "sofr_index_scaled_100000000": {
-      "unit": "index_scaled_100000000",
-      "scale": "stored value / 100000000 = published index"
     }
   },
   "storage": {

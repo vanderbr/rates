@@ -22,6 +22,7 @@ import "rates/v1/noncitizen_spouse_gift_exclusion.proto";
 import "rates/v1/section_7520_rates.proto";
 import "rates/v1/sofr.proto";
 import "rates/v1/sofr_average.proto";
+import "rates/v1/sofr_index.proto";
 import "rates/v1/treasury_yield_curve.proto";
 
 message RatesBundle {
@@ -48,4 +49,5 @@ message RatesBundle {
   TableU1File actuarial_table_u1 = 21;
   TableU2File actuarial_table_u2 = 22;
   TableZFile actuarial_table_z = 23;
+  SofrIndexFile sofr_index = 24;
 }

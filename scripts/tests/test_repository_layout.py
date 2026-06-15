@@ -64,6 +64,7 @@ YEAR_SHARDED_DATASETS = {
     "sofr/sofr-30d-average",
     "sofr/sofr-90d-average",
     "sofr/sofr-180d-average",
+    "sofr/sofr-index",
 }
 DATASET_METADATA_FILES = {
     "7520": "metadata.json",
@@ -74,6 +75,7 @@ DATASET_METADATA_FILES = {
     "sofr/sofr-30d-average": "metadata.json",
     "sofr/sofr-90d-average": "metadata.json",
     "sofr/sofr-180d-average": "metadata.json",
+    "sofr/sofr-index": "metadata.json",
 }
 YEAR_SHARDED_MANIFEST = "manifest.json"
 DISALLOWED_LEGACY_PATHS = {

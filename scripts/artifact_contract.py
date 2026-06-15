@@ -36,6 +36,7 @@ PROTO_FILE_BY_MESSAGE = {
     "FederalFundsRateFile": "proto/rates/v1/federal_funds.proto",
     "SofrFile": "proto/rates/v1/sofr.proto",
     "SofrAverageFile": "proto/rates/v1/sofr_average.proto",
+    "SofrIndexFile": "proto/rates/v1/sofr_index.proto",
     "MortalityFile": "proto/rates/v1/mortality_table.proto",
     "LifeExpectancyFile": "proto/rates/v1/life_expectancy_by_age.proto",
     "TableBFile": "proto/rates/v1/actuarial_table_b.proto",
@@ -281,10 +282,6 @@ def encode_sofr_record(record: dict[str, object]) -> bytes:
             ("percentile_75_basis_points", 5, "optional_int"),
             ("percentile_99_basis_points", 6, "optional_int"),
             ("volume_billions", 7, "optional_uint"),
-            ("average_30_day_basis_points_scaled_1000", 8, "optional_uint"),
-            ("average_90_day_basis_points_scaled_1000", 9, "optional_uint"),
-            ("average_180_day_basis_points_scaled_1000", 10, "optional_uint"),
-            ("sofr_index_scaled_100000000", 11, "optional_uint"),
         ),
     )
 
@@ -296,6 +293,13 @@ def encode_sofr_average_record(field_name: str) -> Callable[[dict[str, object]],
         out.extend(field_varint(2, required_int(record, field_name)))
         return bytes(out)
     return encode
+
+
+def encode_sofr_index_record(record: dict[str, object]) -> bytes:
+    out = bytearray()
+    out.extend(field_string(1, required_str(record, "date")))
+    out.extend(field_varint(2, required_int(record, "sofr_index_scaled_100000000")))
+    return bytes(out)
 
 
 SECTION_7520_FIELDS = (
@@ -376,10 +380,11 @@ DATASETS: tuple[DatasetSpec, ...] = (
     DatasetSpec("noncitizen-spouse-gift-exclusion", "noncitizen-spouse-gift-exclusion", "rates.noncitizen_spouse_gift_exclusion.v1", "NoncitizenSpouseGiftExclusionFile", "single", scalar_encoder(ANNUAL_GIFT_FIELDS), tuple(field[0] for field in ANNUAL_GIFT_FIELDS), record_filename="noncitizen-spouse-gift-exclusion.json"),
     DatasetSpec("treasury/treasury-yield-curve", "treasury-yield-curve", "rates.treasury_yield_curve.v1", "TreasuryYieldCurveFile", "by_year", encode_treasury_record, ("date", "par_yields_basis_points")),
     DatasetSpec("fed-funds", "federal-funds", "rates.federal_funds.v1", "FederalFundsRateFile", "by_year", scalar_encoder(FED_FUNDS_FIELDS), tuple(field[0] for field in FED_FUNDS_FIELDS)),
-    DatasetSpec("sofr", "sofr", "rates.sofr.v1", "SofrFile", "by_year", encode_sofr_record, ("date", "rate_basis_points", "percentile_1_basis_points", "percentile_25_basis_points", "percentile_75_basis_points", "percentile_99_basis_points", "volume_billions", "average_30_day_basis_points_scaled_1000", "average_90_day_basis_points_scaled_1000", "average_180_day_basis_points_scaled_1000", "sofr_index_scaled_100000000")),
+    DatasetSpec("sofr", "sofr", "rates.sofr.v1", "SofrFile", "by_year", encode_sofr_record, ("date", "rate_basis_points", "percentile_1_basis_points", "percentile_25_basis_points", "percentile_75_basis_points", "percentile_99_basis_points", "volume_billions")),
     DatasetSpec("sofr/sofr-30d-average", "sofr-30d-average", "rates.sofr_30d_average.v1", "SofrAverageFile", "by_year", encode_sofr_average_record("average_30_day_basis_points_scaled_1000"), ("date", "average_30_day_basis_points_scaled_1000"), "average_basis_points_scaled_1000"),
     DatasetSpec("sofr/sofr-90d-average", "sofr-90d-average", "rates.sofr_90d_average.v1", "SofrAverageFile", "by_year", encode_sofr_average_record("average_90_day_basis_points_scaled_1000"), ("date", "average_90_day_basis_points_scaled_1000"), "average_basis_points_scaled_1000"),
     DatasetSpec("sofr/sofr-180d-average", "sofr-180d-average", "rates.sofr_180d_average.v1", "SofrAverageFile", "by_year", encode_sofr_average_record("average_180_day_basis_points_scaled_1000"), ("date", "average_180_day_basis_points_scaled_1000"), "average_basis_points_scaled_1000"),
+    DatasetSpec("sofr/sofr-index", "sofr-index", "rates.sofr_index.v1", "SofrIndexFile", "by_year", encode_sofr_index_record, ("date", "sofr_index_scaled_100000000")),
     DatasetSpec("actuarial/mortality-table-2000cm", "mortality-table-2000cm", "rates.mortality_table_2000cm.v1", "MortalityFile", "single", scalar_encoder(MORTALITY_FIELDS), tuple(field[0] for field in MORTALITY_FIELDS), record_filename="mortality-table-2000cm.json"),
     DatasetSpec("actuarial/mortality-table-2010cm", "mortality-table-2010cm", "rates.mortality_table_2010cm.v1", "MortalityFile", "single", scalar_encoder(MORTALITY_FIELDS), tuple(field[0] for field in MORTALITY_FIELDS), record_filename="mortality-table-2010cm.json"),
     DatasetSpec("actuarial/life-expectancy-by-age", "life-expectancy-by-age", "rates.life_expectancy_by_age.v1", "LifeExpectancyFile", "single", scalar_encoder(LIFE_EXPECTANCY_FIELDS), tuple(field[0] for field in LIFE_EXPECTANCY_FIELDS), record_filename="life-expectancy-by-age.json"),

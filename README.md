@@ -86,6 +86,10 @@ Conventions:
 
 - Rates are integer basis points.
 - Dollar amounts are integer U.S. dollars.
+- Business-day datasets include only source-published observations; weekends,
+  holidays, and unpublished dates are not represented by placeholder records.
+- `sofr/` contains overnight SOFR observations only. SOFR averages and the SOFR
+  Index are separate datasets under `sofr/`.
 - SOFR averages use basis points scaled by `1000`.
 - The SOFR Index is scaled by `100000000`.
 - Actuarial decimal quantities use fixed-scale integer fields ending in
