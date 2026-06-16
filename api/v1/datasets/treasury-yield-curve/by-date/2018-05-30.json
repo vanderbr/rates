@@ -1,0 +1,28 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "treasury-yield-curve",
+  "dataset_path": "treasury/treasury-yield-curve",
+  "record_key": "2018-05-30",
+  "canonical_record_path": "treasury/treasury-yield-curve/by-year/2018-treasury-yield-curve.json",
+  "canonical_manifest_path": "treasury/treasury-yield-curve/manifest.json",
+  "record": {
+    "date": "2018-05-30",
+    "par_yields_basis_points": [
+      177,
+      null,
+      null,
+      194,
+      null,
+      208,
+      223,
+      242,
+      253,
+      267,
+      279,
+      284,
+      293,
+      301
+    ]
+  }
+}

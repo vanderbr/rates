@@ -24,6 +24,7 @@ import "rates/v1/sofr.proto";
 import "rates/v1/sofr_average.proto";
 import "rates/v1/sofr_index.proto";
 import "rates/v1/treasury_yield_curve.proto";
+import "rates/v1/valuation_basic_table.proto";
 
 message RatesBundle {
   Section7520RateFile section_7520_rates = 1;
@@ -50,4 +51,5 @@ message RatesBundle {
   TableU2File actuarial_table_u2 = 22;
   TableZFile actuarial_table_z = 23;
   SofrIndexFile sofr_index = 24;
+  ValuationBasicTableFile valuation_basic_table_2015 = 25;
 }

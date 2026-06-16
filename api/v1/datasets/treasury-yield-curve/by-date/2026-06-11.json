@@ -1,0 +1,28 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "treasury-yield-curve",
+  "dataset_path": "treasury/treasury-yield-curve",
+  "record_key": "2026-06-11",
+  "canonical_record_path": "treasury/treasury-yield-curve/by-year/2026-treasury-yield-curve.json",
+  "canonical_manifest_path": "treasury/treasury-yield-curve/manifest.json",
+  "record": {
+    "date": "2026-06-11",
+    "par_yields_basis_points": [
+      369,
+      369,
+      370,
+      378,
+      379,
+      381,
+      385,
+      405,
+      409,
+      418,
+      431,
+      445,
+      496,
+      495
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "section-7520-rates",
+  "dataset_path": "7520",
+  "record_key": "1999-02",
+  "canonical_record_path": "7520/by-year/1999-section-7520-rates.json",
+  "canonical_manifest_path": "7520/manifest.json",
+  "record": {
+    "effective_month": "1999-02",
+    "midterm_afr_120_basis_points": 567,
+    "section_7520_rate_basis_points": 560
+  }
+}

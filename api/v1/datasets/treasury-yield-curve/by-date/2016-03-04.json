@@ -1,0 +1,28 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "treasury-yield-curve",
+  "dataset_path": "treasury/treasury-yield-curve",
+  "record_key": "2016-03-04",
+  "canonical_record_path": "treasury/treasury-yield-curve/by-year/2016-treasury-yield-curve.json",
+  "canonical_manifest_path": "treasury/treasury-yield-curve/manifest.json",
+  "record": {
+    "date": "2016-03-04",
+    "par_yields_basis_points": [
+      25,
+      null,
+      null,
+      29,
+      null,
+      47,
+      67,
+      88,
+      104,
+      138,
+      169,
+      188,
+      229,
+      270
+    ]
+  }
+}

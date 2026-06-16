@@ -28,6 +28,33 @@ values.
 Audit reliance should use immutable commit SHAs or signed release tags whose
 `Validate Data Contract` workflow passed. See [`AUDIT.md`](AUDIT.md).
 
+## Static API
+
+For simple on-the-fly lookups, generated static API files live under
+[`api/v1/`](api/v1/). They are convenience projections of canonical records,
+not a separate source of truth.
+
+```sh
+BASE="https://raw.githubusercontent.com/vanderbr/rates/main"
+
+curl -fsSL "$BASE/api/v1/index.json"
+curl -fsSL "$BASE/api/v1/datasets/sofr/latest.json"
+curl -fsSL "$BASE/api/v1/datasets/section-7520-rates/latest.json"
+curl -fsSL "$BASE/api/v1/datasets/applicable-federal-rates/latest.json"
+curl -fsSL "$BASE/api/v1/datasets/federal-funds/latest.json"
+curl -fsSL "$BASE/api/v1/datasets/treasury-yield-curve/latest.json"
+
+curl -fsSL "$BASE/api/v1/datasets/section-7520-rates/by-month/2026-06.json"
+curl -fsSL "$BASE/api/v1/datasets/applicable-federal-rates/by-month/2026-07.json"
+curl -fsSL "$BASE/api/v1/datasets/sofr/by-date/2026-06-12.json"
+curl -fsSL "$BASE/api/v1/datasets/federal-funds/by-date/2026-06-12.json"
+curl -fsSL "$BASE/api/v1/datasets/treasury-yield-curve/by-date/2026-06-15.json"
+```
+
+Each static API record includes the record, the canonical dataset path, the
+canonical manifest path, and the natural record key. For audit-sensitive use,
+replace `main` with a commit SHA or signed release tag.
+
 ## Data
 
 | Family | Datasets |
@@ -82,6 +109,15 @@ Actuarial factor datasets are sharded by valuation rate:
 <dataset>/protobuf/NNNNN-basis-points.pb
 ```
 
+Static table collections, such as the SOA 2015 VBT, are sharded by table id:
+
+```text
+<dataset>/metadata.json
+<dataset>/manifest.json
+<dataset>/by-table/<table-id>.json
+<dataset>/protobuf/<table-id>.pb
+```
+
 Conventions:
 
 - Rates are integer basis points.
@@ -92,6 +128,7 @@ Conventions:
   Index are separate datasets under `sofr/`.
 - SOFR averages use basis points scaled by `1000`.
 - The SOFR Index is scaled by `100000000`.
+- VBT mortality probabilities are scaled by `100000`.
 - Actuarial decimal quantities use fixed-scale integer fields ending in
   `_scaled_1e6`.
 - Annual legal amounts use inclusive `period_start_date` and

@@ -25,6 +25,14 @@ from typing import Any, Callable, Iterable
 
 SCHEMA_VERSION = 1
 PROTO_AGGREGATE_FILE = "proto/rates/v1/rates.proto"
+STATIC_API_ROOT = Path("api/v1")
+API_LOOKUP_BY_DATASET_ID = {
+    "section-7520-rates": ("by-month", "effective_month", "{month}"),
+    "applicable-federal-rates": ("by-month", "effective_month", "{month}"),
+    "treasury-yield-curve": ("by-date", "date", "{date}"),
+    "federal-funds": ("by-date", "date", "{date}"),
+    "sofr": ("by-date", "date", "{date}"),
+}
 PROTO_FILE_BY_MESSAGE = {
     "ApplicableFederalRatesFile": "proto/rates/v1/applicable_federal_rates.proto",
     "Section7520RateFile": "proto/rates/v1/section_7520_rates.proto",
@@ -47,6 +55,7 @@ PROTO_FILE_BY_MESSAGE = {
     "TableU1File": "proto/rates/v1/actuarial_table_u1.proto",
     "TableU2File": "proto/rates/v1/actuarial_table_u2.proto",
     "TableZFile": "proto/rates/v1/actuarial_table_z.proto",
+    "ValuationBasicTableFile": "proto/rates/v1/valuation_basic_table.proto",
 }
 FACTOR_SCALE = Decimal(1_000_000)
 
@@ -79,6 +88,13 @@ class ArtifactError(Exception):
     def __init__(self, code: str) -> None:
         super().__init__(code)
         self.code = code
+
+
+@dataclass(frozen=True)
+class ApiArtifact:
+    path: str
+    bytes: int
+    sha256: str
 
 
 @dataclass(frozen=True)
@@ -365,6 +381,24 @@ TABLE_Z_FIELDS = (
     ("unx_scaled_1e6", 3, "uint"),
     ("umx_scaled_1e6", 4, "uint"),
 )
+VBT_TABLE_FIELDS = (
+    "table_id",
+    "table_identity",
+    "source",
+    "table",
+    "family",
+    "table_set",
+    "basis",
+    "structure",
+    "sex",
+    "smoker",
+    "age_basis",
+    "shape",
+    "year",
+    "relative_risk_percent",
+    "select_rates",
+    "ultimate_rates",
+)
 
 
 def scalar_encoder(fields: tuple[tuple[str, int, str], ...]) -> Callable[[dict[str, object]], bytes]:
@@ -396,6 +430,7 @@ DATASETS: tuple[DatasetSpec, ...] = (
     DatasetSpec("actuarial/table-u1", "actuarial-table-u1", "rates.actuarial_table_u1.v1", "TableU1File", "by_interest_rate", scalar_encoder(TABLE_U1_FIELDS), tuple(field[0] for field in TABLE_U1_FIELDS), rate_field="adjusted_payout_rate_basis_points"),
     DatasetSpec("actuarial/table-u2", "actuarial-table-u2", "rates.actuarial_table_u2.v1", "TableU2File", "by_interest_rate", scalar_encoder(TABLE_U2_FIELDS), tuple(field[0] for field in TABLE_U2_FIELDS), rate_field="adjusted_payout_rate_basis_points"),
     DatasetSpec("actuarial/table-z", "actuarial-table-z", "rates.actuarial_table_z.v1", "TableZFile", "by_interest_rate", scalar_encoder(TABLE_Z_FIELDS), tuple(field[0] for field in TABLE_Z_FIELDS), rate_field="adjusted_payout_rate_basis_points"),
+    DatasetSpec("actuarial/2015-vbt", "valuation-basic-table-2015", "rates.valuation_basic_table_2015.v1", "ValuationBasicTableFile", "by_table", scalar_encoder(()), VBT_TABLE_FIELDS),
 )
 
 
@@ -524,6 +559,92 @@ def write_protobuf(spec: DatasetSpec, dataset_dir: Path, json_path: Path, record
     pb_path = protobuf_path_for_json(dataset_dir, json_path)
     payload = encode_file(spec.schema_id, records, spec.record_encoder)
     write_if_changed(pb_path, payload)
+    return pb_path
+
+
+def required_object(record: dict[str, object], key: str) -> dict[str, object]:
+    value = record.get(key)
+    if not isinstance(value, dict):
+        raise ArtifactError(ArtifactErrorCode.INVALID_JSON)
+    return value
+
+
+def required_rate(value: object) -> int:
+    if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+        raise ArtifactError(ArtifactErrorCode.INVALID_JSON)
+    return value
+
+
+def encode_vbt_select_rate(issue_age: int, duration: int, rate: int) -> bytes:
+    out = bytearray()
+    out.extend(field_varint(1, issue_age))
+    out.extend(field_varint(2, duration))
+    out.extend(field_varint(3, rate))
+    return bytes(out)
+
+
+def encode_vbt_ultimate_rate(attained_age: int, rate: int) -> bytes:
+    out = bytearray()
+    out.extend(field_varint(1, attained_age))
+    out.extend(field_varint(2, rate))
+    return bytes(out)
+
+
+def sorted_numeric_items(value: dict[str, object]) -> list[tuple[int, object]]:
+    items: list[tuple[int, object]] = []
+    for key, item in value.items():
+        if not isinstance(key, str) or re.fullmatch(r"[0-9]+", key) is None:
+            raise ArtifactError(ArtifactErrorCode.INVALID_JSON)
+        items.append((int(key), item))
+    return sorted(items, key=lambda item: item[0])
+
+
+def encode_vbt_table(table: dict[str, object]) -> bytes:
+    out = bytearray()
+    for key, tag in (
+        ("table_id", 1),
+        ("source", 3),
+        ("table", 4),
+        ("family", 5),
+        ("table_set", 6),
+        ("basis", 7),
+        ("structure", 8),
+        ("sex", 9),
+        ("smoker", 10),
+        ("age_basis", 11),
+        ("shape", 12),
+    ):
+        out.extend(field_string(tag, required_str(table, key)))
+    out.extend(field_varint(2, required_int(table, "table_identity")))
+    out.extend(field_varint(13, required_int(table, "year")))
+    out.extend(field_varint(14, required_int(table, "relative_risk_percent")))
+
+    for issue_age, raw_duration_rates in sorted_numeric_items(required_object(table, "select_rates")):
+        if not isinstance(raw_duration_rates, dict):
+            raise ArtifactError(ArtifactErrorCode.INVALID_JSON)
+        for duration, raw_rate in sorted_numeric_items(raw_duration_rates):
+            out.extend(
+                field_message(
+                    15,
+                    encode_vbt_select_rate(issue_age, duration, required_rate(raw_rate)),
+                )
+            )
+    for attained_age, raw_rate in sorted_numeric_items(required_object(table, "ultimate_rates")):
+        out.extend(
+            field_message(
+                16,
+                encode_vbt_ultimate_rate(attained_age, required_rate(raw_rate)),
+            )
+        )
+    return bytes(out)
+
+
+def write_vbt_protobuf(spec: DatasetSpec, dataset_dir: Path, json_path: Path, table: dict[str, object]) -> Path:
+    pb_path = protobuf_path_for_json(dataset_dir, json_path)
+    out = bytearray()
+    out.extend(field_string(1, spec.schema_id))
+    out.extend(field_message(2, encode_vbt_table(table)))
+    write_if_changed(pb_path, bytes(out))
     return pb_path
 
 
@@ -660,7 +781,110 @@ def process_rate_dataset(spec: DatasetSpec, dataset_dir: Path) -> dict[str, obje
     return {"dataset_path": spec.dataset_path, **manifest}
 
 
+def validate_vbt_rate_map(value: object) -> dict[str, object]:
+    if not isinstance(value, dict) or len(value) == 0:
+        raise ArtifactError(ArtifactErrorCode.INVALID_JSON)
+    normalized: dict[str, object] = {}
+    for numeric_key, raw_rate in sorted_numeric_items(value):
+        normalized[str(numeric_key)] = required_rate(raw_rate)
+    return normalized
+
+
+def validate_vbt_table(raw: object) -> dict[str, object]:
+    if not isinstance(raw, dict) or set(raw.keys()) != set(VBT_TABLE_FIELDS):
+        raise ArtifactError(ArtifactErrorCode.INVALID_JSON)
+    normalized = dict(raw)
+    select_rates = required_object(normalized, "select_rates")
+    normalized_select_rates: dict[str, object] = {}
+    for issue_age, raw_duration_rates in sorted_numeric_items(select_rates):
+        normalized_select_rates[str(issue_age)] = validate_vbt_rate_map(raw_duration_rates)
+    normalized["select_rates"] = normalized_select_rates
+    normalized["ultimate_rates"] = validate_vbt_rate_map(normalized.get("ultimate_rates"))
+    return normalized
+
+
+def process_table_dataset(spec: DatasetSpec, dataset_dir: Path) -> dict[str, object]:
+    table_dir = dataset_dir / "by-table"
+    table_entries = []
+    seen_table_ids: set[str] = set()
+    for json_path in sorted(table_dir.glob("*.json")):
+        table = validate_vbt_table(read_json(json_path))
+        table_id = required_str(table, "table_id")
+        if table_id in seen_table_ids or json_path.stem != table_id:
+            raise ArtifactError(ArtifactErrorCode.INVALID_JSON)
+        seen_table_ids.add(table_id)
+        write_text_if_changed(json_path, canonical_json(table))
+        pb_path = write_vbt_protobuf(spec, dataset_dir, json_path, table)
+        entry = artifact_entry(dataset_dir, json_path, pb_path)
+        entry["table_id"] = table_id
+        entry["table_identity"] = required_int(table, "table_identity")
+        entry["source"] = required_str(table, "source")
+        entry["table"] = required_str(table, "table")
+        entry["structure"] = required_str(table, "structure")
+        entry["sex"] = required_str(table, "sex")
+        entry["smoker"] = required_str(table, "smoker")
+        entry["age_basis"] = required_str(table, "age_basis")
+        entry["relative_risk_percent"] = required_int(table, "relative_risk_percent")
+        entry["select_rate_count"] = sum(
+            len(duration_rates)
+            for duration_rates in required_object(table, "select_rates").values()
+            if isinstance(duration_rates, dict)
+        )
+        entry["ultimate_rate_count"] = len(required_object(table, "ultimate_rates"))
+        table_entries.append(entry)
+
+    manifest = {
+        "dataset_id": spec.dataset_id,
+        "schema_id": spec.schema_id,
+        "schema_version": SCHEMA_VERSION,
+        "record_storage": "by_table",
+        "record_count": len(table_entries),
+        "proto": {
+            "file": proto_file_for_spec(spec),
+            "message": f"rates.v1.{spec.proto_file_message}",
+        },
+        "tables": table_entries,
+    }
+    write_text_if_changed(dataset_dir / "manifest.json", canonical_json(manifest))
+    return {"dataset_path": spec.dataset_path, **manifest}
+
+
 def schema_for_spec(spec: DatasetSpec) -> dict[str, object]:
+    if spec.storage == "by_table":
+        rate_map = {
+            "type": "object",
+            "additionalProperties": {"type": "integer", "minimum": 0, "maximum": 100000},
+        }
+        return {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": f"https://raw.githubusercontent.com/vanderbr/rates/main/schemas/v1/{spec.dataset_id}.schema.json",
+            "title": spec.dataset_id,
+            "type": "object",
+            "additionalProperties": False,
+            "required": list(VBT_TABLE_FIELDS),
+            "properties": {
+                "table_id": {"type": "string"},
+                "table_identity": {"type": "integer", "minimum": 0},
+                "source": {"type": "string"},
+                "table": {"type": "string"},
+                "family": {"type": "string"},
+                "table_set": {"type": "string"},
+                "basis": {"type": "string"},
+                "structure": {"type": "string"},
+                "sex": {"type": "string"},
+                "smoker": {"type": "string"},
+                "age_basis": {"type": "string"},
+                "shape": {"type": "string"},
+                "year": {"type": "integer", "minimum": 2015, "maximum": 2015},
+                "relative_risk_percent": {"type": "integer", "minimum": 0},
+                "select_rates": {
+                    "type": "object",
+                    "additionalProperties": rate_map,
+                },
+                "ultimate_rates": rate_map,
+            },
+        }
+
     properties: dict[str, object] = {}
     required: list[str] = []
     for field in spec.record_field_names:
@@ -705,6 +929,8 @@ def process_dataset(repo_root: Path, spec: DatasetSpec) -> dict[str, object]:
         return process_year_dataset(spec, dataset_dir)
     if spec.storage == "by_interest_rate":
         return process_rate_dataset(spec, dataset_dir)
+    if spec.storage == "by_table":
+        return process_table_dataset(spec, dataset_dir)
     raise ArtifactError(ArtifactErrorCode.INVALID_DATASET)
 
 
@@ -735,10 +961,264 @@ def write_root_index(repo_root: Path, datasets: list[dict[str, object]]) -> None
     write_text_if_changed(repo_root / "index.json", canonical_json(index))
 
 
+def dataset_manifest_path(dataset: dict[str, object]) -> Path:
+    dataset_path = dataset.get("dataset_path")
+    if not isinstance(dataset_path, str):
+        raise ArtifactError(ArtifactErrorCode.INVALID_DATASET)
+    return Path(dataset_path) / "manifest.json"
+
+
+def record_sort_key(record: dict[str, object]) -> str | None:
+    value = record.get("date")
+    if isinstance(value, str):
+        return value
+    value = record.get("effective_month")
+    if isinstance(value, str):
+        return value
+    value = record.get("period_start_date")
+    if isinstance(value, str):
+        return value
+    return None
+
+
+def latest_record_for_dataset(repo_root: Path, dataset: dict[str, object]) -> tuple[dict[str, object], str, Path] | None:
+    storage = dataset.get("record_storage")
+    dataset_path = dataset.get("dataset_path")
+    if not isinstance(storage, str) or not isinstance(dataset_path, str):
+        raise ArtifactError(ArtifactErrorCode.INVALID_DATASET)
+    if storage in {"by_interest_rate", "by_table"}:
+        return None
+
+    if storage == "single_file":
+        records_entry = dataset.get("records")
+        if not isinstance(records_entry, dict):
+            raise ArtifactError(ArtifactErrorCode.INVALID_DATASET)
+        record_path_value = records_entry.get("path")
+        if not isinstance(record_path_value, str):
+            raise ArtifactError(ArtifactErrorCode.INVALID_DATASET)
+        record_path = Path(dataset_path) / record_path_value
+        raw_records = read_json(repo_root / record_path)
+    elif storage == "by_year":
+        years = dataset.get("years")
+        if not isinstance(years, list) or len(years) == 0:
+            return None
+        latest_year = years[-1]
+        if not isinstance(latest_year, dict):
+            raise ArtifactError(ArtifactErrorCode.INVALID_DATASET)
+        record_path_value = latest_year.get("path")
+        if not isinstance(record_path_value, str):
+            raise ArtifactError(ArtifactErrorCode.INVALID_DATASET)
+        record_path = Path(dataset_path) / record_path_value
+        raw_records = read_json(repo_root / record_path)
+    else:
+        raise ArtifactError(ArtifactErrorCode.INVALID_DATASET)
+
+    if not isinstance(raw_records, list) or len(raw_records) == 0:
+        return None
+    latest_record = raw_records[-1]
+    if not isinstance(latest_record, dict):
+        raise ArtifactError(ArtifactErrorCode.INVALID_JSON)
+    key = record_sort_key(latest_record)
+    if key is None:
+        return None
+    return latest_record, key, record_path
+
+
+def canonical_record_files(dataset: dict[str, object]) -> list[Path]:
+    storage = dataset.get("record_storage")
+    dataset_path = dataset.get("dataset_path")
+    if not isinstance(storage, str) or not isinstance(dataset_path, str):
+        raise ArtifactError(ArtifactErrorCode.INVALID_DATASET)
+
+    if storage == "single_file":
+        records_entry = dataset.get("records")
+        if not isinstance(records_entry, dict):
+            raise ArtifactError(ArtifactErrorCode.INVALID_DATASET)
+        path_value = records_entry.get("path")
+        if not isinstance(path_value, str):
+            raise ArtifactError(ArtifactErrorCode.INVALID_DATASET)
+        return [Path(dataset_path) / path_value]
+
+    if storage == "by_year":
+        years = dataset.get("years")
+        if not isinstance(years, list):
+            raise ArtifactError(ArtifactErrorCode.INVALID_DATASET)
+        record_paths: list[Path] = []
+        for year in years:
+            if not isinstance(year, dict):
+                raise ArtifactError(ArtifactErrorCode.INVALID_DATASET)
+            path_value = year.get("path")
+            if not isinstance(path_value, str):
+                raise ArtifactError(ArtifactErrorCode.INVALID_DATASET)
+            record_paths.append(Path(dataset_path) / path_value)
+        return record_paths
+
+    return []
+
+
+def required_record_key(record: dict[str, object], key_field: str) -> str:
+    value = record.get(key_field)
+    if not isinstance(value, str) or value == "":
+        raise ArtifactError(ArtifactErrorCode.INVALID_JSON)
+    return value
+
+
+def write_static_api_lookup_records(
+    repo_root: Path,
+    dataset: dict[str, object],
+    expected_paths: set[Path],
+) -> dict[str, object] | None:
+    dataset_id = dataset.get("dataset_id")
+    dataset_path = dataset.get("dataset_path")
+    if not isinstance(dataset_id, str) or not isinstance(dataset_path, str):
+        raise ArtifactError(ArtifactErrorCode.INVALID_DATASET)
+
+    lookup = API_LOOKUP_BY_DATASET_ID.get(dataset_id)
+    if lookup is None:
+        return None
+    route_name, key_field, key_template = lookup
+
+    record_count = 0
+    first_key: str | None = None
+    last_key: str | None = None
+    seen_keys: set[str] = set()
+    for canonical_record_path in canonical_record_files(dataset):
+        raw_records = read_json(repo_root / canonical_record_path)
+        if not isinstance(raw_records, list):
+            raise ArtifactError(ArtifactErrorCode.INVALID_JSON)
+        for raw_record in raw_records:
+            if not isinstance(raw_record, dict):
+                raise ArtifactError(ArtifactErrorCode.INVALID_JSON)
+            record_key = required_record_key(raw_record, key_field)
+            if record_key in seen_keys:
+                raise ArtifactError(ArtifactErrorCode.INVALID_JSON)
+            seen_keys.add(record_key)
+            first_key = record_key if first_key is None else min(first_key, record_key)
+            last_key = record_key if last_key is None else max(last_key, record_key)
+            relative_path = (
+                Path("datasets") / dataset_id / route_name / f"{record_key}.json"
+            )
+            write_api_json(
+                repo_root,
+                relative_path,
+                {
+                    "schema_id": "rates.api_record.v1",
+                    "schema_version": SCHEMA_VERSION,
+                    "dataset_id": dataset_id,
+                    "dataset_path": dataset_path,
+                    "record_key": record_key,
+                    "canonical_record_path": canonical_record_path.as_posix(),
+                    "canonical_manifest_path": dataset_manifest_path(dataset).as_posix(),
+                    "record": raw_record,
+                },
+            )
+            expected_paths.add(relative_path)
+            record_count += 1
+
+    return {
+        "path_template": (
+            f"datasets/{dataset_id}/{route_name}/{key_template}.json"
+        ),
+        "key_field": key_field,
+        "record_count": record_count,
+        "first_key": first_key,
+        "last_key": last_key,
+    }
+
+
+def write_api_json(repo_root: Path, relative_path: Path, value: object) -> ApiArtifact:
+    full_path = repo_root / STATIC_API_ROOT / relative_path
+    write_text_if_changed(full_path, canonical_json(value))
+    return ApiArtifact(
+        path=relative_path.as_posix(),
+        bytes=file_bytes(full_path),
+        sha256=sha256_file(full_path),
+    )
+
+
+def clean_static_api(repo_root: Path, expected_paths: set[Path]) -> None:
+    api_root = repo_root / STATIC_API_ROOT
+    if not api_root.exists():
+        return
+    try:
+        for path in sorted(api_root.rglob("*.json")):
+            relative_path = path.relative_to(api_root)
+            if relative_path not in expected_paths:
+                path.unlink()
+        for path in sorted(api_root.rglob("*"), reverse=True):
+            if path.is_dir() and not any(path.iterdir()):
+                path.rmdir()
+    except OSError:
+        raise ArtifactError(ArtifactErrorCode.WRITE_FAILED) from None
+
+
+def write_static_api(repo_root: Path, datasets: list[dict[str, object]]) -> None:
+    expected_paths: set[Path] = {Path("index.json")}
+    api_entries: list[dict[str, object]] = []
+
+    for dataset in datasets:
+        dataset_id = dataset.get("dataset_id")
+        dataset_path = dataset.get("dataset_path")
+        if not isinstance(dataset_id, str) or not isinstance(dataset_path, str):
+            raise ArtifactError(ArtifactErrorCode.INVALID_DATASET)
+
+        entry: dict[str, object] = {
+            "dataset_id": dataset_id,
+            "dataset_path": dataset_path,
+            "schema_id": dataset["schema_id"],
+            "schema_version": dataset["schema_version"],
+            "record_storage": dataset["record_storage"],
+            "record_count": dataset["record_count"],
+            "canonical_manifest_path": dataset_manifest_path(dataset).as_posix(),
+        }
+
+        latest = latest_record_for_dataset(repo_root, dataset)
+        if latest is not None:
+            latest_record, latest_key, canonical_record_path = latest
+            latest_relative_path = Path("datasets") / dataset_id / "latest.json"
+            latest_artifact = write_api_json(
+                repo_root,
+                latest_relative_path,
+                {
+                    "schema_id": "rates.api_latest.v1",
+                    "schema_version": SCHEMA_VERSION,
+                    "dataset_id": dataset_id,
+                    "dataset_path": dataset_path,
+                    "record_key": latest_key,
+                    "canonical_record_path": canonical_record_path.as_posix(),
+                    "canonical_manifest_path": dataset_manifest_path(dataset).as_posix(),
+                    "record": latest_record,
+                },
+            )
+            expected_paths.add(latest_relative_path)
+            entry["latest"] = {
+                "path": latest_artifact.path,
+                "bytes": latest_artifact.bytes,
+                "sha256": latest_artifact.sha256,
+                "record_key": latest_key,
+                "canonical_record_path": canonical_record_path.as_posix(),
+            }
+        lookup = write_static_api_lookup_records(repo_root, dataset, expected_paths)
+        if lookup is not None:
+            entry["lookup"] = lookup
+        api_entries.append(entry)
+
+    index_artifact_value = {
+        "schema_id": "rates.api_index.v1",
+        "schema_version": SCHEMA_VERSION,
+        "base_path": STATIC_API_ROOT.as_posix(),
+        "datasets": api_entries,
+    }
+    write_api_json(repo_root, Path("index.json"), index_artifact_value)
+    clean_static_api(repo_root, expected_paths)
+
+
 def generate(repo_root: Path) -> None:
     write_schemas(repo_root)
     datasets = [process_dataset(repo_root, spec) for spec in DATASETS]
     write_root_index(repo_root, datasets)
+    write_static_api(repo_root, datasets)
+
 
 
 def parse_args(argv: list[str]) -> argparse.Namespace:

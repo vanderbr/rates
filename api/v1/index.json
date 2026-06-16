@@ -1,0 +1,358 @@
+{
+  "schema_id": "rates.api_index.v1",
+  "schema_version": 1,
+  "base_path": "api/v1",
+  "datasets": [
+    {
+      "dataset_id": "section-7520-rates",
+      "dataset_path": "7520",
+      "schema_id": "rates.section_7520_rates.v1",
+      "schema_version": 1,
+      "record_storage": "by_year",
+      "record_count": 354,
+      "canonical_manifest_path": "7520/manifest.json",
+      "latest": {
+        "path": "datasets/section-7520-rates/latest.json",
+        "bytes": 414,
+        "sha256": "3c177f4d8740f0636feae5bfebfc7c4573081860d0d245504f8e454007ae8738",
+        "record_key": "2026-06",
+        "canonical_record_path": "7520/by-year/2026-section-7520-rates.json"
+      },
+      "lookup": {
+        "path_template": "datasets/section-7520-rates/by-month/{month}.json",
+        "key_field": "effective_month",
+        "record_count": 354,
+        "first_key": "1997-01",
+        "last_key": "2026-06"
+      }
+    },
+    {
+      "dataset_id": "applicable-federal-rates",
+      "dataset_path": "afr",
+      "schema_id": "rates.applicable_federal_rates.v1",
+      "schema_version": 1,
+      "record_storage": "by_year",
+      "record_count": 319,
+      "canonical_manifest_path": "afr/manifest.json",
+      "latest": {
+        "path": "datasets/applicable-federal-rates/latest.json",
+        "bytes": 2815,
+        "sha256": "e2cc01ea5122fb08c5155136e7c636810f3540662aa61d7ba8c83edbef1bfae7",
+        "record_key": "2026-07",
+        "canonical_record_path": "afr/by-year/2026-afr.json"
+      },
+      "lookup": {
+        "path_template": "datasets/applicable-federal-rates/by-month/{month}.json",
+        "key_field": "effective_month",
+        "record_count": 319,
+        "first_key": "2000-01",
+        "last_key": "2026-07"
+      }
+    },
+    {
+      "dataset_id": "annual-gift-exclusion",
+      "dataset_path": "annual-gift-exclusion",
+      "schema_id": "rates.annual_gift_exclusion.v1",
+      "schema_version": 1,
+      "record_storage": "single_file",
+      "record_count": 72,
+      "canonical_manifest_path": "annual-gift-exclusion/manifest.json",
+      "latest": {
+        "path": "datasets/annual-gift-exclusion/latest.json",
+        "bytes": 461,
+        "sha256": "763cd571309f6990c6a0834db1e1c2d84981572fea4d0e03a52f9f2ebb54f186",
+        "record_key": "2026-01-01",
+        "canonical_record_path": "annual-gift-exclusion/annual-gift-exclusion.json"
+      }
+    },
+    {
+      "dataset_id": "estate-gift-tax-exemption",
+      "dataset_path": "estate-gift-tax-exemption",
+      "schema_id": "rates.estate_gift_tax_exemption.v1",
+      "schema_version": 1,
+      "record_storage": "single_file",
+      "record_count": 51,
+      "canonical_manifest_path": "estate-gift-tax-exemption/manifest.json",
+      "latest": {
+        "path": "datasets/estate-gift-tax-exemption/latest.json",
+        "bytes": 483,
+        "sha256": "c542d9a274ab644b76d52d72ee261ba230fa1e4d6b9db339a8430f1b87f5e4d5",
+        "record_key": "2026-01-01",
+        "canonical_record_path": "estate-gift-tax-exemption/estate-gift-tax-exemption.json"
+      }
+    },
+    {
+      "dataset_id": "gst-exemption",
+      "dataset_path": "gst-exemption",
+      "schema_id": "rates.gst_exemption.v1",
+      "schema_version": 1,
+      "record_storage": "single_file",
+      "record_count": 28,
+      "canonical_manifest_path": "gst-exemption/manifest.json",
+      "latest": {
+        "path": "datasets/gst-exemption/latest.json",
+        "bytes": 417,
+        "sha256": "138bfe922a53a7d1dc732ab151cf7cc91c889c1d3cf4e2fba4fefeff63312e6d",
+        "record_key": "2026-01-01",
+        "canonical_record_path": "gst-exemption/gst-exemption.json"
+      }
+    },
+    {
+      "dataset_id": "noncitizen-spouse-gift-exclusion",
+      "dataset_path": "noncitizen-spouse-gift-exclusion",
+      "schema_id": "rates.noncitizen_spouse_gift_exclusion.v1",
+      "schema_version": 1,
+      "record_storage": "single_file",
+      "record_count": 29,
+      "canonical_manifest_path": "noncitizen-spouse-gift-exclusion/manifest.json",
+      "latest": {
+        "path": "datasets/noncitizen-spouse-gift-exclusion/latest.json",
+        "bytes": 517,
+        "sha256": "f651c3ce708362107055a9ac2326ac091044ae3fcdb1edc6e86b17608683f44d",
+        "record_key": "2026-01-01",
+        "canonical_record_path": "noncitizen-spouse-gift-exclusion/noncitizen-spouse-gift-exclusion.json"
+      }
+    },
+    {
+      "dataset_id": "treasury-yield-curve",
+      "dataset_path": "treasury/treasury-yield-curve",
+      "schema_id": "rates.treasury_yield_curve.v1",
+      "schema_version": 1,
+      "record_storage": "by_year",
+      "record_count": 9120,
+      "canonical_manifest_path": "treasury/treasury-yield-curve/manifest.json",
+      "latest": {
+        "path": "datasets/treasury-yield-curve/latest.json",
+        "bytes": 597,
+        "sha256": "9508e92a0b23628687146954c0d3b466551a04827c6496790b014cef1530d627",
+        "record_key": "2026-06-15",
+        "canonical_record_path": "treasury/treasury-yield-curve/by-year/2026-treasury-yield-curve.json"
+      },
+      "lookup": {
+        "path_template": "datasets/treasury-yield-curve/by-date/{date}.json",
+        "key_field": "date",
+        "record_count": 9120,
+        "first_key": "1990-01-02",
+        "last_key": "2026-06-15"
+      }
+    },
+    {
+      "dataset_id": "federal-funds",
+      "dataset_path": "fed-funds",
+      "schema_id": "rates.federal_funds.v1",
+      "schema_version": 1,
+      "record_storage": "by_year",
+      "record_count": 6520,
+      "canonical_manifest_path": "fed-funds/manifest.json",
+      "latest": {
+        "path": "datasets/federal-funds/latest.json",
+        "bytes": 356,
+        "sha256": "82420b27de69ab5477aa028f1c240654e2d7847d02b282e225357672ae046eb6",
+        "record_key": "2026-06-12",
+        "canonical_record_path": "fed-funds/by-year/2026-fed-funds.json"
+      },
+      "lookup": {
+        "path_template": "datasets/federal-funds/by-date/{date}.json",
+        "key_field": "date",
+        "record_count": 6520,
+        "first_key": "2000-07-03",
+        "last_key": "2026-06-12"
+      }
+    },
+    {
+      "dataset_id": "sofr",
+      "dataset_path": "sofr",
+      "schema_id": "rates.sofr.v1",
+      "schema_version": 1,
+      "record_storage": "by_year",
+      "record_count": 2048,
+      "canonical_manifest_path": "sofr/manifest.json",
+      "latest": {
+        "path": "datasets/sofr/latest.json",
+        "bytes": 511,
+        "sha256": "9298669c68d85d35f9bb69bdf9644f350f0d811ef4ef18afa92118b62b95428d",
+        "record_key": "2026-06-12",
+        "canonical_record_path": "sofr/by-year/2026-sofr.json"
+      },
+      "lookup": {
+        "path_template": "datasets/sofr/by-date/{date}.json",
+        "key_field": "date",
+        "record_count": 2048,
+        "first_key": "2018-04-02",
+        "last_key": "2026-06-12"
+      }
+    },
+    {
+      "dataset_id": "sofr-30d-average",
+      "dataset_path": "sofr/sofr-30d-average",
+      "schema_id": "rates.sofr_30d_average.v1",
+      "schema_version": 1,
+      "record_storage": "by_year",
+      "record_count": 1571,
+      "canonical_manifest_path": "sofr/sofr-30d-average/manifest.json",
+      "latest": {
+        "path": "datasets/sofr-30d-average/latest.json",
+        "bytes": 427,
+        "sha256": "f94006a3055c7c5d8822f8a9dc6135949cfde414603a7299fe93f20693bbdc56",
+        "record_key": "2026-06-15",
+        "canonical_record_path": "sofr/sofr-30d-average/by-year/2026-sofr-30d-average.json"
+      }
+    },
+    {
+      "dataset_id": "sofr-90d-average",
+      "dataset_path": "sofr/sofr-90d-average",
+      "schema_id": "rates.sofr_90d_average.v1",
+      "schema_version": 1,
+      "record_storage": "by_year",
+      "record_count": 1571,
+      "canonical_manifest_path": "sofr/sofr-90d-average/manifest.json",
+      "latest": {
+        "path": "datasets/sofr-90d-average/latest.json",
+        "bytes": 427,
+        "sha256": "6e7b328c009f63d483bae132bc227940fcfc58d95f647f6f0dda872637c88e55",
+        "record_key": "2026-06-15",
+        "canonical_record_path": "sofr/sofr-90d-average/by-year/2026-sofr-90d-average.json"
+      }
+    },
+    {
+      "dataset_id": "sofr-180d-average",
+      "dataset_path": "sofr/sofr-180d-average",
+      "schema_id": "rates.sofr_180d_average.v1",
+      "schema_version": 1,
+      "record_storage": "by_year",
+      "record_count": 1571,
+      "canonical_manifest_path": "sofr/sofr-180d-average/manifest.json",
+      "latest": {
+        "path": "datasets/sofr-180d-average/latest.json",
+        "bytes": 433,
+        "sha256": "c77f3d925a6a17ea9ad6aba9a321edb6a1b06ad3772568ed61899f0e732ef443",
+        "record_key": "2026-06-15",
+        "canonical_record_path": "sofr/sofr-180d-average/by-year/2026-sofr-180d-average.json"
+      }
+    },
+    {
+      "dataset_id": "sofr-index",
+      "dataset_path": "sofr/sofr-index",
+      "schema_id": "rates.sofr_index.v1",
+      "schema_version": 1,
+      "record_storage": "by_year",
+      "record_count": 1571,
+      "canonical_manifest_path": "sofr/sofr-index/manifest.json",
+      "latest": {
+        "path": "datasets/sofr-index/latest.json",
+        "bytes": 388,
+        "sha256": "ec5f6f1088fbac0b288a4dc04954192a4fe3c97bd555a9e44efec4bbea86a5c2",
+        "record_key": "2026-06-15",
+        "canonical_record_path": "sofr/sofr-index/by-year/2026-sofr-index.json"
+      }
+    },
+    {
+      "dataset_id": "mortality-table-2000cm",
+      "dataset_path": "actuarial/mortality-table-2000cm",
+      "schema_id": "rates.mortality_table_2000cm.v1",
+      "schema_version": 1,
+      "record_storage": "single_file",
+      "record_count": 111,
+      "canonical_manifest_path": "actuarial/mortality-table-2000cm/manifest.json"
+    },
+    {
+      "dataset_id": "mortality-table-2010cm",
+      "dataset_path": "actuarial/mortality-table-2010cm",
+      "schema_id": "rates.mortality_table_2010cm.v1",
+      "schema_version": 1,
+      "record_storage": "single_file",
+      "record_count": 111,
+      "canonical_manifest_path": "actuarial/mortality-table-2010cm/manifest.json"
+    },
+    {
+      "dataset_id": "life-expectancy-by-age",
+      "dataset_path": "actuarial/life-expectancy-by-age",
+      "schema_id": "rates.life_expectancy_by_age.v1",
+      "schema_version": 1,
+      "record_storage": "single_file",
+      "record_count": 111,
+      "canonical_manifest_path": "actuarial/life-expectancy-by-age/manifest.json"
+    },
+    {
+      "dataset_id": "actuarial-table-b",
+      "dataset_path": "actuarial/table-b",
+      "schema_id": "rates.actuarial_table_b.v1",
+      "schema_version": 1,
+      "record_storage": "by_interest_rate",
+      "record_count": 6000,
+      "canonical_manifest_path": "actuarial/table-b/manifest.json"
+    },
+    {
+      "dataset_id": "actuarial-table-d",
+      "dataset_path": "actuarial/table-d",
+      "schema_id": "rates.actuarial_table_d.v1",
+      "schema_version": 1,
+      "record_storage": "by_interest_rate",
+      "record_count": 2000,
+      "canonical_manifest_path": "actuarial/table-d/manifest.json"
+    },
+    {
+      "dataset_id": "actuarial-table-h",
+      "dataset_path": "actuarial/table-h",
+      "schema_id": "rates.actuarial_table_h.v1",
+      "schema_version": 1,
+      "record_storage": "by_interest_rate",
+      "record_count": 11000,
+      "canonical_manifest_path": "actuarial/table-h/manifest.json"
+    },
+    {
+      "dataset_id": "actuarial-table-r2",
+      "dataset_path": "actuarial/table-r2",
+      "schema_id": "rates.actuarial_table_r2.v1",
+      "schema_version": 1,
+      "record_storage": "by_interest_rate",
+      "record_count": 610500,
+      "canonical_manifest_path": "actuarial/table-r2/manifest.json"
+    },
+    {
+      "dataset_id": "actuarial-table-s",
+      "dataset_path": "actuarial/table-s",
+      "schema_id": "rates.actuarial_table_s.v1",
+      "schema_version": 1,
+      "record_storage": "by_interest_rate",
+      "record_count": 11000,
+      "canonical_manifest_path": "actuarial/table-s/manifest.json"
+    },
+    {
+      "dataset_id": "actuarial-table-u1",
+      "dataset_path": "actuarial/table-u1",
+      "schema_id": "rates.actuarial_table_u1.v1",
+      "schema_version": 1,
+      "record_storage": "by_interest_rate",
+      "record_count": 11000,
+      "canonical_manifest_path": "actuarial/table-u1/manifest.json"
+    },
+    {
+      "dataset_id": "actuarial-table-u2",
+      "dataset_path": "actuarial/table-u2",
+      "schema_id": "rates.actuarial_table_u2.v1",
+      "schema_version": 1,
+      "record_storage": "by_interest_rate",
+      "record_count": 610500,
+      "canonical_manifest_path": "actuarial/table-u2/manifest.json"
+    },
+    {
+      "dataset_id": "actuarial-table-z",
+      "dataset_path": "actuarial/table-z",
+      "schema_id": "rates.actuarial_table_z.v1",
+      "schema_version": 1,
+      "record_storage": "by_interest_rate",
+      "record_count": 11000,
+      "canonical_manifest_path": "actuarial/table-z/manifest.json"
+    },
+    {
+      "dataset_id": "valuation-basic-table-2015",
+      "dataset_path": "actuarial/2015-vbt",
+      "schema_id": "rates.valuation_basic_table_2015.v1",
+      "schema_version": 1,
+      "record_storage": "by_table",
+      "record_count": 68,
+      "canonical_manifest_path": "actuarial/2015-vbt/manifest.json"
+    }
+  ]
+}

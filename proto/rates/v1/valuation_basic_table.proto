@@ -1,0 +1,39 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package rates.v1;
+
+message VbtSelectRate {
+  uint32 issue_age = 1;
+  uint32 duration = 2;
+  uint32 mortality_rate_scaled_1e5 = 3;
+}
+
+message VbtUltimateRate {
+  uint32 attained_age = 1;
+  uint32 mortality_rate_scaled_1e5 = 2;
+}
+
+message ValuationBasicTable {
+  string table_id = 1;
+  uint32 table_identity = 2;
+  string source = 3;
+  string table = 4;
+  string family = 5;
+  string table_set = 6;
+  string basis = 7;
+  string structure = 8;
+  string sex = 9;
+  string smoker = 10;
+  string age_basis = 11;
+  string shape = 12;
+  uint32 year = 13;
+  uint32 relative_risk_percent = 14;
+  repeated VbtSelectRate select_rates = 15;
+  repeated VbtUltimateRate ultimate_rates = 16;
+}
+
+message ValuationBasicTableFile {
+  string schema_id = 1;
+  ValuationBasicTable table = 2;
+}

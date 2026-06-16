@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/vanderbr/rates/main/schemas/v1/valuation-basic-table-2015.schema.json",
+  "title": "valuation-basic-table-2015",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "table_id",
+    "table_identity",
+    "source",
+    "table",
+    "family",
+    "table_set",
+    "basis",
+    "structure",
+    "sex",
+    "smoker",
+    "age_basis",
+    "shape",
+    "year",
+    "relative_risk_percent",
+    "select_rates",
+    "ultimate_rates"
+  ],
+  "properties": {
+    "table_id": {
+      "type": "string"
+    },
+    "table_identity": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "source": {
+      "type": "string"
+    },
+    "table": {
+      "type": "string"
+    },
+    "family": {
+      "type": "string"
+    },
+    "table_set": {
+      "type": "string"
+    },
+    "basis": {
+      "type": "string"
+    },
+    "structure": {
+      "type": "string"
+    },
+    "sex": {
+      "type": "string"
+    },
+    "smoker": {
+      "type": "string"
+    },
+    "age_basis": {
+      "type": "string"
+    },
+    "shape": {
+      "type": "string"
+    },
+    "year": {
+      "type": "integer",
+      "minimum": 2015,
+      "maximum": 2015
+    },
+    "relative_risk_percent": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "select_rates": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000
+        }
+      }
+    },
+    "ultimate_rates": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 100000
+      }
+    }
+  }
+}

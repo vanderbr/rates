@@ -1,0 +1,28 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "treasury-yield-curve",
+  "dataset_path": "treasury/treasury-yield-curve",
+  "record_key": "2025-09-16",
+  "canonical_record_path": "treasury/treasury-yield-curve/by-year/2025-treasury-yield-curve.json",
+  "canonical_manifest_path": "treasury/treasury-yield-curve/manifest.json",
+  "record": {
+    "date": "2025-09-16",
+    "par_yields_basis_points": [
+      420,
+      419,
+      415,
+      404,
+      400,
+      381,
+      362,
+      351,
+      347,
+      359,
+      378,
+      404,
+      461,
+      465
+    ]
+  }
+}

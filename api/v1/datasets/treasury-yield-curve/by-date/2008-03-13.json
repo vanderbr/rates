@@ -1,0 +1,28 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "treasury-yield-curve",
+  "dataset_path": "treasury/treasury-yield-curve",
+  "record_key": "2008-03-13",
+  "canonical_record_path": "treasury/treasury-yield-curve/by-year/2008-treasury-yield-curve.json",
+  "canonical_manifest_path": "treasury/treasury-yield-curve/manifest.json",
+  "record": {
+    "date": "2008-03-13",
+    "par_yields_basis_points": [
+      156,
+      null,
+      null,
+      135,
+      null,
+      150,
+      154,
+      163,
+      184,
+      253,
+      299,
+      356,
+      442,
+      447
+    ]
+  }
+}

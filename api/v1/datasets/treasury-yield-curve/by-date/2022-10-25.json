@@ -1,0 +1,28 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "treasury-yield-curve",
+  "dataset_path": "treasury/treasury-yield-curve",
+  "record_key": "2022-10-25",
+  "canonical_record_path": "treasury/treasury-yield-curve/by-year/2022-treasury-yield-curve.json",
+  "canonical_manifest_path": "treasury/treasury-yield-curve/manifest.json",
+  "record": {
+    "date": "2022-10-25",
+    "par_yields_basis_points": [
+      356,
+      null,
+      381,
+      414,
+      432,
+      450,
+      460,
+      442,
+      445,
+      425,
+      417,
+      410,
+      445,
+      426
+    ]
+  }
+}

@@ -6,10 +6,9 @@ on:
   workflow_dispatch:
   schedule:
     # SOFR is normally published at about 8:00 a.m. New York time and EFFR at
-    # about 9:00 a.m. This runs shortly after both publications, with room for
-    # routine publication lag while still opening same-morning update PRs.
-    - cron: "35 9 * * 1-5"
-      timezone: "America/New_York"
+    # about 9:00 a.m. GitHub cron is UTC-only; 14:35 UTC is 9:35 a.m. EST
+    # and 10:35 a.m. EDT, after both normal publications with update margin.
+    - cron: "35 14 * * 1-5"
 
 permissions:
   contents: write
@@ -87,6 +86,10 @@ jobs:
             - `sofr/sofr-index/manifest.json`
             - `sofr/sofr-index/by-year/YYYY-sofr-index.json`
             - dataset `protobuf/*.pb` files
+            - `api/v1/index.json`
+            - `api/v1/datasets/*/latest.json`
+            - `api/v1/datasets/*/by-date/*.json`
+            - `api/v1/datasets/*/by-month/*.json`
             - `index.json`
             - `schemas/v1/*.schema.json`
 
