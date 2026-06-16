@@ -1,0 +1,18 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "sofr",
+  "dataset_path": "sofr",
+  "record_key": "2022-08-02",
+  "canonical_record_path": "sofr/by-year/2022-sofr.json",
+  "canonical_manifest_path": "sofr/manifest.json",
+  "record": {
+    "date": "2022-08-02",
+    "rate_basis_points": 230,
+    "percentile_1_basis_points": 220,
+    "percentile_25_basis_points": 227,
+    "percentile_75_basis_points": 232,
+    "percentile_99_basis_points": 237,
+    "volume_billions": 1015
+  }
+}

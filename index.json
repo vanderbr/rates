@@ -268,6 +268,17 @@
       "manifest_path": "actuarial/table-z/manifest.json",
       "manifest_bytes": 43500,
       "manifest_sha256": "c4ae7033b1841873f69a11203de59e846c5be94127d9befcbe524391c3f01375"
+    },
+    {
+      "dataset_path": "actuarial/2015-vbt",
+      "dataset_id": "valuation-basic-table-2015",
+      "schema_id": "rates.valuation_basic_table_2015.v1",
+      "schema_version": 1,
+      "record_storage": "by_table",
+      "record_count": 68,
+      "manifest_path": "actuarial/2015-vbt/manifest.json",
+      "manifest_bytes": 58324,
+      "manifest_sha256": "79a16d0029452119b71b1c13224c2b45d7b1e580a4bdcc53db1b7be3a920e12d"
     }
   ]
 }

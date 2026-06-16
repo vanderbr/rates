@@ -1,0 +1,28 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "treasury-yield-curve",
+  "dataset_path": "treasury/treasury-yield-curve",
+  "record_key": "2023-06-01",
+  "canonical_record_path": "treasury/treasury-yield-curve/by-year/2023-treasury-yield-curve.json",
+  "canonical_manifest_path": "treasury/treasury-yield-curve/manifest.json",
+  "record": {
+    "date": "2023-06-01",
+    "par_yields_basis_points": [
+      530,
+      null,
+      539,
+      550,
+      550,
+      544,
+      511,
+      433,
+      398,
+      370,
+      366,
+      361,
+      398,
+      384
+    ]
+  }
+}

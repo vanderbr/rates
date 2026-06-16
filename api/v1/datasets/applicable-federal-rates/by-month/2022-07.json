@@ -1,0 +1,124 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "applicable-federal-rates",
+  "dataset_path": "afr",
+  "record_key": "2022-07",
+  "canonical_record_path": "afr/by-year/2022-afr.json",
+  "canonical_manifest_path": "afr/manifest.json",
+  "record": {
+    "effective_month": "2022-07",
+    "applicable_federal_rates": {
+      "short_term": {
+        "afr": {
+          "annual": 237,
+          "semiannual": 236,
+          "quarterly": 235,
+          "monthly": 235
+        },
+        "afr_110": {
+          "annual": 262,
+          "semiannual": 260,
+          "quarterly": 259,
+          "monthly": 259
+        },
+        "afr_120": {
+          "annual": 285,
+          "semiannual": 283,
+          "quarterly": 282,
+          "monthly": 281
+        },
+        "afr_130": {
+          "annual": 309,
+          "semiannual": 307,
+          "quarterly": 306,
+          "monthly": 305
+        }
+      },
+      "mid_term": {
+        "afr": {
+          "annual": 299,
+          "semiannual": 297,
+          "quarterly": 296,
+          "monthly": 295
+        },
+        "afr_110": {
+          "annual": 330,
+          "semiannual": 327,
+          "quarterly": 326,
+          "monthly": 325
+        },
+        "afr_120": {
+          "annual": 359,
+          "semiannual": 356,
+          "quarterly": 354,
+          "monthly": 353
+        },
+        "afr_130": {
+          "annual": 390,
+          "semiannual": 386,
+          "quarterly": 384,
+          "monthly": 383
+        },
+        "afr_150": {
+          "annual": 451,
+          "semiannual": 446,
+          "quarterly": 444,
+          "monthly": 442
+        },
+        "afr_175": {
+          "annual": 527,
+          "semiannual": 520,
+          "quarterly": 517,
+          "monthly": 514
+        }
+      },
+      "long_term": {
+        "afr": {
+          "annual": 322,
+          "semiannual": 319,
+          "quarterly": 318,
+          "monthly": 317
+        },
+        "afr_110": {
+          "annual": 354,
+          "semiannual": 351,
+          "quarterly": 349,
+          "monthly": 348
+        },
+        "afr_120": {
+          "annual": 387,
+          "semiannual": 383,
+          "quarterly": 381,
+          "monthly": 380
+        },
+        "afr_130": {
+          "annual": 419,
+          "semiannual": 415,
+          "quarterly": 413,
+          "monthly": 411
+        }
+      }
+    },
+    "adjusted_applicable_federal_rates": {
+      "short_term": {
+        "annual": 180,
+        "semiannual": 179,
+        "quarterly": 179,
+        "monthly": 178
+      },
+      "mid_term": {
+        "annual": 227,
+        "semiannual": 226,
+        "quarterly": 225,
+        "monthly": 225
+      },
+      "long_term": {
+        "annual": 243,
+        "semiannual": 242,
+        "quarterly": 241,
+        "monthly": 241
+      }
+    }
+  }
+}

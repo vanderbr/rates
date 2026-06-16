@@ -1,0 +1,28 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "treasury-yield-curve",
+  "dataset_path": "treasury/treasury-yield-curve",
+  "record_key": "2021-05-19",
+  "canonical_record_path": "treasury/treasury-yield-curve/by-year/2021-treasury-yield-curve.json",
+  "canonical_manifest_path": "treasury/treasury-yield-curve/manifest.json",
+  "record": {
+    "date": "2021-05-19",
+    "par_yields_basis_points": [
+      0,
+      null,
+      1,
+      1,
+      null,
+      3,
+      5,
+      16,
+      35,
+      87,
+      134,
+      168,
+      230,
+      238
+    ]
+  }
+}

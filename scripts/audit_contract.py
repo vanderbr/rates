@@ -99,7 +99,7 @@ def manifest_entries(manifest: dict[str, object]) -> list[dict[str, object]]:
         value = manifest.get(key)
         if isinstance(value, dict):
             entries.append(value)
-    for key in ("files", "shards", "years", "records"):
+    for key in ("files", "shards", "tables", "years", "records"):
         value = manifest.get(key)
         if isinstance(value, list):
             entries.extend(item for item in value if isinstance(item, dict))

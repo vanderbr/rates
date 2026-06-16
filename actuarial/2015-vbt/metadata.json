@@ -1,0 +1,32 @@
+{
+  "name": "2015 Valuation Basic Tables",
+  "source": "Society of Actuaries",
+  "source_page_url": "https://www.soa.org/resources/experience-studies/2015/2015-valuation-basic-tables/",
+  "mortality_basis": "2015 VBT",
+  "description": "SOA 2015 Valuation Basic Tables covering relative-risk, smoker-distinct, and unismoke ALB/ANB select-and-ultimate tables.",
+  "value_fields": {
+    "select_rates": {
+      "unit": "mortality_probability_scaled_1e5",
+      "scale": "stored value / 100000",
+      "rate_key": "issue_age/duration"
+    },
+    "ultimate_rates": {
+      "unit": "mortality_probability_scaled_1e5",
+      "scale": "stored value / 100000",
+      "rate_key": "attained_age"
+    }
+  },
+  "storage": {
+    "manifest_file": "manifest.json",
+    "primary_records": "by-table/<table-id>.json",
+    "ordering": "ascending_table_id",
+    "dedupe_key": "table_id"
+  },
+  "dataset_id": "valuation-basic-table-2015",
+  "schema_id": "rates.valuation_basic_table_2015.v1",
+  "schema_version": 1,
+  "proto": {
+    "file": "proto/rates/v1/valuation_basic_table.proto",
+    "message": "rates.v1.ValuationBasicTableFile"
+  }
+}

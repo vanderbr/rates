@@ -1,0 +1,18 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "sofr",
+  "dataset_path": "sofr",
+  "record_key": "2026-05-18",
+  "canonical_record_path": "sofr/by-year/2026-sofr.json",
+  "canonical_manifest_path": "sofr/manifest.json",
+  "record": {
+    "date": "2026-05-18",
+    "rate_basis_points": 353,
+    "percentile_1_basis_points": 350,
+    "percentile_25_basis_points": 352,
+    "percentile_75_basis_points": 358,
+    "percentile_99_basis_points": 362,
+    "volume_billions": 3159
+  }
+}

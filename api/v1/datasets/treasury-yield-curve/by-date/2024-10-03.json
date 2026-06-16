@@ -1,0 +1,28 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "treasury-yield-curve",
+  "dataset_path": "treasury/treasury-yield-curve",
+  "record_key": "2024-10-03",
+  "canonical_record_path": "treasury/treasury-yield-curve/by-year/2024-treasury-yield-curve.json",
+  "canonical_manifest_path": "treasury/treasury-yield-curve/manifest.json",
+  "record": {
+    "date": "2024-10-03",
+    "par_yields_basis_points": [
+      499,
+      null,
+      485,
+      468,
+      461,
+      437,
+      402,
+      370,
+      362,
+      362,
+      371,
+      385,
+      424,
+      418
+    ]
+  }
+}

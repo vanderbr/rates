@@ -55,6 +55,9 @@ INTEREST_RATE_SHARDED_DATASETS = {
     "actuarial/table-u2",
     "actuarial/table-z",
 }
+TABLE_SHARDED_DATASETS = {
+    "actuarial/2015-vbt",
+}
 YEAR_SHARDED_DATASETS = {
     "7520",
     "afr",
@@ -91,6 +94,18 @@ ANNUAL_IRS_DATASETS = {
     "gst-exemption",
     "noncitizen-spouse-gift-exclusion",
 }
+STATIC_API_LOOKUPS = {
+    "section-7520-rates": ("7520", "by-month", "effective_month", "{month}"),
+    "applicable-federal-rates": ("afr", "by-month", "effective_month", "{month}"),
+    "treasury-yield-curve": (
+        "treasury/treasury-yield-curve",
+        "by-date",
+        "date",
+        "{date}",
+    ),
+    "federal-funds": ("fed-funds", "by-date", "date", "{date}"),
+    "sofr": ("sofr", "by-date", "date", "{date}"),
+}
 TREASURY_SOURCE_URL_TEMPLATE = (
     "https://home.treasury.gov/resource-center/data-chart-center/"
     "interest-rates/daily-treasury-rates.csv/{year}/all?"
@@ -122,6 +137,13 @@ class RepositoryLayoutTests(unittest.TestCase):
             self.assertTrue((REPO_ROOT / dataset_path / "manifest.json").is_file(), dataset_path)
             self.assertTrue((REPO_ROOT / dataset_path / "metadata.json").is_file(), dataset_path)
             self.assertFalse((REPO_ROOT / dataset_path / "rates.json").exists(), dataset_path)
+        for dataset_path in TABLE_SHARDED_DATASETS:
+            self.assertTrue((REPO_ROOT / dataset_path).is_dir(), dataset_path)
+            self.assertTrue((REPO_ROOT / dataset_path / "by-table").is_dir(), dataset_path)
+            self.assertTrue((REPO_ROOT / dataset_path / "protobuf").is_dir(), dataset_path)
+            self.assertTrue((REPO_ROOT / dataset_path / "manifest.json").is_file(), dataset_path)
+            self.assertTrue((REPO_ROOT / dataset_path / "metadata.json").is_file(), dataset_path)
+            self.assertFalse((REPO_ROOT / dataset_path / "rates.json").exists(), dataset_path)
         for dataset_path in YEAR_SHARDED_DATASETS:
             self.assertTrue((REPO_ROOT / dataset_path).is_dir(), dataset_path)
             self.assertTrue((REPO_ROOT / dataset_path / "by-year").is_dir(), dataset_path)
@@ -143,6 +165,13 @@ class RepositoryLayoutTests(unittest.TestCase):
             dataset_dir = REPO_ROOT / dataset_path
             self.assertEqual(
                 {"by-interest-rate", "manifest.json", "metadata.json", "protobuf"},
+                {path.name for path in dataset_dir.iterdir()},
+                dataset_path,
+            )
+        for dataset_path in TABLE_SHARDED_DATASETS:
+            dataset_dir = REPO_ROOT / dataset_path
+            self.assertEqual(
+                {"by-table", "manifest.json", "metadata.json", "protobuf"},
                 {path.name for path in dataset_dir.iterdir()},
                 dataset_path,
             )
@@ -423,6 +452,192 @@ class RepositoryLayoutTests(unittest.TestCase):
             )
             self.assertEqual(expected_protobuf_files, actual_protobuf_files, dataset_path)
 
+    def test_table_shards_match_manifests(self) -> None:
+        for dataset_path in TABLE_SHARDED_DATASETS:
+            dataset_dir = REPO_ROOT / dataset_path
+            manifest = self.load_json_object(dataset_dir / "manifest.json")
+            self.assert_proto_reference(manifest, dataset_path)
+            tables = manifest.get("tables")
+            if not isinstance(tables, list):
+                raise AssertionError(dataset_path)
+
+            expected_files: list[str] = []
+            expected_protobuf_files: list[str] = []
+            table_ids: list[str] = []
+            for table_entry in tables:
+                if not isinstance(table_entry, dict):
+                    raise AssertionError(dataset_path)
+                table_id = table_entry.get("table_id")
+                path = table_entry.get("path")
+                if not isinstance(table_id, str) or not isinstance(path, str):
+                    raise AssertionError(dataset_path)
+                self.assertEqual(f"by-table/{table_id}.json", path, dataset_path)
+                self.assert_artifact_entry(dataset_dir, table_entry, dataset_path)
+                table = self.load_json_object(dataset_dir / path)
+                self.assertEqual(table_id, table.get("table_id"), dataset_path)
+                self.assertEqual(table_entry.get("table_identity"), table.get("table_identity"), dataset_path)
+                self.assertEqual(table_entry.get("source"), table.get("source"), dataset_path)
+                self.assertEqual(table_entry.get("structure"), table.get("structure"), dataset_path)
+                self.assertEqual(table_entry.get("age_basis"), table.get("age_basis"), dataset_path)
+                expected_files.append(Path(path).name)
+                expected_protobuf_path = table_entry.get("protobuf_path")
+                if not isinstance(expected_protobuf_path, str):
+                    raise AssertionError(dataset_path)
+                expected_protobuf_files.append(Path(expected_protobuf_path).name)
+                table_ids.append(table_id)
+
+            self.assertEqual(sorted(table_ids), table_ids, dataset_path)
+            self.assertEqual(len(table_ids), manifest.get("record_count"), dataset_path)
+            actual_files = sorted(path.name for path in (dataset_dir / "by-table").glob("*.json"))
+            self.assertEqual(sorted(expected_files), actual_files, dataset_path)
+            actual_protobuf_files = sorted(
+                path.name for path in (dataset_dir / "protobuf").glob("*.pb")
+            )
+            self.assertEqual(sorted(expected_protobuf_files), actual_protobuf_files, dataset_path)
+
+    def test_static_api_latest_endpoints_match_canonical_records(self) -> None:
+        api_index = self.load_json_object(REPO_ROOT / "api" / "v1" / "index.json")
+        self.assertEqual("rates.api_index.v1", api_index.get("schema_id"))
+        self.assertEqual(1, api_index.get("schema_version"))
+        datasets = api_index.get("datasets")
+        if not isinstance(datasets, list):
+            raise AssertionError("api/v1/index.json")
+
+        expected_dataset_ids = set()
+        for dataset_path in ANNUAL_IRS_DATASETS:
+            manifest = self.load_json_object(REPO_ROOT / dataset_path / "manifest.json")
+            dataset_id = manifest.get("dataset_id")
+            if not isinstance(dataset_id, str):
+                raise AssertionError(dataset_path)
+            expected_dataset_ids.add(dataset_id)
+        for dataset_path in YEAR_SHARDED_DATASETS:
+            manifest = self.load_json_object(REPO_ROOT / dataset_path / "manifest.json")
+            dataset_id = manifest.get("dataset_id")
+            if not isinstance(dataset_id, str):
+                raise AssertionError(dataset_path)
+            expected_dataset_ids.add(dataset_id)
+
+        actual_latest_dataset_ids: set[str] = set()
+        api_entries_by_dataset_id: dict[str, dict[str, object]] = {}
+        for dataset in datasets:
+            if not isinstance(dataset, dict):
+                raise AssertionError("api/v1/index.json")
+            dataset_id_value = dataset.get("dataset_id")
+            if isinstance(dataset_id_value, str):
+                api_entries_by_dataset_id[dataset_id_value] = dataset
+            latest = dataset.get("latest")
+            if latest is None:
+                continue
+            dataset_id = dataset.get("dataset_id")
+            dataset_path = dataset.get("dataset_path")
+            if not isinstance(dataset_id, str) or not isinstance(dataset_path, str):
+                raise AssertionError("api/v1/index.json")
+            if not isinstance(latest, dict):
+                raise AssertionError(dataset_id)
+            latest_path = latest.get("path")
+            canonical_record_path = latest.get("canonical_record_path")
+            record_key = latest.get("record_key")
+            if (
+                not isinstance(latest_path, str)
+                or not isinstance(canonical_record_path, str)
+                or not isinstance(record_key, str)
+            ):
+                raise AssertionError(dataset_id)
+
+            api_latest = self.load_json_object(REPO_ROOT / "api" / "v1" / latest_path)
+            canonical_records = self.load_json_list(REPO_ROOT / canonical_record_path)
+            if len(canonical_records) == 0:
+                raise AssertionError(dataset_id)
+            canonical_latest = canonical_records[-1]
+            if not isinstance(canonical_latest, dict):
+                raise AssertionError(dataset_id)
+            self.assertEqual("rates.api_latest.v1", api_latest.get("schema_id"), dataset_id)
+            self.assertEqual(1, api_latest.get("schema_version"), dataset_id)
+            self.assertEqual(record_key, self.record_sort_key(canonical_latest), dataset_id)
+            self.assertEqual(canonical_latest, api_latest.get("record"), dataset_id)
+            self.assertEqual(canonical_record_path, api_latest.get("canonical_record_path"), dataset_id)
+
+            latest_file = REPO_ROOT / "api" / "v1" / latest_path
+            self.assertEqual(latest_file.stat().st_size, latest.get("bytes"), dataset_id)
+            self.assertEqual(self.sha256(latest_file), latest.get("sha256"), dataset_id)
+            actual_latest_dataset_ids.add(dataset_id)
+
+        self.assertEqual(expected_dataset_ids, actual_latest_dataset_ids)
+
+        for dataset_id, (
+            dataset_path,
+            route_name,
+            key_field,
+            key_template,
+        ) in STATIC_API_LOOKUPS.items():
+            entry = api_entries_by_dataset_id.get(dataset_id)
+            if entry is None:
+                raise AssertionError(dataset_id)
+            lookup = entry.get("lookup")
+            if not isinstance(lookup, dict):
+                raise AssertionError(dataset_id)
+            self.assertEqual(
+                f"datasets/{dataset_id}/{route_name}/{key_template}.json",
+                lookup.get("path_template"),
+                dataset_id,
+            )
+            self.assertEqual(key_field, lookup.get("key_field"), dataset_id)
+            canonical_records = self.canonical_records_for_dataset(dataset_path)
+            self.assertEqual(len(canonical_records), lookup.get("record_count"), dataset_id)
+            if canonical_records:
+                first_record = canonical_records[0]
+                last_record = canonical_records[-1]
+                if not isinstance(first_record, dict) or not isinstance(last_record, dict):
+                    raise AssertionError(dataset_id)
+                self.assertEqual(first_record.get(key_field), lookup.get("first_key"), dataset_id)
+                self.assertEqual(last_record.get(key_field), lookup.get("last_key"), dataset_id)
+
+            lookup_dir = REPO_ROOT / "api" / "v1" / "datasets" / dataset_id / route_name
+            lookup_files = sorted(lookup_dir.glob("*.json"))
+            self.assertEqual(len(canonical_records), len(lookup_files), dataset_id)
+            seen_keys: set[str] = set()
+            for record in canonical_records:
+                if not isinstance(record, dict):
+                    raise AssertionError(dataset_id)
+                record_key = record.get(key_field)
+                if not isinstance(record_key, str):
+                    raise AssertionError(dataset_id)
+                seen_keys.add(record_key)
+                api_record_path = lookup_dir / f"{record_key}.json"
+                api_record = self.load_json_object(api_record_path)
+                self.assertEqual("rates.api_record.v1", api_record.get("schema_id"), dataset_id)
+                self.assertEqual(1, api_record.get("schema_version"), dataset_id)
+                self.assertEqual(dataset_id, api_record.get("dataset_id"), dataset_id)
+                self.assertEqual(record_key, api_record.get("record_key"), dataset_id)
+                self.assertEqual(record, api_record.get("record"), dataset_id)
+            self.assertEqual(len(canonical_records), len(seen_keys), dataset_id)
+
+    def canonical_records_for_dataset(self, dataset_path: str) -> list[object]:
+        manifest = self.load_json_object(REPO_ROOT / dataset_path / "manifest.json")
+        storage = manifest.get("record_storage")
+        if storage == "single_file":
+            records = manifest.get("records")
+            if not isinstance(records, dict):
+                raise AssertionError(dataset_path)
+            records_path = records.get("path")
+            if not isinstance(records_path, str):
+                raise AssertionError(dataset_path)
+            return self.load_json_list(REPO_ROOT / dataset_path / records_path)
+        if storage == "by_year":
+            years = manifest.get("years")
+            if not isinstance(years, list):
+                raise AssertionError(dataset_path)
+            all_records: list[object] = []
+            for year in years:
+                if not isinstance(year, dict):
+                    raise AssertionError(dataset_path)
+                path = year.get("path")
+                if not isinstance(path, str):
+                    raise AssertionError(dataset_path)
+                all_records.extend(self.load_json_list(REPO_ROOT / dataset_path / path))
+            return all_records
+        raise AssertionError(dataset_path)
+
     def load_json_list(self, path: Path) -> list[object]:
         value = json.loads(path.read_text(encoding="utf-8"))
         if not isinstance(value, list):
@@ -454,6 +669,9 @@ class RepositoryLayoutTests(unittest.TestCase):
         effective_month = record.get("effective_month")
         if isinstance(effective_month, str):
             return effective_month
+        period_start_date = record.get("period_start_date")
+        if isinstance(period_start_date, str):
+            return period_start_date
         return None
 
     def assert_records_do_not_have_source_url(

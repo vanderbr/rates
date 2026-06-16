@@ -1,0 +1,28 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "treasury-yield-curve",
+  "dataset_path": "treasury/treasury-yield-curve",
+  "record_key": "2001-11-07",
+  "canonical_record_path": "treasury/treasury-yield-curve/by-year/2001-treasury-yield-curve.json",
+  "canonical_manifest_path": "treasury/treasury-yield-curve/manifest.json",
+  "record": {
+    "date": "2001-11-07",
+    "par_yields_basis_points": [
+      193,
+      null,
+      null,
+      180,
+      null,
+      175,
+      193,
+      232,
+      270,
+      347,
+      395,
+      422,
+      495,
+      479
+    ]
+  }
+}

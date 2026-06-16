@@ -1,0 +1,28 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "treasury-yield-curve",
+  "dataset_path": "treasury/treasury-yield-curve",
+  "record_key": "2019-09-06",
+  "canonical_record_path": "treasury/treasury-yield-curve/by-year/2019-treasury-yield-curve.json",
+  "canonical_manifest_path": "treasury/treasury-yield-curve/manifest.json",
+  "record": {
+    "date": "2019-09-06",
+    "par_yields_basis_points": [
+      205,
+      null,
+      200,
+      196,
+      null,
+      188,
+      173,
+      153,
+      146,
+      142,
+      150,
+      155,
+      183,
+      202
+    ]
+  }
+}

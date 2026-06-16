@@ -1,0 +1,28 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "treasury-yield-curve",
+  "dataset_path": "treasury/treasury-yield-curve",
+  "record_key": "2012-11-26",
+  "canonical_record_path": "treasury/treasury-yield-curve/by-year/2012-treasury-yield-curve.json",
+  "canonical_manifest_path": "treasury/treasury-yield-curve/manifest.json",
+  "record": {
+    "date": "2012-11-26",
+    "par_yields_basis_points": [
+      14,
+      null,
+      null,
+      10,
+      null,
+      15,
+      17,
+      27,
+      36,
+      68,
+      109,
+      166,
+      239,
+      280
+    ]
+  }
+}

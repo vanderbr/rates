@@ -1,0 +1,13 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "federal-funds",
+  "dataset_path": "fed-funds",
+  "record_key": "2012-10-26",
+  "canonical_record_path": "fed-funds/by-year/2012-fed-funds.json",
+  "canonical_manifest_path": "fed-funds/manifest.json",
+  "record": {
+    "date": "2012-10-26",
+    "rate_basis_points": 16
+  }
+}

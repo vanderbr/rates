@@ -1,0 +1,28 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "treasury-yield-curve",
+  "dataset_path": "treasury/treasury-yield-curve",
+  "record_key": "2020-12-10",
+  "canonical_record_path": "treasury/treasury-yield-curve/by-year/2020-treasury-yield-curve.json",
+  "canonical_manifest_path": "treasury/treasury-yield-curve/manifest.json",
+  "record": {
+    "date": "2020-12-10",
+    "par_yields_basis_points": [
+      7,
+      null,
+      8,
+      8,
+      null,
+      9,
+      10,
+      14,
+      20,
+      39,
+      65,
+      92,
+      144,
+      165
+    ]
+  }
+}

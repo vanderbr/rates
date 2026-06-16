@@ -1,0 +1,28 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "treasury-yield-curve",
+  "dataset_path": "treasury/treasury-yield-curve",
+  "record_key": "1990-07-05",
+  "canonical_record_path": "treasury/treasury-yield-curve/by-year/1990-treasury-yield-curve.json",
+  "canonical_manifest_path": "treasury/treasury-yield-curve/manifest.json",
+  "record": {
+    "date": "1990-07-05",
+    "par_yields_basis_points": [
+      null,
+      null,
+      null,
+      792,
+      null,
+      798,
+      802,
+      822,
+      831,
+      834,
+      845,
+      842,
+      null,
+      842
+    ]
+  }
+}
