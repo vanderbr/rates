@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import sys
 import tempfile
 import unittest
@@ -34,6 +35,7 @@ LEGACY_TITLE_SOURCE_URL = "https://www.irs.gov/pub/irs-drop/rr-04-84.pdf"
 BOXED_TABLE_SOURCE_URL = "https://www.irs.gov/pub/irs-drop/rr-01-58.pdf"
 MULTIPLIER_TYPO_SOURCE_URL = "https://www.irs.gov/pub/irs-drop/rr-01-36.pdf"
 NO_TABLE_1_MARKER_SOURCE_URL = "https://www.irs.gov/pub/irs-drop/rr-01-22.pdf"
+PDF_BYTES = b"%PDF-1.7\nsource bytes\n%%EOF\n"
 
 
 def load_updater_module() -> ModuleType:
@@ -89,6 +91,16 @@ class AfrRateUpdaterTests(unittest.TestCase):
             368,
             record.adjusted_applicable_federal_rates["long_term"]["annual"],
         )
+
+    def test_parses_legacy_two_digit_revenue_ruling_with_typographic_dash(
+        self,
+    ) -> None:
+        text = self.fixture_text.replace("Rev. Rul. 2026-11", "REV. RUL. 26–11")
+
+        record = self.updater.parse_afr_record(text, SOURCE_URL)
+
+        self.assertEqual("2026-06", record.effective_month)
+        self.assertEqual("Rev. Rul. 26-11", record.revenue_ruling)
 
     def test_parses_legacy_adjusted_afr_table_layout(self) -> None:
         record = self.updater.parse_afr_record(
@@ -236,6 +248,91 @@ class AfrRateUpdaterTests(unittest.TestCase):
             self.assertEqual((1, 0, 1, True), result)
             self.assertTrue((dataset_dir / "manifest.json").is_file())
             self.assertTrue((dataset_dir / "by-year" / "2026-afr.json").is_file())
+
+    def test_update_from_index_archives_monthly_revenue_ruling_once(self) -> None:
+        store = sys.modules["afr_update.store"]
+        original_discover_pdf_urls = store.discover_pdf_urls
+        original_fetch_pdf_bytes = store.fetch_pdf_bytes
+        original_extract_pdf_text = store.extract_pdf_text
+        try:
+            store.discover_pdf_urls = lambda index_url, backfill: [SOURCE_URL]
+            store.fetch_pdf_bytes = lambda source_url: PDF_BYTES
+            store.extract_pdf_text = lambda pdf_bytes: self.fixture_text
+
+            with tempfile.TemporaryDirectory() as directory:
+                dataset_dir = Path(directory) / "afr"
+                archive_dir = Path(directory) / "sources" / "irs-revenue-rulings"
+
+                first_result = self.updater.update_from_index(
+                    index_url="https://www.irs.gov/applicable-federal-rates",
+                    dataset_dir=dataset_dir,
+                    write=True,
+                    backfill=False,
+                    source_archive_dir=archive_dir,
+                    archive_sources=True,
+                )
+                second_result = self.updater.update_from_index(
+                    index_url="https://www.irs.gov/applicable-federal-rates",
+                    dataset_dir=dataset_dir,
+                    write=True,
+                    backfill=False,
+                    source_archive_dir=archive_dir,
+                    archive_sources=True,
+                )
+
+                manifest = json.loads(
+                    (archive_dir / "manifest.json").read_text(encoding="utf-8")
+                )
+
+            self.assertEqual((1, 0, 1, True), first_result)
+            self.assertEqual((0, 1, 1, False), second_result)
+            self.assertEqual(1, len(manifest["entries"]))
+            entry = manifest["entries"][0]
+            self.assertEqual(["2026-06"], entry["periods"])
+            self.assertEqual(["afr", "section-7520-rates"], entry["subjects"])
+            self.assertEqual(SOURCE_URL, entry["source_url"])
+            self.assertEqual("Rev. Rul. 2026-11", entry["title"])
+        finally:
+            store.discover_pdf_urls = original_discover_pdf_urls
+            store.fetch_pdf_bytes = original_fetch_pdf_bytes
+            store.extract_pdf_text = original_extract_pdf_text
+
+    def test_update_from_index_reports_archive_only_change(self) -> None:
+        store = sys.modules["afr_update.store"]
+        original_discover_pdf_urls = store.discover_pdf_urls
+        original_fetch_pdf_bytes = store.fetch_pdf_bytes
+        original_extract_pdf_text = store.extract_pdf_text
+        try:
+            store.discover_pdf_urls = lambda index_url, backfill: [SOURCE_URL]
+            store.fetch_pdf_bytes = lambda source_url: PDF_BYTES
+            store.extract_pdf_text = lambda pdf_bytes: self.fixture_text
+
+            with tempfile.TemporaryDirectory() as directory:
+                dataset_dir = Path(directory) / "afr"
+                archive_dir = Path(directory) / "sources" / "irs-revenue-rulings"
+                self.updater.update_from_pdf_texts(
+                    [(SOURCE_URL, self.fixture_text)], dataset_dir, True
+                )
+
+                result = self.updater.update_from_index(
+                    index_url="https://www.irs.gov/applicable-federal-rates",
+                    dataset_dir=dataset_dir,
+                    write=True,
+                    backfill=False,
+                    source_archive_dir=archive_dir,
+                    archive_sources=True,
+                )
+
+                manifest = json.loads(
+                    (archive_dir / "manifest.json").read_text(encoding="utf-8")
+                )
+
+            self.assertEqual((1, 1, 1, True), result)
+            self.assertEqual(1, len(manifest["entries"]))
+        finally:
+            store.discover_pdf_urls = original_discover_pdf_urls
+            store.fetch_pdf_bytes = original_fetch_pdf_bytes
+            store.extract_pdf_text = original_extract_pdf_text
 
     def test_conflicting_record_fails_closed(self) -> None:
         good_record = self.updater.parse_afr_record(self.fixture_text, SOURCE_URL)

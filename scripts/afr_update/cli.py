@@ -29,6 +29,16 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument("--input-source-url")
     parser.add_argument("--backfill", action="store_true")
     parser.add_argument("--write", action="store_true")
+    parser.add_argument(
+        "--archive-sources",
+        action="store_true",
+        help="Archive newly discovered monthly IRS revenue ruling PDFs.",
+    )
+    parser.add_argument(
+        "--source-archive-dir",
+        type=Path,
+        default=Path("sources/irs-revenue-rulings"),
+    )
     return parser.parse_args(argv)
 
 
@@ -45,6 +55,8 @@ def main(argv: list[str]) -> int:
                 write=args.write,
                 backfill=args.backfill,
                 legacy_data_path=args.data_path,
+                archive_sources=args.archive_sources,
+                source_archive_dir=args.source_archive_dir,
             )
         else:
             if args.input_source_url is None or args.backfill:

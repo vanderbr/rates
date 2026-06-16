@@ -43,7 +43,10 @@ MONTHS = {
     "november": 11,
     "december": 12,
 }
-REVENUE_RULING_PATTERN = re.compile(r"Rev\. Rul\. ([0-9]{4})-([0-9]{1,3})")
+REVENUE_RULING_PATTERN = re.compile(
+    r"Rev\. Rul\. ([0-9]{4}|[0-9]{2})[\-\u2010-\u2015]([0-9]{1,3})",
+    re.IGNORECASE,
+)
 MONTH_PATTERN = re.compile(
     r"Applicable Federal Rates \(AFR\) for "
     r"(January|February|March|April|May|June|July|August|September|October|"

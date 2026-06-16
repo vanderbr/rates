@@ -33,6 +33,19 @@ APPLIES_TO = "generation_skipping_transfers_during_calendar_year"
 # Deterministic legacy history is kept in code so backfill remains stable while
 # newer annual values are extracted from IRS Revenue Procedure PDFs.
 STATIC_GST_EXEMPTION_TABLE = (
+    (1986, "1986-10-22", "1986-12-31", 1_000_000),
+    (1987, "1987-01-01", "1987-12-31", 1_000_000),
+    (1988, "1988-01-01", "1988-12-31", 1_000_000),
+    (1989, "1989-01-01", "1989-12-31", 1_000_000),
+    (1990, "1990-01-01", "1990-12-31", 1_000_000),
+    (1991, "1991-01-01", "1991-12-31", 1_000_000),
+    (1992, "1992-01-01", "1992-12-31", 1_000_000),
+    (1993, "1993-01-01", "1993-12-31", 1_000_000),
+    (1994, "1994-01-01", "1994-12-31", 1_000_000),
+    (1995, "1995-01-01", "1995-12-31", 1_000_000),
+    (1996, "1996-01-01", "1996-12-31", 1_000_000),
+    (1997, "1997-01-01", "1997-12-31", 1_000_000),
+    (1998, "1998-01-01", "1998-12-31", 1_000_000),
     (1999, 1_010_000),
     (2000, 1_030_000),
     (2001, 1_060_000),
@@ -125,17 +138,26 @@ def map_source_error(
 
 
 def static_form_709_records() -> list[GstExemptionRecord]:
-    return [
-        GstExemptionRecord(
-            period_start_date=f"{year:04d}-01-01",
-            period_end_date=f"{year:04d}-12-31",
-            exemption_amount_usd=amount,
-            applies_to=APPLIES_TO,
-            revenue_procedure=None,
-            source_url="",
+    records: list[GstExemptionRecord] = []
+    for entry in STATIC_GST_EXEMPTION_TABLE:
+        if len(entry) == 2:
+            year, amount = entry
+            period_start_date = f"{year:04d}-01-01"
+            period_end_date = f"{year:04d}-12-31"
+        else:
+            _year, period_start_date, period_end_date, amount = entry
+
+        records.append(
+            GstExemptionRecord(
+                period_start_date=period_start_date,
+                period_end_date=period_end_date,
+                exemption_amount_usd=amount,
+                applies_to=APPLIES_TO,
+                revenue_procedure=None,
+                source_url="",
+            )
         )
-        for year, amount in STATIC_GST_EXEMPTION_TABLE
-    ]
+    return records
 
 
 def validate_pdf_url(source_url: str) -> None:

@@ -5,7 +5,7 @@ export PYTHONDONTWRITEBYTECODE := 1
 .PHONY: test audit artifacts update update-actuarial update-backfill
 
 test:
-	python3 -B -m unittest scripts.tests.test_import_2015_vbt scripts.tests.test_update_actuarial_tables scripts.tests.test_update_afr_rates scripts.tests.test_update_annual_gift_exclusion scripts.tests.test_update_gst_exemption scripts.tests.test_update_noncitizen_spouse_gift_exclusion scripts.tests.test_update_section_7520_rates scripts.tests.test_update_unified_estate_gift_tax_exemption scripts.tests.test_update_market_rates scripts.tests.test_repository_layout
+	python3 -B -m unittest scripts.tests.test_archive_irs_pdf_source scripts.tests.test_import_2015_vbt scripts.tests.test_update_actuarial_tables scripts.tests.test_update_afr_rates scripts.tests.test_update_annual_gift_exclusion scripts.tests.test_update_gst_exemption scripts.tests.test_update_noncitizen_spouse_gift_exclusion scripts.tests.test_update_section_7520_rates scripts.tests.test_update_unified_estate_gift_tax_exemption scripts.tests.test_update_market_rates scripts.tests.test_repository_layout
 
 audit:
 	python3 scripts/artifact_contract.py
@@ -20,7 +20,7 @@ artifacts:
 
 update:
 	python3 scripts/update_section_7520_rates.py --write
-	python3 scripts/update_afr_rates.py --write
+	python3 scripts/update_afr_rates.py --write --archive-sources
 	python3 scripts/update_annual_gift_exclusion.py --write
 	python3 scripts/update_gst_exemption.py --write
 	python3 scripts/update_noncitizen_spouse_gift_exclusion.py --write

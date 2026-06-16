@@ -11,10 +11,10 @@
       "schema_id": "rates.section_7520_rates.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 354,
+      "record_count": 367,
       "manifest_path": "7520/manifest.json",
-      "manifest_bytes": 14953,
-      "manifest_sha256": "68204d5787f19a8dca3c8e7ae7fc7f9e631f9011f8ebcb2e78ca2613f32b2fe7"
+      "manifest_bytes": 15439,
+      "manifest_sha256": "168a8f850dd2f5f5d4467413ee923c9c99b035751644da18011353c4c7e32b84"
     },
     {
       "dataset_path": "afr",
@@ -22,10 +22,10 @@
       "schema_id": "rates.applicable_federal_rates.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 319,
+      "record_count": 343,
       "manifest_path": "afr/manifest.json",
-      "manifest_bytes": 12765,
-      "manifest_sha256": "3c457238bb1188abc8dbd67839a4095bdee6d085222d1785ae201a83c3aa1328"
+      "manifest_bytes": 13681,
+      "manifest_sha256": "c3d49b0d31f6d9ec34c78a85c4165f91870f62b40d8abed93f6a69c27bfb6951"
     },
     {
       "dataset_path": "annual-gift-exclusion",
@@ -55,10 +55,10 @@
       "schema_id": "rates.gst_exemption.v1",
       "schema_version": 1,
       "record_storage": "single_file",
-      "record_count": 28,
+      "record_count": 41,
       "manifest_path": "gst-exemption/manifest.json",
-      "manifest_bytes": 590,
-      "manifest_sha256": "3c46c3037925d54cd563dcef9d4543ad8045fa353475f6e495b3d2fb1a850097"
+      "manifest_bytes": 591,
+      "manifest_sha256": "fccf29934f94723b16559268575306f695e9f4ebb7b2ad835b38cc948297261b"
     },
     {
       "dataset_path": "noncitizen-spouse-gift-exclusion",

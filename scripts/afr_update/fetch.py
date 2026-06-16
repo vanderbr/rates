@@ -105,10 +105,13 @@ def fetch_text(source_url: str) -> str:
         raise AfrUpdateError(AfrUpdateErrorCode.FETCH_FAILED) from None
 
 
-def fetch_pdf_text(source_url: str) -> str:
+def fetch_pdf_bytes(source_url: str) -> bytes:
     validate_pdf_url(source_url)
-    pdf_bytes = fetch_bytes(source_url, MAX_PDF_BYTES)
-    return extract_pdf_text(pdf_bytes)
+    return fetch_bytes(source_url, MAX_PDF_BYTES)
+
+
+def fetch_pdf_text(source_url: str) -> str:
+    return extract_pdf_text(fetch_pdf_bytes(source_url))
 
 
 def extract_pdf_text(pdf_bytes: bytes) -> str:

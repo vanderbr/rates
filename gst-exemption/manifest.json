@@ -3,17 +3,17 @@
   "schema_id": "rates.gst_exemption.v1",
   "schema_version": 1,
   "record_storage": "single_file",
-  "record_count": 28,
+  "record_count": 41,
   "proto": {
     "file": "proto/rates/v1/gst_exemption.proto",
     "message": "rates.v1.GstExemptionFile"
   },
   "records": {
     "path": "gst-exemption.json",
-    "bytes": 3400,
-    "sha256": "be3831b8c5a012bb2e771d9e6fc15885fd079eef906f855c772aa20e10312834",
+    "bytes": 4973,
+    "sha256": "c22cc8a38ec168897f174165d11b2d294f489a31d63d672583bcef9c9ccaaa72",
     "protobuf_path": "protobuf/gst-exemption.pb",
-    "protobuf_bytes": 882,
-    "protobuf_sha256": "24ae8cf6f1d0253a83b01c2c1670b55d875226a207f77ba81d4506528ffb4b17"
+    "protobuf_bytes": 1272,
+    "protobuf_sha256": "d24fc121ee5de36a33b84ccb50c76a3e394c92dbba2bd2906590f8ea9cc068f9"
   }
 }

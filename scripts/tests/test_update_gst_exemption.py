@@ -51,6 +51,10 @@ class GstExemptionUpdaterTests(unittest.TestCase):
         records = self.updater.static_form_709_records()
         by_year = {record.period_start_date[:4]: record for record in records}
 
+        self.assertEqual("1986-10-22", by_year["1986"].period_start_date)
+        self.assertEqual("1986-12-31", by_year["1986"].period_end_date)
+        self.assertEqual(1_000_000, by_year["1986"].exemption_amount_usd)
+        self.assertEqual(1_000_000, by_year["1998"].exemption_amount_usd)
         self.assertEqual(1_010_000, by_year["1999"].exemption_amount_usd)
         self.assertEqual(1_500_000, by_year["2004"].exemption_amount_usd)
         self.assertEqual(1_500_000, by_year["2005"].exemption_amount_usd)
@@ -73,9 +77,10 @@ class GstExemptionUpdaterTests(unittest.TestCase):
                 include_static_history=True,
             )
 
-            self.assertEqual((28, 0, 28, True), first_result)
-            self.assertEqual((28, 28, 28, False), second_result)
+            self.assertEqual((41, 0, 41, True), first_result)
+            self.assertEqual((41, 41, 41, False), second_result)
             serialized = data_path.read_text(encoding="utf-8")
+            self.assertIn('"period_start_date": "1986-10-22"', serialized)
             self.assertIn('"period_start_date": "1999-01-01"', serialized)
             self.assertIn('"period_end_date": "2026-12-31"', serialized)
             self.assertIn('"exemption_amount_usd": 15000000', serialized)
@@ -105,8 +110,9 @@ class GstExemptionUpdaterTests(unittest.TestCase):
                 include_static_history=True,
             )
 
-            self.assertEqual((27, 1, 27, True), result)
+            self.assertEqual((40, 1, 40, True), result)
             serialized = data_path.read_text(encoding="utf-8")
+            self.assertIn('"period_start_date": "1986-10-22"', serialized)
             self.assertIn('"period_start_date": "1999-01-01"', serialized)
             self.assertNotIn('"year"', serialized)
             self.assertNotIn('"revenue_procedure"', serialized)

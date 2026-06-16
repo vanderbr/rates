@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
   schedule:
     # IRS section 7520 and AFR rates are published monthly, but publication
-    # timing can drift. Poll weekly after mid-month; unchanged data produces no
+    # timing can drift. Poll daily after mid-month; unchanged data produces no
     # pull request.
-    - cron: "37 11 15,22,28 * *"
+    - cron: "37 11 15-28 * *"
 
 permissions:
   contents: write
@@ -60,8 +60,8 @@ jobs:
       - name: Update section 7520 JSON
         run: python scripts/update_section_7520_rates.py --write
 
-      - name: Update AFR JSON
-        run: python scripts/update_afr_rates.py --write
+      - name: Update AFR JSON and archive monthly revenue ruling PDFs
+        run: python scripts/update_afr_rates.py --write --archive-sources
 
       - name: Generate manifests, schemas, and protobuf artifacts
         run: python scripts/artifact_contract.py
@@ -87,6 +87,7 @@ jobs:
             - `7520/by-year/YYYY-section-7520-rates.json`
             - `afr/manifest.json`
             - `afr/by-year/YYYY-afr.json`
+            - `sources/irs-revenue-rulings/`
             - dataset `protobuf/*.pb` files
             - `index.json`
             - `schemas/v1/*.schema.json`
