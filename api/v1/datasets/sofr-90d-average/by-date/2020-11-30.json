@@ -1,0 +1,13 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "sofr-90d-average",
+  "dataset_path": "sofr/sofr-90d-average",
+  "record_key": "2020-11-30",
+  "canonical_record_path": "sofr/sofr-90d-average/by-year/2020-sofr-90d-average.json",
+  "canonical_manifest_path": "sofr/sofr-90d-average/manifest.json",
+  "record": {
+    "date": "2020-11-30",
+    "average_90_day_basis_points_scaled_1000": 8645
+  }
+}

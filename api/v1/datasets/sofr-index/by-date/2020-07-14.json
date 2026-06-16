@@ -1,0 +1,13 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "sofr-index",
+  "dataset_path": "sofr/sofr-index",
+  "record_key": "2020-07-14",
+  "canonical_record_path": "sofr/sofr-index/by-year/2020-sofr-index.json",
+  "canonical_manifest_path": "sofr/sofr-index/manifest.json",
+  "record": {
+    "date": "2020-07-14",
+    "sofr_index_scaled_100000000": 104153425
+  }
+}

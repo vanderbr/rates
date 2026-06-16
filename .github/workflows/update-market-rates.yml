@@ -90,6 +90,7 @@ jobs:
             - `api/v1/datasets/*/latest.json`
             - `api/v1/datasets/*/by-date/*.json`
             - `api/v1/datasets/*/by-month/*.json`
+            - `api/v1/datasets/*/by-year/*.json`
             - `index.json`
             - `schemas/v1/*.schema.json`
 

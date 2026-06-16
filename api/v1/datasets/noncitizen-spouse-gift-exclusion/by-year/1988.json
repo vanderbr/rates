@@ -1,0 +1,18 @@
+{
+  "schema_id": "rates.api_records.v1",
+  "schema_version": 1,
+  "dataset_id": "noncitizen-spouse-gift-exclusion",
+  "dataset_path": "noncitizen-spouse-gift-exclusion",
+  "record_key": "1988",
+  "canonical_record_paths": [
+    "noncitizen-spouse-gift-exclusion/noncitizen-spouse-gift-exclusion.json"
+  ],
+  "canonical_manifest_path": "noncitizen-spouse-gift-exclusion/manifest.json",
+  "records": [
+    {
+      "period_start_date": "1988-07-14",
+      "period_end_date": "1998-12-31",
+      "annual_exclusion_amount_usd": 100000
+    }
+  ]
+}

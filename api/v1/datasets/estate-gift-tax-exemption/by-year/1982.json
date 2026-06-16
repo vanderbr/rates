@@ -1,0 +1,18 @@
+{
+  "schema_id": "rates.api_records.v1",
+  "schema_version": 1,
+  "dataset_id": "estate-gift-tax-exemption",
+  "dataset_path": "estate-gift-tax-exemption",
+  "record_key": "1982",
+  "canonical_record_paths": [
+    "estate-gift-tax-exemption/estate-gift-tax-exemption.json"
+  ],
+  "canonical_manifest_path": "estate-gift-tax-exemption/manifest.json",
+  "records": [
+    {
+      "period_start_date": "1982-01-01",
+      "period_end_date": "1982-12-31",
+      "basic_exclusion_amount_usd": 225000
+    }
+  ]
+}

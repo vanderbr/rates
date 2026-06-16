@@ -46,7 +46,10 @@ curl -fsSL "$BASE/api/v1/datasets/treasury-yield-curve/latest.json"
 
 curl -fsSL "$BASE/api/v1/datasets/section-7520-rates/by-month/2026-06.json"
 curl -fsSL "$BASE/api/v1/datasets/applicable-federal-rates/by-month/2026-07.json"
+curl -fsSL "$BASE/api/v1/datasets/annual-gift-exclusion/by-year/2026.json"
+curl -fsSL "$BASE/api/v1/datasets/estate-gift-tax-exemption/by-year/2026.json"
 curl -fsSL "$BASE/api/v1/datasets/sofr/by-date/2026-06-12.json"
+curl -fsSL "$BASE/api/v1/datasets/sofr-index/by-date/2026-06-15.json"
 curl -fsSL "$BASE/api/v1/datasets/federal-funds/by-date/2026-06-12.json"
 curl -fsSL "$BASE/api/v1/datasets/treasury-yield-curve/by-date/2026-06-15.json"
 ```
@@ -54,6 +57,9 @@ curl -fsSL "$BASE/api/v1/datasets/treasury-yield-curve/by-date/2026-06-15.json"
 Each static API record includes the record, the canonical dataset path, the
 canonical manifest path, and the natural record key. For audit-sensitive use,
 replace `main` with a commit SHA or signed release tag.
+
+Annual `by-year` files contain a `records` array because a year can have more
+than one statutory period.
 
 ## Data
 
