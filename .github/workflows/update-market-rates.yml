@@ -34,6 +34,15 @@ jobs:
     timeout-minutes: 15
 
     steps:
+      - name: Require automation token
+        env:
+          RATES_AUTOMATION_TOKEN: ${{ secrets.RATES_AUTOMATION_TOKEN }}
+        run: |
+          if [ -z "${RATES_AUTOMATION_TOKEN}" ]; then
+            echo "RATES_AUTOMATION_TOKEN must be configured so update PRs trigger validation and auto-merge safely."
+            exit 1
+          fi
+
       - name: Checkout
         uses: actions/checkout@v6
 
@@ -59,8 +68,10 @@ jobs:
           python -m unittest scripts.tests.test_repository_layout
 
       - name: Open pull request for market rate updates
+        id: create_pull_request
         uses: peter-evans/create-pull-request@v8
         with:
+          token: ${{ secrets.RATES_AUTOMATION_TOKEN }}
           branch: automation/market-rate-updates
           delete-branch: true
           title: "Update market rates"
@@ -110,3 +121,10 @@ jobs:
             - [x] `python -m unittest scripts.tests.test_update_market_rates` before and after updating
             - [x] `python -m unittest scripts.tests.test_repository_layout` before and after updating
             - [x] `python scripts/artifact_contract.py`
+
+      - name: Enable auto-merge after validation
+        if: ${{ steps.create_pull_request.outputs.pull-request-number != '' }}
+        env:
+          GH_TOKEN: ${{ secrets.RATES_AUTOMATION_TOKEN }}
+          PULL_REQUEST_URL: ${{ steps.create_pull_request.outputs.pull-request-url }}
+        run: gh pr merge --auto --squash --delete-branch "${PULL_REQUEST_URL}"
