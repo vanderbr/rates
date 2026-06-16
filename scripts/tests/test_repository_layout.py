@@ -97,6 +97,25 @@ ANNUAL_IRS_DATASETS = {
 STATIC_API_LOOKUPS = {
     "section-7520-rates": ("7520", "by-month", "effective_month", "{month}"),
     "applicable-federal-rates": ("afr", "by-month", "effective_month", "{month}"),
+    "annual-gift-exclusion": (
+        "annual-gift-exclusion",
+        "by-year",
+        "period_start_date",
+        "{year}",
+    ),
+    "estate-gift-tax-exemption": (
+        "estate-gift-tax-exemption",
+        "by-year",
+        "period_start_date",
+        "{year}",
+    ),
+    "gst-exemption": ("gst-exemption", "by-year", "period_start_date", "{year}"),
+    "noncitizen-spouse-gift-exclusion": (
+        "noncitizen-spouse-gift-exclusion",
+        "by-year",
+        "period_start_date",
+        "{year}",
+    ),
     "treasury-yield-curve": (
         "treasury/treasury-yield-curve",
         "by-date",
@@ -105,6 +124,10 @@ STATIC_API_LOOKUPS = {
     ),
     "federal-funds": ("fed-funds", "by-date", "date", "{date}"),
     "sofr": ("sofr", "by-date", "date", "{date}"),
+    "sofr-30d-average": ("sofr/sofr-30d-average", "by-date", "date", "{date}"),
+    "sofr-90d-average": ("sofr/sofr-90d-average", "by-date", "date", "{date}"),
+    "sofr-180d-average": ("sofr/sofr-180d-average", "by-date", "date", "{date}"),
+    "sofr-index": ("sofr/sofr-index", "by-date", "date", "{date}"),
 }
 TREASURY_SOURCE_URL_TEMPLATE = (
     "https://home.treasury.gov/resource-center/data-chart-center/"
@@ -584,33 +607,63 @@ class RepositoryLayoutTests(unittest.TestCase):
             self.assertEqual(key_field, lookup.get("key_field"), dataset_id)
             canonical_records = self.canonical_records_for_dataset(dataset_path)
             self.assertEqual(len(canonical_records), lookup.get("record_count"), dataset_id)
+            grouped_records: dict[str, list[dict[object, object]]] = {}
             if canonical_records:
                 first_record = canonical_records[0]
                 last_record = canonical_records[-1]
                 if not isinstance(first_record, dict) or not isinstance(last_record, dict):
                     raise AssertionError(dataset_id)
-                self.assertEqual(first_record.get(key_field), lookup.get("first_key"), dataset_id)
-                self.assertEqual(last_record.get(key_field), lookup.get("last_key"), dataset_id)
+                self.assertEqual(
+                    self.api_lookup_key(first_record, key_field, key_template),
+                    lookup.get("first_key"),
+                    dataset_id,
+                )
+                self.assertEqual(
+                    self.api_lookup_key(last_record, key_field, key_template),
+                    lookup.get("last_key"),
+                    dataset_id,
+                )
 
             lookup_dir = REPO_ROOT / "api" / "v1" / "datasets" / dataset_id / route_name
             lookup_files = sorted(lookup_dir.glob("*.json"))
-            self.assertEqual(len(canonical_records), len(lookup_files), dataset_id)
             seen_keys: set[str] = set()
             for record in canonical_records:
                 if not isinstance(record, dict):
                     raise AssertionError(dataset_id)
-                record_key = record.get(key_field)
-                if not isinstance(record_key, str):
-                    raise AssertionError(dataset_id)
+                record_key = self.api_lookup_key(record, key_field, key_template)
                 seen_keys.add(record_key)
+                grouped_records.setdefault(record_key, []).append(record)
+
+            self.assertEqual(len(grouped_records), len(lookup_files), dataset_id)
+            self.assertEqual(len(grouped_records), lookup.get("file_count"), dataset_id)
+
+            for record_key, expected_records in grouped_records.items():
                 api_record_path = lookup_dir / f"{record_key}.json"
                 api_record = self.load_json_object(api_record_path)
-                self.assertEqual("rates.api_record.v1", api_record.get("schema_id"), dataset_id)
                 self.assertEqual(1, api_record.get("schema_version"), dataset_id)
                 self.assertEqual(dataset_id, api_record.get("dataset_id"), dataset_id)
                 self.assertEqual(record_key, api_record.get("record_key"), dataset_id)
-                self.assertEqual(record, api_record.get("record"), dataset_id)
-            self.assertEqual(len(canonical_records), len(seen_keys), dataset_id)
+                if key_template == "{year}":
+                    self.assertEqual("rates.api_records.v1", api_record.get("schema_id"), dataset_id)
+                    self.assertEqual(expected_records, api_record.get("records"), dataset_id)
+                    canonical_paths = api_record.get("canonical_record_paths")
+                    if not isinstance(canonical_paths, list) or len(canonical_paths) == 0:
+                        raise AssertionError(dataset_id)
+                else:
+                    self.assertEqual("rates.api_record.v1", api_record.get("schema_id"), dataset_id)
+                    self.assertEqual(expected_records[0], api_record.get("record"), dataset_id)
+            if key_template != "{year}":
+                self.assertEqual(len(canonical_records), len(seen_keys), dataset_id)
+
+    def api_lookup_key(
+        self, record: dict[object, object], key_field: str, key_template: str
+    ) -> str:
+        value = record.get(key_field)
+        if not isinstance(value, str):
+            raise AssertionError(key_field)
+        if key_template == "{year}":
+            return value[:4]
+        return value
 
     def canonical_records_for_dataset(self, dataset_path: str) -> list[object]:
         manifest = self.load_json_object(REPO_ROOT / dataset_path / "manifest.json")

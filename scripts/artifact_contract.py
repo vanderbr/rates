@@ -29,9 +29,17 @@ STATIC_API_ROOT = Path("api/v1")
 API_LOOKUP_BY_DATASET_ID = {
     "section-7520-rates": ("by-month", "effective_month", "{month}"),
     "applicable-federal-rates": ("by-month", "effective_month", "{month}"),
+    "annual-gift-exclusion": ("by-year", "period_start_date", "{year}"),
+    "estate-gift-tax-exemption": ("by-year", "period_start_date", "{year}"),
+    "gst-exemption": ("by-year", "period_start_date", "{year}"),
+    "noncitizen-spouse-gift-exclusion": ("by-year", "period_start_date", "{year}"),
     "treasury-yield-curve": ("by-date", "date", "{date}"),
     "federal-funds": ("by-date", "date", "{date}"),
     "sofr": ("by-date", "date", "{date}"),
+    "sofr-30d-average": ("by-date", "date", "{date}"),
+    "sofr-90d-average": ("by-date", "date", "{date}"),
+    "sofr-180d-average": ("by-date", "date", "{date}"),
+    "sofr-index": ("by-date", "date", "{date}"),
 }
 PROTO_FILE_BY_MESSAGE = {
     "ApplicableFederalRatesFile": "proto/rates/v1/applicable_federal_rates.proto",
@@ -1063,6 +1071,15 @@ def required_record_key(record: dict[str, object], key_field: str) -> str:
     return value
 
 
+def api_lookup_key(record: dict[str, object], key_field: str, key_template: str) -> str:
+    record_key = required_record_key(record, key_field)
+    if key_template == "{year}":
+        if re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", record_key) is None:
+            raise ArtifactError(ArtifactErrorCode.INVALID_JSON)
+        return record_key[:4]
+    return record_key
+
+
 def write_static_api_lookup_records(
     repo_root: Path,
     dataset: dict[str, object],
@@ -1082,6 +1099,7 @@ def write_static_api_lookup_records(
     first_key: str | None = None
     last_key: str | None = None
     seen_keys: set[str] = set()
+    grouped_records: dict[str, list[tuple[dict[str, object], Path]]] = {}
     for canonical_record_path in canonical_record_files(dataset):
         raw_records = read_json(repo_root / canonical_record_path)
         if not isinstance(raw_records, list):
@@ -1089,31 +1107,55 @@ def write_static_api_lookup_records(
         for raw_record in raw_records:
             if not isinstance(raw_record, dict):
                 raise ArtifactError(ArtifactErrorCode.INVALID_JSON)
-            record_key = required_record_key(raw_record, key_field)
-            if record_key in seen_keys:
+            record_key = api_lookup_key(raw_record, key_field, key_template)
+            if key_template == "{year}":
+                grouped_records.setdefault(record_key, []).append(
+                    (raw_record, canonical_record_path)
+                )
+            elif record_key in seen_keys:
                 raise ArtifactError(ArtifactErrorCode.INVALID_JSON)
-            seen_keys.add(record_key)
+            else:
+                seen_keys.add(record_key)
+                relative_path = (
+                    Path("datasets") / dataset_id / route_name / f"{record_key}.json"
+                )
+                write_api_json(
+                    repo_root,
+                    relative_path,
+                    {
+                        "schema_id": "rates.api_record.v1",
+                        "schema_version": SCHEMA_VERSION,
+                        "dataset_id": dataset_id,
+                        "dataset_path": dataset_path,
+                        "record_key": record_key,
+                        "canonical_record_path": canonical_record_path.as_posix(),
+                        "canonical_manifest_path": dataset_manifest_path(dataset).as_posix(),
+                        "record": raw_record,
+                    },
+                )
+                expected_paths.add(relative_path)
             first_key = record_key if first_key is None else min(first_key, record_key)
             last_key = record_key if last_key is None else max(last_key, record_key)
-            relative_path = (
-                Path("datasets") / dataset_id / route_name / f"{record_key}.json"
-            )
-            write_api_json(
-                repo_root,
-                relative_path,
-                {
-                    "schema_id": "rates.api_record.v1",
-                    "schema_version": SCHEMA_VERSION,
-                    "dataset_id": dataset_id,
-                    "dataset_path": dataset_path,
-                    "record_key": record_key,
-                    "canonical_record_path": canonical_record_path.as_posix(),
-                    "canonical_manifest_path": dataset_manifest_path(dataset).as_posix(),
-                    "record": raw_record,
-                },
-            )
-            expected_paths.add(relative_path)
             record_count += 1
+
+    for record_key, records in grouped_records.items():
+        relative_path = Path("datasets") / dataset_id / route_name / f"{record_key}.json"
+        canonical_paths = sorted({path.as_posix() for _record, path in records})
+        write_api_json(
+            repo_root,
+            relative_path,
+            {
+                "schema_id": "rates.api_records.v1",
+                "schema_version": SCHEMA_VERSION,
+                "dataset_id": dataset_id,
+                "dataset_path": dataset_path,
+                "record_key": record_key,
+                "canonical_record_paths": canonical_paths,
+                "canonical_manifest_path": dataset_manifest_path(dataset).as_posix(),
+                "records": [record for record, _path in records],
+            },
+        )
+        expected_paths.add(relative_path)
 
     return {
         "path_template": (
@@ -1121,6 +1163,7 @@ def write_static_api_lookup_records(
         ),
         "key_field": key_field,
         "record_count": record_count,
+        "file_count": len(grouped_records) if key_template == "{year}" else record_count,
         "first_key": first_key,
         "last_key": last_key,
     }

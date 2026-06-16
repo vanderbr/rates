@@ -1,0 +1,13 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "sofr-180d-average",
+  "dataset_path": "sofr/sofr-180d-average",
+  "record_key": "2025-06-23",
+  "canonical_record_path": "sofr/sofr-180d-average/by-year/2025-sofr-180d-average.json",
+  "canonical_manifest_path": "sofr/sofr-180d-average/manifest.json",
+  "record": {
+    "date": "2025-06-23",
+    "average_180_day_basis_points_scaled_1000": 437514
+  }
+}

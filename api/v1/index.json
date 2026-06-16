@@ -22,6 +22,7 @@
         "path_template": "datasets/section-7520-rates/by-month/{month}.json",
         "key_field": "effective_month",
         "record_count": 354,
+        "file_count": 354,
         "first_key": "1997-01",
         "last_key": "2026-06"
       }
@@ -45,6 +46,7 @@
         "path_template": "datasets/applicable-federal-rates/by-month/{month}.json",
         "key_field": "effective_month",
         "record_count": 319,
+        "file_count": 319,
         "first_key": "2000-01",
         "last_key": "2026-07"
       }
@@ -63,6 +65,14 @@
         "sha256": "763cd571309f6990c6a0834db1e1c2d84981572fea4d0e03a52f9f2ebb54f186",
         "record_key": "2026-01-01",
         "canonical_record_path": "annual-gift-exclusion/annual-gift-exclusion.json"
+      },
+      "lookup": {
+        "path_template": "datasets/annual-gift-exclusion/by-year/{year}.json",
+        "key_field": "period_start_date",
+        "record_count": 72,
+        "file_count": 72,
+        "first_key": "1955",
+        "last_key": "2026"
       }
     },
     {
@@ -79,6 +89,14 @@
         "sha256": "c542d9a274ab644b76d52d72ee261ba230fa1e4d6b9db339a8430f1b87f5e4d5",
         "record_key": "2026-01-01",
         "canonical_record_path": "estate-gift-tax-exemption/estate-gift-tax-exemption.json"
+      },
+      "lookup": {
+        "path_template": "datasets/estate-gift-tax-exemption/by-year/{year}.json",
+        "key_field": "period_start_date",
+        "record_count": 51,
+        "file_count": 50,
+        "first_key": "1977",
+        "last_key": "2026"
       }
     },
     {
@@ -95,6 +113,14 @@
         "sha256": "138bfe922a53a7d1dc732ab151cf7cc91c889c1d3cf4e2fba4fefeff63312e6d",
         "record_key": "2026-01-01",
         "canonical_record_path": "gst-exemption/gst-exemption.json"
+      },
+      "lookup": {
+        "path_template": "datasets/gst-exemption/by-year/{year}.json",
+        "key_field": "period_start_date",
+        "record_count": 28,
+        "file_count": 28,
+        "first_key": "1999",
+        "last_key": "2026"
       }
     },
     {
@@ -111,6 +137,14 @@
         "sha256": "f651c3ce708362107055a9ac2326ac091044ae3fcdb1edc6e86b17608683f44d",
         "record_key": "2026-01-01",
         "canonical_record_path": "noncitizen-spouse-gift-exclusion/noncitizen-spouse-gift-exclusion.json"
+      },
+      "lookup": {
+        "path_template": "datasets/noncitizen-spouse-gift-exclusion/by-year/{year}.json",
+        "key_field": "period_start_date",
+        "record_count": 29,
+        "file_count": 29,
+        "first_key": "1988",
+        "last_key": "2026"
       }
     },
     {
@@ -132,6 +166,7 @@
         "path_template": "datasets/treasury-yield-curve/by-date/{date}.json",
         "key_field": "date",
         "record_count": 9120,
+        "file_count": 9120,
         "first_key": "1990-01-02",
         "last_key": "2026-06-15"
       }
@@ -155,6 +190,7 @@
         "path_template": "datasets/federal-funds/by-date/{date}.json",
         "key_field": "date",
         "record_count": 6520,
+        "file_count": 6520,
         "first_key": "2000-07-03",
         "last_key": "2026-06-12"
       }
@@ -178,6 +214,7 @@
         "path_template": "datasets/sofr/by-date/{date}.json",
         "key_field": "date",
         "record_count": 2048,
+        "file_count": 2048,
         "first_key": "2018-04-02",
         "last_key": "2026-06-12"
       }
@@ -196,6 +233,14 @@
         "sha256": "f94006a3055c7c5d8822f8a9dc6135949cfde414603a7299fe93f20693bbdc56",
         "record_key": "2026-06-15",
         "canonical_record_path": "sofr/sofr-30d-average/by-year/2026-sofr-30d-average.json"
+      },
+      "lookup": {
+        "path_template": "datasets/sofr-30d-average/by-date/{date}.json",
+        "key_field": "date",
+        "record_count": 1571,
+        "file_count": 1571,
+        "first_key": "2020-03-02",
+        "last_key": "2026-06-15"
       }
     },
     {
@@ -212,6 +257,14 @@
         "sha256": "6e7b328c009f63d483bae132bc227940fcfc58d95f647f6f0dda872637c88e55",
         "record_key": "2026-06-15",
         "canonical_record_path": "sofr/sofr-90d-average/by-year/2026-sofr-90d-average.json"
+      },
+      "lookup": {
+        "path_template": "datasets/sofr-90d-average/by-date/{date}.json",
+        "key_field": "date",
+        "record_count": 1571,
+        "file_count": 1571,
+        "first_key": "2020-03-02",
+        "last_key": "2026-06-15"
       }
     },
     {
@@ -228,6 +281,14 @@
         "sha256": "c77f3d925a6a17ea9ad6aba9a321edb6a1b06ad3772568ed61899f0e732ef443",
         "record_key": "2026-06-15",
         "canonical_record_path": "sofr/sofr-180d-average/by-year/2026-sofr-180d-average.json"
+      },
+      "lookup": {
+        "path_template": "datasets/sofr-180d-average/by-date/{date}.json",
+        "key_field": "date",
+        "record_count": 1571,
+        "file_count": 1571,
+        "first_key": "2020-03-02",
+        "last_key": "2026-06-15"
       }
     },
     {
@@ -244,6 +305,14 @@
         "sha256": "ec5f6f1088fbac0b288a4dc04954192a4fe3c97bd555a9e44efec4bbea86a5c2",
         "record_key": "2026-06-15",
         "canonical_record_path": "sofr/sofr-index/by-year/2026-sofr-index.json"
+      },
+      "lookup": {
+        "path_template": "datasets/sofr-index/by-date/{date}.json",
+        "key_field": "date",
+        "record_count": 1571,
+        "file_count": 1571,
+        "first_key": "2020-03-02",
+        "last_key": "2026-06-15"
       }
     },
     {

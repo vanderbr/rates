@@ -1,0 +1,13 @@
+{
+  "schema_id": "rates.api_record.v1",
+  "schema_version": 1,
+  "dataset_id": "sofr-30d-average",
+  "dataset_path": "sofr/sofr-30d-average",
+  "record_key": "2023-10-13",
+  "canonical_record_path": "sofr/sofr-30d-average/by-year/2023-sofr-30d-average.json",
+  "canonical_manifest_path": "sofr/sofr-30d-average/manifest.json",
+  "record": {
+    "date": "2023-10-13",
+    "average_30_day_basis_points_scaled_1000": 532064
+  }
+}
