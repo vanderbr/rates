@@ -23,6 +23,7 @@ class AfrUpdateErrorCode(Enum):
     NO_PDF_LINKS = "no_pdf_links"
     PDF_TEXT_EXTRACTION_FAILED = "pdf_text_extraction_failed"
     PDF_TEXT_EXTRACTOR_MISSING = "pdf_text_extractor_missing"
+    SOURCE_ARCHIVE_FAILED = "source_archive_failed"
     WRITE_FAILED = "write_failed"
 
 

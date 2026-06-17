@@ -9,22 +9,22 @@
       "schema_id": "rates.section_7520_rates.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 354,
+      "record_count": 367,
       "canonical_manifest_path": "7520/manifest.json",
       "latest": {
         "path": "datasets/section-7520-rates/latest.json",
         "bytes": 414,
-        "sha256": "3c177f4d8740f0636feae5bfebfc7c4573081860d0d245504f8e454007ae8738",
-        "record_key": "2026-06",
+        "sha256": "7f341b9e0c80915e67cc57f794c97886e4c11805e33e42e4742d6e826d3fd000",
+        "record_key": "2026-07",
         "canonical_record_path": "7520/by-year/2026-section-7520-rates.json"
       },
       "lookup": {
         "path_template": "datasets/section-7520-rates/by-month/{month}.json",
         "key_field": "effective_month",
-        "record_count": 354,
-        "file_count": 354,
-        "first_key": "1997-01",
-        "last_key": "2026-06"
+        "record_count": 367,
+        "file_count": 367,
+        "first_key": "1996-01",
+        "last_key": "2026-07"
       }
     },
     {
@@ -33,7 +33,7 @@
       "schema_id": "rates.applicable_federal_rates.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 319,
+      "record_count": 355,
       "canonical_manifest_path": "afr/manifest.json",
       "latest": {
         "path": "datasets/applicable-federal-rates/latest.json",
@@ -45,9 +45,9 @@
       "lookup": {
         "path_template": "datasets/applicable-federal-rates/by-month/{month}.json",
         "key_field": "effective_month",
-        "record_count": 319,
-        "file_count": 319,
-        "first_key": "2000-01",
+        "record_count": 355,
+        "file_count": 355,
+        "first_key": "1997-01",
         "last_key": "2026-07"
       }
     },
@@ -105,7 +105,7 @@
       "schema_id": "rates.gst_exemption.v1",
       "schema_version": 1,
       "record_storage": "single_file",
-      "record_count": 28,
+      "record_count": 41,
       "canonical_manifest_path": "gst-exemption/manifest.json",
       "latest": {
         "path": "datasets/gst-exemption/latest.json",
@@ -117,9 +117,9 @@
       "lookup": {
         "path_template": "datasets/gst-exemption/by-year/{year}.json",
         "key_field": "period_start_date",
-        "record_count": 28,
-        "file_count": 28,
-        "first_key": "1999",
+        "record_count": 41,
+        "file_count": 41,
+        "first_key": "1986",
         "last_key": "2026"
       }
     },

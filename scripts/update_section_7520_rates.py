@@ -51,7 +51,28 @@ MONTH_PATTERN = re.compile(
     r"^(January|February|March|April|May|June|July|August|September|October|November|December)"
     r" ([0-9]{4})$"
 )
-REVENUE_RULING_PATTERN = re.compile(r"^Rev\. Rul\. ([0-9]{4}|[0-9]{2})-[0-9]{1,3}$")
+REVENUE_RULING_PATTERN = re.compile(r"^Rev\. Rul\.? ([0-9]{4}|[0-9]{2})-[0-9]{1,3}$")
+STATIC_IRB_SOURCE_URL = "https://www.irs.gov/pub/irs-irbs/"
+STATIC_1996_SECTION_7520_TABLE = (
+    ("1996-01", 689, 680, "Rev. Rul. 96-6", "irb96-02.pdf"),
+    ("1996-02", 675, 680, "Rev. Rul. 96-14", "irb96-06.pdf"),
+    ("1996-03", 656, 660, "Rev. Rul. 96-15", "irb96-11.pdf"),
+    ("1996-04", 708, 700, "Rev. Rul. 96-19", "irb96-15.pdf"),
+    ("1996-05", 765, 760, "Rev. Rul. 96-24", "irb96-19.pdf"),
+    ("1996-06", 793, 800, "Rev. Rul. 96-27", "irb96-24.pdf"),
+    ("1996-07", 812, 820, "Rev. Rul. 96-34", "irb96-28.pdf"),
+    ("1996-08", 824, 820, "Rev. Rul. 96-37", "irb96-32.pdf"),
+    ("1996-09", 799, 800, "Rev. Rul. 96-43", "irb96-37.pdf"),
+    ("1996-10", 809, 800, "Rev. Rul. 96-49", "irb96-41.pdf"),
+    ("1996-11", 794, 800, "Rev. Rul. 96-52", "irb96-45.pdf"),
+    ("1996-12", 759, 760, "Rev. Rul. 96-57", "irb96-50.pdf"),
+)
+PRIOR_YEARS_HTML_CORRECTIONS = {
+    ("2014-10", 222, 222, "Rev. Rul. 2014-26"): 220,
+}
+EXISTING_RECORD_CORRECTIONS = {
+    ("2014-10", 222, 222): 220,
+}
 
 
 class UpdateErrorCode(Enum):
@@ -206,12 +227,19 @@ def parse_section_7520_records(
         if index + 3 >= len(tokens):
             raise UpdateSection7520RatesError(UpdateErrorCode.HTML_TABLE_NOT_FOUND)
 
-        record = Section7520RateRecord(
-            effective_month=parse_valuation_month(token),
-            midterm_afr_120_basis_points=parse_percent_basis_points(tokens[index + 1]),
-            section_7520_rate_basis_points=parse_percent_basis_points(tokens[index + 2]),
-            revenue_ruling=parse_revenue_ruling(tokens[index + 3]),
-            source_url=source_url,
+        record = apply_prior_years_html_correction(
+            source_url,
+            Section7520RateRecord(
+                effective_month=parse_valuation_month(token),
+                midterm_afr_120_basis_points=parse_percent_basis_points(
+                    tokens[index + 1]
+                ),
+                section_7520_rate_basis_points=parse_percent_basis_points(
+                    tokens[index + 2]
+                ),
+                revenue_ruling=parse_revenue_ruling(tokens[index + 3]),
+                source_url=source_url,
+            ),
         )
 
         if record.effective_month in seen_months:
@@ -225,6 +253,34 @@ def parse_section_7520_records(
         raise UpdateSection7520RatesError(UpdateErrorCode.NO_SOURCE_RECORDS)
 
     return sorted(records)
+
+
+def apply_prior_years_html_correction(
+    source_url: str, record: Section7520RateRecord
+) -> Section7520RateRecord:
+    if source_url != PRIOR_YEARS_SOURCE_URL:
+        return record
+
+    corrected_section_rate = PRIOR_YEARS_HTML_CORRECTIONS.get(
+        (
+            record.effective_month,
+            record.midterm_afr_120_basis_points,
+            record.section_7520_rate_basis_points,
+            record.revenue_ruling,
+        )
+    )
+    if corrected_section_rate is None:
+        return record
+
+    # The IRS prior-years HTML transcribes Rev. Rul. 2014-26 Table 5 as 2.22%.
+    # The direct ruling PDF publishes 2.2%, so the PDF controls the stored value.
+    return Section7520RateRecord(
+        effective_month=record.effective_month,
+        midterm_afr_120_basis_points=record.midterm_afr_120_basis_points,
+        section_7520_rate_basis_points=corrected_section_rate,
+        revenue_ruling=record.revenue_ruling,
+        source_url=record.source_url,
+    )
 
 
 def find_table_start(tokens: list[str]) -> int:
@@ -278,7 +334,26 @@ def parse_percent_basis_points(value: str) -> int:
 def parse_revenue_ruling(value: str) -> str:
     if REVENUE_RULING_PATTERN.match(value) is None:
         raise UpdateSection7520RatesError(UpdateErrorCode.INVALID_REVENUE_RULING)
-    return value
+    return value.replace("Rev. Rul ", "Rev. Rul. ", 1)
+
+
+def static_1996_section_7520_records() -> list[Section7520RateRecord]:
+    return [
+        Section7520RateRecord(
+            effective_month=effective_month,
+            midterm_afr_120_basis_points=midterm_afr_120_basis_points,
+            section_7520_rate_basis_points=section_7520_rate_basis_points,
+            revenue_ruling=revenue_ruling,
+            source_url=f"{STATIC_IRB_SOURCE_URL}{irb_filename}",
+        )
+        for (
+            effective_month,
+            midterm_afr_120_basis_points,
+            section_7520_rate_basis_points,
+            revenue_ruling,
+            irb_filename,
+        ) in STATIC_1996_SECTION_7520_TABLE
+    ]
 
 
 def uses_year_shards(data_path: Path) -> bool:
@@ -386,12 +461,36 @@ def parse_json_record(value: object) -> Section7520RateRecord:
     if revenue_ruling != "":
         parse_revenue_ruling(revenue_ruling)
 
+    return apply_existing_record_correction(
+        Section7520RateRecord(
+            effective_month=effective_month,
+            midterm_afr_120_basis_points=midterm_rate,
+            section_7520_rate_basis_points=section_rate,
+            revenue_ruling=revenue_ruling,
+            source_url=source_url,
+        )
+    )
+
+
+def apply_existing_record_correction(
+    record: Section7520RateRecord,
+) -> Section7520RateRecord:
+    corrected_section_rate = EXISTING_RECORD_CORRECTIONS.get(
+        (
+            record.effective_month,
+            record.midterm_afr_120_basis_points,
+            record.section_7520_rate_basis_points,
+        )
+    )
+    if corrected_section_rate is None:
+        return record
+
     return Section7520RateRecord(
-        effective_month=effective_month,
-        midterm_afr_120_basis_points=midterm_rate,
-        section_7520_rate_basis_points=section_rate,
-        revenue_ruling=revenue_ruling,
-        source_url=source_url,
+        effective_month=record.effective_month,
+        midterm_afr_120_basis_points=record.midterm_afr_120_basis_points,
+        section_7520_rate_basis_points=corrected_section_rate,
+        revenue_ruling=record.revenue_ruling,
+        source_url=record.source_url,
     )
 
 
@@ -528,6 +627,9 @@ def update_from_sources(
     for source_url in source_urls:
         html = fetch_source_html(source_url)
         source_records.extend(parse_section_7520_records(html, source_url))
+
+    if PRIOR_YEARS_SOURCE_URL in source_urls:
+        source_records.extend(static_1996_section_7520_records())
 
     merged_records, changed = merge_records(existing_records, sorted(source_records))
     changed = changed or canonical_json_changed(data_path, merged_records)

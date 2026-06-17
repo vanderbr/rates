@@ -1,0 +1,504 @@
+# IRS Revenue Ruling Source Index
+
+This table lists documents for checking AFR and Section 7520 history.
+
+| Rate month | Rates covered | Revenue ruling | Link |
+| --- | --- | --- | --- |
+| 2026-07 | AFR, Section 7520 | Rev. Rul. 2026-12 | [PDF](by-year/2026/2026-07_afr-7520_rev-rul-2026-12_rr-26-12.pdf) |
+| 2026-06 | AFR, Section 7520 | Rev. Rul. 2026-11 | [PDF](by-year/2026/2026-06_afr-7520_rev-rul-2026-11_rr-26-11.pdf) |
+| 2026-05 | AFR, Section 7520 | Rev. Rul. 2026-9 | [PDF](by-year/2026/2026-05_afr-7520_rev-rul-2026-9_rr-26-09.pdf) |
+| 2026-04 | AFR, Section 7520 | Rev. Rul. 2026-7 | [PDF](by-year/2026/2026-04_afr-7520_rev-rul-2026-7_rr-26-07.pdf) |
+| 2026-03 | AFR, Section 7520 | Rev. Rul. 2026-6 | [PDF](by-year/2026/2026-03_afr-7520_rev-rul-2026-6_rr-26-06.pdf) |
+| 2026-02 | AFR, Section 7520 | Rev. Rul. 2026-3 | [PDF](by-year/2026/2026-02_afr-7520_rev-rul-2026-3_rr-26-03.pdf) |
+| 2026-01 | AFR, Section 7520 | Rev. Rul. 2026-2 | [PDF](by-year/2026/2026-01_afr-7520_rev-rul-2026-2_rr-26-02.pdf) |
+| 2025-12 | AFR, Section 7520 | Rev. Rul. 2025-24 | [PDF](by-year/2025/2025-12_afr-7520_rev-rul-2025-24_rr-25-24.pdf) |
+| 2025-11 | AFR, Section 7520 | Rev. Rul. 2025-21 | [PDF](by-year/2025/2025-11_afr-7520_rev-rul-2025-21_rr-25-21.pdf) |
+| 2025-10 | AFR, Section 7520 | Rev. Rul. 2025-19 | [PDF](by-year/2025/2025-10_afr-7520_rev-rul-2025-19_rr-25-19.pdf) |
+| 2025-09 | AFR, Section 7520 | Rev. Rul. 2025-17 | [PDF](by-year/2025/2025-09_afr-7520_rev-rul-2025-17_rr-25-17.pdf) |
+| 2025-08 | AFR, Section 7520 | Rev. Rul. 2025-14 | [PDF](by-year/2025/2025-08_afr-7520_rev-rul-2025-14_rr-25-14.pdf) |
+| 2025-07 | AFR, Section 7520 | Rev. Rul. 2025-13 | [PDF](by-year/2025/2025-07_afr-7520_rev-rul-2025-13_rr-25-13.pdf) |
+| 2025-06 | AFR, Section 7520 | Rev. Rul. 2025-12 | [PDF](by-year/2025/2025-06_afr-7520_rev-rul-2025-12_rr-25-12.pdf) |
+| 2025-05 | AFR, Section 7520 | Rev. Rul. 2025-10 | [PDF](by-year/2025/2025-05_afr-7520_rev-rul-2025-10_rr-25-10.pdf) |
+| 2025-04 | AFR, Section 7520 | Rev. Rul. 2025-8 | [PDF](by-year/2025/2025-04_afr-7520_rev-rul-2025-8_rr-25-08.pdf) |
+| 2025-03 | AFR, Section 7520 | Rev. Rul. 2025-6 | [PDF](by-year/2025/2025-03_afr-7520_rev-rul-2025-6_rr-25-06.pdf) |
+| 2025-02 | AFR, Section 7520 | Rev. Rul. 2025-5 | [PDF](by-year/2025/2025-02_afr-7520_rev-rul-2025-5_rr-25-05.pdf) |
+| 2025-01 | AFR, Section 7520 | Rev. Rul. 2025-1 | [PDF](by-year/2025/2025-01_afr-7520_rev-rul-2025-1_rr-25-01.pdf) |
+| 2024-12 | AFR, Section 7520 | Rev. Rul. 2024-26 | [PDF](by-year/2024/2024-12_afr-7520_rev-rul-2024-26_rr-24-26.pdf) |
+| 2024-11 | AFR, Section 7520 | Rev. Rul. 2024-24 | [PDF](by-year/2024/2024-11_afr-7520_rev-rul-2024-24_rr-24-24.pdf) |
+| 2024-10 | AFR, Section 7520 | Rev. Rul. 2024-21 | [PDF](by-year/2024/2024-10_afr-7520_rev-rul-2024-21_rr-24-21.pdf) |
+| 2024-09 | AFR, Section 7520 | Rev. Rul. 2024-17 | [PDF](by-year/2024/2024-09_afr-7520_rev-rul-2024-17_rr-24-17.pdf) |
+| 2024-08 | AFR, Section 7520 | Rev. Rul. 2024-15 | [PDF](by-year/2024/2024-08_afr-7520_rev-rul-2024-15_rr-24-15.pdf) |
+| 2024-07 | AFR, Section 7520 | Rev. Rul. 2024-13 | [PDF](by-year/2024/2024-07_afr-7520_rev-rul-2024-13_rr-24-13.pdf) |
+| 2024-06 | AFR, Section 7520 | Rev. Rul. 2024-12 | [PDF](by-year/2024/2024-06_afr-7520_rev-rul-2024-12_rr-24-12.pdf) |
+| 2024-05 | AFR, Section 7520 | Rev. Rul. 2024-9 | [PDF](by-year/2024/2024-05_afr-7520_rev-rul-2024-9_rr-24-09.pdf) |
+| 2024-04 | AFR, Section 7520 | Rev. Rul. 2024-7 | [PDF](by-year/2024/2024-04_afr-7520_rev-rul-2024-7_rr-24-07.pdf) |
+| 2024-03 | AFR, Section 7520 | Rev. Rul. 2024-4 | [PDF](by-year/2024/2024-03_afr-7520_rev-rul-2024-4_rr-24-04.pdf) |
+| 2024-02 | AFR, Section 7520 | Rev. Rul. 2024-3 | [PDF](by-year/2024/2024-02_afr-7520_rev-rul-2024-3_rr-24-03.pdf) |
+| 2024-01 | AFR, Section 7520 | Rev. Rul. 2024-2 | [PDF](by-year/2024/2024-01_afr-7520_rev-rul-2024-2_rr-24-02.pdf) |
+| 2023-12 | AFR, Section 7520 | Rev. Rul. 2023-21 | [PDF](by-year/2023/2023-12_afr-7520_rev-rul-2023-21_rr-23-21.pdf) |
+| 2023-11 | AFR, Section 7520 | Rev. Rul. 2023-20 | [PDF](by-year/2023/2023-11_afr-7520_rev-rul-2023-20_rr-23-20.pdf) |
+| 2023-10 | AFR, Section 7520 | Rev. Rul. 2023-18 | [PDF](by-year/2023/2023-10_afr-7520_rev-rul-2023-18_rr-23-18.pdf) |
+| 2023-09 | AFR, Section 7520 | Rev. Rul. 2023-16 | [PDF](by-year/2023/2023-09_afr-7520_rev-rul-2023-16_rr-23-16.pdf) |
+| 2023-08 | AFR, Section 7520 | Rev. Rul. 2023-13 | [PDF](by-year/2023/2023-08_afr-7520_rev-rul-2023-13_rr-23-13.pdf) |
+| 2023-07 | AFR, Section 7520 | Rev. Rul. 2023-12 | [PDF](by-year/2023/2023-07_afr-7520_rev-rul-2023-12_rr-23-12.pdf) |
+| 2023-06 | AFR, Section 7520 | Rev. Rul. 2023-10 | [PDF](by-year/2023/2023-06_afr-7520_rev-rul-2023-10_rr-23-10.pdf) |
+| 2023-05 | AFR, Section 7520 | Rev. Rul. 2023-9 | [PDF](by-year/2023/2023-05_afr-7520_rev-rul-2023-9_rr-23-09.pdf) |
+| 2023-04 | AFR, Section 7520 | Rev. Rul. 2023-6 | [PDF](by-year/2023/2023-04_afr-7520_rev-rul-2023-6_rr-23-06.pdf) |
+| 2023-03 | AFR, Section 7520 | Rev. Rul. 2023-5 | [PDF](by-year/2023/2023-03_afr-7520_rev-rul-2023-5_rr-23-05.pdf) |
+| 2023-02 | AFR, Section 7520 | Rev. Rul. 2023-3 | [PDF](by-year/2023/2023-02_afr-7520_rev-rul-2023-3_rr-23-03.pdf) |
+| 2023-01 | AFR, Section 7520 | Rev. Rul. 2023-1 | [PDF](by-year/2023/2023-01_afr-7520_rev-rul-2023-1_rr-23-01.pdf) |
+| 2022-12 | AFR, Section 7520 | Rev. Rul. 2022-22 | [PDF](by-year/2022/2022-12_afr-7520_rev-rul-2022-22_rr-22-22.pdf) |
+| 2022-11 | AFR, Section 7520 | Rev. Rul. 2022-20 | [PDF](by-year/2022/2022-11_afr-7520_rev-rul-2022-20_rr-22-20.pdf) |
+| 2022-10 | AFR, Section 7520 | Rev. Rul. 2022-18 | [PDF](by-year/2022/2022-10_afr-7520_rev-rul-2022-18_rr-22-18.pdf) |
+| 2022-09 | AFR, Section 7520 | Rev. Rul. 2022-17 | [PDF](by-year/2022/2022-09_afr-7520_rev-rul-2022-17_rr-22-17.pdf) |
+| 2022-08 | AFR, Section 7520 | Rev. Rul. 2022-14 | [PDF](by-year/2022/2022-08_afr-7520_rev-rul-2022-14_rr-22-14.pdf) |
+| 2022-07 | AFR, Section 7520 | Rev. Rul. 2022-12 | [PDF](by-year/2022/2022-07_afr-7520_rev-rul-2022-12_rr-22-12.pdf) |
+| 2022-06 | AFR, Section 7520 | Rev. Rul. 2022-10 | [PDF](by-year/2022/2022-06_afr-7520_rev-rul-2022-10_rr-22-10.pdf) |
+| 2022-05 | AFR, Section 7520 | Rev. Rul. 2022-9 | [PDF](by-year/2022/2022-05_afr-7520_rev-rul-2022-9_rr-22-09.pdf) |
+| 2022-04 | AFR, Section 7520 | Rev. Rul. 2022-8 | [PDF](by-year/2022/2022-04_afr-7520_rev-rul-2022-8_rr-22-08.pdf) |
+| 2022-03 | AFR, Section 7520 | Rev. Rul. 2022-4 | [PDF](by-year/2022/2022-03_afr-7520_rev-rul-2022-4_rr-22-04.pdf) |
+| 2022-02 | AFR, Section 7520 | Rev. Rul. 2022-3 | [PDF](by-year/2022/2022-02_afr-7520_rev-rul-2022-3_rr-22-03.pdf) |
+| 2022-01 | AFR, Section 7520 | Rev. Rul. 2022-1 | [PDF](by-year/2022/2022-01_afr-7520_rev-rul-2022-1_rr-22-01.pdf) |
+| 2021-12 | AFR, Section 7520 | Rev. Rul. 2021-23 | [PDF](by-year/2021/2021-12_afr-7520_rev-rul-2021-23_rr-21-23.pdf) |
+| 2021-11 | AFR, Section 7520 | Rev. Rul. 2021-21 | [PDF](by-year/2021/2021-11_afr-7520_rev-rul-2021-21_rr-21-21.pdf) |
+| 2021-10 | AFR, Section 7520 | Rev. Rul. 2021-18 | [PDF](by-year/2021/2021-10_afr-7520_rev-rul-2021-18_rr-21-18.pdf) |
+| 2021-09 | AFR, Section 7520 | Rev. Rul. 2021-16 | [PDF](by-year/2021/2021-09_afr-7520_rev-rul-2021-16_rr-21-16.pdf) |
+| 2021-08 | AFR, Section 7520 | Rev. Rul. 2021-14 | [PDF](by-year/2021/2021-08_afr-7520_rev-rul-2021-14_rr-21-14.pdf) |
+| 2021-07 | AFR, Section 7520 | Rev. Rul. 2021-12 | [PDF](by-year/2021/2021-07_afr-7520_rev-rul-2021-12_rr-21-12.pdf) |
+| 2021-06 | AFR, Section 7520 | Rev. Rul. 2021-9 | [PDF](by-year/2021/2021-06_afr-7520_rev-rul-2021-9_rr-21-09.pdf) |
+| 2021-05 | AFR, Section 7520 | Rev. Rul. 2021-8 | [PDF](by-year/2021/2021-05_afr-7520_rev-rul-2021-8_rr-21-08.pdf) |
+| 2021-04 | AFR, Section 7520 | Rev. Rul. 2021-7 | [PDF](by-year/2021/2021-04_afr-7520_rev-rul-2021-7_rr-21-07.pdf) |
+| 2021-03 | AFR, Section 7520 | Rev. Rul. 2021-5 | [PDF](by-year/2021/2021-03_afr-7520_rev-rul-2021-5_rr-21-05.pdf) |
+| 2021-02 | AFR, Section 7520 | Rev. Rul. 2021-4 | [PDF](by-year/2021/2021-02_afr-7520_rev-rul-2021-4_rr-21-04.pdf) |
+| 2021-01 | AFR, Section 7520 | Rev. Rul. 2021-1 | [PDF](by-year/2021/2021-01_afr-7520_rev-rul-2021-1_rr-21-01.pdf) |
+| 2020-12 | AFR, Section 7520 | Rev. Rul. 2020-26 | [PDF](by-year/2020/2020-12_afr-7520_rev-rul-2020-26_rr-20-26.pdf) |
+| 2020-11 | AFR, Section 7520 | Rev. Rul. 2020-22 | [PDF](by-year/2020/2020-11_afr-7520_rev-rul-2020-22_rr-20-22.pdf) |
+| 2020-10 | AFR, Section 7520 | Rev. Rul. 2020-20 | [PDF](by-year/2020/2020-10_afr-7520_rev-rul-2020-20_rr-20-20.pdf) |
+| 2020-09 | AFR, Section 7520 | Rev. Rul. 2020-16 | [PDF](by-year/2020/2020-09_afr-7520_rev-rul-2020-16_rr-20-16.pdf) |
+| 2020-08 | AFR, Section 7520 | Rev. Rul. 2020-15 | [PDF](by-year/2020/2020-08_afr-7520_rev-rul-2020-15_rr-20-15.pdf) |
+| 2020-07 | AFR, Section 7520 | Rev. Rul. 2020-14 | [PDF](by-year/2020/2020-07_afr-7520_rev-rul-2020-14_rr-20-14.pdf) |
+| 2020-06 | AFR, Section 7520 | Rev. Rul. 2020-12 | [PDF](by-year/2020/2020-06_afr-7520_rev-rul-2020-12_rr-20-12.pdf) |
+| 2020-05 | AFR, Section 7520 | Rev. Rul. 2020-11 | [PDF](by-year/2020/2020-05_afr-7520_rev-rul-2020-11_rr-20-11.pdf) |
+| 2020-04 | AFR, Section 7520 | Rev. Rul. 2020-9 | [PDF](by-year/2020/2020-04_afr-7520_rev-rul-2020-9_rr-20-09.pdf) |
+| 2020-03 | AFR, Section 7520 | Rev. Rul. 2020-6 | [PDF](by-year/2020/2020-03_afr-7520_rev-rul-2020-6_rr-20-06.pdf) |
+| 2020-02 | AFR, Section 7520 | Rev. Rul. 2020-3 | [PDF](by-year/2020/2020-02_afr-7520_rev-rul-2020-3_rr-20-03.pdf) |
+| 2020-01 | AFR, Section 7520 | Rev. Rul. 2020-1 | [PDF](by-year/2020/2020-01_afr-7520_rev-rul-2020-1_rr-20-01.pdf) |
+| 2019-12 | AFR, Section 7520 | Rev. Rul. 2019-26 | [PDF](by-year/2019/2019-12_afr-7520_rev-rul-2019-26_rr-19-26.pdf) |
+| 2019-11 | AFR, Section 7520 | Rev. Rul. 2019-25 | [PDF](by-year/2019/2019-11_afr-7520_rev-rul-2019-25_rr-19-25.pdf) |
+| 2019-10 | AFR, Section 7520 | Rev. Rul. 2019-23 | [PDF](by-year/2019/2019-10_afr-7520_rev-rul-2019-23_rr-19-23.pdf) |
+| 2019-09 | AFR, Section 7520 | Rev. Rul. 2019-20 | [PDF](by-year/2019/2019-09_afr-7520_rev-rul-2019-20_rr-19-20.pdf) |
+| 2019-08 | AFR, Section 7520 | Rev. Rul. 2019-17 | [PDF](by-year/2019/2019-08_afr-7520_rev-rul-2019-17_rr-19-17.pdf) |
+| 2019-07 | AFR, Section 7520 | Rev. Rul. 2019-16 | [PDF](by-year/2019/2019-07_afr-7520_rev-rul-2019-16_rr-19-16.pdf) |
+| 2019-06 | AFR, Section 7520 | Rev. Rul. 2019-14 | [PDF](by-year/2019/2019-06_afr-7520_rev-rul-2019-14_rr-19-14.pdf) |
+| 2019-05 | AFR, Section 7520 | Rev. Rul. 2019-12 | [PDF](by-year/2019/2019-05_afr-7520_rev-rul-2019-12_rr-19-12.pdf) |
+| 2019-04 | AFR, Section 7520 | Rev. Rul. 2019-8 | [PDF](by-year/2019/2019-04_afr-7520_rev-rul-2019-8_rr-19-08.pdf) |
+| 2019-03 | AFR, Section 7520 | Rev. Rul. 2019-7 | [PDF](by-year/2019/2019-03_afr-7520_rev-rul-2019-7_rr-19-07.pdf) |
+| 2019-02 | AFR, Section 7520 | Rev. Rul. 2019-4 | [PDF](by-year/2019/2019-02_afr-7520_rev-rul-2019-4_rr-19-04.pdf) |
+| 2019-01 | AFR, Section 7520 | Rev. Rul. 2019-3 | [PDF](by-year/2019/2019-01_afr-7520_rev-rul-2019-3_rr-19-03.pdf) |
+| 2018-12 | AFR, Section 7520 | Rev. Rul. 2018-30 | [PDF](by-year/2018/2018-12_afr-7520_rev-rul-2018-30_rr-18-30.pdf) |
+| 2018-11 | AFR, Section 7520 | Rev. Rul. 2018-28 | [PDF](by-year/2018/2018-11_afr-7520_rev-rul-2018-28_rr-18-28.pdf) |
+| 2018-10 | AFR, Section 7520 | Rev. Rul. 2018-27 | [PDF](by-year/2018/2018-10_afr-7520_rev-rul-2018-27_rr-18-27.pdf) |
+| 2018-09 | AFR, Section 7520 | Rev. Rul. 2018-23 | [PDF](by-year/2018/2018-09_afr-7520_rev-rul-2018-23_rr-18-23.pdf) |
+| 2018-08 | AFR, Section 7520 | Rev. Rul. 2018-21 | [PDF](by-year/2018/2018-08_afr-7520_rev-rul-2018-21_rr-18-21.pdf) |
+| 2018-07 | AFR, Section 7520 | Rev. Rul. 2018-19 | [PDF](by-year/2018/2018-07_afr-7520_rev-rul-2018-19_rr-18-19.pdf) |
+| 2018-06 | AFR, Section 7520 | Rev. Rul. 2018-16 | [PDF](by-year/2018/2018-06_afr-7520_rev-rul-2018-16_rr-18-16.pdf) |
+| 2018-05 | AFR, Section 7520 | Rev. Rul. 2018-12 | [PDF](by-year/2018/2018-05_afr-7520_rev-rul-2018-12_rr-18-12.pdf) |
+| 2018-04 | AFR, Section 7520 | Rev. Rul. 2018-9 | [PDF](by-year/2018/2018-04_afr-7520_rev-rul-2018-9_rr-18-09.pdf) |
+| 2018-03 | AFR, Section 7520 | Rev. Rul. 2018-6 | [PDF](by-year/2018/2018-03_afr-7520_rev-rul-2018-6_rr-18-06.pdf) |
+| 2018-02 | AFR, Section 7520 | Rev. Rul. 2018-5 | [PDF](by-year/2018/2018-02_afr-7520_rev-rul-2018-5_rr-18-05.pdf) |
+| 2018-01 | AFR, Section 7520 | Rev. Rul. 2018-1 | [PDF](by-year/2018/2018-01_afr-7520_rev-rul-2018-1_rr-18-01.pdf) |
+| 2017-12 | AFR, Section 7520 | Rev. Rul. 2017-24 | [PDF](by-year/2017/2017-12_afr-7520_rev-rul-2017-24_rr-17-24.pdf) |
+| 2017-11 | AFR, Section 7520 | Rev. Rul. 2017-21 | [PDF](by-year/2017/2017-11_afr-7520_rev-rul-2017-21_rr-17-21.pdf) |
+| 2017-10 | AFR, Section 7520 | Rev. Rul. 2017-20 | [PDF](by-year/2017/2017-10_afr-7520_rev-rul-2017-20_rr-17-20.pdf) |
+| 2017-09 | AFR, Section 7520 | Rev. Rul. 2017-17 | [PDF](by-year/2017/2017-09_afr-7520_rev-rul-2017-17_rr-17-17.pdf) |
+| 2017-08 | AFR, Section 7520 | Rev. Rul. 2017-15 | [PDF](by-year/2017/2017-08_afr-7520_rev-rul-2017-15_rr-17-15.pdf) |
+| 2017-07 | AFR, Section 7520 | Rev. Rul. 2017-14 | [PDF](by-year/2017/2017-07_afr-7520_rev-rul-2017-14_rr-17-14.pdf) |
+| 2017-06 | AFR, Section 7520 | Rev. Rul. 2017-12 | [PDF](by-year/2017/2017-06_afr-7520_rev-rul-2017-12_rr-17-12.pdf) |
+| 2017-05 | AFR, Section 7520 | Rev. Rul. 2017-11 | [PDF](by-year/2017/2017-05_afr-7520_rev-rul-2017-11_rr-17-11.pdf) |
+| 2017-04 | AFR, Section 7520 | Rev. Rul. 2017-8 | [PDF](by-year/2017/2017-04_afr-7520_rev-rul-2017-8_rr-17-08.pdf) |
+| 2017-03 | AFR, Section 7520 | Rev. Rul. 2017-7 | [PDF](by-year/2017/2017-03_afr-7520_rev-rul-2017-7_rr-17-07.pdf) |
+| 2017-02 | AFR, Section 7520 | Rev. Rul. 2017-4 | [PDF](by-year/2017/2017-02_afr-7520_rev-rul-2017-4_rr-17-04.pdf) |
+| 2017-01 | AFR, Section 7520 | Rev. Rul. 2017-2 | [PDF](by-year/2017/2017-01_afr-7520_rev-rul-2017-2_rr-17-02.pdf) |
+| 2016-12 | AFR, Section 7520 | Rev. Rul. 2016-27 | [PDF](by-year/2016/2016-12_afr-7520_rev-rul-2016-27_rr-16-27.pdf) |
+| 2016-11 | AFR, Section 7520 | Rev. Rul. 2016-26 | [PDF](by-year/2016/2016-11_afr-7520_rev-rul-2016-26_rr-16-26.pdf) |
+| 2016-10 | AFR, Section 7520 | Rev. Rul. 2016-25 | [PDF](by-year/2016/2016-10_afr-7520_rev-rul-2016-25_rr-16-25.pdf) |
+| 2016-09 | AFR, Section 7520 | Rev. Rul. 2016-20 | [PDF](by-year/2016/2016-09_afr-7520_rev-rul-2016-20_rr-16-20.pdf) |
+| 2016-08 | AFR, Section 7520 | Rev. Rul. 2016-18 | [PDF](by-year/2016/2016-08_afr-7520_rev-rul-2016-18_rr-16-18.pdf) |
+| 2016-07 | AFR, Section 7520 | Rev. Rul. 2016-17 | [PDF](by-year/2016/2016-07_afr-7520_rev-rul-2016-17_rr-16-17.pdf) |
+| 2016-06 | AFR, Section 7520 | Rev. Rul. 2016-13 | [PDF](by-year/2016/2016-06_afr-7520_rev-rul-2016-13_rr-16-13.pdf) |
+| 2016-05 | AFR, Section 7520 | Rev. Rul. 2016-11 | [PDF](by-year/2016/2016-05_afr-7520_rev-rul-2016-11_rr-16-11.pdf) |
+| 2016-04 | AFR, Section 7520 | Rev. Rul. 2016-9 | [PDF](by-year/2016/2016-04_afr-7520_rev-rul-2016-9_rr-16-09.pdf) |
+| 2016-03 | AFR, Section 7520 | Rev. Rul. 2016-7 | [PDF](by-year/2016/2016-03_afr-7520_rev-rul-2016-7_rr-16-07.pdf) |
+| 2016-02 | AFR, Section 7520 | Rev. Rul. 2016-4 | [PDF](by-year/2016/2016-02_afr-7520_rev-rul-2016-4_rr-16-04.pdf) |
+| 2016-01 | AFR, Section 7520 | Rev. Rul. 2016-1 | [PDF](by-year/2016/2016-01_afr-7520_rev-rul-2016-1_rr-16-01.pdf) |
+| 2015-12 | AFR, Section 7520 | Rev. Rul. 2015-25 | [PDF](by-year/2015/2015-12_afr-7520_rev-rul-2015-25_rr-15-25.pdf) |
+| 2015-11 | AFR, Section 7520 | Rev. Rul. 2015-22 | [PDF](by-year/2015/2015-11_afr-7520_rev-rul-2015-22_rr-15-22.pdf) |
+| 2015-10 | AFR, Section 7520 | Rev. Rul. 2015-21 | [PDF](by-year/2015/2015-10_afr-7520_rev-rul-2015-21_rr-15-21.pdf) |
+| 2015-09 | AFR, Section 7520 | Rev. Rul. 2015-19 | [PDF](by-year/2015/2015-09_afr-7520_rev-rul-2015-19_rr-15-19.pdf) |
+| 2015-08 | AFR, Section 7520 | Rev. Rul. 2015-16 | [PDF](by-year/2015/2015-08_afr-7520_rev-rul-2015-16_rr-15-16.pdf) |
+| 2015-07 | AFR, Section 7520 | Rev. Rul. 2015-15 | [PDF](by-year/2015/2015-07_afr-7520_rev-rul-2015-15_rr-15-15.pdf) |
+| 2015-06 | AFR, Section 7520 | Rev. Rul. 2015-14 | [PDF](by-year/2015/2015-06_afr-7520_rev-rul-2015-14_rr-15-14.pdf) |
+| 2015-05 | AFR, Section 7520 | Rev. Rul. 2015-8 | [PDF](by-year/2015/2015-05_afr-7520_rev-rul-2015-8_rr-15-08.pdf) |
+| 2015-04 | AFR, Section 7520 | Rev. Rul. 2015-7 | [PDF](by-year/2015/2015-04_afr-7520_rev-rul-2015-7_rr-15-07.pdf) |
+| 2015-03 | AFR, Section 7520 | Rev. Rul. 2015-4 | [PDF](by-year/2015/2015-03_afr-7520_rev-rul-2015-4_rr-15-04.pdf) |
+| 2015-02 | AFR, Section 7520 | Rev. Rul. 2015-3 | [PDF](by-year/2015/2015-02_afr-7520_rev-rul-2015-3_rr-15-03.pdf) |
+| 2015-01 | AFR, Section 7520 | Rev. Rul. 2015-1 | [PDF](by-year/2015/2015-01_afr-7520_rev-rul-2015-1_rr-15-01.pdf) |
+| 2014-12 | AFR, Section 7520 | Rev. Rul. 2014-31 | [PDF](by-year/2014/2014-12_afr-7520_rev-rul-2014-31_rr-14-31.pdf) |
+| 2014-11 | AFR, Section 7520 | Rev. Rul. 2014-28 | [PDF](by-year/2014/2014-11_afr-7520_rev-rul-2014-28_rr-14-28.pdf) |
+| 2014-10 | AFR, Section 7520 | Rev. Rul. 2014-26 | [PDF](by-year/2014/2014-10_afr-7520_rev-rul-2014-26_rr-14-26.pdf) |
+| 2014-09 | AFR, Section 7520 | Rev. Rul. 2014-22 | [PDF](by-year/2014/2014-09_afr-7520_rev-rul-2014-22_rr-14-22.pdf) |
+| 2014-08 | AFR, Section 7520 | Rev. Rul. 2014-19 | [PDF](by-year/2014/2014-08_afr-7520_rev-rul-2014-19_rr-14-19.pdf) |
+| 2014-07 | AFR, Section 7520 | Rev. Rul. 2014-20 | [PDF](by-year/2014/2014-07_afr-7520_rev-rul-2014-20_rr-14-20.pdf) |
+| 2014-06 | AFR, Section 7520 | Rev. Rul. 2014-16 | [PDF](by-year/2014/2014-06_afr-7520_rev-rul-2014-16_rr-14-16.pdf) |
+| 2014-05 | AFR, Section 7520 | Rev. Rul. 2014-13 | [PDF](by-year/2014/2014-05_afr-7520_rev-rul-2014-13_rr-14-13.pdf) |
+| 2014-04 | AFR, Section 7520 | Rev. Rul. 2014-12 | [PDF](by-year/2014/2014-04_afr-7520_rev-rul-2014-12_rr-14-12.pdf) |
+| 2014-03 | AFR, Section 7520 | Rev. Rul. 2014-8 | [PDF](by-year/2014/2014-03_afr-7520_rev-rul-2014-8_rr-14-08.pdf) |
+| 2014-02 | AFR, Section 7520 | Rev. Rul. 2014-6 | [PDF](by-year/2014/2014-02_afr-7520_rev-rul-2014-6_rr-14-06.pdf) |
+| 2014-01 | AFR, Section 7520 | Rev. Rul. 2014-1 | [PDF](by-year/2014/2014-01_afr-7520_rev-rul-2014-1_rr-14-01.pdf) |
+| 2013-12 | AFR, Section 7520 | Rev. Rul. 2013-26 | [PDF](by-year/2013/2013-12_afr-7520_rev-rul-2013-26_rr-13-26.pdf) |
+| 2013-11 | AFR, Section 7520 | Rev. Rul. 2013-22 | [PDF](by-year/2013/2013-11_afr-7520_rev-rul-2013-22_rr-13-22.pdf) |
+| 2013-10 | AFR, Section 7520 | Rev. Rul. 2013-21 | [PDF](by-year/2013/2013-10_afr-7520_rev-rul-2013-21_rr-13-21.pdf) |
+| 2013-09 | AFR, Section 7520 | Rev. Rul. 2013-18 | [PDF](by-year/2013/2013-09_afr-7520_rev-rul-2013-18_rr-13-18.pdf) |
+| 2013-08 | AFR, Section 7520 | Rev. Rul. 2013-13 | [PDF](by-year/2013/2013-08_afr-7520_rev-rul-2013-13_rr-13-13.pdf) |
+| 2013-07 | AFR, Section 7520 | Rev. Rul. 2013-15 | [PDF](by-year/2013/2013-07_afr-7520_rev-rul-2013-15_rr-13-15.pdf) |
+| 2013-06 | AFR, Section 7520 | Rev. Rul. 2013-12 | [PDF](by-year/2013/2013-06_afr-7520_rev-rul-2013-12_rr-13-12.pdf) |
+| 2013-05 | AFR, Section 7520 | Rev. Rul. 2013-11 | [PDF](by-year/2013/2013-05_afr-7520_rev-rul-2013-11_rr-13-11.pdf) |
+| 2013-04 | AFR, Section 7520 | Rev. Rul. 2013-9 | [PDF](by-year/2013/2013-04_afr-7520_rev-rul-2013-9_rr-13-09.pdf) |
+| 2013-03 | AFR, Section 7520 | Rev. Rul. 2013-7 | [PDF](by-year/2013/2013-03_afr-7520_rev-rul-2013-7_rr-13-07.pdf) |
+| 2013-02 | AFR, Section 7520 | Rev. Rul. 2013-3 | [PDF](by-year/2013/2013-02_afr-7520_rev-rul-2013-3_rr-13-03.pdf) |
+| 2013-01 | AFR, Section 7520 | Rev. Rul. 2013-1 | [PDF](by-year/2013/2013-01_afr-7520_rev-rul-2013-1_rr-13-01.pdf) |
+| 2012-12 | AFR, Section 7520 | Rev. Rul. 2012-31 | [PDF](by-year/2012/2012-12_afr-7520_rev-rul-2012-31_rr-12-31.pdf) |
+| 2012-11 | AFR, Section 7520 | Rev. Rul. 2012-30 | [PDF](by-year/2012/2012-11_afr-7520_rev-rul-2012-30_rr-12-30.pdf) |
+| 2012-10 | AFR, Section 7520 | Rev. Rul. 2012-28 | [PDF](by-year/2012/2012-10_afr-7520_rev-rul-2012-28_rr-12-28.pdf) |
+| 2012-09 | AFR, Section 7520 | Rev. Rul. 2012-24 | [PDF](by-year/2012/2012-09_afr-7520_rev-rul-2012-24_rr-12-24.pdf) |
+| 2012-08 | AFR, Section 7520 | Rev. Rul. 2012-21 | [PDF](by-year/2012/2012-08_afr-7520_rev-rul-2012-21_rr-12-21.pdf) |
+| 2012-07 | AFR, Section 7520 | Rev. Rul. 2012-20 | [PDF](by-year/2012/2012-07_afr-7520_rev-rul-2012-20_rr-12-20.pdf) |
+| 2012-06 | AFR, Section 7520 | Rev. Rul. 2012-15 | [PDF](by-year/2012/2012-06_afr-7520_rev-rul-2012-15_rr-12-15.pdf) |
+| 2012-05 | AFR, Section 7520 | Rev. Rul. 2012-13 | [PDF](by-year/2012/2012-05_afr-7520_rev-rul-2012-13_rr-12-13.pdf) |
+| 2012-04 | AFR, Section 7520 | Rev. Rul. 2012-11 | [PDF](by-year/2012/2012-04_afr-7520_rev-rul-2012-11_rr-12-11.pdf) |
+| 2012-03 | AFR, Section 7520 | Rev. Rul. 2012-9 | [PDF](by-year/2012/2012-03_afr-7520_rev-rul-2012-9_rr-12-09.pdf) |
+| 2012-02 | AFR, Section 7520 | Rev. Rul. 2012-7 | [PDF](by-year/2012/2012-02_afr-7520_rev-rul-2012-7_rr-12-07.pdf) |
+| 2012-01 | AFR, Section 7520 | Rev. Rul. 2012-2 | [PDF](by-year/2012/2012-01_afr-7520_rev-rul-2012-2_rr-12-02.pdf) |
+| 2011-12 | AFR, Section 7520 | Rev. Rul. 2011-31 | [PDF](by-year/2011/2011-12_afr-7520_rev-rul-2011-31_rr-11-31.pdf) |
+| 2011-11 | AFR, Section 7520 | Rev. Rul. 2011-25 | [PDF](by-year/2011/2011-11_afr-7520_rev-rul-2011-25_rr-11-25.pdf) |
+| 2011-10 | AFR, Section 7520 | Rev. Rul. 2011-22 | [PDF](by-year/2011/2011-10_afr-7520_rev-rul-2011-22_rr-11-22.pdf) |
+| 2011-09 | AFR, Section 7520 | Rev. Rul. 2011-20 | [PDF](by-year/2011/2011-09_afr-7520_rev-rul-2011-20_rr-11-20.pdf) |
+| 2011-08 | AFR, Section 7520 | Rev. Rul. 2011-16 | [PDF](by-year/2011/2011-08_afr-7520_rev-rul-2011-16_rr-11-16.pdf) |
+| 2011-07 | AFR, Section 7520 | Rev. Rul. 2011-14 | [PDF](by-year/2011/2011-07_afr-7520_rev-rul-2011-14_rr-11-14.pdf) |
+| 2011-06 | AFR, Section 7520 | Rev. Rul. 2011-13 | [PDF](by-year/2011/2011-06_afr-7520_rev-rul-2011-13_rr-11-13.pdf) |
+| 2011-05 | AFR, Section 7520 | Rev. Rul. 2011-11 | [PDF](by-year/2011/2011-05_afr-7520_rev-rul-2011-11_rr-11-11.pdf) |
+| 2011-04 | AFR, Section 7520 | Rev. Rul. 2011-10 | [PDF](by-year/2011/2011-04_afr-7520_rev-rul-2011-10_rr-11-10.pdf) |
+| 2011-03 | AFR, Section 7520 | Rev. Rul. 2011-6 | [PDF](by-year/2011/2011-03_afr-7520_rev-rul-2011-6_rr-11-06.pdf) |
+| 2011-02 | AFR, Section 7520 | Rev. Rul. 2011-4 | [PDF](by-year/2011/2011-02_afr-7520_rev-rul-2011-4_rr-11-04.pdf) |
+| 2011-01 | AFR, Section 7520 | Rev. Rul. 2011-2 | [PDF](by-year/2011/2011-01_afr-7520_rev-rul-2011-2_rr-11-02.pdf) |
+| 2010-12 | AFR, Section 7520 | Rev. Rul. 2010-29 | [PDF](by-year/2010/2010-12_afr-7520_rev-rul-2010-29_rr-10-29.pdf) |
+| 2010-11 | AFR, Section 7520 | Rev. Rul. 2010-26 | [PDF](by-year/2010/2010-11_afr-7520_rev-rul-2010-26_rr-10-26.pdf) |
+| 2010-10 | AFR, Section 7520 | Rev. Rul. 2010-24 | [PDF](by-year/2010/2010-10_afr-7520_rev-rul-2010-24_rr-10-24.pdf) |
+| 2010-09 | AFR, Section 7520 | Rev. Rul. 2010-20 | [PDF](by-year/2010/2010-09_afr-7520_rev-rul-2010-20_rr-10-20.pdf) |
+| 2010-08 | AFR, Section 7520 | Rev. Rul. 2010-19 | [PDF](by-year/2010/2010-08_afr-7520_rev-rul-2010-19_rr-10-19.pdf) |
+| 2010-07 | AFR, Section 7520 | Rev. Rul. 2010-18 | [PDF](by-year/2010/2010-07_afr-7520_rev-rul-2010-18_rr-10-18.pdf) |
+| 2010-06 | AFR, Section 7520 | Rev. Rul. 2010-15 | [PDF](by-year/2010/2010-06_afr-7520_rev-rul-2010-15_rr-10-15.pdf) |
+| 2010-05 | AFR, Section 7520 | Rev. Rul. 2010-12 | [PDF](by-year/2010/2010-05_afr-7520_rev-rul-2010-12_rr-10-12.pdf) |
+| 2010-04 | AFR, Section 7520 | Rev. Rul. 2010-11 | [PDF](by-year/2010/2010-04_afr-7520_rev-rul-2010-11_rr-10-11.pdf) |
+| 2010-03 | AFR, Section 7520 | Rev. Rul. 2010-8 | [PDF](by-year/2010/2010-03_afr-7520_rev-rul-2010-8_rr-10-08.pdf) |
+| 2010-02 | AFR, Section 7520 | Rev. Rul. 2010-6 | [PDF](by-year/2010/2010-02_afr-7520_rev-rul-2010-6_rr-10-06.pdf) |
+| 2010-01 | AFR, Section 7520 | Rev. Rul. 2010-1 | [PDF](by-year/2010/2010-01_afr-7520_rev-rul-2010-1_rr-10-01.pdf) |
+| 2009-12 | AFR, Section 7520 | Rev. Rul. 2009-38 | [PDF](by-year/2009/2009-12_afr-7520_rev-rul-2009-38_rr-09-38.pdf) |
+| 2009-11 | AFR, Section 7520 | Rev. Rul. 2009-35 | [PDF](by-year/2009/2009-11_afr-7520_rev-rul-2009-35_rr-09-35.pdf) |
+| 2009-10 | AFR, Section 7520 | Rev. Rul. 2009-33 | [PDF](by-year/2009/2009-10_afr-7520_rev-rul-2009-33_rr-09-33.pdf) |
+| 2009-09 | AFR, Section 7520 | Rev. Rul. 2009-29 | [PDF](by-year/2009/2009-09_afr-7520_rev-rul-2009-29_rr-09-29.pdf) |
+| 2009-08 | AFR, Section 7520 | Rev. Rul. 2009-22 | [PDF](by-year/2009/2009-08_afr-7520_rev-rul-2009-22_rr-09-22.pdf) |
+| 2009-07 | AFR, Section 7520 | Rev. Rul. 2009-20 | [PDF](by-year/2009/2009-07_afr-7520_rev-rul-2009-20_rr-09-20.pdf) |
+| 2009-06 | AFR, Section 7520 | Rev. Rul. 2009-16 | [PDF](by-year/2009/2009-06_afr-7520_rev-rul-2009-16_rr-09-16.pdf) |
+| 2009-05 | AFR, Section 7520 | Rev. Rul. 2009-12 | [PDF](by-year/2009/2009-05_afr-7520_rev-rul-2009-12_rr-09-12.pdf) |
+| 2009-04 | AFR, Section 7520 | Rev. Rul. 2009-10 | [PDF](by-year/2009/2009-04_afr-7520_rev-rul-2009-10_rr-09-10.pdf) |
+| 2009-03 | AFR, Section 7520 | Rev. Rul. 2009-8 | [PDF](by-year/2009/2009-03_afr-7520_rev-rul-2009-8_rr-09-08.pdf) |
+| 2009-02 | AFR, Section 7520 | Rev. Rul. 2009-5 | [PDF](by-year/2009/2009-02_afr-7520_rev-rul-2009-5_rr-09-05.pdf) |
+| 2009-01 | AFR, Section 7520 | Rev. Rul. 2009-1 | [PDF](by-year/2009/2009-01_afr-7520_rev-rul-2009-1_rr-09-01.pdf) |
+| 2008-12 | AFR, Section 7520 | Rev. Rul. 2008-53 | [PDF](by-year/2008/2008-12_afr-7520_rev-rul-2008-53_rr-08-53.pdf) |
+| 2008-11 | AFR, Section 7520 | Rev. Rul. 2008-50 | [PDF](by-year/2008/2008-11_afr-7520_rev-rul-2008-50_rr-08-50.pdf) |
+| 2008-10 | AFR, Section 7520 | Rev. Rul. 2008-49 | [PDF](by-year/2008/2008-10_afr-7520_rev-rul-2008-49_rr-08-49.pdf) |
+| 2008-09 | AFR, Section 7520 | Rev. Rul. 2008-46 | [PDF](by-year/2008/2008-09_afr-7520_rev-rul-2008-46_rr-08-46.pdf) |
+| 2008-08 | AFR, Section 7520 | Rev. Rul. 2008-43 | [PDF](by-year/2008/2008-08_afr-7520_rev-rul-2008-43_rr-08-43.pdf) |
+| 2008-07 | AFR, Section 7520 | Rev. Rul. 2008-33 | [PDF](by-year/2008/2008-07_afr-7520_rev-rul-2008-33_rr-08-33.pdf) |
+| 2008-06 | AFR, Section 7520 | Rev. Rul. 2008-28 | [PDF](by-year/2008/2008-06_afr-7520_rev-rul-2008-28_rr-08-28.pdf) |
+| 2008-05 | AFR, Section 7520 | Rev. Rul. 2008-24 | [PDF](by-year/2008/2008-05_afr-7520_rev-rul-2008-24_rr-08-24.pdf) |
+| 2008-04 | AFR, Section 7520 | Rev. Rul. 2008-20 | [PDF](by-year/2008/2008-04_afr-7520_rev-rul-2008-20_rr-08-20.pdf) |
+| 2008-03 | AFR, Section 7520 | Rev. Rul. 2008-11 | [PDF](by-year/2008/2008-03_afr-7520_rev-rul-2008-11_rr-08-11.pdf) |
+| 2008-02 | AFR, Section 7520 | Rev. Rul. 2008-9 | [PDF](by-year/2008/2008-02_afr-7520_rev-rul-2008-9_rr-08-09.pdf) |
+| 2008-01 | AFR, Section 7520 | Rev. Rul. 2008-4 | [PDF](by-year/2008/2008-01_afr-7520_rev-rul-2008-4_rr-08-04.pdf) |
+| 2007-12 | AFR, Section 7520 | Rev. Rul. 2007-70 | [PDF](by-year/2007/2007-12_afr-7520_rev-rul-2007-70_rr-07-70.pdf) |
+| 2007-11 | AFR, Section 7520 | Rev. Rul. 2007-66 | [PDF](by-year/2007/2007-11_afr-7520_rev-rul-2007-66_rr-07-66.pdf) |
+| 2007-10 | AFR, Section 7520 | Rev. Rul. 2007-63 | [PDF](by-year/2007/2007-10_afr-7520_rev-rul-2007-63_rr-07-63.pdf) |
+| 2007-09 | AFR, Section 7520 | Rev. Rul. 2007-57 | [PDF](by-year/2007/2007-09_afr-7520_rev-rul-2007-57_rr-07-57.pdf) |
+| 2007-08 | AFR, Section 7520 | Rev. Rul. 2007-50 | [PDF](by-year/2007/2007-08_afr-7520_rev-rul-2007-50_rr-07-50.pdf) |
+| 2007-07 | AFR, Section 7520 | Rev. Rul. 2007-44 | [PDF](by-year/2007/2007-07_afr-7520_rev-rul-2007-44_rr-07-44.pdf) |
+| 2007-06 | AFR, Section 7520 | Rev. Rul. 2007-36 | [PDF](by-year/2007/2007-06_afr-7520_rev-rul-2007-36_rr-07-36.pdf) |
+| 2007-05 | AFR, Section 7520 | Rev. Rul. 2007-29 | [PDF](by-year/2007/2007-05_afr-7520_rev-rul-2007-29_rr-07-29.pdf) |
+| 2007-04 | AFR, Section 7520 | Rev. Rul. 2007-23 | [PDF](by-year/2007/2007-04_afr-7520_rev-rul-2007-23_rr-07-23.pdf) |
+| 2007-03 | AFR, Section 7520 | Rev. Rul. 2007-15 | [PDF](by-year/2007/2007-03_afr-7520_rev-rul-2007-15_rr-07-15.pdf) |
+| 2007-02 | AFR, Section 7520 | Rev. Rul. 2007-9 | [PDF](by-year/2007/2007-02_afr-7520_rev-rul-2007-9_rr-07-09.pdf) |
+| 2007-01 | AFR, Section 7520 | Rev. Rul. 2007-2 | [PDF](by-year/2007/2007-01_afr-7520_rev-rul-2007-2_rr-07-02.pdf) |
+| 2006-12 | AFR, Section 7520 | Rev. Rul. 2006-61 | [PDF](by-year/2006/2006-12_afr-7520_rev-rul-2006-61_rr-06-61.pdf) |
+| 2006-11 | AFR, Section 7520 | Rev. Rul. 2006-55 | [PDF](by-year/2006/2006-11_afr-7520_rev-rul-2006-55_rr-06-55.pdf) |
+| 2006-10 | AFR, Section 7520 | Rev. Rul. 2006-50 | [PDF](by-year/2006/2006-10_afr-7520_rev-rul-2006-50_rr-06-50.pdf) |
+| 2006-09 | AFR, Section 7520 | Rev. Rul. 2006-44 | [PDF](by-year/2006/2006-09_afr-7520_rev-rul-2006-44_rr-06-44.pdf) |
+| 2006-08 | AFR, Section 7520 | Rev. Rul. 2006-39 | [PDF](by-year/2006/2006-08_afr-7520_rev-rul-2006-39_rr-06-39.pdf) |
+| 2006-07 | AFR, Section 7520 | Rev. Rul. 2006-35 | [PDF](by-year/2006/2006-07_afr-7520_rev-rul-2006-35_rr-06-35.pdf) |
+| 2006-06 | AFR, Section 7520 | Rev. Rul. 2006-29 | [PDF](by-year/2006/2006-06_afr-7520_rev-rul-2006-29_rr-06-29.pdf) |
+| 2006-05 | AFR, Section 7520 | Rev. Rul. 2006-24 | [PDF](by-year/2006/2006-05_afr-7520_rev-rul-2006-24_rr-06-24.pdf) |
+| 2006-04 | AFR, Section 7520 | Rev. Rul. 2006-22 | [PDF](by-year/2006/2006-04_afr-7520_rev-rul-2006-22_rr-06-22.pdf) |
+| 2006-03 | AFR, Section 7520 | Rev. Rul. 2006-10 | [PDF](by-year/2006/2006-03_afr-7520_rev-rul-2006-10_rr-06-10.pdf) |
+| 2006-02 | AFR, Section 7520 | Rev. Rul. 2006-7 | [PDF](by-year/2006/2006-02_afr-7520_rev-rul-2006-7_rr-06-07.pdf) |
+| 2006-01 | AFR, Section 7520 | Rev. Rul. 2006-4 | [PDF](by-year/2006/2006-01_afr-7520_rev-rul-2006-4_rr-06-04.pdf) |
+| 2005-12 | AFR, Section 7520 | Rev. Rul. 2005-77 | [PDF](by-year/2005/2005-12_afr-7520_rev-rul-2005-77_rr-05-77.pdf) |
+| 2005-11 | AFR, Section 7520 | Rev. Rul. 2005-71 | [PDF](by-year/2005/2005-11_afr-7520_rev-rul-2005-71_rr-05-71.pdf) |
+| 2005-10 | AFR, Section 7520 | Rev. Rul. 2005-66 | [PDF](by-year/2005/2005-10_afr-7520_rev-rul-2005-66_rr-05-66.pdf) |
+| 2005-09 | AFR, Section 7520 | Rev. Rul. 2005-57 | [PDF](by-year/2005/2005-09_afr-7520_rev-rul-2005-57_rr-05-57.pdf) |
+| 2005-08 | AFR, Section 7520 | Rev. Rul. 2005-54 | [PDF](by-year/2005/2005-08_afr-7520_rev-rul-2005-54_rr-05-54.pdf) |
+| 2005-07 | AFR, Section 7520 | Rev. Rul. 2005-38 | [PDF](by-year/2005/2005-07_afr-7520_rev-rul-2005-38_rr-05-38.pdf) |
+| 2005-06 | AFR, Section 7520 | Rev. Rul. 2005-32 | [PDF](by-year/2005/2005-06_afr-7520_rev-rul-2005-32_rr-05-32.pdf) |
+| 2005-05 | AFR, Section 7520 | Rev. Rul. 2005-27 | [PDF](by-year/2005/2005-05_afr-7520_rev-rul-2005-27_rr-05-27.pdf) |
+| 2005-04 | AFR, Section 7520 | Rev. Rul. 2005-23 | [PDF](by-year/2005/2005-04_afr-7520_rev-rul-2005-23_rr-05-23.pdf) |
+| 2005-03 | AFR, Section 7520 | Rev. Rul. 2005-13 | [PDF](by-year/2005/2005-03_afr-7520_rev-rul-2005-13_rr-05-13.pdf) |
+| 2005-02 | AFR, Section 7520 | Rev. Rul. 2005-8 | [PDF](by-year/2005/2005-02_afr-7520_rev-rul-2005-8_rr-05-08.pdf) |
+| 2005-01 | AFR, Section 7520 | Rev. Rul. 2005-2 | [PDF](by-year/2005/2005-01_afr-7520_rev-rul-2005-2_rr-05-02.pdf) |
+| 2004-12 | AFR, Section 7520 | Rev. Rul. 2004-106 | [PDF](by-year/2004/2004-12_afr-7520_rev-rul-2004-106_rr-04-106.pdf) |
+| 2004-11 | AFR, Section 7520 | Rev. Rul. 2004-102 | [PDF](by-year/2004/2004-11_afr-7520_rev-rul-2004-102_rr-04-102.pdf) |
+| 2004-10 | AFR, Section 7520 | Rev. Rul. 2004-96 | [PDF](by-year/2004/2004-10_afr-7520_rev-rul-2004-96_rr-04-96.pdf) |
+| 2004-09 | AFR, Section 7520 | Rev. Rul. 2004-69 | [PDF](by-year/2004/2004-09_afr-7520_rev-rul-2004-69_rr-04-69.pdf) |
+| 2004-08 | AFR, Section 7520 | Rev. Rul. 2004-84 | [PDF](by-year/2004/2004-08_afr-7520_rev-rul-2004-84_rr-04-84.pdf) |
+| 2004-07 | AFR, Section 7520 | Rev. Rul. 2004-66 | [PDF](by-year/2004/2004-07_afr-7520_rev-rul-2004-66_rr-04-66.pdf) |
+| 2004-06 | AFR, Section 7520 | Rev. Rul. 2004-54 | [PDF](by-year/2004/2004-06_afr-7520_rev-rul-2004-54_rr-04-54.pdf) |
+| 2004-05 | AFR, Section 7520 | Rev. Rul. 2004-44 | [PDF](by-year/2004/2004-05_afr-7520_rev-rul-2004-44_rr-04-44.pdf) |
+| 2004-04 | AFR, Section 7520 | Rev. Rul. 2004-39 | [PDF](by-year/2004/2004-04_afr-7520_rev-rul-2004-39_rr-04-39.pdf) |
+| 2004-03 | AFR, Section 7520 | Rev. Rul. 2004-25 | [PDF](by-year/2004/2004-03_afr-7520_rev-rul-2004-25_rr-04-25.pdf) |
+| 2004-02 | AFR, Section 7520 | Rev. Rul. 2004-9 | [PDF](by-year/2004/2004-02_afr-7520_rev-rul-2004-9_rr-04-9.pdf) |
+| 2004-01 | AFR, Section 7520 | Rev. Rul. 2004-2 | [PDF](by-year/2004/2004-01_afr-7520_rev-rul-2004-2_rr-04-2.pdf) |
+| 2003-12 | AFR, Section 7520 | Rev. Rul. 2003-122 | [PDF](by-year/2003/2003-12_afr-7520_rev-rul-2003-122_rr-03-122.pdf) |
+| 2003-11 | AFR, Section 7520 | Rev. Rul. 2003-114 | [PDF](by-year/2003/2003-11_afr-7520_rev-rul-2003-114_rr-03-114.pdf) |
+| 2003-10 | AFR, Section 7520 | Rev. Rul. 2003-107 | [PDF](by-year/2003/2003-10_afr-7520_rev-rul-2003-107_rr-03-107.pdf) |
+| 2003-09 | AFR, Section 7520 | Rev. Rul. 2003-101 | [PDF](by-year/2003/2003-09_afr-7520_rev-rul-2003-101_rr-03-101.pdf) |
+| 2003-08 | AFR, Section 7520 | Rev. Rul. 2003-94 | [PDF](by-year/2003/2003-08_afr-7520_rev-rul-2003-94_rr-03-94.pdf) |
+| 2003-07 | AFR, Section 7520 | Rev. Rul. 2003-71 | [PDF](by-year/2003/2003-07_afr-7520_rev-rul-2003-71_rr-03-71.pdf) |
+| 2003-06 | AFR, Section 7520 | Rev. Rul. 2003-60 | [PDF](by-year/2003/2003-06_afr-7520_rev-rul-2003-60_rr-03-60.pdf) |
+| 2003-05 | AFR, Section 7520 | Rev. Rul. 2003-45 | [PDF](by-year/2003/2003-05_afr-7520_rev-rul-2003-45_rr-03-45.pdf) |
+| 2003-04 | AFR, Section 7520 | Rev. Rul. 2003-35 | [PDF](by-year/2003/2003-04_afr-7520_rev-rul-2003-35_rr-03-35.pdf) |
+| 2003-03 | AFR, Section 7520 | Rev. Rul. 2003-26 | [PDF](by-year/2003/2003-03_afr-7520_rev-rul-2003-26_rr-03-26.pdf) |
+| 2003-02 | AFR, Section 7520 | Rev. Rul. 2003-16 | [PDF](by-year/2003/2003-02_afr-7520_rev-rul-2003-16_rr-03-16.pdf) |
+| 2003-01 | AFR, Section 7520 | Rev. Rul. 2003-5 | [PDF](by-year/2003/2003-01_afr-7520_rev-rul-2003-5_rr-03-05.pdf) |
+| 2002-12 | AFR, Section 7520 | Rev. Rul. 2002-81 | [PDF](by-year/2002/2002-12_afr-7520_rev-rul-2002-81_rr-02-81.pdf) |
+| 2002-11 | AFR, Section 7520 | Rev. Rul. 2002-74 | [PDF](by-year/2002/2002-11_afr-7520_rev-rul-2002-74_rr-02-74.pdf) |
+| 2002-10 | AFR, Section 7520 | Rev. Rul. 2002-61 | [PDF](by-year/2002/2002-10_afr-7520_rev-rul-2002-61_rr-02-61.pdf) |
+| 2002-09 | AFR, Section 7520 | Rev. Rul. 2002-53 | [PDF](by-year/2002/2002-09_afr-7520_rev-rul-2002-53_rr-02-53.pdf) |
+| 2002-08 | AFR, Section 7520 | Rev. Rul. 2002-48 | [PDF](by-year/2002/2002-08_afr-7520_rev-rul-2002-48_rr-02-48.pdf) |
+| 2002-07 | AFR, Section 7520 | Rev. Rul. 2002-40 | [PDF](by-year/2002/2002-07_afr-7520_rev-rul-2002-40_rr-02-40.pdf) |
+| 2002-06 | AFR, Section 7520 | Rev. Rul. 2002-36 | [PDF](by-year/2002/2002-06_afr-7520_rev-rul-2002-36_rr-02-36.pdf) |
+| 2002-05 | AFR, Section 7520 | Rev. Rul. 2002-25 | [PDF](by-year/2002/2002-05_afr-7520_rev-rul-2002-25_rr-02-25.pdf) |
+| 2002-04 | AFR, Section 7520 | Rev. Rul. 2002-17 | [PDF](by-year/2002/2002-04_afr-7520_rev-rul-2002-17_rr-02-17.pdf) |
+| 2002-03 | AFR, Section 7520 | Rev. Rul. 2002-10 | [PDF](by-year/2002/2002-03_afr-7520_rev-rul-2002-10_rr-02-10.pdf) |
+| 2002-02 | AFR, Section 7520 | Rev. Rul. 2002-5 | [PDF](by-year/2002/2002-02_afr-7520_rev-rul-2002-5_rr-02-05.pdf) |
+| 2002-01 | AFR, Section 7520 | Rev. Rul. 2002-2 | [PDF](by-year/2002/2002-01_afr-7520_rev-rul-2002-2_rr-02-2.pdf) |
+| 2001-12 | AFR, Section 7520 | Rev. Rul. 2001-58 | [PDF](by-year/2001/2001-12_afr-7520_rev-rul-2001-58_rr-01-58.pdf) |
+| 2001-11 | AFR, Section 7520 | Rev. Rul. 2001-52 | [PDF](by-year/2001/2001-11_afr-7520_rev-rul-2001-52_rr-01-52.pdf) |
+| 2001-10 | AFR, Section 7520 | Rev. Rul. 2001-49 | [PDF](by-year/2001/2001-10_afr-7520_rev-rul-2001-49_rr-01-49.pdf) |
+| 2001-09 | AFR, Section 7520 | Rev. Rul. 2001-43 | [PDF](by-year/2001/2001-09_afr-7520_rev-rul-2001-43_rr-01-43.pdf) |
+| 2001-08 | AFR, Section 7520 | Rev. Rul. 2001-36 | [PDF](by-year/2001/2001-08_afr-7520_rev-rul-2001-36_rr-01-36.pdf) |
+| 2001-07 | AFR, Section 7520 | Rev. Rul. 2001-34 | [PDF](by-year/2001/2001-07_afr-7520_rev-rul-2001-34_rr-01-34.pdf) |
+| 2001-06 | AFR, Section 7520 | Rev. Rul. 2001-27 | [PDF](by-year/2001/2001-06_afr-7520_rev-rul-2001-27_rr-01-27.pdf) |
+| 2001-05 | AFR, Section 7520 | Rev. Rul. 2001-22 | [PDF](by-year/2001/2001-05_afr-7520_rev-rul-2001-22_rr-01-22.pdf) |
+| 2001-04 | AFR, Section 7520 | Rev. Rul. 2001-17 | [PDF](by-year/2001/2001-04_afr-7520_rev-rul-2001-17_rr-01-17.pdf) |
+| 2001-03 | AFR, Section 7520 | Rev. Rul. 2001-12 | [PDF](by-year/2001/2001-03_afr-7520_rev-rul-2001-12_rr-01-12.pdf) |
+| 2001-02 | AFR, Section 7520 | Rev. Rul. 2001-7 | [PDF](by-year/2001/2001-02_afr-7520_rev-rul-2001-7_rr-01-07.pdf) |
+| 2001-01 | AFR, Section 7520 | Rev. Rul. 2001-3 | [PDF](by-year/2001/2001-01_afr-7520_rev-rul-2001-3_rr-001-3.pdf) |
+| 2000-12 | AFR, Section 7520 | Rev. Rul. 2000-54 | [PDF](by-year/2000/2000-12_afr-7520_rev-rul-2000-54_rr-00-54.pdf) |
+| 2000-11 | AFR, Section 7520 | Rev. Rul. 2000-50 | [PDF](by-year/2000/2000-11_afr-7520_rev-rul-2000-50_rr-00-50.pdf) |
+| 2000-10 | AFR, Section 7520 | Rev. Rul. 2000-45 | [PDF](by-year/2000/2000-10_afr-7520_rev-rul-2000-45_rr-00-45.pdf) |
+| 2000-09 | AFR, Section 7520 | Rev. Rul. 2000-41 | [PDF](by-year/2000/2000-09_afr-7520_rev-rul-2000-41_rr-00-41.pdf) |
+| 2000-08 | AFR, Section 7520 | Rev. Rul. 2000-38 | [PDF](by-year/2000/2000-08_afr-7520_rev-rul-2000-38_rr-00-38.pdf) |
+| 2000-07 | AFR, Section 7520 | Rev. Rul. 2000-32 | [PDF](by-year/2000/2000-07_afr-7520_rev-rul-2000-32_rr-00-32.pdf) |
+| 2000-06 | AFR, Section 7520 | Rev. Rul. 2000-28 | [PDF](by-year/2000/2000-06_afr-7520_rev-rul-2000-28_rr-00-28.pdf) |
+| 2000-05 | AFR, Section 7520 | Rev. Rul. 2000-23 | [PDF](by-year/2000/2000-05_afr-7520_rev-rul-2000-23_rr-00-23.pdf) |
+| 2000-04 | AFR, Section 7520 | Rev. Rul. 2000-19 | [PDF](by-year/2000/2000-04_afr-7520_rev-rul-2000-19_rr-00-19.pdf) |
+| 2000-03 | AFR, Section 7520 | Rev. Rul. 2000-11 | [PDF](by-year/2000/2000-03_afr-7520_rev-rul-2000-11_rr-00-11.pdf) |
+| 2000-02 | AFR, Section 7520 | Rev. Rul. 2000-9 | [PDF](by-year/2000/2000-02_afr-7520_rev-rul-2000-9_rr-00-09.pdf) |
+| 2000-01 | AFR, Section 7520 | Rev. Rul. 2000-1 | [PDF](by-year/2000/2000-01_afr-7520_rev-rul-2000-1_rr-00-01.pdf) |
+| 1999-12 | AFR, Section 7520 | Rev. Rul. 99-48 (IRB 1999-49) | [PDF](by-year/1999/1999-12_afr-7520_rev-rul-99-48-irb-1999-49_irb99-49.pdf) |
+| 1999-11 | AFR, Section 7520 | Rev. Rul. 99-45 (IRB 1999-45) | [PDF](by-year/1999/1999-11_afr-7520_rev-rul-99-45-irb-1999-45_irb99-45.pdf) |
+| 1999-10 | AFR, Section 7520 | Rev. Rul. 99-41 (IRB 1999-40) | [PDF](by-year/1999/1999-10_afr-7520_rev-rul-99-41-irb-1999-40_irb99-40.pdf) |
+| 1999-09 | AFR, Section 7520 | Rev. Rul. 99-37 (IRB 1999-36) | [PDF](by-year/1999/1999-09_afr-7520_rev-rul-99-37-irb-1999-36_irb99-36.pdf) |
+| 1999-08 | AFR, Section 7520 | Rev. Rul. 99-32 (IRB 1999-31) | [PDF](by-year/1999/1999-08_afr-7520_rev-rul-99-32-irb-1999-31_irb99-31.pdf) |
+| 1999-07 | AFR, Section 7520 | Rev. Rul. 99-29 (IRB 1999-27) | [PDF](by-year/1999/1999-07_afr-7520_rev-rul-99-29-irb-1999-27_irb99-27.pdf) |
+| 1999-06 | AFR, Section 7520 | Rev. Rul. 99-25 (IRB 1999-23) | [PDF](by-year/1999/1999-06_afr-7520_rev-rul-99-25-irb-1999-23_irb99-23.pdf) |
+| 1999-05 | AFR, Section 7520 | Rev. Rul. 99-21 (IRB 1999-18) | [PDF](by-year/1999/1999-05_afr-7520_rev-rul-99-21-irb-1999-18_irb99-18.pdf) |
+| 1999-04 | AFR, Section 7520 | Rev. Rul. 99-17 (IRB 1999-14) | [PDF](by-year/1999/1999-04_afr-7520_rev-rul-99-17-irb-1999-14_irb99-14.pdf) |
+| 1999-03 | AFR, Section 7520 | Rev. Rul. 99-11 (IRB 1999-10) | [PDF](by-year/1999/1999-03_afr-7520_rev-rul-99-11-irb-1999-10_irb99-10.pdf) |
+| 1999-02 | AFR, Section 7520 | Rev. Rul. 99-8 (IRB 1999-6) | [PDF](by-year/1999/1999-02_afr-7520_rev-rul-99-8-irb-1999-6_irb99-06.pdf) |
+| 1999-01 | AFR, Section 7520 | Rev. Rul. 99-2 (IRB 1999-2) | [PDF](by-year/1999/1999-01_afr-7520_rev-rul-99-2-irb-1999-2_irb99-02.pdf) |
+| 1998-12 | AFR, Section 7520 | Rev. Rul. 98-57 (IRB 1998-49) | [PDF](by-year/1998/1998-12_afr-7520_rev-rul-98-57-irb-1998-49_irb98-49.pdf) |
+| 1998-11 | AFR, Section 7520 | Rev. Rul. 98-52 (IRB 1998-45) | [PDF](by-year/1998/1998-11_afr-7520_rev-rul-98-52-irb-1998-45_irb98-45.pdf) |
+| 1998-10 | AFR, Section 7520 | Rev. Rul. 98-50 (IRB 1998-40) | [PDF](by-year/1998/1998-10_afr-7520_rev-rul-98-50-irb-1998-40_irb98-40.pdf) |
+| 1998-09 | AFR, Section 7520 | Rev. Rul. 98-43 (IRB 1998-36) | [PDF](by-year/1998/1998-09_afr-7520_rev-rul-98-43-irb-1998-36_irb98-36.pdf) |
+| 1998-08 | AFR, Section 7520 | Rev. Rul. 98-36 (IRB 1998-31) | [PDF](by-year/1998/1998-08_afr-7520_rev-rul-98-36-irb-1998-31_irb98-31.pdf) |
+| 1998-07 | AFR, Section 7520 | Rev. Rul. 98-33 (IRB 1998-27) | [PDF](by-year/1998/1998-07_afr-7520_rev-rul-98-33-irb-1998-27_irb98-27.pdf) |
+| 1998-06 | AFR, Section 7520 | Rev. Rul. 98-28 (IRB 1998-22) | [PDF](by-year/1998/1998-06_afr-7520_rev-rul-98-28-irb-1998-22_irb98-22.pdf) |
+| 1998-05 | AFR, Section 7520 | Rev. Rul. 98-23 (IRB 1998-18) | [PDF](by-year/1998/1998-05_afr-7520_rev-rul-98-23-irb-1998-18_irb98-18.pdf) |
+| 1998-04 | AFR, Section 7520 | Rev. Rul. 98-18 (IRB 1998-14) | [PDF](by-year/1998/1998-04_afr-7520_rev-rul-98-18-irb-1998-14_irb98-14.pdf) |
+| 1998-03 | AFR, Section 7520 | Rev. Rul. 98-11 (IRB 1998-10) | [PDF](by-year/1998/1998-03_afr-7520_rev-rul-98-11-irb-1998-10_irb98-10.pdf) |
+| 1998-02 | AFR, Section 7520 | Rev. Rul. 98-7 (IRB 1998-6) | [PDF](by-year/1998/1998-02_afr-7520_rev-rul-98-7-irb-1998-6_irb98-06.pdf) |
+| 1998-01 | AFR, Section 7520 | Rev. Rul. 98-4 (IRB 1998-2) | [PDF](by-year/1998/1998-01_afr-7520_rev-rul-98-4-irb-1998-2_irb98-02.pdf) |
+| 1997-12 | AFR, Section 7520 | Rev. Rul. 97-48 and Rev. Rul. 97-50 (IRB 1997-49) | [PDF](by-year/1997/1997-12_afr-7520_rev-rul-97-48-and-rev-rul-97-50-irb-1997-49_irb97-49.pdf) |
+| 1997-11 | AFR, Section 7520 | Rev. Rul. 97-44 (IRB 1997-45) | [PDF](by-year/1997/1997-11_afr-7520_rev-rul-97-44-irb-1997-45_irb97-45.pdf) |
+| 1997-10 | AFR, Section 7520 | Rev. Rul. 97-41 (IRB 1997-40) | [PDF](by-year/1997/1997-10_afr-7520_rev-rul-97-41-irb-1997-40_irb97-40.pdf) |
+| 1997-09 | AFR, Section 7520 | Rev. Rul. 97-36 (IRB 1997-36) | [PDF](by-year/1997/1997-09_afr-7520_rev-rul-97-36-irb-1997-36_irb97-36.pdf) |
+| 1997-08 | AFR, Section 7520 | Rev. Rul. 97-30 (IRB 1997-31) | [PDF](by-year/1997/1997-08_afr-7520_rev-rul-97-30-irb-1997-31_irb97-31.pdf) |
+| 1997-07 | AFR, Section 7520 | Rev. Rul. 97-27 (IRB 1997-27) | [PDF](by-year/1997/1997-07_afr-7520_rev-rul-97-27-irb-1997-27_irb97-27.pdf) |
+| 1997-06 | AFR, Section 7520 | Rev. Rul. 97-23 and Rev. Rul. 97-24 (IRB 1997-22) | [PDF](by-year/1997/1997-06_afr-7520_rev-rul-97-23-and-rev-rul-97-24-irb-1997-22_irb97-22.pdf) |
+| 1997-05 | AFR, Section 7520 | Rev. Rul. 97-19 (IRB 1997-18) | [PDF](by-year/1997/1997-05_afr-7520_rev-rul-97-19-irb-1997-18_irb97-18.pdf) |
+| 1997-04 | AFR, Section 7520 | Rev. Rul. 97-17 (IRB 1997-14) | [PDF](by-year/1997/1997-04_afr-7520_rev-rul-97-17-irb-1997-14_irb97-14.pdf) |
+| 1997-03 | AFR, Section 7520 | Rev. Rul. 97-10 (IRB 1997-10) | [PDF](by-year/1997/1997-03_afr-7520_rev-rul-97-10-irb-1997-10_irb97-10.pdf) |
+| 1997-02 | AFR, Section 7520 | Rev. Rul. 97-7 (IRB 1997-5) | [PDF](by-year/1997/1997-02_afr-7520_rev-rul-97-7-irb-1997-5_irb97-05.pdf) |
+| 1997-01 | AFR, Section 7520 | Rev. Rul. 97-1 (IRB 1997-2) | [PDF](by-year/1997/1997-01_afr-7520_rev-rul-97-1-irb-1997-2_irb97-02.pdf) |
+| 1996-12 | Section 7520 | Rev. Rul. 96-57 (IRB 1996-50) | [PDF](by-year/1996/1996-12_7520_rev-rul-96-57-irb-1996-50_irb96-50.pdf) |
+| 1996-11 | Section 7520 | Rev. Rul. 96-52 (IRB 1996-45) | [PDF](by-year/1996/1996-11_7520_rev-rul-96-52-irb-1996-45_irb96-45.pdf) |
+| 1996-10 | Section 7520 | Rev. Rul. 96-49 (IRB 1996-41) | [PDF](by-year/1996/1996-10_7520_rev-rul-96-49-irb-1996-41_irb96-41.pdf) |
+| 1996-09 | Section 7520 | Rev. Rul. 96-43 (IRB 1996-37) | [PDF](by-year/1996/1996-09_7520_rev-rul-96-43-irb-1996-37_irb96-37.pdf) |
+| 1996-08 | Section 7520 | Rev. Rul. 96-37 (IRB 1996-32) | [PDF](by-year/1996/1996-08_7520_rev-rul-96-37-irb-1996-32_irb96-32.pdf) |
+| 1996-07 | Section 7520 | Rev. Rul. 96-34 (IRB 1996-28) | [PDF](by-year/1996/1996-07_7520_rev-rul-96-34-irb-1996-28_irb96-28.pdf) |
+| 1996-06 | Section 7520 | Rev. Rul. 96-27 (IRB 1996-24) | [PDF](by-year/1996/1996-06_7520_rev-rul-96-27-irb-1996-24_irb96-24.pdf) |
+| 1996-05 | Section 7520 | Rev. Rul. 96-24 (IRB 1996-19) | [PDF](by-year/1996/1996-05_7520_rev-rul-96-24-irb-1996-19_irb96-19.pdf) |
+| 1996-04 | Section 7520 | Rev. Rul. 96-19 (IRB 1996-15) | [PDF](by-year/1996/1996-04_7520_rev-rul-96-19-irb-1996-15_irb96-15.pdf) |
+| 1996-03 | Section 7520 | Rev. Rul. 96-15 (IRB 1996-11) | [PDF](by-year/1996/1996-03_7520_rev-rul-96-15-irb-1996-11_irb96-11.pdf) |
+| 1996-02 | Section 7520 | Rev. Rul. 96-14 (IRB 1996-6) | [PDF](by-year/1996/1996-02_7520_rev-rul-96-14-irb-1996-6_irb96-06.pdf) |
+| 1996-01 | Section 7520 | Rev. Rul. 96-6 (IRB 1996-2) | [PDF](by-year/1996/1996-01_7520_rev-rul-96-6-irb-1996-2_irb96-02.pdf) |
+| 1995-12 | AFR, Section 7520 | Rev. Rul. 95-79 | [Link](https://www.taxnotes.com/lr/resolve/research/dgvd?highlight=AFR) |
+| 1995-11 | AFR, Section 7520 | Rev. Rul. 95-73 | [Link](https://www.taxnotes.com/lr/resolve/research/dgvj?highlight=AFR) |
+| 1995-10 | AFR, Section 7520 | Rev. Rul. 95-67 | [Link](https://www.taxnotes.com/lr/resolve/research/dgvq?highlight=AFR) |
+| 1995-09 | AFR, Section 7520 | Rev. Rul. 95-62 | [Link](https://www.taxnotes.com/lr/resolve/research/dgvp?highlight=AFR) |
+| 1995-08 | AFR, Section 7520 | Rev. Rul. 95-51 | [Link](https://www.taxnotes.com/lr/resolve/research/dgw2?highlight=AFR) |
+| 1995-07 | AFR, Section 7520 | Rev. Rul. 95-48 | [Link](https://www.taxnotes.com/lr/resolve/research/dgw1?highlight=AFR) |
+| 1995-06 | AFR, Section 7520 | Rev. Rul. 95-42 | [Link](https://www.taxnotes.com/lr/resolve/research/dgw9?highlight=AFR) |
+| 1995-05 | AFR, Section 7520 | Rev. Rul. 95-39 | [Link](https://www.taxnotes.com/lr/resolve/research/dgw6?highlight=AFR) |
+| 1995-04 | AFR, Section 7520 | Rev. Rul. 95-27 | [Link](https://www.taxnotes.com/lr/resolve/research/dgwr?highlight=AFR) |
+| 1995-03 | AFR, Section 7520 | Rev. Rul. 95-20 | [Link](https://www.taxnotes.com/lr/resolve/research/dgwn?highlight=AFR) |
+| 1995-02 | AFR, Section 7520 | Rev. Rul. 95-13 | [Link](https://www.taxnotes.com/lr/resolve/research/dgwy?highlight=AFR) |
+| 1995-01 | AFR, Section 7520 | Rev. Rul. 95-3 | [Link](https://www.taxnotes.com/lr/resolve/research/dgx9?highlight=AFR) |
+| 1994-12 | AFR, Section 7520 | Rev. Rul. 94-73 | [Link](https://www.taxnotes.com/lr/resolve/research/dgsm?highlight=AFR) |
+| 1994-11 | AFR, Section 7520 | Rev. Rul. 94-67 | [Link](https://www.taxnotes.com/lr/resolve/research/dgsl?highlight=AFR) |
+| 1994-10 | AFR, Section 7520 | Rev. Rul. 94-61 | [Link](https://www.taxnotes.com/lr/resolve/research/dgsw?highlight=AFR) |
+| 1994-09 | AFR, Section 7520 | Rev. Rul. 94-55 | [Link](https://www.taxnotes.com/lr/resolve/research/dgt5?highlight=AFR) |
+| 1994-08 | AFR, Section 7520 | Rev. Rul. 94-50 | [Link](https://www.taxnotes.com/lr/resolve/research/dgt4?highlight=AFR) |
+| 1994-07 | AFR, Section 7520 | Rev. Rul. 94-44 | [Link](https://www.taxnotes.com/lr/resolve/research/dgt7?highlight=AFR) |
+| 1994-06 | AFR, Section 7520 | Rev. Rul. 94-36 | [Link](https://www.taxnotes.com/lr/resolve/research/dgtk?highlight=AFR) |
+| 1994-05 | AFR, Section 7520 | Rev. Rul. 94-29 | [Link](https://www.taxnotes.com/lr/resolve/research/dgtd?highlight=AFR) |
+| 1994-04 | AFR, Section 7520 | Rev. Rul. 94-22 | [Link](https://www.taxnotes.com/lr/resolve/research/dgtr?highlight=AFR) |
+| 1994-03 | AFR, Section 7520 | Rev. Rul. 94-15 | [Link](https://www.taxnotes.com/lr/resolve/research/dgtx?highlight=AFR) |
+| 1994-02 | AFR, Section 7520 | Rev. Rul. 94-9 | [Link](https://www.taxnotes.com/lr/resolve/research/dgvc?highlight=AFR) |
+| 1994-01 | AFR, Section 7520 | Rev. Rul. 94-1 | [Link](https://www.taxnotes.com/lr/resolve/research/dgv4?highlight=AFR) |
+| 1993-12 | AFR, Section 7520 | Rev. Rul. 93-82 | [Link](https://www.taxnotes.com/lr/resolve/research/dgq9?highlight=AFR) |
+| 1993-11 | AFR, Section 7520 | Rev. Rul. 93-71 | [Link](https://www.taxnotes.com/lr/resolve/research/dgqk?highlight=AFR) |
+| 1993-10 | AFR, Section 7520 | Rev. Rul. 93-64 | [Link](https://www.taxnotes.com/lr/resolve/research/dgr5?highlight=AFR) |
+| 1993-09 | AFR, Section 7520 | Rev. Rul. 93-55 | [Link](https://www.taxnotes.com/lr/resolve/research/dgrd?highlight=AFR) |
+| 1993-08 | AFR, Section 7520 | Rev. Rul. 93-51 | [Link](https://www.taxnotes.com/lr/resolve/research/dgr9?highlight=AFR) |
+| 1993-07 | AFR, Section 7520 | Rev. Rul. 93-42 | [Link](https://www.taxnotes.com/lr/resolve/research/dgrf?highlight=AFR) |
+| 1993-06 | AFR, Section 7520 | Rev. Rul. 93-39 | [Link](https://www.taxnotes.com/lr/resolve/research/dgrg?highlight=AFR) |
+| 1993-05 | AFR, Section 7520 | Rev. Rul. 93-32 | [Link](https://www.taxnotes.com/lr/resolve/research/dgrw?highlight=AFR) |
+| 1993-04 | AFR, Section 7520 | Rev. Rul. 93-23 | [Link](https://www.taxnotes.com/lr/resolve/research/dgrr?highlight=AFR) |
+| 1993-03 | AFR, Section 7520 | Rev. Rul. 93-19 | [Link](https://www.taxnotes.com/lr/resolve/research/dgry?highlight=AFR) |
+| 1993-02 | AFR, Section 7520 | Rev. Rul. 93-10 | [Link](https://www.taxnotes.com/lr/resolve/research/dgs0?highlight=AFR) |
+| 1993-01 | AFR, Section 7520 | Rev. Rul. 93-1 | [Link](https://www.taxnotes.com/lr/resolve/research/dgsb?highlight=AFR) |
+| 1992-12 | AFR, Section 7520 | Rev. Rul. 92-104 | [Link](https://www.taxnotes.com/lr/resolve/research/dgmf?highlight=AFR) |
+| 1992-11 | AFR, Section 7520 | Rev. Rul. 92-90 | [Link](https://www.taxnotes.com/lr/resolve/research/dgn5?highlight=AFR) |
+| 1992-10 | AFR, Section 7520 | Rev. Rul. 92-87 | [Link](https://www.taxnotes.com/lr/resolve/research/dgmv?highlight=AFR) |
+| 1992-09 | AFR, Section 7520 | Rev. Rul. 92-67 | [Link](https://www.taxnotes.com/lr/resolve/research/dgn7?highlight=AFR) |
+| 1992-08 | AFR, Section 7520 | Rev. Rul. 92-59 | [Link](https://www.taxnotes.com/lr/resolve/research/dgnw?highlight=AFR) |
+| 1992-07 | AFR, Section 7520 | Rev. Rul. 92-50 | [Link](https://www.taxnotes.com/lr/resolve/research/dgnr?highlight=AFR) |
+| 1992-06 | AFR, Section 7520 | Rev. Rul. 92-39 | [Link](https://www.taxnotes.com/lr/resolve/research/dgp6?highlight=AFR) |
+| 1992-05 | AFR, Section 7520 | Rev. Rul. 92-33 | [Link](https://www.taxnotes.com/lr/resolve/research/dgpg?highlight=AFR) |
+| 1992-04 | AFR, Section 7520 | Rev. Rul. 92-23 | [Link](https://www.taxnotes.com/lr/resolve/research/dgpc?highlight=AFR) |
+| 1992-03 | AFR, Section 7520 | Rev. Rul. 92-13 | [Link](https://www.taxnotes.com/lr/resolve/research/dgpw?highlight=AFR) |
+| 1992-02 | AFR, Section 7520 | Rev. Rul. 92-8 | [Link](https://www.taxnotes.com/lr/resolve/research/dgq5?highlight=AFR) |
+| 1992-01 | AFR, Section 7520 | Rev. Rul. 92-1 | [Link](https://www.taxnotes.com/lr/resolve/research/dgq7?highlight=AFR) |
+| 1991-12 | AFR, Section 7520 | Rev. Rul. 91-62 | [Link](https://www.taxnotes.com/lr/resolve/research/dgl1?highlight=AFR) |
+| 1991-11 | AFR, Section 7520 | Rev. Rul. 91-57 | [Link](https://www.taxnotes.com/lr/resolve/research/dgky?highlight=AFR) |
+| 1991-10 | AFR, Section 7520 | Rev. Rul. 91-53 | [Link](https://www.taxnotes.com/lr/resolve/research/dgl7?highlight=AFR) |
+| 1991-09 | AFR, Section 7520 | Rev. Rul. 91-48 | [Link](https://www.taxnotes.com/lr/resolve/research/dgl4?highlight=AFR) |
+| 1991-08 | AFR, Section 7520 | Rev. Rul. 91-41 | [Link](https://www.taxnotes.com/lr/resolve/research/dglh?highlight=AFR) |
+| 1991-07 | AFR, Section 7520 | Rev. Rul. 91-39 | [Link](https://www.taxnotes.com/lr/resolve/research/dglc?highlight=AFR) |
+| 1991-06 | AFR, Section 7520 | Rev. Rul. 91-35 | [Link](https://www.taxnotes.com/lr/resolve/research/dgln?highlight=AFR) |
+| 1991-05 | AFR, Section 7520 | Rev. Rul. 91-29 | [Link](https://www.taxnotes.com/lr/resolve/research/dglm?highlight=AFR) |
+| 1991-04 | AFR, Section 7520 | Rev. Rul. 91-23 | [Link](https://www.taxnotes.com/lr/resolve/research/dglx?highlight=AFR) |
+| 1991-03 | AFR, Section 7520 | Rev. Rul. 91-15 | [Link](https://www.taxnotes.com/lr/resolve/research/dgm4?highlight=AFR) |
+| 1991-02 | AFR, Section 7520 | Rev. Rul. 91-9 | [Link](https://www.taxnotes.com/lr/resolve/research/dgm8?highlight=AFR) |
+| 1991-01 | AFR, Section 7520 | Rev. Rul. 91-1 | [Link](https://www.taxnotes.com/lr/resolve/research/dgmh?highlight=AFR) |
+| 1990-12 | AFR, Section 7520 | Rev. Rul. 90-99 | [Link](https://www.taxnotes.com/lr/resolve/research/dghj?highlight=AFR) |
+| 1990-11 | AFR, Section 7520 | Rev. Rul. 90-92 | [Link](https://www.taxnotes.com/lr/resolve/research/dghr?highlight=AFR) |
+| 1990-10 | AFR, Section 7520 | Rev. Rul. 90-81 | [Link](https://www.taxnotes.com/lr/resolve/research/dghv?highlight=AFR) |
+| 1990-09 | AFR, Section 7520 | Rev. Rul. 90-75 | [Link](https://www.taxnotes.com/lr/resolve/research/dgj5?highlight=AFR) |
+| 1990-08 | AFR, Section 7520 | Rev. Rul. 90-66 | [Link](https://www.taxnotes.com/lr/resolve/research/dgj6?highlight=AFR) |
+| 1990-07 | AFR, Section 7520 | Rev. Rul. 90-52 | [Link](https://www.taxnotes.com/lr/resolve/research/dgjr?highlight=AFR) |
+| 1990-06 | AFR, Section 7520 | Rev. Rul. 90-48 | [Link](https://www.taxnotes.com/lr/resolve/research/dgjn?highlight=AFR) |
+| 1990-05 | AFR, Section 7520 | Rev. Rul. 90-41 | [Link](https://www.taxnotes.com/lr/resolve/research/dgjw?highlight=AFR) |
+| 1990-04 | AFR, Section 7520 | Rev. Rul. 90-28 | [Link](https://www.taxnotes.com/lr/resolve/research/dgk8?highlight=AFR) |
+| 1990-03 | AFR, Section 7520 | Rev. Rul. 90-22 | [Link](https://www.taxnotes.com/lr/resolve/research/dgk7?highlight=AFR) |
+| 1990-02 | AFR, Section 7520 | Rev. Rul. 90-12 | [Link](https://www.taxnotes.com/lr/resolve/research/dgkm?highlight=AFR) |
+| 1990-01 | AFR, Section 7520 | Rev. Rul. 90-1 | [Link](https://www.taxnotes.com/lr/resolve/research/dgkw?highlight=AFR) |
+| 1989-12 | AFR, Section 7520 | Rev. Rul. 89-127 | [Link](https://www.taxnotes.com/lr/resolve/research/dgd7?highlight=AFR) |
+| 1989-11 | AFR, Section 7520 | Rev. Rul. 89-117 | [Link](https://www.taxnotes.com/lr/resolve/research/dgdg?highlight=AFR) |
+| 1989-10 | AFR, Section 7520 | Rev. Rul. 89-111 | [Link](https://www.taxnotes.com/lr/resolve/research/dgdc?highlight=AFR) |
+| 1989-09 | AFR, Section 7520 | Rev. Rul. 89-105 | [Link](https://www.taxnotes.com/lr/resolve/research/dgdp?highlight=AFR) |
+| 1989-08 | AFR, Section 7520 | Rev. Rul. 89-92 | [Link](https://www.taxnotes.com/lr/resolve/research/dgdy?highlight=AFR) |
+| 1989-07 | AFR, Section 7520 | Rev. Rul. 89-86 | [Link](https://www.taxnotes.com/lr/resolve/research/dgds?highlight=AFR) |
+| 1989-06 | AFR, Section 7520 | Rev. Rul. 89-77 | [Link](https://www.taxnotes.com/lr/resolve/research/dgfc?highlight=AFR) |
+| 1989-05 | AFR, Section 7520 | Rev. Rul. 89-65 | [Link](https://www.taxnotes.com/lr/resolve/research/dgf9?highlight=AFR) |
+| 1989-04 | AFR | Rev. Rul. 89-39 | [Link](https://www.taxnotes.com/lr/resolve/research/dggd?highlight=AFR) |
+| 1989-03 | AFR | Rev. Rul. 89-34 | [Link](https://www.taxnotes.com/lr/resolve/research/dggl?highlight=AFR) |
+| 1989-02 | AFR | Rev. Rul. 89-15 | [Link](https://www.taxnotes.com/lr/resolve/research/dggx?highlight=AFR) |
+| 1989-01 | AFR | Rev. Rul. 89-1 | [Link](https://www.taxnotes.com/lr/resolve/research/dgh1?highlight=AFR) |
+| 1988-12 | AFR | Rev. Rul. 88-101 | [Link](https://www.taxnotes.com/lr/resolve/research/dg9h?highlight=AFR) |
+| 1988-11 | AFR | Rev. Rul. 88-93 | [Link](https://www.taxnotes.com/lr/resolve/research/d77g?highlight=AFR) |
+| 1988-10 | AFR | Rev. Rul. 88-83 | [Link](https://www.taxnotes.com/lr/resolve/research/dgb5?highlight=AFR) |
+| 1988-09 | AFR | Rev. Rul. 88-67 | [Link](https://www.taxnotes.com/lr/resolve/research/dgbl?highlight=AFR) |
+| 1988-08 | AFR | Rev. Rul. 88-61 | [Link](https://www.taxnotes.com/lr/resolve/research/dgbk?highlight=AFR) |
+| 1988-07 | AFR | Rev. Rul. 88-54 | [Link](https://www.taxnotes.com/lr/resolve/research/dgbv?highlight=AFR) |
+| 1988-06 | AFR | Rev. Rul. 88-44 | [Link](https://www.taxnotes.com/lr/resolve/research/dgc5?highlight=AFR) |
+| 1988-05 | AFR | Rev. Rul. 88-28 | [Link](https://www.taxnotes.com/lr/resolve/research/dgc8?highlight=AFR) |
+| 1988-04 | AFR | Rev. Rul. 88-22 | [Link](https://www.taxnotes.com/lr/resolve/research/dgcg?highlight=AFR) |
+| 1988-03 | AFR | Rev. Rul. 88-15 | [Link](https://www.taxnotes.com/lr/resolve/research/dgct?highlight=AFR) |
+| 1988-02 | AFR | Rev. Rul. 88-9 | [Link](https://www.taxnotes.com/lr/resolve/research/dgcz?highlight=AFR) |
+| 1988-01 | AFR | Rev. Rul. 88-6 | [Link](https://www.taxnotes.com/lr/resolve/research/dgcq?highlight=AFR) |
+| 1987-12 | AFR | Rev. Rul. 87-128 | [Link](https://www.taxnotes.com/lr/resolve/research/dg6k?highlight=AFR) |
+| 1987-11 | AFR | Rev. Rul. 87-109 | [Link](https://www.taxnotes.com/lr/resolve/research/dg73?highlight=AFR) |
+| 1987-10 | AFR | Rev. Rul. 87-100 | [Link](https://www.taxnotes.com/lr/resolve/research/dg7b?highlight=AFR) |
+| 1987-09 | AFR | Rev. Rul. 87-83 | [Link](https://www.taxnotes.com/lr/resolve/research/dg7t?highlight=AFR) |
+| 1987-08 | AFR | Rev. Rul. 87-68 | [Link](https://www.taxnotes.com/lr/resolve/research/dg87?highlight=AFR) |
+| 1987-07 | AFR | Rev. Rul. 87-55 | [Link](https://www.taxnotes.com/lr/resolve/research/dg8l?highlight=AFR) |
+| 1987-06 | AFR | Rev. Rul. 87-42 | [Link](https://www.taxnotes.com/lr/resolve/research/dg8v?highlight=AFR) |
+| 1987-05 | AFR | Rev. Rul. 87-33 | [Link](https://www.taxnotes.com/lr/resolve/research/dg8w?highlight=AFR) |
+| 1987-04 | AFR | Rev. Rul. 87-25 | [Link](https://www.taxnotes.com/lr/resolve/research/dg95?highlight=AFR) |
+| 1987-03 | AFR | Rev. Rul. 87-16 | [Link](https://www.taxnotes.com/lr/resolve/research/dg9f?highlight=AFR) |
+| 1987-02 | AFR | Rev. Rul. 87-11 | [Link](https://www.taxnotes.com/lr/resolve/research/dg96?highlight=AFR) |
+| 1987-01 | AFR | Rev. Rul. 86-158 | [Link](https://www.taxnotes.com/lr/resolve/research/dg1x?highlight=AFR) |
+| 1986-12 | AFR | Rev. Rul. 86-143 | [Link](https://www.taxnotes.com/lr/resolve/research/dg2m?highlight=AFR) |
+| 1986-11 | AFR | Rev. Rul. 86-128 | [Link](https://www.taxnotes.com/lr/resolve/research/dg38?highlight=AFR) |
+| 1986-10 | AFR | Rev. Rul. 86-115 | [Link](https://www.taxnotes.com/lr/resolve/research/dg31?highlight=AFR) |
+| 1986-09 | AFR | Rev. Rul. 86-102 | [Link](https://www.taxnotes.com/lr/resolve/research/dg3t?highlight=AFR) |
+| 1986-08 | AFR | Rev. Rul. 86-94 | [Link](https://www.taxnotes.com/lr/resolve/research/dg41?highlight=AFR) |
+| 1986-07 | AFR | Rev. Rul. 86-86 | [Link](https://www.taxnotes.com/lr/resolve/research/dg4c?highlight=AFR) |
+| 1986-06 | AFR | Rev. Rul. 86-79 | [Link](https://www.taxnotes.com/lr/resolve/research/dg46?highlight=AFR) |
+| 1986-05 | AFR | Rev. Rul. 86-64 | [Link](https://www.taxnotes.com/lr/resolve/research/dg4l?highlight=AFR) |
+| 1986-04 | AFR | Rev. Rul. 86-50 | [Link](https://www.taxnotes.com/lr/resolve/research/dg58?highlight=AFR) |
+| 1986-03 | AFR | Rev. Rul. 86-34 | [Link](https://www.taxnotes.com/lr/resolve/research/dg5b?highlight=AFR) |
+| 1986-02 | AFR | Rev. Rul. 86-13 | [Link](https://www.taxnotes.com/lr/resolve/research/dg62?highlight=AFR) |
+| 1986-01 | AFR | Rev. Rul. 86-1 | [Link](https://www.taxnotes.com/lr/resolve/research/dg64?highlight=AFR) |
+| 1985-12 | AFR | Rev. Rul. 85-190 | [Link](https://www.taxnotes.com/lr/resolve/research/dfx3?highlight=AFR) |
+| 1985-11 | AFR | Rev. Rul. 85-181 | [Link](https://www.taxnotes.com/lr/resolve/research/dfx8?highlight=AFR) |
+| 1985-10 | AFR | Rev. Rul. 85-170 | [Link](https://www.taxnotes.com/lr/resolve/research/dbmh?highlight=AFR) |
+| 1985-09 | AFR | Rev. Rul. 85-137 | [Link](https://www.taxnotes.com/lr/resolve/research/dfyj?highlight=AFR) |
+| 1985-08 | AFR | Rev. Rul. 85-117 | [Link](https://www.taxnotes.com/lr/resolve/research/dfzd?highlight=AFR) |
+| 1985-07 | AFR | Rev. Rul. 85-91 | [Link](https://www.taxnotes.com/lr/resolve/research/dby0?highlight=AFR) |
+| 1985-06 | AFR | Rev. Rul. 85-71 | [Link](https://www.taxnotes.com/lr/resolve/research/dfzx?highlight=AFR) |
+| 1985-05 | AFR | Rev. Rul. 85-58 | [Link](https://www.taxnotes.com/lr/resolve/research/dg0m?highlight=AFR) |
+| 1985-04 | AFR | Rev. Rul. 85-51 | [Link](https://www.taxnotes.com/lr/resolve/research/dg0w?highlight=AFR) |
+| 1985-03 | AFR | Rev. Rul. 85-25 | [Link](https://www.taxnotes.com/lr/resolve/research/dg1s?highlight=AFR) |
+| 1984-11 | AFR | Rev. Rul. 84-163 | [Link](https://www.taxnotes.com/lr/resolve/research/dfrp?highlight=AFR) |

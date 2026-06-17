@@ -8,14 +8,30 @@ import json
 import os
 import re
 import tempfile
+from datetime import date
 from pathlib import Path
 from typing import Any
 
+try:
+    import archive_irs_pdf_source as irs_archive
+except ModuleNotFoundError:
+    from scripts import archive_irs_pdf_source as irs_archive
+
 from .constants import COMPOUNDING_KEYS, REVENUE_RULING_PATTERN
 from .errors import AfrUpdateError, AfrUpdateErrorCode
-from .fetch import discover_pdf_urls, fetch_pdf_text, validate_index_url, validate_pdf_url
+from .fetch import (
+    discover_pdf_urls,
+    extract_pdf_text,
+    fetch_pdf_bytes,
+    validate_index_url,
+    validate_pdf_url,
+)
 from .models import AfrRateRecord
 from .parser import is_afr_ruling_text, parse_afr_record
+
+
+DEFAULT_SOURCE_ARCHIVE_DIR = Path("sources/irs-revenue-rulings")
+MONTHLY_RULING_ARCHIVE_SUBJECTS = ("afr", "section-7520-rates")
 
 
 def load_existing_records(
@@ -445,25 +461,93 @@ def update_from_index(
     write: bool,
     backfill: bool,
     legacy_data_path: Path | None = None,
+    archive_sources: bool = False,
+    source_archive_dir: Path = DEFAULT_SOURCE_ARCHIVE_DIR,
 ) -> tuple[int, int, int, bool]:
     validate_index_url(index_url)
     pdf_urls = discover_pdf_urls(index_url, backfill)
+    existing_records = load_existing_records(dataset_dir, legacy_data_path)
+    existing_months = {record.effective_month for record in existing_records}
     records: list[AfrRateRecord] = []
+    archive_candidates: list[tuple[AfrRateRecord, bytes]] = []
     seen_months: set[str] = set()
 
     for pdf_url in pdf_urls:
-        pdf_text = fetch_pdf_text(pdf_url)
+        if archive_sources and write and source_archive_is_complete(
+            pdf_url, existing_months, source_archive_dir
+        ):
+            continue
+        pdf_bytes = fetch_pdf_bytes(pdf_url)
+        pdf_text = extract_pdf_text(pdf_bytes)
         if not is_afr_ruling_text(pdf_text):
             continue
         record = parse_afr_record(pdf_text, pdf_url)
         if record.effective_month in seen_months:
             raise AfrUpdateError(AfrUpdateErrorCode.DUPLICATE_SOURCE_RECORD)
         records.append(record)
+        archive_candidates.append((record, pdf_bytes))
         seen_months.add(record.effective_month)
 
-    existing_records = load_existing_records(dataset_dir, legacy_data_path)
     merged_records, changed = merge_records(existing_records, records)
     needs_write = dataset_needs_write(dataset_dir, merged_records, legacy_data_path)
-    if write and (changed or needs_write):
+    data_changed = changed or needs_write
+    if write and data_changed:
         write_dataset_files(dataset_dir, merged_records, legacy_data_path)
-    return (len(records), len(existing_records), len(merged_records), changed or needs_write)
+    archive_changed = False
+    if archive_sources and write:
+        for record, pdf_bytes in archive_candidates:
+            archive_changed = (
+                archive_monthly_ruling_source(record, pdf_bytes, source_archive_dir)
+                or archive_changed
+            )
+    return (
+        len(records),
+        len(existing_records),
+        len(merged_records),
+        data_changed or archive_changed,
+    )
+
+
+def archive_monthly_ruling_source(
+    record: AfrRateRecord, pdf_bytes: bytes, source_archive_dir: Path
+) -> bool:
+    if record.revenue_ruling is None or record.source_url == "":
+        raise AfrUpdateError(AfrUpdateErrorCode.SOURCE_ARCHIVE_FAILED)
+    periods = (record.effective_month,)
+    try:
+        if irs_archive.archive_contains_entry(
+            source_archive_dir,
+            periods,
+            MONTHLY_RULING_ARCHIVE_SUBJECTS,
+            record.source_url,
+        ):
+            return False
+        irs_archive.archive_pdf(
+            archive_dir=source_archive_dir,
+            year=record.effective_month[:4],
+            periods=periods,
+            subjects=MONTHLY_RULING_ARCHIVE_SUBJECTS,
+            source_url=record.source_url,
+            title=record.revenue_ruling,
+            retrieved_date=date.today().isoformat(),
+            body=pdf_bytes,
+        )
+        return True
+    except irs_archive.ArchiveError:
+        raise AfrUpdateError(AfrUpdateErrorCode.SOURCE_ARCHIVE_FAILED) from None
+
+
+def source_archive_is_complete(
+    source_url: str, existing_months: set[str], source_archive_dir: Path
+) -> bool:
+    try:
+        archived_periods = irs_archive.archived_periods_for_source(
+            source_archive_dir,
+            MONTHLY_RULING_ARCHIVE_SUBJECTS,
+            source_url,
+        )
+    except irs_archive.ArchiveError:
+        raise AfrUpdateError(AfrUpdateErrorCode.SOURCE_ARCHIVE_FAILED) from None
+    if len(archived_periods) == 0:
+        return False
+    return all(period in existing_months for period in archived_periods)

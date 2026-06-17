@@ -55,6 +55,27 @@ class Section7520RateUpdaterTests(unittest.TestCase):
         self.assertEqual(460, records[0].section_7520_rate_basis_points)
         self.assertEqual("Rev. Rul. 2026-2", records[0].revenue_ruling)
 
+    def test_parses_revenue_ruling_with_missing_rul_period(self) -> None:
+        html = self.fixture_html.replace(
+            "Rev. Rul. 2026-2",
+            "Rev. Rul 2026-2",
+            1,
+        )
+
+        records = self.updater.parse_section_7520_records(html, SOURCE_URL)
+
+        self.assertEqual("Rev. Rul. 2026-2", records[0].revenue_ruling)
+
+    def test_static_1996_backfill_records_are_complete(self) -> None:
+        records = self.updater.static_1996_section_7520_records()
+
+        self.assertEqual(12, len(records))
+        self.assertEqual("1996-01", records[0].effective_month)
+        self.assertEqual(689, records[0].midterm_afr_120_basis_points)
+        self.assertEqual(680, records[0].section_7520_rate_basis_points)
+        self.assertEqual("1996-12", records[-1].effective_month)
+        self.assertEqual(760, records[-1].section_7520_rate_basis_points)
+
     def test_update_writes_chronological_json_and_is_idempotent(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             data_path = Path(directory) / "section-7520-rates.json"
@@ -126,6 +147,29 @@ class Section7520RateUpdaterTests(unittest.TestCase):
         self.assertEqual(60, records[2].section_7520_rate_basis_points)
         self.assertEqual("2025-02", records[4].effective_month)
 
+    def test_corrects_prior_years_html_typo_from_direct_ruling(self) -> None:
+        html = (
+            "<table><thead><tr>"
+            "<th>Valuation month</th>"
+            "<th>120% of applicable federal midterm rate</th>"
+            "<th>Section 7520 interest rate</th>"
+            "<th>Revenue ruling</th>"
+            "</tr></thead><tbody><tr>"
+            "<td>October 2014</td>"
+            "<td>2.22</td>"
+            "<td>2.22</td>"
+            "<td>Rev. Rul. 2014-26</td>"
+            "</tr></tbody></table>"
+        )
+
+        records = self.updater.parse_section_7520_records(
+            html,
+            PRIOR_YEARS_SOURCE_URL,
+        )
+
+        self.assertEqual(222, records[0].midterm_afr_120_basis_points)
+        self.assertEqual(220, records[0].section_7520_rate_basis_points)
+
     def test_same_published_values_from_different_source_pages_do_not_conflict(self) -> None:
         first_record = self.updater.Section7520RateRecord(
             effective_month="2025-01",
@@ -174,6 +218,22 @@ class Section7520RateUpdaterTests(unittest.TestCase):
             self.assertNotIn("valuation_month", serialized)
             self.assertNotIn("applicable_federal_midterm_120_percent", serialized)
             self.assertNotIn("revenue_ruling", serialized)
+
+    def test_existing_known_html_typo_record_loads_corrected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            data_path = Path(directory) / "section-7520-rates.json"
+            data_path.write_text(
+                "["
+                '{"effective_month":"2014-10",'
+                '"midterm_afr_120_basis_points":222,'
+                '"section_7520_rate_basis_points":222}'
+                "]",
+                encoding="utf-8",
+            )
+
+            records = self.updater.load_existing_records(data_path)
+
+        self.assertEqual(220, records[0].section_7520_rate_basis_points)
 
     def test_input_html_backfill_is_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

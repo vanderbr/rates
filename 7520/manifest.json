@@ -3,12 +3,24 @@
   "schema_id": "rates.section_7520_rates.v1",
   "schema_version": 1,
   "record_storage": "by_year",
-  "record_count": 354,
+  "record_count": 367,
   "proto": {
     "file": "proto/rates/v1/section_7520_rates.proto",
     "message": "rates.v1.Section7520RateFile"
   },
   "years": [
+    {
+      "path": "by-year/1996-section-7520-rates.json",
+      "bytes": 1515,
+      "sha256": "ff6cbaa3cbf92466b13f4a86867f7199b68b80a8862702e779e36dac0819bc67",
+      "protobuf_path": "protobuf/1996-section-7520-rates.pb",
+      "protobuf_bytes": 233,
+      "protobuf_sha256": "6a1a373da61de06d67a7a242046318e820967b56a1cbb824debb9fac65bc4006",
+      "year": "1996",
+      "record_count": 12,
+      "first_effective_month": "1996-01",
+      "last_effective_month": "1996-12"
+    },
     {
       "path": "by-year/1997-section-7520-rates.json",
       "bytes": 1515,
@@ -216,10 +228,10 @@
     {
       "path": "by-year/2014-section-7520-rates.json",
       "bytes": 1515,
-      "sha256": "40c9fc29c167695dedaf409a134a63a886359a8ac9d0d26768d0933b33c4a15f",
+      "sha256": "42c6aaa7c344934a840bde87f0c73b36cfdaf07ee4a87a364434fc7e418cea5a",
       "protobuf_path": "protobuf/2014-section-7520-rates.pb",
       "protobuf_bytes": 233,
-      "protobuf_sha256": "831cf8f51dae3656dc728d81a6d70b11e1de39d8cc156287e46aee1972b2de37",
+      "protobuf_sha256": "4334f65e598b7fe5c18171d11ccf89471f7c6ea77fb93440e951b074e2874400",
       "year": "2014",
       "record_count": 12,
       "first_effective_month": "2014-01",
@@ -359,17 +371,17 @@
     },
     {
       "path": "by-year/2026-section-7520-rates.json",
-      "bytes": 759,
-      "sha256": "2663a373dba85020970171c929a84886993db549e5e185206698f943167a5d98",
+      "bytes": 885,
+      "sha256": "fe0876fc61b6f7e4599cd441eebae51ee5899891831740c9712cdeae1cfba304",
       "protobuf_path": "protobuf/2026-section-7520-rates.pb",
-      "protobuf_bytes": 131,
-      "protobuf_sha256": "b14f8c6087c36f62677fdf1f96e0c99e11a36328ae554fba678409a4f1d3a360",
+      "protobuf_bytes": 148,
+      "protobuf_sha256": "bc237ed28cfb67e9bd1531ef94ede26c0887b2bd205c210d13d129566023bc36",
       "year": "2026",
-      "record_count": 6,
+      "record_count": 7,
       "first_effective_month": "2026-01",
-      "last_effective_month": "2026-06"
+      "last_effective_month": "2026-07"
     }
   ],
-  "first_effective_month": "1997-01",
-  "last_effective_month": "2026-06"
+  "first_effective_month": "1996-01",
+  "last_effective_month": "2026-07"
 }

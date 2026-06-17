@@ -14,6 +14,7 @@ from typing import Any
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PROTO_ROOT = REPO_ROOT / "proto"
 PROTO_PACKAGE_ROOT = PROTO_ROOT / "rates" / "v1"
+SOURCE_ARCHIVE_ROOT = REPO_ROOT / "sources"
 FORBIDDEN_PATHS = (
     PROTO_ROOT / "v1",
     PROTO_ROOT / "vanderbr",
@@ -42,6 +43,20 @@ def iter_repo_paths() -> list[Path]:
 def read_json(path: Path) -> Any:
     with path.open("r", encoding="utf-8") as handle:
         return json.load(handle)
+
+
+def is_under_path(path: Path, parent: Path) -> bool:
+    try:
+        path.resolve().relative_to(parent.resolve())
+    except ValueError:
+        return False
+    return True
+
+
+def manifest_requires_proto(manifest_path: Path) -> bool:
+    # Source archive manifests identify and verify documentary source files.
+    # They are intentionally outside the published protobuf data contract.
+    return not is_under_path(manifest_path, SOURCE_ARCHIVE_ROOT)
 
 
 def check_local_metadata(paths: list[Path], failures: list[str]) -> None:
@@ -122,16 +137,17 @@ def check_manifest_references(paths: list[Path], failures: list[str]) -> None:
             failures.append(f"manifest is not an object: {manifest_path.relative_to(REPO_ROOT)}")
             continue
 
-        proto = manifest.get("proto")
-        if not isinstance(proto, dict):
-            failures.append(f"manifest missing proto object: {manifest_path.relative_to(REPO_ROOT)}")
-        else:
-            proto_file = proto.get("file")
-            proto_message = proto.get("message")
-            if not isinstance(proto_file, str) or not (REPO_ROOT / proto_file).is_file():
-                failures.append(f"manifest proto file missing: {manifest_path.relative_to(REPO_ROOT)}")
-            if not isinstance(proto_message, str) or not proto_message.startswith("rates.v1."):
-                failures.append(f"manifest proto message mismatch: {manifest_path.relative_to(REPO_ROOT)}")
+        if manifest_requires_proto(manifest_path):
+            proto = manifest.get("proto")
+            if not isinstance(proto, dict):
+                failures.append(f"manifest missing proto object: {manifest_path.relative_to(REPO_ROOT)}")
+            else:
+                proto_file = proto.get("file")
+                proto_message = proto.get("message")
+                if not isinstance(proto_file, str) or not (REPO_ROOT / proto_file).is_file():
+                    failures.append(f"manifest proto file missing: {manifest_path.relative_to(REPO_ROOT)}")
+                if not isinstance(proto_message, str) or not proto_message.startswith("rates.v1."):
+                    failures.append(f"manifest proto message mismatch: {manifest_path.relative_to(REPO_ROOT)}")
 
         for entry in manifest_entries(manifest):
             protobuf_path = entry.get("protobuf_path")

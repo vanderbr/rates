@@ -1,0 +1,18 @@
+{
+  "schema_id": "rates.api_records.v1",
+  "schema_version": 1,
+  "dataset_id": "gst-exemption",
+  "dataset_path": "gst-exemption",
+  "record_key": "1990",
+  "canonical_record_paths": [
+    "gst-exemption/gst-exemption.json"
+  ],
+  "canonical_manifest_path": "gst-exemption/manifest.json",
+  "records": [
+    {
+      "period_start_date": "1990-01-01",
+      "period_end_date": "1990-12-31",
+      "exemption_amount_usd": 1000000
+    }
+  ]
+}

@@ -43,7 +43,7 @@ def parse_afr_record(text: str, source_url: str) -> AfrRateRecord:
         raise AfrUpdateError(AfrUpdateErrorCode.MISSING_FIELD)
 
     effective_month = find_effective_month(lines, revenue_ruling_match.group(1))
-    revenue_ruling = revenue_ruling_match.group(0)
+    revenue_ruling = format_revenue_ruling(revenue_ruling_match)
     table_1 = parse_table_1(lines)
     table_2 = parse_table_2(lines)
 
@@ -57,7 +57,12 @@ def parse_afr_record(text: str, source_url: str) -> AfrRateRecord:
 
 
 def is_afr_ruling_text(text: str) -> bool:
-    return "Applicable Federal Rates (AFR)" in text and "TABLE 1" in text
+    return "Applicable Federal Rates (AFR)" in text
+
+
+def format_revenue_ruling(match: re.Match[str]) -> str:
+    ruling_number = int(match.group(2))
+    return f"Rev. Rul. {match.group(1)}-{ruling_number}"
 
 
 def format_effective_month(month_name: str, year: str) -> str:

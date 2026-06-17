@@ -1,0 +1,130 @@
+# SPDX-License-Identifier: Apache-2.0
+
+name: Archive IRS PDF Source
+
+on:
+  workflow_dispatch:
+    inputs:
+      year:
+        description: "Calendar year folder, such as 2026"
+        required: true
+      periods:
+        description: "Rate month or months, comma-separated, such as 2026-04"
+        required: true
+      rates:
+        description: "Rates covered by the PDF"
+        required: true
+        type: choice
+        options:
+          - afr
+          - section-7520-rates
+          - afr,section-7520-rates
+      url:
+        description: "IRS PDF URL"
+        required: true
+      title:
+        description: "IRS publication title"
+        required: true
+      retrieved_date:
+        description: "Retrieval date, YYYY-MM-DD. Leave blank for today."
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+  PYTHONUNBUFFERED: "1"
+
+defaults:
+  run:
+    shell: bash
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  archive:
+    name: Archive
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Require automation token
+        env:
+          RATES_AUTOMATION_TOKEN: ${{ secrets.RATES_AUTOMATION_TOKEN }}
+        run: |
+          if [ -z "${RATES_AUTOMATION_TOKEN}" ]; then
+            echo "RATES_AUTOMATION_TOKEN must be configured so archive PRs trigger validation safely."
+            exit 1
+          fi
+
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+
+      - name: Archive IRS PDF
+        env:
+          INPUT_YEAR: ${{ inputs.year }}
+          INPUT_PERIODS: ${{ inputs.periods }}
+          INPUT_RATES: ${{ inputs.rates }}
+          INPUT_URL: ${{ inputs.url }}
+          INPUT_TITLE: ${{ inputs.title }}
+          INPUT_RETRIEVED_DATE: ${{ inputs.retrieved_date }}
+        run: |
+          args=(
+            --year "${INPUT_YEAR}"
+            --url "${INPUT_URL}"
+            --title "${INPUT_TITLE}"
+          )
+
+          IFS=',' read -ra periods <<< "${INPUT_PERIODS}"
+          for period in "${periods[@]}"; do
+            args+=(--period "${period//[[:space:]]/}")
+          done
+
+          IFS=',' read -ra rates <<< "${INPUT_RATES}"
+          for rate in "${rates[@]}"; do
+            args+=(--subject "${rate//[[:space:]]/}")
+          done
+
+          if [ -n "${INPUT_RETRIEVED_DATE}" ]; then
+            args+=(--retrieved-date "${INPUT_RETRIEVED_DATE}")
+          fi
+
+          python scripts/archive_irs_pdf_source.py "${args[@]}"
+
+      - name: Test archive metadata
+        run: make test
+
+      - name: Open pull request for archived IRS PDF
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.RATES_AUTOMATION_TOKEN }}
+          branch: automation/archive-irs-pdf-source
+          delete-branch: true
+          title: "Archive IRS PDF source"
+          commit-message: "Archive IRS PDF source"
+          labels: "sources, automation"
+          body: |
+            ## Summary
+
+            Archives an IRS PDF source under `sources/irs-revenue-rulings/` and
+            updates the source index and manifest.
+
+            ## Source
+
+            - IRS URL: ${{ inputs.url }}
+            - Title: ${{ inputs.title }}
+            - Periods: ${{ inputs.periods }}
+            - Rates: ${{ inputs.rates }}
+
+            ## Tests
+
+            - [x] `make test`
