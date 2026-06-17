@@ -62,7 +62,7 @@ class IrsPdfSourceArchiveTests(unittest.TestCase):
             self.assertEqual("irs-revenue-rulings", manifest["archive_id"])
             self.assertEqual(1, len(manifest["entries"]))
             self.assertEqual(entry.sha256, manifest["entries"][0]["sha256"])
-            index = (archive_dir / "INDEX.md").read_text(encoding="utf-8")
+            index = (archive_dir / "README.md").read_text(encoding="utf-8")
             self.assertIn("2026-04", index)
             self.assertIn("AFR, Section 7520", index)
             self.assertIn(

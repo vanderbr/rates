@@ -24,7 +24,7 @@ from urllib.request import Request, urlopen
 
 DEFAULT_ARCHIVE_DIR = Path("sources/irs-revenue-rulings")
 MANIFEST_FILENAME = "manifest.json"
-INDEX_FILENAME = "INDEX.md"
+README_FILENAME = "README.md"
 MAX_PDF_BYTES = 20_000_000
 REQUEST_TIMEOUT_SECONDS = 30
 PDF_HEADER_SCAN_BYTES = 1024
@@ -322,7 +322,7 @@ def merge_entries(existing: list[ArchiveEntry], new_entry: ArchiveEntry) -> list
 
 
 def write_manifest(archive_dir: Path, entries: list[ArchiveEntry]) -> None:
-    index_path = archive_dir / INDEX_FILENAME
+    index_path = archive_dir / README_FILENAME
     preserved_rows = read_preserved_index_rows(index_path)
     payload = {
         "archive_id": "irs-revenue-rulings",
