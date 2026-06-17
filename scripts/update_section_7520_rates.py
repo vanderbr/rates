@@ -177,7 +177,7 @@ def fetch_source_html(source_url: str) -> str:
         headers={
             "User-Agent": (
                 "vanderbr-tax-section-7520-rate-updater/"
-                "1.0 (+https://github.com/vanderbr/tax)"
+                "1.0 (+https://github.com/vanderbr/rates)"
             )
         },
         method="GET",

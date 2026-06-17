@@ -5,10 +5,12 @@ name: Update Market Rates
 on:
   workflow_dispatch:
   schedule:
-    # SOFR is normally published at about 8:00 a.m. New York time and EFFR at
-    # about 9:00 a.m. GitHub cron is UTC-only; 14:35 UTC is 9:35 a.m. EST
-    # and 10:35 a.m. EDT, after both normal publications with update margin.
-    - cron: "35 14 * * 1-5"
+    # GitHub cron is UTC-only. Schedule both UTC offsets and gate below on
+    # America/New_York so the intended times survive daylight saving changes.
+    - cron: "30 13 * * 1-5"
+    - cron: "30 14 * * 1-5"
+    - cron: "0 0 * * 2-6"
+    - cron: "0 1 * * 2-6"
 
 permissions:
   contents: write
@@ -34,7 +36,34 @@ jobs:
     timeout-minutes: 15
 
     steps:
+      - name: Check schedule window
+        id: schedule_window
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          python - <<'PY'
+          import os
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+
+          should_run = True
+          reason = "manual dispatch"
+          if os.environ["EVENT_NAME"] == "schedule":
+              now = datetime.now(ZoneInfo("America/New_York"))
+              is_weekday = now.weekday() < 5
+              is_morning = now.hour == 9
+              is_evening = now.hour == 20
+              should_run = is_weekday and (is_morning or is_evening)
+              reason = now.strftime("%Y-%m-%d %H:%M %Z")
+
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
+              output.write(f"should_run={str(should_run).lower()}\n")
+              output.write(f"reason={reason}\n")
+          print(f"should_run={should_run} ({reason})")
+          PY
+
       - name: Require automation token
+        if: ${{ steps.schedule_window.outputs.should_run == 'true' }}
         env:
           RATES_AUTOMATION_TOKEN: ${{ secrets.RATES_AUTOMATION_TOKEN }}
         run: |
@@ -44,86 +73,76 @@ jobs:
           fi
 
       - name: Checkout
+        if: ${{ steps.schedule_window.outputs.should_run == 'true' }}
         uses: actions/checkout@v6
 
       - name: Set up Python
+        if: ${{ steps.schedule_window.outputs.should_run == 'true' }}
         uses: actions/setup-python@v6
         with:
           python-version: "3.14"
 
       - name: Test market rate updater
+        if: ${{ steps.schedule_window.outputs.should_run == 'true' }}
         run: |
           python -m unittest scripts.tests.test_update_market_rates
           python -m unittest scripts.tests.test_repository_layout
 
       - name: Update market rate JSON
+        if: ${{ steps.schedule_window.outputs.should_run == 'true' }}
         run: python scripts/update_market_rates.py --write
 
       - name: Generate manifests, schemas, and protobuf artifacts
+        if: ${{ steps.schedule_window.outputs.should_run == 'true' }}
         run: python scripts/artifact_contract.py
 
       - name: Test generated market rate data
+        if: ${{ steps.schedule_window.outputs.should_run == 'true' }}
         run: |
           python -m unittest scripts.tests.test_update_market_rates
           python -m unittest scripts.tests.test_repository_layout
 
       - name: Open pull request for market rate updates
+        if: ${{ steps.schedule_window.outputs.should_run == 'true' }}
         id: create_pull_request
-        uses: peter-evans/create-pull-request@v8
-        with:
-          token: ${{ secrets.RATES_AUTOMATION_TOKEN }}
-          branch: automation/market-rate-updates
-          delete-branch: true
-          title: "Update market rates"
-          commit-message: "Update market rates"
-          labels: "data, automation"
-          body: |
-            ## Summary
+        env:
+          GH_TOKEN: ${{ secrets.RATES_AUTOMATION_TOKEN }}
+          BRANCH: automation/market-rate-updates
+          TITLE: Update market rates
+          COMMIT_MESSAGE: Update market rates
+          BODY: |
+            Updates market rate data, generated artifacts, and indexes.
 
-            Updates daily market rate source data:
+            Tests:
+            - `python -m unittest scripts.tests.test_update_market_rates`
+            - `python -m unittest scripts.tests.test_repository_layout`
+            - `python scripts/artifact_contract.py`
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "pull-request-number=" >> "${GITHUB_OUTPUT}"
+            echo "pull-request-url=" >> "${GITHUB_OUTPUT}"
+            exit 0
+          fi
 
-            - `treasury/treasury-yield-curve/manifest.json`
-            - `treasury/treasury-yield-curve/by-year/YYYY-treasury-yield-curve.json`
-            - `fed-funds/manifest.json`
-            - `fed-funds/by-year/YYYY-fed-funds.json`
-            - `sofr/manifest.json`
-            - `sofr/by-year/YYYY-sofr.json`
-            - `sofr/sofr-30d-average/manifest.json`
-            - `sofr/sofr-30d-average/by-year/YYYY-sofr-30d-average.json`
-            - `sofr/sofr-90d-average/manifest.json`
-            - `sofr/sofr-90d-average/by-year/YYYY-sofr-90d-average.json`
-            - `sofr/sofr-180d-average/manifest.json`
-            - `sofr/sofr-180d-average/by-year/YYYY-sofr-180d-average.json`
-            - `sofr/sofr-index/manifest.json`
-            - `sofr/sofr-index/by-year/YYYY-sofr-index.json`
-            - dataset `protobuf/*.pb` files
-            - `api/v1/index.json`
-            - `api/v1/datasets/*/latest.json`
-            - `api/v1/datasets/*/by-date/*.json`
-            - `api/v1/datasets/*/by-month/*.json`
-            - `api/v1/datasets/*/by-year/*.json`
-            - `index.json`
-            - `schemas/v1/*.schema.json`
+          git config user.name "rates automation"
+          git config user.email "actions@users.noreply.github.com"
+          git checkout -B "${BRANCH}"
+          git add -A
+          git commit -m "${COMMIT_MESSAGE}"
+          git push --force-with-lease origin "${BRANCH}"
 
-            ## Sources
+          pr_url="$(gh pr list --head "${BRANCH}" --state open --json url --jq '.[0].url // ""')"
+          if [ -n "${pr_url}" ]; then
+            gh pr edit "${pr_url}" --title "${TITLE}" --body "${BODY}"
+          else
+            pr_url="$(gh pr create --base main --head "${BRANCH}" --title "${TITLE}" --body "${BODY}")"
+          fi
 
-            - Cite: https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/{year}/all?field_tdr_date_value={year}&type=daily_treasury_yield_curve&page=&_format=csv
-            - Cite: https://markets.newyorkfed.org/api/rates/unsecured/effr/search.csv
-            - Cite: https://markets.newyorkfed.org/api/rates/all/search.csv
-            - Interpretation: This automation records source-published daily
-              percentage rates as integer basis points. Unpublished business
-              dates are omitted, not represented by placeholder records.
-              Fractional SOFR averages are stored as basis points scaled by
-              1000, and the SOFR Index is stored scaled by 100000000.
-
-            ## Tests
-
-            - [x] `python -m unittest scripts.tests.test_update_market_rates` before and after updating
-            - [x] `python -m unittest scripts.tests.test_repository_layout` before and after updating
-            - [x] `python scripts/artifact_contract.py`
+          echo "pull-request-url=${pr_url}" >> "${GITHUB_OUTPUT}"
+          echo "pull-request-number=${pr_url##*/}" >> "${GITHUB_OUTPUT}"
 
       - name: Enable auto-merge after validation
-        if: ${{ steps.create_pull_request.outputs.pull-request-number != '' }}
+        if: ${{ steps.schedule_window.outputs.should_run == 'true' && steps.create_pull_request.outputs.pull-request-number != '' }}
         env:
           GH_TOKEN: ${{ secrets.RATES_AUTOMATION_TOKEN }}
           PULL_REQUEST_URL: ${{ steps.create_pull_request.outputs.pull-request-url }}

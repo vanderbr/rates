@@ -1,6 +1,6 @@
-# IRS Revenue Ruling Source Index
+# IRS Revenue Ruling Index
 
-This table lists documents for checking AFR and Section 7520 history.
+AFR and Section 7520 revenue rulings, listed by rate month.
 
 | Rate month | Rates covered | Revenue ruling | Link |
 | --- | --- | --- | --- |

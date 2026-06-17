@@ -104,27 +104,37 @@ jobs:
         run: make test
 
       - name: Open pull request for archived IRS PDF
-        uses: peter-evans/create-pull-request@v8
-        with:
-          token: ${{ secrets.RATES_AUTOMATION_TOKEN }}
-          branch: automation/archive-irs-pdf-source
-          delete-branch: true
-          title: "Archive IRS PDF source"
-          commit-message: "Archive IRS PDF source"
-          labels: "sources, automation"
-          body: |
-            ## Summary
+        env:
+          GH_TOKEN: ${{ secrets.RATES_AUTOMATION_TOKEN }}
+          BRANCH: automation/archive-irs-pdf-source
+          TITLE: Archive IRS PDF source
+          COMMIT_MESSAGE: Archive IRS PDF source
+          BODY: |
+            Archives an IRS PDF under `sources/irs-revenue-rulings/`.
 
-            Archives an IRS PDF source under `sources/irs-revenue-rulings/` and
-            updates the source index and manifest.
+            IRS URL: ${{ inputs.url }}
+            Title: ${{ inputs.title }}
+            Periods: ${{ inputs.periods }}
+            Rates: ${{ inputs.rates }}
 
-            ## Source
+            Tests:
+            - `make test`
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No archive changes detected."
+            exit 0
+          fi
 
-            - IRS URL: ${{ inputs.url }}
-            - Title: ${{ inputs.title }}
-            - Periods: ${{ inputs.periods }}
-            - Rates: ${{ inputs.rates }}
+          git config user.name "rates automation"
+          git config user.email "actions@users.noreply.github.com"
+          git checkout -B "${BRANCH}"
+          git add -A
+          git commit -m "${COMMIT_MESSAGE}"
+          git push --force-with-lease origin "${BRANCH}"
 
-            ## Tests
-
-            - [x] `make test`
+          pr_url="$(gh pr list --head "${BRANCH}" --state open --json url --jq '.[0].url // ""')"
+          if [ -n "${pr_url}" ]; then
+            gh pr edit "${pr_url}" --title "${TITLE}" --body "${BODY}"
+          else
+            gh pr create --base main --head "${BRANCH}" --title "${TITLE}" --body "${BODY}"
+          fi

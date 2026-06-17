@@ -71,40 +71,40 @@ jobs:
 
       - name: Open pull request for IRS rate updates
         id: create_pull_request
-        uses: peter-evans/create-pull-request@v8
-        with:
-          token: ${{ secrets.RATES_AUTOMATION_TOKEN }}
-          branch: automation/irs-rate-updates
-          delete-branch: true
-          title: "Update IRS rates"
-          commit-message: "Update IRS rates"
-          labels: "data, automation"
-          body: |
-            ## Summary
+        env:
+          GH_TOKEN: ${{ secrets.RATES_AUTOMATION_TOKEN }}
+          BRANCH: automation/irs-rate-updates
+          TITLE: Update IRS rates
+          COMMIT_MESSAGE: Update IRS rates
+          BODY: |
+            Updates IRS monthly rate data, archived revenue rulings, generated artifacts, and indexes.
 
-            Updates IRS rate source data from current published IRS pages:
+            Tests:
+            - `make test`
+            - `python scripts/artifact_contract.py`
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "pull-request-number=" >> "${GITHUB_OUTPUT}"
+            echo "pull-request-url=" >> "${GITHUB_OUTPUT}"
+            exit 0
+          fi
 
-            - `7520/by-year/YYYY-section-7520-rates.json`
-            - `afr/manifest.json`
-            - `afr/by-year/YYYY-afr.json`
-            - `sources/irs-revenue-rulings/`
-            - dataset `protobuf/*.pb` files
-            - `index.json`
-            - `schemas/v1/*.schema.json`
+          git config user.name "rates automation"
+          git config user.email "actions@users.noreply.github.com"
+          git checkout -B "${BRANCH}"
+          git add -A
+          git commit -m "${COMMIT_MESSAGE}"
+          git push --force-with-lease origin "${BRANCH}"
 
-            ## Statutory / Tax Authority
+          pr_url="$(gh pr list --head "${BRANCH}" --state open --json url --jq '.[0].url // ""')"
+          if [ -n "${pr_url}" ]; then
+            gh pr edit "${pr_url}" --title "${TITLE}" --body "${BODY}"
+          else
+            pr_url="$(gh pr create --base main --head "${BRANCH}" --title "${TITLE}" --body "${BODY}")"
+          fi
 
-            - Cite: https://www.irs.gov/businesses/small-businesses-self-employed/section-7520-interest-rates
-            - Cite: https://www.irs.gov/applicable-federal-rates
-            - Interpretation: This automation records IRS-published monthly
-              rates as integer basis points, preserving chronological order.
-            - Alternative interpretations considered: None; this is source data
-              ingestion, not calculation logic.
-
-            ## Tests
-
-            - [x] `make test` before and after updating generated data
-            - [x] `python scripts/artifact_contract.py`
+          echo "pull-request-url=${pr_url}" >> "${GITHUB_OUTPUT}"
+          echo "pull-request-number=${pr_url##*/}" >> "${GITHUB_OUTPUT}"
 
       - name: Enable auto-merge after validation
         if: ${{ steps.create_pull_request.outputs.pull-request-number != '' }}

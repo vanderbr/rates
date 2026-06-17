@@ -1,5 +1,9 @@
 # IRS and Financial Rates
 
+[![Validate Data Contract](https://github.com/vanderbr/rates/actions/workflows/validate.yml/badge.svg)](https://github.com/vanderbr/rates/actions/workflows/validate.yml)
+[![Update Market Rates](https://github.com/vanderbr/rates/actions/workflows/update-market-rates.yml/badge.svg)](https://github.com/vanderbr/rates/actions/workflows/update-market-rates.yml)
+[![Update IRS Rates](https://github.com/vanderbr/rates/actions/workflows/update-irs-rates.yml/badge.svg)](https://github.com/vanderbr/rates/actions/workflows/update-irs-rates.yml)
+[![Update Annual IRS Rates](https://github.com/vanderbr/rates/actions/workflows/update-annual-irs-rates.yml/badge.svg)](https://github.com/vanderbr/rates/actions/workflows/update-annual-irs-rates.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](LICENSE)
 [![Data: JSON + Protobuf](https://img.shields.io/badge/Data-JSON%20%2B%20Protobuf-2f6f4e.svg)](#data-contract)
 

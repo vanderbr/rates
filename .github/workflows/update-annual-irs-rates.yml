@@ -86,54 +86,44 @@ jobs:
 
       - name: Open pull request for annual IRS rate updates
         id: create_pull_request
-        uses: peter-evans/create-pull-request@v8
-        with:
-          token: ${{ secrets.RATES_AUTOMATION_TOKEN }}
-          branch: automation/annual-irs-rate-updates
-          delete-branch: true
-          title: "Update annual IRS rates"
-          commit-message: "Update annual IRS rates"
-          labels: "data, automation"
-          body: |
-            ## Summary
+        env:
+          GH_TOKEN: ${{ secrets.RATES_AUTOMATION_TOKEN }}
+          BRANCH: automation/annual-irs-rate-updates
+          TITLE: Update annual IRS rates
+          COMMIT_MESSAGE: Update annual IRS rates
+          BODY: |
+            Updates annual IRS rate data, generated artifacts, and indexes.
 
-            Updates annual IRS inflation-adjusted source data from published
-            IRS revenue procedures:
+            Tests:
+            - `python -m unittest scripts.tests.test_update_annual_gift_exclusion`
+            - `python -m unittest scripts.tests.test_update_gst_exemption`
+            - `python -m unittest scripts.tests.test_update_noncitizen_spouse_gift_exclusion`
+            - `python -m unittest scripts.tests.test_update_unified_estate_gift_tax_exemption`
+            - `python -m unittest scripts.tests.test_repository_layout`
+            - `python scripts/artifact_contract.py`
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "pull-request-number=" >> "${GITHUB_OUTPUT}"
+            echo "pull-request-url=" >> "${GITHUB_OUTPUT}"
+            exit 0
+          fi
 
-            - `annual-gift-exclusion/annual-gift-exclusion.json`
-            - `gst-exemption/gst-exemption.json`
-            - `noncitizen-spouse-gift-exclusion/noncitizen-spouse-gift-exclusion.json`
-            - `estate-gift-tax-exemption/estate-gift-tax-exemption.json`
-            - dataset `protobuf/*.pb` files
-            - `index.json`
-            - `schemas/v1/*.schema.json`
+          git config user.name "rates automation"
+          git config user.email "actions@users.noreply.github.com"
+          git checkout -B "${BRANCH}"
+          git add -A
+          git commit -m "${COMMIT_MESSAGE}"
+          git push --force-with-lease origin "${BRANCH}"
 
-            ## Sources
+          pr_url="$(gh pr list --head "${BRANCH}" --state open --json url --jq '.[0].url // ""')"
+          if [ -n "${pr_url}" ]; then
+            gh pr edit "${pr_url}" --title "${TITLE}" --body "${BODY}"
+          else
+            pr_url="$(gh pr create --base main --head "${BRANCH}" --title "${TITLE}" --body "${BODY}")"
+          fi
 
-            - Cite: https://www.irs.gov/pub/irs-drop/rp-18-57.pdf
-            - Cite: https://www.irs.gov/pub/irs-drop/rp-19-44.pdf
-            - Cite: https://www.irs.gov/pub/irs-drop/rp-20-45.pdf
-            - Cite: https://www.irs.gov/pub/irs-drop/rp-21-45.pdf
-            - Cite: https://www.irs.gov/pub/irs-drop/rp-22-38.pdf
-            - Cite: https://www.irs.gov/pub/irs-drop/rp-23-34.pdf
-            - Cite: https://www.irs.gov/pub/irs-drop/rp-24-40.pdf
-            - Cite: https://www.irs.gov/pub/irs-drop/rp-25-32.pdf
-            - Interpretation: This automation records IRS-published annual
-              exclusion amounts as integer U.S. dollars, preserving
-              chronological order. Schedule-aware updaters defer outside the
-              November-through-January publication window or after the target
-              year has already been recorded.
-            - Alternative interpretations considered: None; this is source
-              data ingestion, not calculation logic.
-
-            ## Tests
-
-            - [x] `python -m unittest scripts.tests.test_update_annual_gift_exclusion` before and after updating
-            - [x] `python -m unittest scripts.tests.test_update_gst_exemption` before and after updating
-            - [x] `python -m unittest scripts.tests.test_update_noncitizen_spouse_gift_exclusion` before and after updating
-            - [x] `python -m unittest scripts.tests.test_update_unified_estate_gift_tax_exemption` before and after updating
-            - [x] `python -m unittest scripts.tests.test_repository_layout` before and after updating
-            - [x] `python scripts/artifact_contract.py`
+          echo "pull-request-url=${pr_url}" >> "${GITHUB_OUTPUT}"
+          echo "pull-request-number=${pr_url##*/}" >> "${GITHUB_OUTPUT}"
 
       - name: Enable auto-merge after validation
         if: ${{ steps.create_pull_request.outputs.pull-request-number != '' }}
