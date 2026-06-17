@@ -333,6 +333,9 @@ def render_index(entries: list[ArchiveEntry]) -> str:
         "each file supports. It is meant to make the source materials easy to find",
         "when checking AFR and Section 7520 history.",
         "",
+        "For older 1989-1995 revenue rulings that are not yet archived here as",
+        "monthly PDFs, see [Historical IRS Revenue Ruling Source Leads](HISTORICAL-SOURCE-LEADS.md).",
+        "",
         "| Rate month | Rates covered | IRS publication | Archived PDF | IRS URL | Retrieved |",
         "| --- | --- | --- | --- | --- | --- |",
     ]

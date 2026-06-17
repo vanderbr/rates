@@ -40,6 +40,18 @@ class HistoricalIrsSourceLeadReportTests(unittest.TestCase):
             report["leads"][-1]["govinfo"]["package_id"],
         )
         self.assertIn("GovInfo records are official", report["notes"][0])
+        self.assertEqual(3, len(report["comparison_sources"]))
+
+    def test_1989_records_tax_notes_archival_lead(self) -> None:
+        report = json.loads(self.reporter.report_json())
+        lead_1989 = next(lead for lead in report["leads"] if lead["year"] == 1989)
+
+        self.assertIn("tax_notes", lead_1989)
+        self.assertEqual(
+            "Tax Notes Archival Document for Rev. Rul. 89-111",
+            lead_1989["tax_notes"][0]["title"],
+        )
+        self.assertEqual(["1989-10"], lead_1989["tax_notes"][0]["periods"])
 
     def test_1993_records_archive_gap(self) -> None:
         report = json.loads(self.reporter.report_json())
@@ -62,6 +74,16 @@ class HistoricalIrsSourceLeadReportTests(unittest.TestCase):
                 "historical-irs-revenue-ruling-source-leads",
                 report["report_id"],
             )
+
+    def test_writes_markdown_report(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            output_path = Path(directory) / "leads.md"
+
+            self.reporter.write_markdown_report(output_path)
+
+            text = output_path.read_text(encoding="utf-8")
+            self.assertIn("Tax Notes Archival Document for Rev. Rul. 89-111", text)
+            self.assertIn("Comparison Sources", text)
 
 
 if __name__ == "__main__":

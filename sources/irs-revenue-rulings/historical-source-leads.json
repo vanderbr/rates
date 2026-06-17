@@ -4,8 +4,73 @@
   "scope": "Older AFR and Section 7520 source discovery for 1989-1995.",
   "notes": [
     "GovInfo records are official Treasury Department / IRS catalog records.",
+    "Tax Notes archival document links are retrieval leads for specific revenue rulings when the IRS PDF is not separately archived here.",
+    "Evans Estate Law Resources and Brentmark are comparison sources, not substitutes for the IRS-published ruling text.",
     "Do not backfill rate values from OCR or secondary tables without verifying the IRS-published ruling values.",
     "Some bound cumulative bulletin PDFs exceed GitHub's normal per-file size limit; prefer verified ruling-page extracts when accessible."
+  ],
+  "comparison_sources": [
+    {
+      "name": "Evans Estate Law Resources Section 7520 Rates",
+      "source_url": "https://resources.evans-legal.com/?p=215",
+      "subjects": [
+        "section-7520-rates"
+      ],
+      "coverage_note": "Comparison table includes 1989-forward Section 7520 rates and the May 1989 effective-date caveat."
+    },
+    {
+      "name": "Evans Estate Law Resources Applicable Federal Rates",
+      "subjects": [
+        "afr"
+      ],
+      "coverage_note": "Year-by-year comparison pages expose base short-, mid-, and long-term AFR compounding columns, but not every rate family stored in this repository's AFR schema.",
+      "year_urls": [
+        {
+          "year": 1989,
+          "source_url": "https://resources.evans-legal.com/?p=956"
+        },
+        {
+          "year": 1990,
+          "source_url": "https://resources.evans-legal.com/?p=975"
+        },
+        {
+          "year": 1991,
+          "source_url": "https://resources.evans-legal.com/?p=980"
+        },
+        {
+          "year": 1992,
+          "source_url": "https://resources.evans-legal.com/?p=992"
+        },
+        {
+          "year": 1993,
+          "source_url": "https://resources.evans-legal.com/?p=1009"
+        },
+        {
+          "year": 1994,
+          "source_url": "https://resources.evans-legal.com/?p=1020"
+        },
+        {
+          "year": 1995,
+          "source_url": "https://resources.evans-legal.com/?p=1032"
+        },
+        {
+          "year": 1996,
+          "source_url": "https://resources.evans-legal.com/?p=1043"
+        }
+      ]
+    },
+    {
+      "name": "Brentmark Museum & Archives Historic Section 7520 Rates",
+      "source_url": "https://www.brentmark.com/museum-and-archives/",
+      "subjects": [
+        "section-7520-rates"
+      ],
+      "coverage_note": "Comparison table includes historic Section 7520 rates back to 1989."
+    }
+  ],
+  "comparison_notes": [
+    "Evans and Brentmark describe pre-May 1989 Section 7520 treatment differently because Section 7520 became effective May 1, 1989; do not treat January-April 1989 as ordinary monthly Section 7520 observations without checking the governing notice/regulation.",
+    "Evans and Brentmark differ for December 1991 Section 7520: Evans shows 8.4%, while Brentmark shows 8.60%. Both are HTML tables, so this does not appear to be a repository OCR issue. Check the published ruling before backfilling that month."
   ],
   "leads": [
     {
@@ -30,7 +95,25 @@
         ],
         "index_identifier": "sim_united-states-internal-revenue-cumulative-bulletin_1989_index",
         "index_url": "https://archive.org/details/sim_united-states-internal-revenue-cumulative-bulletin_1989_index"
-      }
+      },
+      "tax_notes": [
+        {
+          "title": "Tax Notes Archival Document for Rev. Rul. 89-111",
+          "source_url": "https://www.taxnotes.com/research/federal/irs-guidance/revenue-rulings/service-releases-applicable-federal-rates-october/dgdc",
+          "periods": [
+            "1989-10"
+          ],
+          "subjects": [
+            "afr",
+            "section-7520-rates"
+          ],
+          "status": "archival_document_lead",
+          "notes": [
+            "User-supplied archival lead for the October 1989 AFR revenue ruling.",
+            "Tax Notes pages may require browser access; keep this as a retrieval lead unless the document text is captured separately."
+          ]
+        }
+      ]
     },
     {
       "year": 1990,
