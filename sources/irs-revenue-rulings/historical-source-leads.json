@@ -1,0 +1,181 @@
+{
+  "report_id": "historical-irs-revenue-ruling-source-leads",
+  "retrieved_date": "2026-06-17",
+  "scope": "Older AFR and Section 7520 source discovery for 1989-1995.",
+  "notes": [
+    "GovInfo records are official Treasury Department / IRS catalog records.",
+    "Do not backfill rate values from OCR or secondary tables without verifying the IRS-published ruling values.",
+    "Some bound cumulative bulletin PDFs exceed GitHub's normal per-file size limit; prefer verified ruling-page extracts when accessible."
+  ],
+  "leads": [
+    {
+      "year": 1989,
+      "subjects": [
+        "afr",
+        "section-7520-rates"
+      ],
+      "rate_coverage_note": "AFR rulings may cover the full calendar year; Section 7520 rates begin with May 1989 under the current dataset scope.",
+      "govinfo": {
+        "package_id": "GOVPUB-T22-aaf296b1f844da19743e7a36ca791ec6",
+        "detail_url": "https://www.govinfo.gov/app/details/GOVPUB-T22-aaf296b1f844da19743e7a36ca791ec6",
+        "metadata_url": "https://www.govinfo.gov/metadata/pkg/GOVPUB-T22-aaf296b1f844da19743e7a36ca791ec6/mods.xml",
+        "title": "Internal Revenue Cumulative Bulletin 1989",
+        "status": "official_catalog_record"
+      },
+      "internet_archive": {
+        "status": "discovery_lead_only",
+        "notes": [
+          "Index record discovered by Archive.org metadata search.",
+          "Bound-volume derivatives may be access-restricted."
+        ],
+        "index_identifier": "sim_united-states-internal-revenue-cumulative-bulletin_1989_index",
+        "index_url": "https://archive.org/details/sim_united-states-internal-revenue-cumulative-bulletin_1989_index"
+      }
+    },
+    {
+      "year": 1990,
+      "subjects": [
+        "afr",
+        "section-7520-rates"
+      ],
+      "rate_coverage_note": "AFR and Section 7520 rulings may cover the full calendar year.",
+      "govinfo": {
+        "package_id": "GOVPUB-T22-cd76c958c56200689d4a52922f58eb43",
+        "detail_url": "https://www.govinfo.gov/app/details/GOVPUB-T22-cd76c958c56200689d4a52922f58eb43",
+        "metadata_url": "https://www.govinfo.gov/metadata/pkg/GOVPUB-T22-cd76c958c56200689d4a52922f58eb43/mods.xml",
+        "title": "Internal Revenue Cumulative Bulletin 1990",
+        "status": "official_catalog_record"
+      },
+      "internet_archive": {
+        "status": "discovery_lead_only",
+        "notes": [
+          "Index record discovered by Archive.org metadata search.",
+          "Bound-volume derivatives may be access-restricted."
+        ],
+        "index_identifier": "sim_united-states-internal-revenue-cumulative-bulletin_1990_index",
+        "index_url": "https://archive.org/details/sim_united-states-internal-revenue-cumulative-bulletin_1990_index"
+      }
+    },
+    {
+      "year": 1991,
+      "subjects": [
+        "afr",
+        "section-7520-rates"
+      ],
+      "rate_coverage_note": "AFR and Section 7520 rulings may cover the full calendar year.",
+      "govinfo": {
+        "package_id": "GOVPUB-T22-230e9ab8cec1063f9dc7bb07bfd4740b",
+        "detail_url": "https://www.govinfo.gov/app/details/GOVPUB-T22-230e9ab8cec1063f9dc7bb07bfd4740b",
+        "metadata_url": "https://www.govinfo.gov/metadata/pkg/GOVPUB-T22-230e9ab8cec1063f9dc7bb07bfd4740b/mods.xml",
+        "title": "Internal Revenue Cumulative Bulletin 1991",
+        "status": "official_catalog_record"
+      },
+      "internet_archive": {
+        "status": "discovery_lead_only",
+        "notes": [
+          "Index record discovered by Archive.org metadata search.",
+          "Bound-volume derivatives may be access-restricted."
+        ],
+        "index_identifier": "sim_united-states-internal-revenue-cumulative-bulletin_1991_index",
+        "index_url": "https://archive.org/details/sim_united-states-internal-revenue-cumulative-bulletin_1991_index"
+      }
+    },
+    {
+      "year": 1992,
+      "subjects": [
+        "afr",
+        "section-7520-rates"
+      ],
+      "rate_coverage_note": "AFR and Section 7520 rulings may cover the full calendar year.",
+      "govinfo": {
+        "package_id": "GOVPUB-T22-ef1df1a16d70d7731bd1a17696f722e7",
+        "detail_url": "https://www.govinfo.gov/app/details/GOVPUB-T22-ef1df1a16d70d7731bd1a17696f722e7",
+        "metadata_url": "https://www.govinfo.gov/metadata/pkg/GOVPUB-T22-ef1df1a16d70d7731bd1a17696f722e7/mods.xml",
+        "title": "Internal Revenue Cumulative Bulletin 1992",
+        "status": "official_catalog_record"
+      },
+      "internet_archive": {
+        "status": "discovery_lead_only",
+        "notes": [
+          "Index record discovered by Archive.org metadata search.",
+          "Bound-volume derivatives may be access-restricted."
+        ],
+        "index_identifier": "sim_united-states-internal-revenue-cumulative-bulletin_1992_index",
+        "index_url": "https://archive.org/details/sim_united-states-internal-revenue-cumulative-bulletin_1992_index"
+      }
+    },
+    {
+      "year": 1993,
+      "subjects": [
+        "afr",
+        "section-7520-rates"
+      ],
+      "rate_coverage_note": "AFR and Section 7520 rulings may cover the full calendar year.",
+      "govinfo": {
+        "package_id": "GOVPUB-T22-ead415109da2009feda00f43f5903456",
+        "detail_url": "https://www.govinfo.gov/app/details/GOVPUB-T22-ead415109da2009feda00f43f5903456",
+        "metadata_url": "https://www.govinfo.gov/metadata/pkg/GOVPUB-T22-ead415109da2009feda00f43f5903456/mods.xml",
+        "title": "Internal Revenue Cumulative Bulletin 1993",
+        "status": "official_catalog_record"
+      },
+      "internet_archive": {
+        "status": "discovery_lead_only",
+        "notes": [
+          "No matching Archive.org index identifier was found by predictable ID or metadata search.",
+          "Use the official GovInfo record first for continued discovery."
+        ]
+      }
+    },
+    {
+      "year": 1994,
+      "subjects": [
+        "afr",
+        "section-7520-rates"
+      ],
+      "rate_coverage_note": "AFR and Section 7520 rulings may cover the full calendar year.",
+      "govinfo": {
+        "package_id": "GOVPUB-T22-fa6021c1f704388d418436ab95604a13",
+        "detail_url": "https://www.govinfo.gov/app/details/GOVPUB-T22-fa6021c1f704388d418436ab95604a13",
+        "metadata_url": "https://www.govinfo.gov/metadata/pkg/GOVPUB-T22-fa6021c1f704388d418436ab95604a13/mods.xml",
+        "title": "Internal Revenue Cumulative Bulletin 1994",
+        "status": "official_catalog_record"
+      },
+      "internet_archive": {
+        "status": "discovery_lead_only",
+        "notes": [
+          "Index and bound-volume records were discovered.",
+          "Observed July-December 1994 text PDF derivative is about 400 MB, above GitHub's normal file limit.",
+          "Derivative downloads may be access-restricted."
+        ],
+        "index_identifier": "sim_united-states-internal-revenue-cumulative-bulletin_1994_index",
+        "index_url": "https://archive.org/details/sim_united-states-internal-revenue-cumulative-bulletin_1994_index"
+      }
+    },
+    {
+      "year": 1995,
+      "subjects": [
+        "afr",
+        "section-7520-rates"
+      ],
+      "rate_coverage_note": "AFR and Section 7520 rulings may cover the full calendar year.",
+      "govinfo": {
+        "package_id": "GOVPUB-T22-c1f3e2322722ef17ff04ef9a47a3b6da",
+        "detail_url": "https://www.govinfo.gov/app/details/GOVPUB-T22-c1f3e2322722ef17ff04ef9a47a3b6da",
+        "metadata_url": "https://www.govinfo.gov/metadata/pkg/GOVPUB-T22-c1f3e2322722ef17ff04ef9a47a3b6da/mods.xml",
+        "title": "Internal Revenue Cumulative Bulletin 1995",
+        "status": "official_catalog_record"
+      },
+      "internet_archive": {
+        "status": "discovery_lead_only",
+        "notes": [
+          "Index and bound-volume records were discovered.",
+          "Observed January-June 1995 text PDF derivative is about 430 MB.",
+          "Observed July-December 1995 text PDF derivative is about 227 MB.",
+          "Derivative downloads may be access-restricted."
+        ],
+        "index_identifier": "sim_united-states-internal-revenue-cumulative-bulletin_1995_index",
+        "index_url": "https://archive.org/details/sim_united-states-internal-revenue-cumulative-bulletin_1995_index"
+      }
+    }
+  ]
+}

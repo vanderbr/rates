@@ -36,6 +36,16 @@ and SHA-256 checksums for anyone who wants to verify the archived files.
 This archive is for original IRS PDFs from `www.irs.gov`, especially files under
 `/pub/irs-drop/` and `/pub/irs-irbs/`.
 
+Older AFR and Section 7520 rulings may appear in bound Internal Revenue
+Cumulative Bulletins instead of stand-alone monthly PDFs. Known 1989-1995
+source leads are tracked in `historical-source-leads.json`. Those leads point
+to official GovInfo Treasury/IRS catalog records and note Internet Archive scan
+records where found. The large bound-volume PDFs are not copied here unless
+they can be retrieved, verified, and stored in a form that fits normal GitHub
+repository limits. For those years, use the leads as the starting point for
+finding exact IRS-published ruling pages; do not backfill values from OCR or
+secondary summaries without checking the published ruling.
+
 Use:
 
 ```sh

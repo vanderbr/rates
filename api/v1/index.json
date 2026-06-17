@@ -33,7 +33,7 @@
       "schema_id": "rates.applicable_federal_rates.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 343,
+      "record_count": 355,
       "canonical_manifest_path": "afr/manifest.json",
       "latest": {
         "path": "datasets/applicable-federal-rates/latest.json",
@@ -45,9 +45,9 @@
       "lookup": {
         "path_template": "datasets/applicable-federal-rates/by-month/{month}.json",
         "key_field": "effective_month",
-        "record_count": 343,
-        "file_count": 343,
-        "first_key": "1998-01",
+        "record_count": 355,
+        "file_count": 355,
+        "first_key": "1997-01",
         "last_key": "2026-07"
       }
     },

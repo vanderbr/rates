@@ -57,7 +57,7 @@ def parse_afr_record(text: str, source_url: str) -> AfrRateRecord:
 
 
 def is_afr_ruling_text(text: str) -> bool:
-    return "Applicable Federal Rates (AFR)" in text and "TABLE 1" in text
+    return "Applicable Federal Rates (AFR)" in text
 
 
 def format_revenue_ruling(match: re.Match[str]) -> str:

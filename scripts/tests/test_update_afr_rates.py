@@ -30,6 +30,7 @@ NO_TABLE_1_MARKER_FIXTURE_PATH = (
     REPO_ROOT / "scripts" / "fixtures" / "afr_2001_05_no_table_1_marker.txt"
 )
 SOURCE_URL = "https://www.irs.gov/pub/irs-drop/rr-26-11.pdf"
+IRB_SOURCE_URL = "https://www.irs.gov/pub/irs-irbs/irb97-02.pdf"
 LEGACY_SOURCE_URL = "https://www.irs.gov/pub/irs-drop/rr-22-18.pdf"
 LEGACY_TITLE_SOURCE_URL = "https://www.irs.gov/pub/irs-drop/rr-04-84.pdf"
 BOXED_TABLE_SOURCE_URL = "https://www.irs.gov/pub/irs-drop/rr-01-58.pdf"
@@ -91,6 +92,12 @@ class AfrRateUpdaterTests(unittest.TestCase):
             368,
             record.adjusted_applicable_federal_rates["long_term"]["annual"],
         )
+
+    def test_accepts_historical_internal_revenue_bulletin_pdf_url(self) -> None:
+        record = self.updater.parse_afr_record(self.fixture_text, IRB_SOURCE_URL)
+
+        self.assertEqual("2026-06", record.effective_month)
+        self.assertEqual(IRB_SOURCE_URL, record.source_url)
 
     def test_parses_legacy_two_digit_revenue_ruling_with_typographic_dash(
         self,
@@ -176,6 +183,9 @@ class AfrRateUpdaterTests(unittest.TestCase):
             489,
             record.adjusted_applicable_federal_rates["long_term"]["annual"],
         )
+
+    def test_identifies_legacy_afr_ruling_without_literal_table_1_marker(self) -> None:
+        self.assertTrue(self.updater.is_afr_ruling_text(self.no_table_1_marker_text))
 
     def test_effective_month_comes_from_table_1_not_prior_references(self) -> None:
         text = (

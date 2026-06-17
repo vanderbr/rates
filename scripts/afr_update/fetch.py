@@ -68,8 +68,12 @@ def validate_pdf_url(source_url: str) -> None:
     if (
         parsed.scheme != "https"
         or parsed.netloc != "www.irs.gov"
-        or not parsed.path.startswith("/pub/irs-drop/")
         or not parsed.path.endswith(".pdf")
+    ):
+        raise AfrUpdateError(AfrUpdateErrorCode.BAD_PDF_URL)
+    if not (
+        parsed.path.startswith("/pub/irs-drop/")
+        or parsed.path.startswith("/pub/irs-irbs/")
     ):
         raise AfrUpdateError(AfrUpdateErrorCode.BAD_PDF_URL)
 

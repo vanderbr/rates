@@ -29,7 +29,6 @@ MAX_PDF_BYTES = 20_000_000
 REQUEST_TIMEOUT_SECONDS = 30
 PDF_HEADER_SCAN_BYTES = 1024
 YEAR_PATTERN = re.compile(r"^[0-9]{4}$")
-SAFE_FILENAME_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*[.]pdf$")
 SLUG_WORD_PATTERN = re.compile(r"[^a-z0-9]+")
 
 
@@ -96,7 +95,7 @@ def validate_pdf_url(source_url: str) -> None:
 def filename_from_url(source_url: str) -> str:
     parsed = urlparse(source_url)
     filename = unquote(Path(parsed.path).name)
-    if SAFE_FILENAME_PATTERN.match(filename) is None:
+    if not filename.lower().endswith(".pdf") or "/" in filename or "\x00" in filename:
         raise ArchiveError(ArchiveErrorCode.BAD_PDF_URL)
     return filename
 

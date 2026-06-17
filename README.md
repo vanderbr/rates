@@ -92,6 +92,8 @@ schema.
 IRS revenue ruling PDFs retained for source review live under
 [`sources/irs-revenue-rulings/`](sources/irs-revenue-rulings/), with a
 reader-friendly source index and a structured retrieval manifest.
+Known source leads for older bound Internal Revenue Cumulative Bulletins live in
+`sources/irs-revenue-rulings/historical-source-leads.json`.
 
 ## Data Contract
 

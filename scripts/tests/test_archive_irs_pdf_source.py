@@ -15,6 +15,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 SCRIPT_PATH = REPO_ROOT / "scripts" / "archive_irs_pdf_source.py"
 SOURCE_URL = "https://www.irs.gov/pub/irs-drop/rr-26-07.pdf"
 IRB_URL = "https://www.irs.gov/pub/irs-irbs/irb96-02.pdf"
+ENCODED_SPACE_URL = "https://www.irs.gov/pub/irs-drop/rr%20-13-18.pdf"
 PDF_BYTES = b"%PDF-1.7\nsource bytes\n%%EOF\n"
 
 
@@ -108,6 +109,27 @@ class IrsPdfSourceArchiveTests(unittest.TestCase):
             self.assertEqual(
                 "by-year/1996/"
                 "1996-01_7520_internal-revenue-bulletin-1996-2_irb96-02.pdf",
+                entry.path,
+            )
+
+    def test_accepts_irs_pdf_url_with_encoded_space(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            archive_dir = Path(directory) / "sources" / "irs-revenue-rulings"
+
+            entry = self.archiver.archive_pdf(
+                archive_dir=archive_dir,
+                year="2013",
+                periods=("2013-10",),
+                subjects=("afr", "section-7520-rates"),
+                source_url=ENCODED_SPACE_URL,
+                title="Rev. Rul. 2013-18",
+                retrieved_date="2026-06-17",
+                body=PDF_BYTES,
+            )
+
+            self.assertEqual(
+                "by-year/2013/"
+                "2013-10_afr-7520_rev-rul-2013-18_rr-13-18.pdf",
                 entry.path,
             )
 

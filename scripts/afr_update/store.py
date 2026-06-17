@@ -12,7 +12,10 @@ from datetime import date
 from pathlib import Path
 from typing import Any
 
-import archive_irs_pdf_source as irs_archive
+try:
+    import archive_irs_pdf_source as irs_archive
+except ModuleNotFoundError:
+    from scripts import archive_irs_pdf_source as irs_archive
 
 from .constants import COMPOUNDING_KEYS, REVENUE_RULING_PATTERN
 from .errors import AfrUpdateError, AfrUpdateErrorCode
