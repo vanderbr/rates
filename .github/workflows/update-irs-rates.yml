@@ -106,9 +106,9 @@ jobs:
           echo "pull-request-url=${pr_url}" >> "${GITHUB_OUTPUT}"
           echo "pull-request-number=${pr_url##*/}" >> "${GITHUB_OUTPUT}"
 
-      - name: Enable auto-merge after validation
+      - name: Merge validated update pull request
         if: ${{ steps.create_pull_request.outputs.pull-request-number != '' }}
         env:
           GH_TOKEN: ${{ secrets.RATES_AUTOMATION_TOKEN }}
           PULL_REQUEST_URL: ${{ steps.create_pull_request.outputs.pull-request-url }}
-        run: gh pr merge --auto --squash --delete-branch "${PULL_REQUEST_URL}"
+        run: gh pr merge --squash --delete-branch "${PULL_REQUEST_URL}"
