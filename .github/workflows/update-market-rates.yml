@@ -40,6 +40,7 @@ jobs:
         id: schedule_window
         env:
           EVENT_NAME: ${{ github.event_name }}
+          EVENT_SCHEDULE: ${{ github.event.schedule }}
         run: |
           python - <<'PY'
           import os
@@ -50,11 +51,18 @@ jobs:
           reason = "manual dispatch"
           if os.environ["EVENT_NAME"] == "schedule":
               now = datetime.now(ZoneInfo("America/New_York"))
+              schedule = os.environ["EVENT_SCHEDULE"]
               is_weekday = now.weekday() < 5
-              is_morning = now.hour == 9
-              is_evening = now.hour == 20
-              should_run = is_weekday and (is_morning or is_evening)
-              reason = now.strftime("%Y-%m-%d %H:%M %Z")
+              is_daylight_time = now.dst() is not None and now.dst().total_seconds() != 0
+              active_schedules = {
+                  "30 13 * * 1-5",
+                  "0 0 * * 2-6",
+              } if is_daylight_time else {
+                  "30 14 * * 1-5",
+                  "0 1 * * 2-6",
+              }
+              should_run = is_weekday and schedule in active_schedules
+              reason = f"{now.strftime('%Y-%m-%d %H:%M %Z')} schedule={schedule}"
 
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
               output.write(f"should_run={str(should_run).lower()}\n")
