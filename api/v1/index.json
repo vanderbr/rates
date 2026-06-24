@@ -177,22 +177,22 @@
       "schema_id": "rates.federal_funds.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 6525,
+      "record_count": 6526,
       "canonical_manifest_path": "fed-funds/manifest.json",
       "latest": {
         "path": "datasets/federal-funds/latest.json",
         "bytes": 356,
-        "sha256": "4d5f17ec379cbde46e187bdb5fe5eaef91785b298da0a0450705ed17bbe436dc",
-        "record_key": "2026-06-22",
+        "sha256": "54b8b107a3579e2c03a650ffe67bb01d8b8e1bbcb1914f8b04d59ef383d12d85",
+        "record_key": "2026-06-23",
         "canonical_record_path": "fed-funds/by-year/2026-fed-funds.json"
       },
       "lookup": {
         "path_template": "datasets/federal-funds/by-date/{date}.json",
         "key_field": "date",
-        "record_count": 6525,
-        "file_count": 6525,
+        "record_count": 6526,
+        "file_count": 6526,
         "first_key": "2000-07-03",
-        "last_key": "2026-06-22"
+        "last_key": "2026-06-23"
       }
     },
     {
