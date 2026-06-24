@@ -33,16 +33,17 @@ files.
 
 ```sh
 BASE="https://raw.githubusercontent.com/vanderbr/rates/main"
+CACHE_BUST="$(date +%s)"
 
 # Discover datasets and latest generated API paths.
 curl -fsSL "$BASE/api/v1/index.json"
 
-# Latest generated records.
-curl -fsSL "$BASE/api/v1/datasets/sofr/latest.json"
-curl -fsSL "$BASE/api/v1/datasets/section-7520-rates/latest.json"
-curl -fsSL "$BASE/api/v1/datasets/applicable-federal-rates/latest.json"
-curl -fsSL "$BASE/api/v1/datasets/federal-funds/latest.json"
-curl -fsSL "$BASE/api/v1/datasets/treasury-yield-curve/latest.json"
+# Latest generated records. The query string avoids short GitHub raw-cache lag.
+curl -fsSL "$BASE/api/v1/datasets/sofr/latest.json?cachebust=$CACHE_BUST"
+curl -fsSL "$BASE/api/v1/datasets/section-7520-rates/latest.json?cachebust=$CACHE_BUST"
+curl -fsSL "$BASE/api/v1/datasets/applicable-federal-rates/latest.json?cachebust=$CACHE_BUST"
+curl -fsSL "$BASE/api/v1/datasets/federal-funds/latest.json?cachebust=$CACHE_BUST"
+curl -fsSL "$BASE/api/v1/datasets/treasury-yield-curve/latest.json?cachebust=$CACHE_BUST"
 
 # Look up IRS monthly records by YYYY-MM.
 curl -fsSL "$BASE/api/v1/datasets/section-7520-rates/by-month/2026-07.json"

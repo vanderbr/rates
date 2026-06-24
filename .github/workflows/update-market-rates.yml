@@ -7,7 +7,9 @@ on:
   schedule:
     # GitHub cron is UTC-only. Schedule both UTC offsets and gate below on
     # America/New_York so the intended times survive daylight saving changes.
+    - cron: "45 12 * * 1-5"
     - cron: "30 13 * * 1-5"
+    - cron: "45 13 * * 1-5"
     - cron: "30 14 * * 1-5"
     - cron: "0 0 * * 2-6"
     - cron: "0 1 * * 2-6"
@@ -55,9 +57,11 @@ jobs:
               is_weekday = now.weekday() < 5
               is_daylight_time = now.dst() is not None and now.dst().total_seconds() != 0
               active_schedules = {
+                  "45 12 * * 1-5",
                   "30 13 * * 1-5",
                   "0 0 * * 2-6",
               } if is_daylight_time else {
+                  "45 13 * * 1-5",
                   "30 14 * * 1-5",
                   "0 1 * * 2-6",
               }
