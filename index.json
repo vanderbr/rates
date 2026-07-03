@@ -88,10 +88,10 @@
       "schema_id": "rates.federal_funds.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 6532,
+      "record_count": 6533,
       "manifest_path": "fed-funds/manifest.json",
       "manifest_bytes": 12629,
-      "manifest_sha256": "cc389c20fd2d597613b3bd9344019424e9e7512690c87b76b0a66190817562b0"
+      "manifest_sha256": "525eccb2580dfa98381ce66c83787fe4d74f893781116271e66e53113eabee17"
     },
     {
       "dataset_path": "sofr",
