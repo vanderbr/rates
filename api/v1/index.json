@@ -153,22 +153,22 @@
       "schema_id": "rates.treasury_yield_curve.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 9134,
+      "record_count": 9135,
       "canonical_manifest_path": "treasury/treasury-yield-curve/manifest.json",
       "latest": {
         "path": "datasets/treasury-yield-curve/latest.json",
         "bytes": 597,
-        "sha256": "015a6d4f045df06b24ccd4ed519d0bda58e64eed6d834e4ed9e785ccef85e0d7",
-        "record_key": "2026-07-07",
+        "sha256": "eed061f62118ee8d216da65b3dd21ec684b192a09d3d0b5a53e89ec4e83a8cfd",
+        "record_key": "2026-07-08",
         "canonical_record_path": "treasury/treasury-yield-curve/by-year/2026-treasury-yield-curve.json"
       },
       "lookup": {
         "path_template": "datasets/treasury-yield-curve/by-date/{date}.json",
         "key_field": "date",
-        "record_count": 9134,
-        "file_count": 9134,
+        "record_count": 9135,
+        "file_count": 9135,
         "first_key": "1990-01-02",
-        "last_key": "2026-07-07"
+        "last_key": "2026-07-08"
       }
     },
     {
