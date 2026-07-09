@@ -88,10 +88,10 @@
       "schema_id": "rates.federal_funds.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 6536,
+      "record_count": 6537,
       "manifest_path": "fed-funds/manifest.json",
       "manifest_bytes": 12629,
-      "manifest_sha256": "dc3880bcd3c54891fe1659c5eba9a53b5a872d2ea2c57e34073d1d0d8866beef"
+      "manifest_sha256": "e5106bf6c41db612314cec4954791804caa7b13d1a839eaa23b8aa03fe09f78f"
     },
     {
       "dataset_path": "sofr",
@@ -99,10 +99,10 @@
       "schema_id": "rates.sofr.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 2063,
+      "record_count": 2064,
       "manifest_path": "sofr/manifest.json",
       "manifest_bytes": 4312,
-      "manifest_sha256": "aafaff863504fe4c534863f4060e04aa7024a037731e22653834ab20967d6899"
+      "manifest_sha256": "208da5746a3a8fb2d7937616edd2b8391f825dfef8f2c75c8c4da45e7062853e"
     },
     {
       "dataset_path": "sofr/sofr-30d-average",
@@ -110,10 +110,10 @@
       "schema_id": "rates.sofr_30d_average.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 1586,
+      "record_count": 1587,
       "manifest_path": "sofr/sofr-30d-average/manifest.json",
       "manifest_bytes": 3629,
-      "manifest_sha256": "20d0f6d6dec5ad2b600c2cfb8a8a2496646ee6053d3a65023581454fe88214b2"
+      "manifest_sha256": "788049a6f7388667d6f9b833c5155b8d5d254eb312776cca5512d22d49485e69"
     },
     {
       "dataset_path": "sofr/sofr-90d-average",
@@ -121,10 +121,10 @@
       "schema_id": "rates.sofr_90d_average.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 1586,
+      "record_count": 1587,
       "manifest_path": "sofr/sofr-90d-average/manifest.json",
       "manifest_bytes": 3629,
-      "manifest_sha256": "b4bba816195f7ab5ef0c5dc49afdd2fc9729a217e45e2e5cf2af354ab6bf6746"
+      "manifest_sha256": "164e812a918b908bf044a6c5ffe7dff01b0da0c9fd67723dad9191b7bec1a1e3"
     },
     {
       "dataset_path": "sofr/sofr-180d-average",
@@ -132,10 +132,10 @@
       "schema_id": "rates.sofr_180d_average.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 1586,
+      "record_count": 1587,
       "manifest_path": "sofr/sofr-180d-average/manifest.json",
       "manifest_bytes": 3645,
-      "manifest_sha256": "db24801e3b328668085f0267c12f484adbd6799a20725086a25327c8b0174cfd"
+      "manifest_sha256": "7d5306361e742e1a437226c3c34f6b19b2c2dad374f8c790a67f90ee0613cd4b"
     },
     {
       "dataset_path": "sofr/sofr-index",
@@ -143,10 +143,10 @@
       "schema_id": "rates.sofr_index.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 1586,
+      "record_count": 1587,
       "manifest_path": "sofr/sofr-index/manifest.json",
       "manifest_bytes": 3529,
-      "manifest_sha256": "fbc31001dc99845126c3bba8475b2a01a46e1710dd7c28f8699b4b37a36209d2"
+      "manifest_sha256": "2774163aea3cec22fee7be9b8e75f902e151686f1db024fb4284df6dc76b346c"
     },
     {
       "dataset_path": "actuarial/mortality-table-2000cm",
