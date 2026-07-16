@@ -22,10 +22,10 @@
       "schema_id": "rates.applicable_federal_rates.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 355,
+      "record_count": 356,
       "manifest_path": "afr/manifest.json",
       "manifest_bytes": 14139,
-      "manifest_sha256": "a269580c56384f35f78ca1a686dad7c5885e3b2d45d796f8e1dde6203c1cefbc"
+      "manifest_sha256": "b34d244eda9c4db047dd72979a8cd5add338cf642c4a60410ec066822e6750b8"
     },
     {
       "dataset_path": "annual-gift-exclusion",
