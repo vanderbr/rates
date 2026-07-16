@@ -3,7 +3,7 @@
   "schema_id": "rates.applicable_federal_rates.v1",
   "schema_version": 1,
   "record_storage": "by_year",
-  "record_count": 355,
+  "record_count": 356,
   "proto": {
     "file": "proto/rates/v1/applicable_federal_rates.proto",
     "message": "rates.v1.ApplicableFederalRatesFile"
@@ -359,17 +359,17 @@
     },
     {
       "path": "by-year/2026-afr.json",
-      "bytes": 17776,
-      "sha256": "62909fbf46622bff627d2c2260b23a1ac87ed5e91c20d1d1e21f67019aa4b944",
+      "bytes": 20315,
+      "sha256": "3373ddcdf16b37fbe981ee7817d19e32484ca2a23114ddb2b582fe15e0d30c27",
       "protobuf_path": "protobuf/2026-afr.pb",
-      "protobuf_bytes": 1841,
-      "protobuf_sha256": "5b9e71dd8aa5047389c377a40bed29c66085ee56e8f40757280b5c9045f0a3bb",
+      "protobuf_bytes": 2099,
+      "protobuf_sha256": "a8ddfd0dd6949bf3be70c4be6743e287fb04452d6f4879fdc9ee41aff88de0ca",
       "year": "2026",
-      "record_count": 7,
+      "record_count": 8,
       "first_effective_month": "2026-01",
-      "last_effective_month": "2026-07"
+      "last_effective_month": "2026-08"
     }
   ],
   "first_effective_month": "1997-01",
-  "last_effective_month": "2026-07"
+  "last_effective_month": "2026-08"
 }

@@ -4,6 +4,7 @@ AFR and Section 7520 revenue rulings, listed by rate month.
 
 | Rate month | Rates covered | Revenue ruling | Link |
 | --- | --- | --- | --- |
+| 2026-08 | AFR, Section 7520 | Rev. Rul. 2026-13 | [PDF](by-year/2026/2026-08_afr-7520_rev-rul-2026-13_rr-26-13.pdf) |
 | 2026-07 | AFR, Section 7520 | Rev. Rul. 2026-12 | [PDF](by-year/2026/2026-07_afr-7520_rev-rul-2026-12_rr-26-12.pdf) |
 | 2026-06 | AFR, Section 7520 | Rev. Rul. 2026-11 | [PDF](by-year/2026/2026-06_afr-7520_rev-rul-2026-11_rr-26-11.pdf) |
 | 2026-05 | AFR, Section 7520 | Rev. Rul. 2026-9 | [PDF](by-year/2026/2026-05_afr-7520_rev-rul-2026-9_rr-26-09.pdf) |
