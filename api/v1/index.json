@@ -9,22 +9,22 @@
       "schema_id": "rates.section_7520_rates.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 367,
+      "record_count": 368,
       "canonical_manifest_path": "7520/manifest.json",
       "latest": {
         "path": "datasets/section-7520-rates/latest.json",
         "bytes": 414,
-        "sha256": "7f341b9e0c80915e67cc57f794c97886e4c11805e33e42e4742d6e826d3fd000",
-        "record_key": "2026-07",
+        "sha256": "9273da536f1e11d41b01284795fa649630c9169883b963fa12bbda0a6f54c0e8",
+        "record_key": "2026-08",
         "canonical_record_path": "7520/by-year/2026-section-7520-rates.json"
       },
       "lookup": {
         "path_template": "datasets/section-7520-rates/by-month/{month}.json",
         "key_field": "effective_month",
-        "record_count": 367,
-        "file_count": 367,
+        "record_count": 368,
+        "file_count": 368,
         "first_key": "1996-01",
-        "last_key": "2026-07"
+        "last_key": "2026-08"
       }
     },
     {
