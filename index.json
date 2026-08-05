@@ -77,10 +77,10 @@
       "schema_id": "rates.treasury_yield_curve.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 9153,
+      "record_count": 9154,
       "manifest_path": "treasury/treasury-yield-curve/manifest.json",
       "manifest_bytes": 18055,
-      "manifest_sha256": "e5db2f4f37de86128a02b411c225aba0fb528456994362ab341f091272746753"
+      "manifest_sha256": "ba43180279436695444648d9fc671e68f2e8011d7dd43e1a720d154786d4e71f"
     },
     {
       "dataset_path": "fed-funds",
