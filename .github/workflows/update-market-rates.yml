@@ -84,35 +84,39 @@ jobs:
             exit 1
           fi
 
-      - name: Checkout
+      - name: Checkout repository
         if: ${{ steps.schedule_window.outputs.should_run == 'true' }}
-        uses: actions/checkout@v6
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          git init .
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git -c http.extraheader="AUTHORIZATION: bearer ${GITHUB_TOKEN}" fetch --depth=1 origin "${GITHUB_SHA}"
+          git checkout --force FETCH_HEAD
 
-      - name: Set up Python
+      - name: Check Python
         if: ${{ steps.schedule_window.outputs.should_run == 'true' }}
-        uses: actions/setup-python@v6
-        with:
-          python-version: "3.14"
+        run: python3 --version
 
       - name: Test market rate updater
         if: ${{ steps.schedule_window.outputs.should_run == 'true' }}
         run: |
-          python -m unittest scripts.tests.test_update_market_rates
-          python -m unittest scripts.tests.test_repository_layout
+          python3 -m unittest scripts.tests.test_update_market_rates
+          python3 -m unittest scripts.tests.test_repository_layout
 
       - name: Update market rate JSON
         if: ${{ steps.schedule_window.outputs.should_run == 'true' }}
-        run: python scripts/update_market_rates.py --write
+        run: python3 scripts/update_market_rates.py --write
 
       - name: Generate manifests, schemas, and protobuf artifacts
         if: ${{ steps.schedule_window.outputs.should_run == 'true' }}
-        run: python scripts/artifact_contract.py
+        run: python3 scripts/artifact_contract.py
 
       - name: Test generated market rate data
         if: ${{ steps.schedule_window.outputs.should_run == 'true' }}
         run: |
-          python -m unittest scripts.tests.test_update_market_rates
-          python -m unittest scripts.tests.test_repository_layout
+          python3 -m unittest scripts.tests.test_update_market_rates
+          python3 -m unittest scripts.tests.test_repository_layout
 
       - name: Open pull request for market rate updates
         if: ${{ steps.schedule_window.outputs.should_run == 'true' }}
@@ -126,9 +130,9 @@ jobs:
             Updates market rate data, generated artifacts, and indexes.
 
             Tests:
-            - `python -m unittest scripts.tests.test_update_market_rates`
-            - `python -m unittest scripts.tests.test_repository_layout`
-            - `python scripts/artifact_contract.py`
+            - `python3 -m unittest scripts.tests.test_update_market_rates`
+            - `python3 -m unittest scripts.tests.test_repository_layout`
+            - `python3 scripts/artifact_contract.py`
         run: |
           if [ -z "$(git status --porcelain)" ]; then
             echo "pull-request-number=" >> "${GITHUB_OUTPUT}"
@@ -141,7 +145,7 @@ jobs:
           git checkout -B "${BRANCH}"
           git add -A
           git commit -m "${COMMIT_MESSAGE}"
-          git push --force-with-lease origin "${BRANCH}"
+          git -c http.extraheader="AUTHORIZATION: bearer ${GH_TOKEN}" push --force-with-lease origin "${BRANCH}"
 
           pr_url="$(gh pr list --head "${BRANCH}" --state open --json url --jq '.[0].url // ""')"
           if [ -n "${pr_url}" ]; then
