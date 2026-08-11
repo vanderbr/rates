@@ -90,8 +90,8 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           git init .
-          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
-          git -c http.extraheader="AUTHORIZATION: bearer ${GITHUB_TOKEN}" fetch --depth=1 origin "${GITHUB_SHA}"
+          git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git fetch --depth=1 origin "${GITHUB_SHA}"
           git checkout --force FETCH_HEAD
 
       - name: Check Python
@@ -142,10 +142,11 @@ jobs:
 
           git config user.name "rates automation"
           git config user.email "actions@users.noreply.github.com"
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git checkout -B "${BRANCH}"
           git add -A
           git commit -m "${COMMIT_MESSAGE}"
-          git -c http.extraheader="AUTHORIZATION: bearer ${GH_TOKEN}" push --force-with-lease origin "${BRANCH}"
+          git push --force-with-lease origin "${BRANCH}"
 
           pr_url="$(gh pr list --head "${BRANCH}" --state open --json url --jq '.[0].url // ""')"
           if [ -n "${pr_url}" ]; then
