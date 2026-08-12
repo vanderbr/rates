@@ -146,6 +146,7 @@ jobs:
           git checkout -B "${BRANCH}"
           git add -A
           git commit -m "${COMMIT_MESSAGE}"
+          git fetch --depth=1 origin "${BRANCH}:refs/remotes/origin/${BRANCH}" || true
           git push --force-with-lease origin "${BRANCH}"
 
           pr_url="$(gh pr list --head "${BRANCH}" --state open --json url --jq '.[0].url // ""')"
