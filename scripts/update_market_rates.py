@@ -16,6 +16,7 @@ from dataclasses import dataclass
 from datetime import UTC, date, datetime
 from decimal import Decimal, InvalidOperation
 from enum import Enum
+from http.client import HTTPException
 from io import StringIO
 from pathlib import Path
 from typing import Any, Callable, Protocol
@@ -29,6 +30,7 @@ DEFAULT_TREASURY_MANIFEST_PATH = Path("treasury/treasury-yield-curve/manifest.js
 DEFAULT_TREASURY_YEAR_DIR = Path("treasury/treasury-yield-curve/by-year")
 MAX_RESPONSE_BYTES = 20_000_000
 REQUEST_TIMEOUT_SECONDS = 60
+FETCH_ATTEMPTS = 3
 ISO_DATE_PATTERN = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$")
 NYFED_DATE_PATTERN = re.compile(r"^[0-9]{2}/[0-9]{2}/[0-9]{4}$")
 
@@ -453,15 +455,29 @@ def fetch_text(source_url: str) -> str:
         headers={"User-Agent": "vanderbr-rates-updater/1.0"},
         method="GET",
     )
-    try:
-        with urlopen(request, timeout=REQUEST_TIMEOUT_SECONDS) as response:
-            length_header = response.headers.get("Content-Length")
-            if length_header is not None and int(length_header) > MAX_RESPONSE_BYTES:
-                raise MarketRateUpdateError(MarketRateUpdateErrorCode.FETCH_TOO_LARGE)
-            body = response.read(MAX_RESPONSE_BYTES + 1)
-    except (HTTPError, OSError, URLError, ValueError):
-        raise MarketRateUpdateError(MarketRateUpdateErrorCode.FETCH_FAILED) from None
+    body = None
+    # Public rate feeds occasionally close chunked responses early; retry the
+    # idempotent GET before handing control back to the fail-closed parser path.
+    for attempt in range(FETCH_ATTEMPTS):
+        try:
+            with urlopen(request, timeout=REQUEST_TIMEOUT_SECONDS) as response:
+                length_header = response.headers.get("Content-Length")
+                if length_header is not None and int(length_header) > MAX_RESPONSE_BYTES:
+                    raise MarketRateUpdateError(
+                        MarketRateUpdateErrorCode.FETCH_TOO_LARGE
+                    )
+                body = response.read(MAX_RESPONSE_BYTES + 1)
+                break
+        except MarketRateUpdateError:
+            raise
+        except (HTTPError, HTTPException, OSError, URLError, ValueError):
+            if attempt == FETCH_ATTEMPTS - 1:
+                raise MarketRateUpdateError(
+                    MarketRateUpdateErrorCode.FETCH_FAILED
+                ) from None
 
+    if body is None:
+        raise MarketRateUpdateError(MarketRateUpdateErrorCode.FETCH_FAILED)
     if len(body) > MAX_RESPONSE_BYTES:
         raise MarketRateUpdateError(MarketRateUpdateErrorCode.FETCH_TOO_LARGE)
 
