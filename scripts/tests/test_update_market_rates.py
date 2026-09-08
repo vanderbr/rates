@@ -6,6 +6,7 @@ import importlib.util
 import sys
 import tempfile
 import unittest
+from http.client import IncompleteRead
 from pathlib import Path
 from types import ModuleType
 
@@ -73,6 +74,21 @@ SOFR_AVERAGE_INDEX_ONLY_CSV = (
 )
 
 
+class FakeHttpResponse:
+    def __init__(self, body: bytes, headers: dict[str, str] | None = None) -> None:
+        self.body = body
+        self.headers = headers if headers is not None else {}
+
+    def __enter__(self) -> "FakeHttpResponse":
+        return self
+
+    def __exit__(self, _exc_type: object, _exc: object, _traceback: object) -> bool:
+        return False
+
+    def read(self, _amount: int) -> bytes:
+        return self.body
+
+
 def load_updater_module() -> ModuleType:
     spec = importlib.util.spec_from_file_location("update_market_rates", SCRIPT_PATH)
     if spec is None or spec.loader is None:
@@ -86,6 +102,79 @@ def load_updater_module() -> ModuleType:
 class MarketRateUpdaterTests(unittest.TestCase):
     def setUp(self) -> None:
         self.updater = load_updater_module()
+
+    def test_fetch_text_retries_incomplete_chunked_response(self) -> None:
+        calls = 0
+        original_urlopen = self.updater.urlopen
+
+        def flaky_urlopen(_request: object, timeout: int) -> FakeHttpResponse:
+            nonlocal calls
+            self.assertEqual(self.updater.REQUEST_TIMEOUT_SECONDS, timeout)
+            calls += 1
+            if calls == 1:
+                raise IncompleteRead(b"partial")
+            return FakeHttpResponse(b"\xef\xbb\xbfDate\n")
+
+        try:
+            self.updater.urlopen = flaky_urlopen
+
+            text = self.updater.fetch_text(TREASURY_2026_SOURCE_URL)
+        finally:
+            self.updater.urlopen = original_urlopen
+
+        self.assertEqual("Date\n", text)
+        self.assertEqual(2, calls)
+
+    def test_fetch_text_fails_closed_after_retry_exhaustion(self) -> None:
+        calls = 0
+        original_urlopen = self.updater.urlopen
+
+        def broken_urlopen(_request: object, timeout: int) -> FakeHttpResponse:
+            nonlocal calls
+            self.assertEqual(self.updater.REQUEST_TIMEOUT_SECONDS, timeout)
+            calls += 1
+            raise IncompleteRead(b"partial")
+
+        try:
+            self.updater.urlopen = broken_urlopen
+
+            with self.assertRaises(self.updater.MarketRateUpdateError) as context:
+                self.updater.fetch_text(TREASURY_2026_SOURCE_URL)
+        finally:
+            self.updater.urlopen = original_urlopen
+
+        self.assertEqual(self.updater.FETCH_ATTEMPTS, calls)
+        self.assertEqual(
+            self.updater.MarketRateUpdateErrorCode.FETCH_FAILED,
+            context.exception.code,
+        )
+
+    def test_fetch_text_rejects_oversized_response_without_retry(self) -> None:
+        calls = 0
+        original_urlopen = self.updater.urlopen
+
+        def oversized_urlopen(_request: object, timeout: int) -> FakeHttpResponse:
+            nonlocal calls
+            self.assertEqual(self.updater.REQUEST_TIMEOUT_SECONDS, timeout)
+            calls += 1
+            return FakeHttpResponse(
+                b"",
+                {"Content-Length": str(self.updater.MAX_RESPONSE_BYTES + 1)},
+            )
+
+        try:
+            self.updater.urlopen = oversized_urlopen
+
+            with self.assertRaises(self.updater.MarketRateUpdateError) as context:
+                self.updater.fetch_text(TREASURY_2026_SOURCE_URL)
+        finally:
+            self.updater.urlopen = original_urlopen
+
+        self.assertEqual(1, calls)
+        self.assertEqual(
+            self.updater.MarketRateUpdateErrorCode.FETCH_TOO_LARGE,
+            context.exception.code,
+        )
 
     def test_parses_current_treasury_yield_curve_into_basis_points(self) -> None:
         records = self.updater.parse_treasury_csv(
