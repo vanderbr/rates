@@ -3,7 +3,7 @@
   "schema_id": "rates.treasury_yield_curve.v1",
   "schema_version": 1,
   "record_storage": "by_year",
-  "record_count": 9181,
+  "record_count": 9182,
   "proto": {
     "file": "proto/rates/v1/treasury_yield_curve.proto",
     "message": "rates.v1.TreasuryYieldCurveFile"
@@ -443,17 +443,17 @@
     },
     {
       "path": "by-year/2026-treasury-yield-curve.json",
-      "bytes": 39728,
-      "sha256": "a8c2706ae7b371dfbe5f2cc7a05a2b7d631b0d4afcc34efdc069b8e3d94869c3",
+      "bytes": 39955,
+      "sha256": "5c2913d252f9c9c557ea602d2f99a252a2c1b7355aa5190f57abf600079a1adb",
       "protobuf_path": "protobuf/2026-treasury-yield-curve.pb",
-      "protobuf_bytes": 19631,
-      "protobuf_sha256": "a748da7c1ce5bb3f95121c01df3144f9a7b61af1ec87d69656e2174070ca6da0",
+      "protobuf_bytes": 19743,
+      "protobuf_sha256": "ef65db6178c7364ab943121f22e48b25abe0f675a733c8002eab55fe3cec68b7",
       "year": "2026",
-      "record_count": 175,
+      "record_count": 176,
       "first_date": "2026-01-02",
-      "last_date": "2026-09-11"
+      "last_date": "2026-09-14"
     }
   ],
   "first_date": "1990-01-02",
-  "last_date": "2026-09-11"
+  "last_date": "2026-09-14"
 }
