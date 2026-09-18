@@ -177,22 +177,22 @@
       "schema_id": "rates.federal_funds.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 6586,
+      "record_count": 6587,
       "canonical_manifest_path": "fed-funds/manifest.json",
       "latest": {
         "path": "datasets/federal-funds/latest.json",
         "bytes": 356,
-        "sha256": "ca17562af61b28a176fb1cb51761e4d91456ac036ded636d270009da4f0d76c5",
-        "record_key": "2026-09-16",
+        "sha256": "2c83013c0febbb7bdff8500bfe6fe63e5db9e868e5a95293067574010698fa7d",
+        "record_key": "2026-09-17",
         "canonical_record_path": "fed-funds/by-year/2026-fed-funds.json"
       },
       "lookup": {
         "path_template": "datasets/federal-funds/by-date/{date}.json",
         "key_field": "date",
-        "record_count": 6586,
-        "file_count": 6586,
+        "record_count": 6587,
+        "file_count": 6587,
         "first_key": "2000-07-03",
-        "last_key": "2026-09-16"
+        "last_key": "2026-09-17"
       }
     },
     {
@@ -201,22 +201,22 @@
       "schema_id": "rates.sofr.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 2113,
+      "record_count": 2114,
       "canonical_manifest_path": "sofr/manifest.json",
       "latest": {
         "path": "datasets/sofr/latest.json",
         "bytes": 511,
-        "sha256": "f57f84cc158fdaac163b3b6fc111ae7d44b053fd6e9ff470acb4b42342beadf6",
-        "record_key": "2026-09-16",
+        "sha256": "115891604dfa846f4515c1f270ff259112c2e751d41443e99424535da0062ba3",
+        "record_key": "2026-09-17",
         "canonical_record_path": "sofr/by-year/2026-sofr.json"
       },
       "lookup": {
         "path_template": "datasets/sofr/by-date/{date}.json",
         "key_field": "date",
-        "record_count": 2113,
-        "file_count": 2113,
+        "record_count": 2114,
+        "file_count": 2114,
         "first_key": "2018-04-02",
-        "last_key": "2026-09-16"
+        "last_key": "2026-09-17"
       }
     },
     {
@@ -225,22 +225,22 @@
       "schema_id": "rates.sofr_30d_average.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 1636,
+      "record_count": 1637,
       "canonical_manifest_path": "sofr/sofr-30d-average/manifest.json",
       "latest": {
         "path": "datasets/sofr-30d-average/latest.json",
         "bytes": 427,
-        "sha256": "0ca3afdb70cf1e3dc22e503b08afde2adefa5128358a1cccd28bca37849b8934",
-        "record_key": "2026-09-17",
+        "sha256": "1dfabb21f0bb2853cf59184cc30c83bbddcfd5f98974d9ba00b07a43c308dff2",
+        "record_key": "2026-09-18",
         "canonical_record_path": "sofr/sofr-30d-average/by-year/2026-sofr-30d-average.json"
       },
       "lookup": {
         "path_template": "datasets/sofr-30d-average/by-date/{date}.json",
         "key_field": "date",
-        "record_count": 1636,
-        "file_count": 1636,
+        "record_count": 1637,
+        "file_count": 1637,
         "first_key": "2020-03-02",
-        "last_key": "2026-09-17"
+        "last_key": "2026-09-18"
       }
     },
     {
@@ -249,22 +249,22 @@
       "schema_id": "rates.sofr_90d_average.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 1636,
+      "record_count": 1637,
       "canonical_manifest_path": "sofr/sofr-90d-average/manifest.json",
       "latest": {
         "path": "datasets/sofr-90d-average/latest.json",
         "bytes": 427,
-        "sha256": "1378f64b768c97bb87ce70499f7e4aec6ef1384d152859ef2ed9c5b7efeeb3f2",
-        "record_key": "2026-09-17",
+        "sha256": "5f7604d26fde5e3064a6aa270e2aea8ec104dd8cc2a2ff7e88ca331005415948",
+        "record_key": "2026-09-18",
         "canonical_record_path": "sofr/sofr-90d-average/by-year/2026-sofr-90d-average.json"
       },
       "lookup": {
         "path_template": "datasets/sofr-90d-average/by-date/{date}.json",
         "key_field": "date",
-        "record_count": 1636,
-        "file_count": 1636,
+        "record_count": 1637,
+        "file_count": 1637,
         "first_key": "2020-03-02",
-        "last_key": "2026-09-17"
+        "last_key": "2026-09-18"
       }
     },
     {
@@ -273,22 +273,22 @@
       "schema_id": "rates.sofr_180d_average.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 1636,
+      "record_count": 1637,
       "canonical_manifest_path": "sofr/sofr-180d-average/manifest.json",
       "latest": {
         "path": "datasets/sofr-180d-average/latest.json",
         "bytes": 433,
-        "sha256": "8ba1657ded5e41159d4f822341e3e275bd044286ae7a1702e2294efd84785197",
-        "record_key": "2026-09-17",
+        "sha256": "bc9e586e51e13f9f766e349ee7562c31c9c920d6dc0d830e29972caea6c2bc1b",
+        "record_key": "2026-09-18",
         "canonical_record_path": "sofr/sofr-180d-average/by-year/2026-sofr-180d-average.json"
       },
       "lookup": {
         "path_template": "datasets/sofr-180d-average/by-date/{date}.json",
         "key_field": "date",
-        "record_count": 1636,
-        "file_count": 1636,
+        "record_count": 1637,
+        "file_count": 1637,
         "first_key": "2020-03-02",
-        "last_key": "2026-09-17"
+        "last_key": "2026-09-18"
       }
     },
     {
@@ -297,22 +297,22 @@
       "schema_id": "rates.sofr_index.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 1636,
+      "record_count": 1637,
       "canonical_manifest_path": "sofr/sofr-index/manifest.json",
       "latest": {
         "path": "datasets/sofr-index/latest.json",
         "bytes": 388,
-        "sha256": "39b6e35a28458046d67736d4c86d86e005f2f4bf54e2264ec4777882c8ecd09d",
-        "record_key": "2026-09-17",
+        "sha256": "b82bf9b67410c44c17af8a8ea813ef51207285d69fcfc768c68fdfb479dc7949",
+        "record_key": "2026-09-18",
         "canonical_record_path": "sofr/sofr-index/by-year/2026-sofr-index.json"
       },
       "lookup": {
         "path_template": "datasets/sofr-index/by-date/{date}.json",
         "key_field": "date",
-        "record_count": 1636,
-        "file_count": 1636,
+        "record_count": 1637,
+        "file_count": 1637,
         "first_key": "2020-03-02",
-        "last_key": "2026-09-17"
+        "last_key": "2026-09-18"
       }
     },
     {

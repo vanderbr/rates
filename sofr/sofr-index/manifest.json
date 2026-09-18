@@ -3,7 +3,7 @@
   "schema_id": "rates.sofr_index.v1",
   "schema_version": 1,
   "record_storage": "by_year",
-  "record_count": 1636,
+  "record_count": 1637,
   "proto": {
     "file": "proto/rates/v1/sofr_index.proto",
     "message": "rates.v1.SofrIndexFile"
@@ -83,17 +83,17 @@
     },
     {
       "path": "by-year/2026-sofr-index.json",
-      "bytes": 14243,
-      "sha256": "991d7ee65e3f328907a75a38cf88ae71b25442e74af0d779f3ff495b41bbcc9e",
+      "bytes": 14323,
+      "sha256": "0f4a7e31c1e4720d305f949c397fda81a382c80000dd61bfe9667fb455b79f7d",
       "protobuf_path": "protobuf/2026-sofr-index.pb",
-      "protobuf_bytes": 3403,
-      "protobuf_sha256": "4f61d1206fb7ff72946d5bb45e9aac1ae16c9f90e5d31de2511a6b9f1504ea34",
+      "protobuf_bytes": 3422,
+      "protobuf_sha256": "c31dcb740037d8d364f191bcd825396497fea6425847b7e67d9c2e9e58ee4e62",
       "year": "2026",
-      "record_count": 178,
+      "record_count": 179,
       "first_date": "2026-01-02",
-      "last_date": "2026-09-17"
+      "last_date": "2026-09-18"
     }
   ],
   "first_date": "2020-03-02",
-  "last_date": "2026-09-17"
+  "last_date": "2026-09-18"
 }
