@@ -3,7 +3,7 @@
   "schema_id": "rates.federal_funds.v1",
   "schema_version": 1,
   "record_storage": "by_year",
-  "record_count": 6595,
+  "record_count": 6596,
   "proto": {
     "file": "proto/rates/v1/federal_funds.proto",
     "message": "rates.v1.FederalFundsRateFile"
@@ -323,17 +323,17 @@
     },
     {
       "path": "by-year/2026-fed-funds.json",
-      "bytes": 12035,
-      "sha256": "86d86cc804b55c1b6e42f0e1646a614ea15ef597f75fc2157246a7442226f510",
+      "bytes": 12099,
+      "sha256": "1e198011972415e7fc1f7c6b12c9ee2aa6e173ba97962ef95adaca6e22a9de7b",
       "protobuf_path": "protobuf/2026-fed-funds.pb",
-      "protobuf_bytes": 3220,
-      "protobuf_sha256": "edcc7143a87e41294ae3346136cd021f49325bb709e0b9a9fe87d4bd5e198404",
+      "protobuf_bytes": 3237,
+      "protobuf_sha256": "bf7433752abe99f9bbdff7efd555753a61bda6a4dbeb5ed394eea273601f562c",
       "year": "2026",
-      "record_count": 188,
+      "record_count": 189,
       "first_date": "2026-01-02",
-      "last_date": "2026-09-29"
+      "last_date": "2026-09-30"
     }
   ],
   "first_date": "2000-07-03",
-  "last_date": "2026-09-29"
+  "last_date": "2026-09-30"
 }
