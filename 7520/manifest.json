@@ -3,7 +3,7 @@
   "schema_id": "rates.section_7520_rates.v1",
   "schema_version": 1,
   "record_storage": "by_year",
-  "record_count": 370,
+  "record_count": 371,
   "proto": {
     "file": "proto/rates/v1/section_7520_rates.proto",
     "message": "rates.v1.Section7520RateFile"
@@ -371,17 +371,17 @@
     },
     {
       "path": "by-year/2026-section-7520-rates.json",
-      "bytes": 1263,
-      "sha256": "0ffa666313c38df198c9c023712a861ef0b1c6922e84d7362056010c4e62fbba",
+      "bytes": 1389,
+      "sha256": "8967e7e3aaca377ada0dd4c08344d6ec442d15b300a1fdc6fbfce551e9f99b94",
       "protobuf_path": "protobuf/2026-section-7520-rates.pb",
-      "protobuf_bytes": 199,
-      "protobuf_sha256": "2d6dd31b1885f3e187816bb3afd6f48fdaf545ebc4815c713fff4ab12c380775",
+      "protobuf_bytes": 216,
+      "protobuf_sha256": "f4664fad7eaa363944fac8cac9f6771612643bcb7ec2bb37c4e99dc46b5cfa6c",
       "year": "2026",
-      "record_count": 10,
+      "record_count": 11,
       "first_effective_month": "2026-01",
-      "last_effective_month": "2026-10"
+      "last_effective_month": "2026-11"
     }
   ],
   "first_effective_month": "1996-01",
-  "last_effective_month": "2026-10"
+  "last_effective_month": "2026-11"
 }
