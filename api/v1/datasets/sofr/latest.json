@@ -3,16 +3,16 @@
   "schema_version": 1,
   "dataset_id": "sofr",
   "dataset_path": "sofr",
-  "record_key": "2026-10-27",
+  "record_key": "2026-10-28",
   "canonical_record_path": "sofr/by-year/2026-sofr.json",
   "canonical_manifest_path": "sofr/manifest.json",
   "record": {
-    "date": "2026-10-27",
-    "rate_basis_points": 395,
-    "percentile_1_basis_points": 388,
-    "percentile_25_basis_points": 394,
-    "percentile_75_basis_points": 400,
-    "percentile_99_basis_points": 404,
-    "volume_billions": 3147
+    "date": "2026-10-28",
+    "rate_basis_points": 394,
+    "percentile_1_basis_points": 389,
+    "percentile_25_basis_points": 392,
+    "percentile_75_basis_points": 399,
+    "percentile_99_basis_points": 402,
+    "volume_billions": 3074
   }
 }
