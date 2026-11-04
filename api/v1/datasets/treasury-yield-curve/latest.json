@@ -3,26 +3,26 @@
   "schema_version": 1,
   "dataset_id": "treasury-yield-curve",
   "dataset_path": "treasury/treasury-yield-curve",
-  "record_key": "2026-11-03",
+  "record_key": "2026-11-04",
   "canonical_record_path": "treasury/treasury-yield-curve/by-year/2026-treasury-yield-curve.json",
   "canonical_manifest_path": "treasury/treasury-yield-curve/manifest.json",
   "record": {
-    "date": "2026-11-03",
+    "date": "2026-11-04",
     "par_yields_basis_points": [
-      403,
-      409,
+      401,
+      408,
       415,
       421,
-      418,
-      426,
-      440,
-      461,
-      468,
-      474,
-      483,
-      495,
-      535,
-      532
+      420,
+      425,
+      439,
+      458,
+      464,
+      469,
+      477,
+      490,
+      530,
+      528
     ]
   }
 }
