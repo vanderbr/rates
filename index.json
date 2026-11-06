@@ -33,10 +33,10 @@
       "schema_id": "rates.annual_gift_exclusion.v1",
       "schema_version": 1,
       "record_storage": "single_file",
-      "record_count": 72,
+      "record_count": 73,
       "manifest_path": "annual-gift-exclusion/manifest.json",
       "manifest_bytes": 638,
-      "manifest_sha256": "93e5a518a9b8d5997ad8c262e68bd3280665c32161de82f312ae7b849d4cb468"
+      "manifest_sha256": "f5a1ffd0ad5911da96d671e7986074eb057f9b56cb1f266f5f16281eccde2f79"
     },
     {
       "dataset_path": "estate-gift-tax-exemption",
@@ -44,10 +44,10 @@
       "schema_id": "rates.estate_gift_tax_exemption.v1",
       "schema_version": 1,
       "record_storage": "single_file",
-      "record_count": 51,
+      "record_count": 52,
       "manifest_path": "estate-gift-tax-exemption/manifest.json",
       "manifest_bytes": 661,
-      "manifest_sha256": "cbe33ee713d2c7228a4f158bd43f6ac69a7a4ec4f9b7e42bd5743a08044e16e8"
+      "manifest_sha256": "6eacf48370b7657636bfaf342e604ac740d08ec53e7f71627f41df8823d2030e"
     },
     {
       "dataset_path": "gst-exemption",
@@ -55,10 +55,10 @@
       "schema_id": "rates.gst_exemption.v1",
       "schema_version": 1,
       "record_storage": "single_file",
-      "record_count": 41,
+      "record_count": 42,
       "manifest_path": "gst-exemption/manifest.json",
       "manifest_bytes": 591,
-      "manifest_sha256": "fccf29934f94723b16559268575306f695e9f4ebb7b2ad835b38cc948297261b"
+      "manifest_sha256": "f39c2456eb7ee82bf7678c14c52ab847e3ed949277ae82039531e7d415a42929"
     },
     {
       "dataset_path": "noncitizen-spouse-gift-exclusion",
@@ -66,10 +66,10 @@
       "schema_id": "rates.noncitizen_spouse_gift_exclusion.v1",
       "schema_version": 1,
       "record_storage": "single_file",
-      "record_count": 29,
+      "record_count": 30,
       "manifest_path": "noncitizen-spouse-gift-exclusion/manifest.json",
       "manifest_bytes": 702,
-      "manifest_sha256": "31abb40b9bd17b411eee6e439f59d09516509ca150adba1bbe6fdb4593773dc2"
+      "manifest_sha256": "ff91e976394ff8485a544c5bf2deb8761a0d280eeb768273af18e9a0ed3853d7"
     },
     {
       "dataset_path": "treasury/treasury-yield-curve",

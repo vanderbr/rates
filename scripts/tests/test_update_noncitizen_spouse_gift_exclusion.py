@@ -17,7 +17,11 @@ SCRIPT_PATH = REPO_ROOT / "scripts" / "update_noncitizen_spouse_gift_exclusion.p
 FIXTURE_PATH = (
     REPO_ROOT / "scripts" / "fixtures" / "noncitizen_spouse_gift_exclusion_2026.txt"
 )
+FIXTURE_2027_PATH = (
+    REPO_ROOT / "scripts" / "fixtures" / "irs_inflation_adjustments_2027.txt"
+)
 SOURCE_URL = "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf"
+SOURCE_2027_URL = "https://www.irs.gov/pub/irs-drop/rp-26-35.pdf"
 
 
 def load_updater_module() -> ModuleType:
@@ -50,6 +54,18 @@ class NoncitizenSpouseGiftExclusionUpdaterTests(unittest.TestCase):
             "gifts_to_spouse_who_is_not_united_states_citizen_made_during_period",
             record.applies_to,
         )
+
+    def test_parses_2027_noncitizen_spouse_exclusion(self) -> None:
+        source_text = FIXTURE_2027_PATH.read_text(encoding="utf-8")
+
+        record = self.updater.parse_noncitizen_spouse_gift_exclusion_record(
+            source_text, SOURCE_2027_URL
+        )
+
+        self.assertEqual("2027-01-01", record.period_start_date)
+        self.assertEqual("2027-12-31", record.period_end_date)
+        self.assertEqual(201_000, record.annual_exclusion_amount_usd)
+        self.assertEqual("Rev. Proc. 2026-35", record.revenue_procedure)
 
     def test_update_writes_chronological_json_and_is_idempotent(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

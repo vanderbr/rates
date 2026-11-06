@@ -3,17 +3,17 @@
   "schema_id": "rates.estate_gift_tax_exemption.v1",
   "schema_version": 1,
   "record_storage": "single_file",
-  "record_count": 51,
+  "record_count": 52,
   "proto": {
     "file": "proto/rates/v1/estate_gift_tax_exemption.proto",
     "message": "rates.v1.EstateGiftTaxExemptionFile"
   },
   "records": {
     "path": "estate-gift-tax-exemption.json",
-    "bytes": 6462,
-    "sha256": "add54feecf63b87b30fa925bf32c736d184945732914b1a2d5a2d9bda995ac52",
+    "bytes": 6590,
+    "sha256": "8de478d6d54ce58f4c7a4488df2b889bd13c90ac234a4ecc17e43e3005853398",
     "protobuf_path": "protobuf/estate-gift-tax-exemption.pb",
-    "protobuf_bytes": 1582,
-    "protobuf_sha256": "8753cd9b56842101da7693bbf36f586b5d645200eeebdc78765f066f0536fb7c"
+    "protobuf_bytes": 1613,
+    "protobuf_sha256": "dc50a9ca1f69363c6e7dda391d42b0ea66942fa85e39bf47c352f645a29c6893"
   }
 }

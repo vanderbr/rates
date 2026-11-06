@@ -15,7 +15,11 @@ from types import ModuleType
 REPO_ROOT = Path(__file__).resolve().parents[2]
 SCRIPT_PATH = REPO_ROOT / "scripts" / "update_gst_exemption.py"
 FIXTURE_PATH = REPO_ROOT / "scripts" / "fixtures" / "gst_exemption_2026.txt"
+FIXTURE_2027_PATH = (
+    REPO_ROOT / "scripts" / "fixtures" / "irs_inflation_adjustments_2027.txt"
+)
 SOURCE_URL = "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf"
+SOURCE_2027_URL = "https://www.irs.gov/pub/irs-drop/rp-26-35.pdf"
 
 
 def load_updater_module() -> ModuleType:
@@ -45,6 +49,31 @@ class GstExemptionUpdaterTests(unittest.TestCase):
         self.assertEqual(
             "generation_skipping_transfers_during_calendar_year",
             record.applies_to,
+        )
+
+    def test_derives_2027_gst_exemption_from_basic_exclusion_statement(self) -> None:
+        source_text = FIXTURE_2027_PATH.read_text(encoding="utf-8")
+
+        record = self.updater.parse_gst_exemption_record(
+            source_text, SOURCE_2027_URL
+        )
+
+        self.assertEqual("2027-01-01", record.period_start_date)
+        self.assertEqual("2027-12-31", record.period_end_date)
+        self.assertEqual(15_480_000, record.exemption_amount_usd)
+        self.assertEqual("Rev. Proc. 2026-35", record.revenue_procedure)
+
+    def test_basic_exclusion_without_gst_relationship_fails_closed(self) -> None:
+        source_text = (
+            "Rev. Proc. 2026-35 For calendar year 2027, the basic exclusion "
+            "amount under § 2010(c)(3) is $15,480,000."
+        )
+
+        with self.assertRaises(self.updater.UpdateGstExemptionError) as context:
+            self.updater.parse_gst_exemption_record(source_text, SOURCE_2027_URL)
+
+        self.assertEqual(
+            self.updater.UpdateErrorCode.INVALID_AMOUNT, context.exception.code
         )
 
     def test_static_form_709_history_expands_grouped_years(self) -> None:

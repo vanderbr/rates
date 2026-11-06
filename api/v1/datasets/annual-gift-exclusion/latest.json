@@ -3,12 +3,12 @@
   "schema_version": 1,
   "dataset_id": "annual-gift-exclusion",
   "dataset_path": "annual-gift-exclusion",
-  "record_key": "2026-01-01",
+  "record_key": "2027-01-01",
   "canonical_record_path": "annual-gift-exclusion/annual-gift-exclusion.json",
   "canonical_manifest_path": "annual-gift-exclusion/manifest.json",
   "record": {
-    "period_start_date": "2026-01-01",
-    "period_end_date": "2026-12-31",
-    "annual_exclusion_amount_usd": 19000
+    "period_start_date": "2027-01-01",
+    "period_end_date": "2027-12-31",
+    "annual_exclusion_amount_usd": 20000
   }
 }

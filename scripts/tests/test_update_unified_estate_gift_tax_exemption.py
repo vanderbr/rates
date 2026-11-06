@@ -20,7 +20,11 @@ FIXTURE_PATH = (
     / "fixtures"
     / "unified_estate_gift_tax_exemption_2026.txt"
 )
+FIXTURE_2027_PATH = (
+    REPO_ROOT / "scripts" / "fixtures" / "irs_inflation_adjustments_2027.txt"
+)
 SOURCE_URL = "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf"
+SOURCE_2027_URL = "https://www.irs.gov/pub/irs-drop/rp-26-35.pdf"
 
 
 def load_updater_module() -> ModuleType:
@@ -48,6 +52,16 @@ class UnifiedEstateGiftTaxExemptionUpdaterTests(unittest.TestCase):
         self.assertEqual(15_000_000, record.basic_exclusion_amount_usd)
         self.assertEqual("Rev. Proc. 2025-32", record.revenue_procedure)
         self.assertEqual("estates_of_decedents_dying_during_period", record.applies_to)
+
+    def test_parses_2027_basic_exclusion_wording(self) -> None:
+        source_text = FIXTURE_2027_PATH.read_text(encoding="utf-8")
+
+        record = self.updater.parse_exemption_record(source_text, SOURCE_2027_URL)
+
+        self.assertEqual("2027-01-01", record.period_start_date)
+        self.assertEqual("2027-12-31", record.period_end_date)
+        self.assertEqual(15_480_000, record.basic_exclusion_amount_usd)
+        self.assertEqual("Rev. Proc. 2026-35", record.revenue_procedure)
 
     def test_update_writes_chronological_json_and_is_idempotent(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -279,6 +293,14 @@ class UnifiedEstateGiftTaxExemptionUpdaterTests(unittest.TestCase):
         self.assertEqual(("https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",), urls)
         self.assertTrue(
             all("/newsroom/" in source_url for source_url in observed_urls)
+        )
+        self.assertTrue(
+            any(
+                source_url.endswith(
+                    "taxpayers-continue-to-benefit-from-the-working-families-tax-cuts"
+                )
+                for source_url in observed_urls
+            )
         )
 
     def test_rejects_non_irs_source_url(self) -> None:

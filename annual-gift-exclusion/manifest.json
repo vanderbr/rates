@@ -3,17 +3,17 @@
   "schema_id": "rates.annual_gift_exclusion.v1",
   "schema_version": 1,
   "record_storage": "single_file",
-  "record_count": 72,
+  "record_count": 73,
   "proto": {
     "file": "proto/rates/v1/annual_gift_exclusion.proto",
     "message": "rates.v1.AnnualGiftExclusionFile"
   },
   "records": {
     "path": "annual-gift-exclusion.json",
-    "bytes": 9048,
-    "sha256": "caaf68c466ae859cdc2e8ecb27d471ee26a7fca36309fbe7090e6f89a3cb3136",
+    "bytes": 9174,
+    "sha256": "e8eabfd9d767ac5346c946bd290fbe3d23bb1e15ec1f0152deaea753a068eff7",
     "protobuf_path": "protobuf/annual-gift-exclusion.pb",
-    "protobuf_bytes": 2124,
-    "protobuf_sha256": "424f6503ec38fa3a58baf89342775c38e424b88d5098a3530219f1a8ccd9fdb0"
+    "protobuf_bytes": 2154,
+    "protobuf_sha256": "52a0ef55d989992b261eeb96cb0e3a1fd1c3f860c9317cfdf8f564a757893fe9"
   }
 }

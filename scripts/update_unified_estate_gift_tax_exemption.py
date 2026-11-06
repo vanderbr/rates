@@ -37,6 +37,7 @@ IRS_REVENUE_PROCEDURE_URLS = (
     "https://www.irs.gov/pub/irs-drop/rp-23-34.pdf",
     "https://www.irs.gov/pub/irs-drop/rp-24-40.pdf",
     "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+    "https://www.irs.gov/pub/irs-drop/rp-26-35.pdf",
 )
 REVENUE_PROCEDURE_PATTERN = re.compile(
     r"Rev\. Proc\. (?P<procedure>[0-9]{4}-[0-9]{1,3})"
@@ -323,6 +324,11 @@ def parse_basic_exclusion_amount(normalized_text: str) -> tuple[int, int]:
         re.compile(
             r"basic exclusion amount to \$(?P<amount>[0-9,]+) for calendar year "
             r"(?P<year>[0-9]{4})",
+            re.IGNORECASE,
+        ),
+        re.compile(
+            r"For calendar year (?P<year>[0-9]{4}), the basic exclusion amount "
+            r"under § 2010\(c\)\(3\) is \$(?P<amount>[0-9,]+)",
             re.IGNORECASE,
         ),
     )
@@ -696,6 +702,12 @@ def prospective_news_urls(today: dt.date) -> tuple[str, ...]:
                     "https://www.irs.gov/newsroom/"
                     f"irs-releases-tax-inflation-adjustments-for-tax-year-{year}-"
                     "including-amendments-from-the-one-big-beautiful-bill"
+                ),
+                (
+                    "https://www.irs.gov/newsroom/"
+                    f"irs-releases-tax-inflation-adjustments-for-tax-year-{year}-"
+                    "taxpayers-continue-to-benefit-from-the-working-families-"
+                    "tax-cuts"
                 ),
             ]
         )

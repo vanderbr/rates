@@ -57,22 +57,22 @@
       "schema_id": "rates.annual_gift_exclusion.v1",
       "schema_version": 1,
       "record_storage": "single_file",
-      "record_count": 72,
+      "record_count": 73,
       "canonical_manifest_path": "annual-gift-exclusion/manifest.json",
       "latest": {
         "path": "datasets/annual-gift-exclusion/latest.json",
         "bytes": 461,
-        "sha256": "763cd571309f6990c6a0834db1e1c2d84981572fea4d0e03a52f9f2ebb54f186",
-        "record_key": "2026-01-01",
+        "sha256": "2ca404cf0aa6bf2b56835173c2ce529f11e072a364098ab719ea0c1404477d90",
+        "record_key": "2027-01-01",
         "canonical_record_path": "annual-gift-exclusion/annual-gift-exclusion.json"
       },
       "lookup": {
         "path_template": "datasets/annual-gift-exclusion/by-year/{year}.json",
         "key_field": "period_start_date",
-        "record_count": 72,
-        "file_count": 72,
+        "record_count": 73,
+        "file_count": 73,
         "first_key": "1955",
-        "last_key": "2026"
+        "last_key": "2027"
       }
     },
     {
@@ -81,22 +81,22 @@
       "schema_id": "rates.estate_gift_tax_exemption.v1",
       "schema_version": 1,
       "record_storage": "single_file",
-      "record_count": 51,
+      "record_count": 52,
       "canonical_manifest_path": "estate-gift-tax-exemption/manifest.json",
       "latest": {
         "path": "datasets/estate-gift-tax-exemption/latest.json",
         "bytes": 483,
-        "sha256": "c542d9a274ab644b76d52d72ee261ba230fa1e4d6b9db339a8430f1b87f5e4d5",
-        "record_key": "2026-01-01",
+        "sha256": "f897731cc99c820e1a2d22b33cfee5cf2bd0af0dc902a0421417764b330eedc1",
+        "record_key": "2027-01-01",
         "canonical_record_path": "estate-gift-tax-exemption/estate-gift-tax-exemption.json"
       },
       "lookup": {
         "path_template": "datasets/estate-gift-tax-exemption/by-year/{year}.json",
         "key_field": "period_start_date",
-        "record_count": 51,
-        "file_count": 50,
+        "record_count": 52,
+        "file_count": 51,
         "first_key": "1977",
-        "last_key": "2026"
+        "last_key": "2027"
       }
     },
     {
@@ -105,22 +105,22 @@
       "schema_id": "rates.gst_exemption.v1",
       "schema_version": 1,
       "record_storage": "single_file",
-      "record_count": 41,
+      "record_count": 42,
       "canonical_manifest_path": "gst-exemption/manifest.json",
       "latest": {
         "path": "datasets/gst-exemption/latest.json",
         "bytes": 417,
-        "sha256": "138bfe922a53a7d1dc732ab151cf7cc91c889c1d3cf4e2fba4fefeff63312e6d",
-        "record_key": "2026-01-01",
+        "sha256": "6c119be7d89364489107cc3b937ceb7c8207a9eb9e89cc468651dd6fac642ac8",
+        "record_key": "2027-01-01",
         "canonical_record_path": "gst-exemption/gst-exemption.json"
       },
       "lookup": {
         "path_template": "datasets/gst-exemption/by-year/{year}.json",
         "key_field": "period_start_date",
-        "record_count": 41,
-        "file_count": 41,
+        "record_count": 42,
+        "file_count": 42,
         "first_key": "1986",
-        "last_key": "2026"
+        "last_key": "2027"
       }
     },
     {
@@ -129,22 +129,22 @@
       "schema_id": "rates.noncitizen_spouse_gift_exclusion.v1",
       "schema_version": 1,
       "record_storage": "single_file",
-      "record_count": 29,
+      "record_count": 30,
       "canonical_manifest_path": "noncitizen-spouse-gift-exclusion/manifest.json",
       "latest": {
         "path": "datasets/noncitizen-spouse-gift-exclusion/latest.json",
         "bytes": 517,
-        "sha256": "f651c3ce708362107055a9ac2326ac091044ae3fcdb1edc6e86b17608683f44d",
-        "record_key": "2026-01-01",
+        "sha256": "770e898318132fb1462c568d8c81e7d60cb3d1d91573aab13cb9553a8f38386b",
+        "record_key": "2027-01-01",
         "canonical_record_path": "noncitizen-spouse-gift-exclusion/noncitizen-spouse-gift-exclusion.json"
       },
       "lookup": {
         "path_template": "datasets/noncitizen-spouse-gift-exclusion/by-year/{year}.json",
         "key_field": "period_start_date",
-        "record_count": 29,
-        "file_count": 29,
+        "record_count": 30,
+        "file_count": 30,
         "first_key": "1988",
-        "last_key": "2026"
+        "last_key": "2027"
       }
     },
     {

@@ -3,17 +3,17 @@
   "schema_id": "rates.noncitizen_spouse_gift_exclusion.v1",
   "schema_version": 1,
   "record_storage": "single_file",
-  "record_count": 29,
+  "record_count": 30,
   "proto": {
     "file": "proto/rates/v1/noncitizen_spouse_gift_exclusion.proto",
     "message": "rates.v1.NoncitizenSpouseGiftExclusionFile"
   },
   "records": {
     "path": "noncitizen-spouse-gift-exclusion.json",
-    "bytes": 3686,
-    "sha256": "6d4fd22156bf23b83de5b1926083d32b43189de6542a2ce7509d8a0f30f1cb25",
+    "bytes": 3813,
+    "sha256": "1987d0798620a1ffafcc1e8cdc8514fbe2e5119160510059b55d7fa9b8210017",
     "protobuf_path": "protobuf/noncitizen-spouse-gift-exclusion.pb",
-    "protobuf_bytes": 913,
-    "protobuf_sha256": "5c5250c5db5e585eb72c9bdd6937be89561db17e7f8369f436321385bcc80b33"
+    "protobuf_bytes": 943,
+    "protobuf_sha256": "fd3a8e781cd68b26bff1dc9f5cfd27620dc84020bb65df6a46f0ce6ae04e5d09"
   }
 }

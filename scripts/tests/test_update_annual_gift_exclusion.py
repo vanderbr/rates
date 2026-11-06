@@ -15,7 +15,11 @@ from types import ModuleType
 REPO_ROOT = Path(__file__).resolve().parents[2]
 SCRIPT_PATH = REPO_ROOT / "scripts" / "update_annual_gift_exclusion.py"
 FIXTURE_PATH = REPO_ROOT / "scripts" / "fixtures" / "annual_gift_exclusion_2026.txt"
+FIXTURE_2027_PATH = (
+    REPO_ROOT / "scripts" / "fixtures" / "irs_inflation_adjustments_2027.txt"
+)
 SOURCE_URL = "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf"
+SOURCE_2027_URL = "https://www.irs.gov/pub/irs-drop/rp-26-35.pdf"
 
 
 def load_updater_module() -> ModuleType:
@@ -47,6 +51,17 @@ class AnnualGiftExclusionUpdaterTests(unittest.TestCase):
             "gifts_of_present_interests_made_during_calendar_year",
             record.applies_to,
         )
+
+    def test_parses_2027_annual_exclusion(self) -> None:
+        source_text = FIXTURE_2027_PATH.read_text(encoding="utf-8")
+
+        record = self.updater.parse_annual_gift_exclusion_record(
+            source_text, SOURCE_2027_URL
+        )
+
+        self.assertEqual(2027, record.year)
+        self.assertEqual(20_000, record.annual_exclusion_amount_usd)
+        self.assertEqual("Rev. Proc. 2026-35", record.revenue_procedure)
 
     def test_update_writes_chronological_json_and_is_idempotent(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -215,6 +230,14 @@ class AnnualGiftExclusionUpdaterTests(unittest.TestCase):
         self.assertEqual(("https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",), urls)
         self.assertTrue(
             all("/newsroom/" in source_url for source_url in observed_urls)
+        )
+        self.assertTrue(
+            any(
+                source_url.endswith(
+                    "taxpayers-continue-to-benefit-from-the-working-families-tax-cuts"
+                )
+                for source_url in observed_urls
+            )
         )
 
     def test_rejects_non_irs_source_url(self) -> None:

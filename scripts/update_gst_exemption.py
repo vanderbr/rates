@@ -195,17 +195,42 @@ def parse_gst_exemption_record(source_text: str, source_url: str) -> GstExemptio
 
 
 def parse_gst_exemption_amount(normalized_text: str) -> tuple[int, int]:
-    pattern = re.compile(
+    explicit_gst_pattern = re.compile(
         r"For calendar year (?P<year>[0-9]{4}), the generation-skipping "
         r"transfer exemption amount under § 2631\(c\) is equal to "
         r"\$(?P<amount>[0-9,]+)",
         re.IGNORECASE,
     )
-    match = pattern.search(normalized_text)
-    if match is None:
-        raise UpdateGstExemptionError(UpdateErrorCode.INVALID_AMOUNT)
+    match = explicit_gst_pattern.search(normalized_text)
+    if match is not None:
+        return (
+            parse_amount(match.group("amount")),
+            parse_year(match.group("year")),
+        )
 
-    return (parse_amount(match.group("amount")), parse_year(match.group("year")))
+    # Revenue Procedure 2026-35 stopped stating the GST amount independently.
+    # Accept the basic exclusion amount only when the same source explicitly says
+    # that it determines the section 2631(c) GST exemption amount. This guards
+    # against accidentally importing an unrelated dollar amount from the PDF.
+    derived_gst_pattern = re.compile(
+        r"For calendar year (?P<year>[0-9]{4}), the basic exclusion amount "
+        r"under § 2010\(c\)\(3\) is \$(?P<amount>[0-9,]+)\. The basic exclusion "
+        r"amount is used in determining the applicable credit amount against "
+        r"estate tax described in section 2010\(c\)\(1\) and the applicable "
+        r"credit amount against gift tax described in section 2505\(a\)\(1\)\. "
+        r"The basic exclusion amount is also used in determining the "
+        r"generation-skipping transfer exemption amount under section "
+        r"2631\(c\)",
+        re.IGNORECASE,
+    )
+    match = derived_gst_pattern.search(normalized_text)
+    if match is not None:
+        return (
+            parse_amount(match.group("amount")),
+            parse_year(match.group("year")),
+        )
+
+    raise UpdateGstExemptionError(UpdateErrorCode.INVALID_AMOUNT)
 
 
 def parse_amount(value: str) -> int:
