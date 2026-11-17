@@ -33,22 +33,22 @@
       "schema_id": "rates.applicable_federal_rates.v1",
       "schema_version": 1,
       "record_storage": "by_year",
-      "record_count": 357,
+      "record_count": 358,
       "canonical_manifest_path": "afr/manifest.json",
       "latest": {
         "path": "datasets/applicable-federal-rates/latest.json",
         "bytes": 2815,
-        "sha256": "24a999e0b564aa81f1491f4533a254fe72c40900e68505ae0b15fe9057e51f15",
-        "record_key": "2026-10",
+        "sha256": "2f053f6582516c3acc04c73716f31fe18ab751a9d4ebe48ab07f9f3b2128d057",
+        "record_key": "2026-12",
         "canonical_record_path": "afr/by-year/2026-afr.json"
       },
       "lookup": {
         "path_template": "datasets/applicable-federal-rates/by-month/{month}.json",
         "key_field": "effective_month",
-        "record_count": 357,
-        "file_count": 357,
+        "record_count": 358,
+        "file_count": 358,
         "first_key": "1997-01",
-        "last_key": "2026-10"
+        "last_key": "2026-12"
       }
     },
     {
