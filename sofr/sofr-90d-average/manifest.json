@@ -3,7 +3,7 @@
   "schema_id": "rates.sofr_90d_average.v1",
   "schema_version": 1,
   "record_storage": "by_year",
-  "record_count": 1677,
+  "record_count": 1678,
   "proto": {
     "file": "proto/rates/v1/sofr_average.proto",
     "message": "rates.v1.SofrAverageFile"
@@ -83,17 +83,17 @@
     },
     {
       "path": "by-year/2026-sofr-90d-average.json",
-      "bytes": 19494,
-      "sha256": "e492147c54964532ae2c2f4d2d6b60fa59a956206086f36adc921277d4153016",
+      "bytes": 19583,
+      "sha256": "d47672f45596767cc9a425ee4b96c3c1c037515dc8165b04ca40921912ccff3d",
       "protobuf_path": "protobuf/2026-sofr-90d-average.pb",
-      "protobuf_bytes": 3969,
-      "protobuf_sha256": "bb243f0673abc79a718582ba0c222a457d27cbcbd1f2bc1353b065062dd17f95",
+      "protobuf_bytes": 3987,
+      "protobuf_sha256": "014f9d441b6c543f2394bd04371e258591e1048c1e9cc19d9fe3ea52a41d392c",
       "year": "2026",
-      "record_count": 219,
+      "record_count": 220,
       "first_date": "2026-01-02",
-      "last_date": "2026-11-17"
+      "last_date": "2026-11-18"
     }
   ],
   "first_date": "2020-03-02",
-  "last_date": "2026-11-17"
+  "last_date": "2026-11-18"
 }
